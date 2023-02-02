@@ -27,3 +27,5 @@
 4)Cucina: cuoco
 5)Gestione Tavoli (+ Ordini): cameriere, supervisore, admin
 6)Menu: supervisore, admin
+
+Colore Secondario: 79C4FF
