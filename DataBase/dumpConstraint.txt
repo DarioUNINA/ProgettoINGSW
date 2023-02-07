@@ -1,0 +1,69 @@
+--Costraint per Foreign Keys
+
+ALTER TABLE categoria
+ADD CONSTRAINT categoria_menu_fk FOREIGN KEY (id_menu)
+    REFERENCES public.menu (id_menu) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE dipendente
+ADD CONSTRAINT dipendente_ristorante_fk FOREIGN KEY (id_ristorante)
+    REFERENCES public.ristorante (id_ristorante) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE elemento
+ADD CONSTRAINT elemento_categoria_fk FOREIGN KEY (id_categoria)
+    REFERENCES public.categoria (id_categoria) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE menu
+ADD CONSTRAINT menu_ristorante_fk FOREIGN KEY (id_ristorante)
+    REFERENCES public.ristorante (id_ristorante) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE ordinazione
+ADD CONSTRAINT ordinazione_ordine_fk FOREIGN KEY (id_ordine)
+    REFERENCES public.ordine (id_ordine) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+ALTER TABLE ordinazione
+ADD CONSTRAINT ordinazione_elemento_fk FOREIGN KEY (id_elemento)
+    REFERENCES public.elemento (id_elemento) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE ordine
+ADD CONSTRAINT ordine_tavolo_fk FOREIGN KEY (id_tavolo)
+    REFERENCES public.tavolo (id_tavolo) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+
+ALTER TABLE ristorante
+ADD CONSTRAINT ristorante_menu_fk FOREIGN KEY (id_menu)
+    REFERENCES public.menu (id_menu) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+ALTER TABLE tavolo
+ADD CONSTRAINT tavolo_cameriere_fk FOREIGN KEY (id_cameriere)
+    REFERENCES public.dipendente (id_dipendente) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+ALTER TABLE tavolo
+ADD CONSTRAINT tavolo_ristorante_fk FOREIGN KEY (id_ristorante)
+    REFERENCES public.ristorante (id_ristorante) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+    
+

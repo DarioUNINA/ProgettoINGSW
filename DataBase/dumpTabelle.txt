@@ -1,0 +1,200 @@
+--Creazione DATABASE
+
+--DROP DATABASE IF EXISTS "INGSW";
+
+--CREATE DATABASE "INGSW"
+--    WITH
+--    OWNER = postgres
+--    ENCODING = 'UTF8'
+--    LC_COLLATE = 'Italian_Italy.1252'
+--    LC_CTYPE = 'Italian_Italy.1252'
+--    TABLESPACE = pg_default
+--    CONNECTION LIMIT = -1
+--    IS_TEMPLATE = False;
+
+
+
+
+--Creazione Enumeartion
+
+DROP TYPE IF EXISTS public.ruolo;
+
+CREATE TYPE public.ruolo AS ENUM
+    ('admin', 'supervisore', 'cameriere', 'cuoco');
+
+ALTER TYPE public.ruolo
+    OWNER TO postgres;
+
+
+
+
+--Creazione Tabelle
+
+DROP TABLE IF EXISTS public.allergene;
+
+CREATE TABLE IF NOT EXISTS public.allergene
+(
+    id_allergene integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Allergeni_pkey" PRIMARY KEY (id_allergene)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.allergene
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.categoria;
+
+CREATE TABLE IF NOT EXISTS public.categoria
+(
+    id_categoria integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    id_menu integer NOT NULL,
+    CONSTRAINT "Categoria_pkey" PRIMARY KEY (id_categoria)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.categoria
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.dipendente;
+
+CREATE TABLE IF NOT EXISTS public.dipendente
+(
+    id_dipendente integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    password character varying COLLATE pg_catalog."default" NOT NULL,
+    ruolo ruolo NOT NULL,
+    id_ristorante integer NOT NULL,
+    CONSTRAINT dipendente_pkey PRIMARY KEY (id_dipendente)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dipendente
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.elemento;
+
+CREATE TABLE IF NOT EXISTS public.elemento
+(
+    id_elemento integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    prezzo double precision NOT NULL,
+    id_categoria integer,
+    CONSTRAINT "Elemento_pkey" PRIMARY KEY (id_elemento)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.elemento
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.menu;
+
+CREATE TABLE IF NOT EXISTS public.menu
+(
+    id_menu integer NOT NULL,
+    id_ristorante integer NOT NULL,
+    CONSTRAINT menu_pkey PRIMARY KEY (id_menu)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.menu
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.ordinazione;
+
+CREATE TABLE IF NOT EXISTS public.ordinazione
+(
+    id_ordine integer NOT NULL,
+    id_elemento integer NOT NULL
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ordinazione
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.ordine;
+
+CREATE TABLE IF NOT EXISTS public.ordine
+(
+    id_ordine integer NOT NULL,
+    id_tavolo integer NOT NULL,
+    CONSTRAINT ordine_pkey PRIMARY KEY (id_ordine)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ordine
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.ristorante;
+
+CREATE TABLE IF NOT EXISTS public.ristorante
+(
+    id_ristorante integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    telefono character varying COLLATE pg_catalog."default" NOT NULL,
+    inidirzzo character varying COLLATE pg_catalog."default" NOT NULL,
+    id_menu integer,
+    CONSTRAINT "Ristorante_pkey" PRIMARY KEY (id_ristorante)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ristorante
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.tavolo;
+
+CREATE TABLE IF NOT EXISTS public.tavolo
+(
+    id_tavolo integer NOT NULL,
+    posti integer NOT NULL,
+    occupato boolean NOT NULL DEFAULT 'false',
+    id_ristorante integer NOT NULL,
+    id_cameriere integer,
+    CONSTRAINT "Tavolo_pkey" PRIMARY KEY (id_tavolo)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tavolo
+    OWNER to postgres;
