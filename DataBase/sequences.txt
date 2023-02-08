@@ -1,0 +1,41 @@
+CREATE SEQUENCE id_ristorante_seq
+START 1
+INCREMENT 1
+OWNED BY ristorante.id_ristorante;
+
+CREATE SEQUENCE id_menu_seq
+START 1
+INCREMENT 1
+OWNED BY menu.id_menu;
+
+CREATE SEQUENCE id_categoria_seq
+START 1
+INCREMENT 1
+OWNED BY categoria.id_categoria;
+
+CREATE SEQUENCE id_elemento_seq
+START 1
+INCREMENT 1
+OWNED BY elemento.id_elemento;
+
+CREATE SEQUENCE id_allergene_seq
+START 1
+INCREMENT 1
+OWNED BY allergene.id_allergene;
+
+CREATE SEQUENCE id_tavolo_seq
+START 1
+INCREMENT 1
+OWNED BY tavolo.id_tavolo;
+
+
+CREATE SEQUENCE id_ordine_seq
+START 1
+INCREMENT 1
+OWNED BY ordine.id_ordine;
+
+CREATE SEQUENCE id_dipendente_seq
+START 1
+INCREMENT 1
+OWNED BY dipendente.id_dipendente;
+
