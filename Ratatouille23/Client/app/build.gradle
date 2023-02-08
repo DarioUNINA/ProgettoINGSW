@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ingsw.client'
+    namespace 'com.ingsw.ratatouille23.client'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ingsw.client"
+        applicationId "com.ingsw.ratatouille23.client"
         minSdk 28
         targetSdk 33
         versionCode 1

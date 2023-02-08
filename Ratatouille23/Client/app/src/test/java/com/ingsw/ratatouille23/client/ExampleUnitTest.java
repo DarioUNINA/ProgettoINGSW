@@ -1,4 +1,4 @@
-package com.ingsw.client;
+package com.ingsw.ratatouille23.client;
 
 import org.junit.Test;
 

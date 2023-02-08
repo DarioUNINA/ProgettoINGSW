@@ -1,4 +1,4 @@
-package com.ingsw.client;
+package com.ingsw.ratatouille23.client;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.ingsw.client", appContext.getPackageName());
+        assertEquals("com.ingsw.ratatouille23.client", appContext.getPackageName());
     }
 }
