@@ -34,9 +34,8 @@ DROP TABLE IF EXISTS public.allergene;
 
 CREATE TABLE IF NOT EXISTS public.allergene
 (
-    id_allergene integer NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT "Allergeni_pkey" PRIMARY KEY (id_allergene)
+    CONSTRAINT "Allergeni_pkey" PRIMARY KEY (nome)
 )
 
 TABLESPACE pg_default;
@@ -71,12 +70,11 @@ DROP TABLE IF EXISTS public.dipendente;
 
 CREATE TABLE IF NOT EXISTS public.dipendente
 (
-    id_dipendente integer NOT NULL,
-    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    username character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
     ruolo ruolo NOT NULL,
     id_ristorante integer NOT NULL,
-    CONSTRAINT dipendente_pkey PRIMARY KEY (id_dipendente)
+    CONSTRAINT dipendente_pkey PRIMARY KEY (username)
 )
 
 TABLESPACE pg_default;
@@ -190,7 +188,7 @@ CREATE TABLE IF NOT EXISTS public.tavolo
     posti integer NOT NULL,
     occupato boolean NOT NULL DEFAULT 'false',
     id_ristorante integer NOT NULL,
-    id_cameriere integer,
+    username_cameriere character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT "Tavolo_pkey" PRIMARY KEY (id_tavolo)
 )
 

@@ -55,8 +55,8 @@ ADD CONSTRAINT ristorante_menu_fk FOREIGN KEY (id_menu)
     ON DELETE CASCADE;
 
 ALTER TABLE tavolo
-ADD CONSTRAINT tavolo_cameriere_fk FOREIGN KEY (id_cameriere)
-    REFERENCES public.dipendente (id_dipendente) MATCH SIMPLE
+ADD CONSTRAINT tavolo_cameriere_fk FOREIGN KEY (username_cameriere)
+    REFERENCES public.dipendente (username) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 

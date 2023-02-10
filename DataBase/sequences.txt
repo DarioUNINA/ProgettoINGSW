@@ -18,11 +18,6 @@ START 1
 INCREMENT 1
 OWNED BY elemento.id_elemento;
 
-CREATE SEQUENCE id_allergene_seq
-START 1
-INCREMENT 1
-OWNED BY allergene.id_allergene;
-
 CREATE SEQUENCE id_tavolo_seq
 START 1
 INCREMENT 1
@@ -33,9 +28,4 @@ CREATE SEQUENCE id_ordine_seq
 START 1
 INCREMENT 1
 OWNED BY ordine.id_ordine;
-
-CREATE SEQUENCE id_dipendente_seq
-START 1
-INCREMENT 1
-OWNED BY dipendente.id_dipendente;
 
