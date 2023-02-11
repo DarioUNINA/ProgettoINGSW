@@ -66,20 +66,36 @@ ALTER TABLE IF EXISTS public.categoria
 --------------------------------
 
 
-DROP TABLE IF EXISTS public.dipendente;
+CREATE TABLE IF NOT EXISTS public.allergia
+(
+    allergene character varying COLLATE pg_catalog."default" NOT NULL,
+    id_elemento integer NOT NULL
+)
 
-CREATE TABLE IF NOT EXISTS public.dipendente
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.allergia
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+
+DROP TABLE IF EXISTS public.utente;
+
+CREATE TABLE IF NOT EXISTS public.utente
 (
     username character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
     ruolo ruolo NOT NULL,
     id_ristorante integer NOT NULL,
-    CONSTRAINT dipendente_pkey PRIMARY KEY (username)
+    CONSTRAINT utente_pkey PRIMARY KEY (username)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.dipendente
+ALTER TABLE IF EXISTS public.utente
     OWNER to postgres;
 
 

@@ -7,8 +7,8 @@ ADD CONSTRAINT categoria_menu_fk FOREIGN KEY (id_menu)
     ON DELETE CASCADE;
 
 
-ALTER TABLE dipendente
-ADD CONSTRAINT dipendente_ristorante_fk FOREIGN KEY (id_ristorante)
+ALTER TABLE utente
+ADD CONSTRAINT utente_ristorante_fk FOREIGN KEY (id_ristorante)
     REFERENCES public.ristorante (id_ristorante) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE;
@@ -56,7 +56,7 @@ ADD CONSTRAINT ristorante_menu_fk FOREIGN KEY (id_menu)
 
 ALTER TABLE tavolo
 ADD CONSTRAINT tavolo_cameriere_fk FOREIGN KEY (username_cameriere)
-    REFERENCES public.dipendente (username) MATCH SIMPLE
+    REFERENCES public.utente (username) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
@@ -66,4 +66,16 @@ ADD CONSTRAINT tavolo_ristorante_fk FOREIGN KEY (id_ristorante)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
     
+
+ALTER TABLE allergia
+ADD CONSTRAINT allergia_elemento_fk FOREIGN KEY (id_elemento)
+    REFERENCES public.elemento (id_elemento) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
+
+ALTER TABLE allergia
+ADD CONSTRAINT allergia_elemento_fk FOREIGN KEY (allergene)
+    REFERENCES public.allrgene (nome) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE;
 
