@@ -74,8 +74,8 @@ ADD CONSTRAINT allergia_elemento_fk FOREIGN KEY (id_elemento)
     ON DELETE CASCADE;
 
 ALTER TABLE allergia
-ADD CONSTRAINT allergia_elemento_fk FOREIGN KEY (allergene)
-    REFERENCES public.allrgene (nome) MATCH SIMPLE
+ADD CONSTRAINT allergia_allergene_fk FOREIGN KEY (allergene)
+    REFERENCES public.allergene (nome) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 

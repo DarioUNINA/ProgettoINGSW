@@ -16,22 +16,26 @@ import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/dipendente")
+@RequestMapping("/utente")
 public class UtenteController {
     
     @Autowired
-    @Qualifier("mainUserService")
+    private ModelMapper modelMapper;
+
+
+    @Autowired
+    @Qualifier("UtenteService")
     private IUtenteService utenteService;
     
-    @GetMapping("/get/dipendente/{nome}/{password}")
-    public Utente getByUsernameAndPassword(@PathVariable String nome, @PathVariable String password){
-        Optional<Utente> utente = utenteService.getByUsernameAndPassword(nome, password);
+    @GetMapping("/get/utente/{username}/{password}")
+    public Utente getByUsernameAndPassword(@PathVariable String username, @PathVariable String password){
+        Optional<Utente> utente = utenteService.getByUsernameAndPassword(username, password);
 
         if(utente.isPresent())
             return utente.get();
         else
             // throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utente non trovato");
-            return new Utente("nome", "password");
+            return new Utente("nome_not_found", "password_not_found");
     }
 
 }

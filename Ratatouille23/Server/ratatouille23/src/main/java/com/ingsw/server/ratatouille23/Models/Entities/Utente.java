@@ -13,21 +13,29 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "dipendente")
+@Table(name = "utente")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "username")
 public class Utente implements Serializable{
 
-    //java class for entity "user"
     
     //Primary key
     @Id
-    @Column(name = "nome")
-    
+    @Column(name = "username", nullable=false, unique=true)
     private String username;
 
     //Attributes
     @Column(name = "password", nullable=false)
     private String password;
+
+    // @Column(name = "ruolo", nullable=false) //Aggiungere Enumeration
+    // private String ruolo;
+
+    // @ManyToOne(fetch =  FetchType.LAZY)
+    // @OnDelete(action = OnDeleteAction.CASCADE)
+    // @JoinColumn(name="id_ristorante", referencedColumnName = "id_ristorante")
+    // @JsonIdentityReference(alwaysAsId = true)
+    // @JsonManagedReference
+    // private Ristorante ristorante;
 
     //Constructos
     public Utente() {
@@ -38,6 +46,12 @@ public class Utente implements Serializable{
         this.password = password;
     }
 
+    // public Utente(String username, String password, Ristorante ristorante) {
+    //     this.username = username;
+    //     this.password = password;
+    //     this.ristorante = ristorante;
+    // }
+    
     //Getters and Setters
     public String getUsername() {
         return username;
@@ -55,6 +69,12 @@ public class Utente implements Serializable{
         this.password = password;
     }
 
+    // public Ristorante getRistorante() {
+    //     return ristorante;
+    // }
 
+    // public void setRistorante(Ristorante ristorante) {
+    //     this.ristorante = ristorante;
+    // }
     
 }

@@ -10,7 +10,7 @@ import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
 
 import java.util.Optional;
 
-@Service("mainUserService")
+@Service("UtenteService")
 public class UtenteService implements IUtenteService{
 
     @Autowired
