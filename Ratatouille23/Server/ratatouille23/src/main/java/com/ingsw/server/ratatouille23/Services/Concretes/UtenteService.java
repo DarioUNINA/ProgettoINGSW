@@ -10,13 +10,14 @@ import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
 
 import java.util.Optional;
 
+@Service("mainUserService")
 public class UtenteService implements IUtenteService{
 
     @Autowired
     UtenteRepository utenteRepository;
 
     @Override
-    public Optional<Utente> getUtente(String username, String password){
-        return utenteRepository.findByIdAndPassword(username, password);
+    public Optional<Utente> getByUsernameAndPassword(String username, String password){
+        return utenteRepository.findByUsernameAndPassword(username, password);
     } 
 }

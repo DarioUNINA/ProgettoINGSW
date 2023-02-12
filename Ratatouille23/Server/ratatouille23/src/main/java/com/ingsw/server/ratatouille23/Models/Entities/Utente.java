@@ -13,7 +13,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "utente")
+@Table(name = "dipendente")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "username")
 public class Utente implements Serializable{
 
@@ -21,7 +21,7 @@ public class Utente implements Serializable{
     
     //Primary key
     @Id
-    @Column(name = "username")
+    @Column(name = "nome")
     
     private String username;
 
