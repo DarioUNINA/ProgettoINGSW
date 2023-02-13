@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-//import com.ingsw.backend.Model.Enumerations.User_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+import com.ingsw.server.ratatouille23.Utils.Ruolo;
 import java.io.Serializable;
 
 @Entity
@@ -27,31 +26,35 @@ public class Utente implements Serializable{
     @Column(name = "password", nullable=false)
     private String password;
 
-    // @Column(name = "ruolo", nullable=false) //Aggiungere Enumeration
-    // private String ruolo;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ruolo", columnDefinition = "ENUM('admin', 'supervisore', 'cameriere','cuoco')", nullable=false)
+    private Ruolo ruolo;
 
-    // @ManyToOne(fetch =  FetchType.LAZY)
-    // @OnDelete(action = OnDeleteAction.CASCADE)
-    // @JoinColumn(name="id_ristorante", referencedColumnName = "id_ristorante")
-    // @JsonIdentityReference(alwaysAsId = true)
-    // @JsonManagedReference
-    // private Ristorante ristorante;
+
+    @ManyToOne(fetch =  FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_ristorante", referencedColumnName = "id_ristorante")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonManagedReference
+    private Ristorante ristorante;
 
     //Constructos
     public Utente() {
     }
 
-    public Utente(String username, String password) {
+    public Utente(String username, String password, Ristorante ristorante) {
         this.username = username;
         this.password = password;
+        this.ristorante = ristorante;
+    }
+    
+    public Utente(String username, String password, Ruolo ruolo, Ristorante ristorante) {
+        this.username = username;
+        this.password = password;
+        this.ruolo = ruolo;
+        this.ristorante = ristorante;
     }
 
-    // public Utente(String username, String password, Ristorante ristorante) {
-    //     this.username = username;
-    //     this.password = password;
-    //     this.ristorante = ristorante;
-    // }
-    
     //Getters and Setters
     public String getUsername() {
         return username;
@@ -69,12 +72,12 @@ public class Utente implements Serializable{
         this.password = password;
     }
 
-    // public Ristorante getRistorante() {
-    //     return ristorante;
-    // }
+    public Ristorante getRistorante() {
+        return ristorante;
+    }
 
-    // public void setRistorante(Ristorante ristorante) {
-    //     this.ristorante = ristorante;
-    // }
+    public void setRistorante(Ristorante ristorante) {
+        this.ristorante = ristorante;
+    }
     
 }

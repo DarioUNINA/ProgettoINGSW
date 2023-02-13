@@ -13,7 +13,7 @@ Insert into utente(username, password, ruolo, id_ristorante)values ('Dario', '12
 Insert into utente(username, password, ruolo, id_ristorante)values ('Renato', '123', 'supervisore', 1);
 Insert into utente(username, password, ruolo, id_ristorante)values ('GianMarco', '123', 'cameriere', 1);
 
---Categroie
+--Categorie
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'primi', 1);
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'secondi', 1);
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'contorni', 1);
@@ -21,7 +21,7 @@ insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'bibite', 1);
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'antipasti', 1);											   
 
---ALlergeni
+--Allergeni
 insert into allergene(nome) values ('uova');
 insert into allergene(nome) values ('pesce');
 insert into allergene(nome) values ('lupini');

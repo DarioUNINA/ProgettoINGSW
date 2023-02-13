@@ -8,7 +8,7 @@ import retrofit2.http.Path;
 
 public interface UserApi {
 
-    @GET("/user/get/{username}/{password}")
+    @GET("/utente/get/{username}/{password}")
     Single<User> getByEmailAndPassword(@Path("username") String username, @Path("password") String password);
 
 }
