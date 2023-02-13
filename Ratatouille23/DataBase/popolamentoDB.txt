@@ -5,12 +5,13 @@ Insert into ristorante(id_ristorante, nome, telefono, indirizzo)values (nextval(
 Insert into menu(id_menu, id_ristorante)values (nextval('id_menu_seq'), '1');
 
 Update  ristorante 
-set id_menu =1;
+set id_menu =1
+where id_ristorante=1;
 
---Dipendente
-Insert into dipendente(id_dipendente, nome, password, ruolo, id_ristorante)values (nextval('id_dipendente_seq'), 'Dario', '123', 'cameriere', 1);
-Insert into dipendente(id_dipendente, nome, password, ruolo, id_ristorante)values (nextval('id_dipendente_seq'), 'Renato', '123', 'supervisore', 1);
-Insert into dipendente(id_dipendente, nome, password, ruolo, id_ristorante)values (nextval('id_dipendente_seq'), 'GianMarco', '123', 'cuoco', 1);
+--Utente
+Insert into utente(username, password, ruolo, id_ristorante)values ('Dario', '123', 'admin', 1);
+Insert into utente(username, password, ruolo, id_ristorante)values ('Renato', '123', 'supervisore', 1);
+Insert into utente(username, password, ruolo, id_ristorante)values ('GianMarco', '123', 'cameriere', 1);
 
 --Categroie
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'primi', 1);
@@ -21,11 +22,11 @@ insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria
 insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'antipasti', 1);											   
 
 --ALlergeni
-insert into allergene(id_allergene, nome) values ( nextval('id_allergene_seq'), 'uova');
-insert into allergene(id_allergene, nome) values ( nextval('id_allergene_seq'), 'pesce');
-insert into allergene(id_allergene, nome) values ( nextval('id_allergene_seq'), 'lupini');
-insert into allergene(id_allergene, nome) values ( nextval('id_allergene_seq'), 'latte');
-insert into allergene(id_allergene, nome) values ( nextval('id_allergene_seq'), 'glutine');
+insert into allergene(nome) values ('uova');
+insert into allergene(nome) values ('pesce');
+insert into allergene(nome) values ('lupini');
+insert into allergene(nome) values ('latte');
+insert into allergene(nome) values ('glutine');
 
 --Elementi
 insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'pasta al pomodoro', '7', 1);
@@ -39,13 +40,13 @@ insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('i
 insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'zeppoline', '2', 6);
 
 --Tavoli
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '8', true, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, id_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1, "Dario");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, "Renato");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, "Dario");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1, "Dario");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', true, 1, "Dario");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1, "Dario");
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1, "Dario");
 
 --Ordine
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 1);

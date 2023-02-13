@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS public.ristorante
     id_ristorante integer NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     telefono character varying COLLATE pg_catalog."default" NOT NULL,
-    inidirzzo character varying COLLATE pg_catalog."default" NOT NULL,
+    indirizzo character varying COLLATE pg_catalog."default" NOT NULL,
     id_menu integer,
     CONSTRAINT "Ristorante_pkey" PRIMARY KEY (id_ristorante)
 )
