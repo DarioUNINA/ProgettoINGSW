@@ -1,9 +1,6 @@
 package com.ingsw.server.ratatouille23.Models.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -30,24 +27,18 @@ public class Utente implements Serializable{
     @Column(name = "ruolo", columnDefinition = "ENUM('admin', 'supervisore', 'cameriere','cuoco')", nullable=false)
     private Ruolo ruolo;
 
-
-    @ManyToOne(fetch =  FetchType.EAGER)
+    //References
+    @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="id_ristorante", referencedColumnName = "id_ristorante")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonManagedReference
+    @JsonBackReference
     private Ristorante ristorante;
+    
 
     //Constructos
     public Utente() {
     }
 
-    public Utente(String username, String password, Ristorante ristorante) {
-        this.username = username;
-        this.password = password;
-        this.ristorante = ristorante;
-    }
-    
     public Utente(String username, String password, Ruolo ruolo, Ristorante ristorante) {
         this.username = username;
         this.password = password;
@@ -55,6 +46,7 @@ public class Utente implements Serializable{
         this.ristorante = ristorante;
     }
 
+    
     //Getters and Setters
     public String getUsername() {
         return username;
@@ -80,4 +72,12 @@ public class Utente implements Serializable{
         this.ristorante = ristorante;
     }
     
+    public Ruolo getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
+    }
+
 }
