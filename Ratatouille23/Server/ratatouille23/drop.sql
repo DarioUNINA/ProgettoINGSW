@@ -522,3 +522,482 @@
     drop table if exists ristorante cascade;
 
     drop table if exists utente cascade;
+
+    alter table if exists elemento 
+       drop constraint if exists FKk20drd2mimlfx536smq4ytlkb;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;
+
+    alter table if exists categoria 
+       drop constraint if exists FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table if exists elemento 
+       drop constraint if exists FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table if exists menu 
+       drop constraint if exists FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table if exists utente 
+       drop constraint if exists FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table if exists categoria cascade;
+
+    drop table if exists elemento cascade;
+
+    drop table if exists menu cascade;
+
+    drop table if exists ristorante cascade;
+
+    drop table if exists utente cascade;

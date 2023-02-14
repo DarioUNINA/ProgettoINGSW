@@ -2,6 +2,8 @@ package com.ingsw.server.ratatouille23.Models.Entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import java.util.List;
+
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idMenu")
@@ -20,6 +22,11 @@ public class Menu {
     @JoinColumn(name = "id_ristorante", referencedColumnName = "id_ristorante")
     private Ristorante ristorante;
 
+    @OneToMany(mappedBy ="menu", fetch = FetchType.LAZY)    
+    @JsonManagedReference
+    private List<Categoria> categorie;
+
+
     //Constructors
     public Menu() {
     }
@@ -29,6 +36,13 @@ public class Menu {
         this.ristorante = ristorante;
     }
 
+    public Menu(int idMenu, Ristorante ristorante, List<Categoria> categorie) {
+        this.idMenu = idMenu;
+        this.ristorante = ristorante;
+        this.categorie = categorie;
+    }
+   
+   
     //Getters and Setters
     public int getIdMenu() {
         return idMenu;
@@ -46,5 +60,14 @@ public class Menu {
         this.ristorante = ristorante;
     }
 
-    
+    public List<Categoria> getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(List<Categoria> categorie) {
+        this.categorie = categorie;
+    }
+
+
+
 }

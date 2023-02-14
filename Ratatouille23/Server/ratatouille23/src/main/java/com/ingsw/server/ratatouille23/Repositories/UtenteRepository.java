@@ -6,7 +6,6 @@ import java.util.Optional;
 
 
 public interface UtenteRepository extends CrudRepository<Utente,String>{
-
     public Optional<Utente> findByUsernameAndPassword(String username, String password);
     
 }
