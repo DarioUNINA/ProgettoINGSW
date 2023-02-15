@@ -30,7 +30,7 @@ public class UtenteController {
         if(utente.isPresent())
             return modelMapper.map(utente.get(), UtenteDTO.class);
         else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utente non trovato");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Utente non trovato");
     }
 
 }

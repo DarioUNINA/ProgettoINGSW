@@ -3,6 +3,7 @@ package com.ingsw.server.ratatouille23.Models.Entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +26,11 @@ public class Categoria {
     @JoinColumn(name = "id_menu", referencedColumnName = "id_menu")
     private Menu menu;
 
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Elemento> elementi;
+
+    
     //Constructors
     public Categoria() {
     }
@@ -32,6 +38,13 @@ public class Categoria {
     public Categoria(int idCategoria, String nome) {
         this.idCategoria = idCategoria;
         this.nome = nome;
+    }
+
+    public Categoria(int idCategoria, String nome, Menu menu, List<Elemento> elementi) {
+        this.idCategoria = idCategoria;
+        this.nome = nome;
+        this.menu = menu;
+        this.elementi = elementi;
     }
 
 
@@ -53,6 +66,21 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
 
-    
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public List<Elemento> getElementi() {
+        return elementi;
+    }
+
+    public void setElementi(List<Elemento> elementi) {
+        this.elementi = elementi;
+    }
+
+
 }

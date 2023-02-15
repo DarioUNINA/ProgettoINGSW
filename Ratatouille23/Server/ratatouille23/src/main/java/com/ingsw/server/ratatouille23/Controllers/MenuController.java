@@ -30,6 +30,6 @@ public class MenuController {
         if (menu.isPresent())
             return modelMapper.map(menu.get(), MenuDTO.class);
         else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Menu not found");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Menu not found");
     }
 }

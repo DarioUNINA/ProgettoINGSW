@@ -26,10 +26,11 @@ public class CategoriaController {
     @GetMapping("/get/{id}")
     public CategoriaDTO getById(@PathVariable("id") Integer id) {
         Optional<Categoria> categoria = categoriaService.getById(id);
+
         if (categoria.isPresent())
             return modelMapper.map(categoria.get(), CategoriaDTO.class);
         else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria non trovata");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Categoria non trovata");
     }
 
 

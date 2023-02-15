@@ -30,7 +30,7 @@ public class RistoranteController {
         if (ristorante.isPresent())
             return modelMapper.map(ristorante.get(), RistoranteDTO.class);
         else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ristorante non trovato");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ristorante non trovato");
 
     }
     
