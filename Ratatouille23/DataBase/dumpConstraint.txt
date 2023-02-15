@@ -6,6 +6,9 @@ ADD CONSTRAINT categoria_menu_fk FOREIGN KEY (id_menu)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
+ALTER TABLE categoria
+    ADD CONSTRAINT categoria_ristorante_unique UNIQUE (nome, id_menu);
+
 
 ALTER TABLE utente
 ADD CONSTRAINT utente_ristorante_fk FOREIGN KEY (id_ristorante)

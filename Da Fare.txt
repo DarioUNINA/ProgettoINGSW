@@ -1,1 +1,2 @@
-prova per push
+-Modificare Popolamento
+-Controllare velocemente vincolu di unicita' sulle tabelle (come categoria_menu_unique)

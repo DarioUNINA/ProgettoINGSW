@@ -12,18 +12,18 @@ public class RistoranteDTO {
     
 
     //References
-    private MenuDTO menu;
+    private Integer idMenu;
 
 
     //Constructors
     public RistoranteDTO() {
     }
 
-    public RistoranteDTO(int idRistorante, String nome, String indirizzo, MenuDTO menu) {
+    public RistoranteDTO(int idRistorante, String nome, String indirizzo, Integer idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
-        this.menu = menu;
+        this.idMenu = idMenu;
     }
 
 
@@ -52,12 +52,12 @@ public class RistoranteDTO {
         this.indirizzo = indirizzo;
     }
 
-    public MenuDTO getMenu() {
-        return menu;
+    public Integer getidMenu() {
+        return idMenu;
     }
 
-    public void setMenu(MenuDTO menu) {
-        this.menu = menu;
+    public void setidMenu(Integer idMenu) {
+        this.idMenu = idMenu;
     }
 
 
