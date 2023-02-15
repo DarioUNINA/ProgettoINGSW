@@ -6,6 +6,7 @@ import com.ingsw.server.ratatouille23.Models.Entities.Ordine;
 import com.ingsw.server.ratatouille23.Repositories.OrdineRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IOrdineService;
 import java.util.Optional;
+import com.ingsw.server.ratatouille23.Models.Entities.Tavolo;
 import java.util.List;
 
 @Service("OrdineService")
@@ -16,6 +17,7 @@ public class OrdineService implements IOrdineService{
 
     @Override
     public Optional<List<Ordine>> getByTavolo(Integer idTavolo){
-        return OrdineRepository.findByTavolo(idTavolo);
+        Tavolo tavolo = new Tavolo(idTavolo);
+        return OrdineRepository.findByTavolo(tavolo);
     } 
 }

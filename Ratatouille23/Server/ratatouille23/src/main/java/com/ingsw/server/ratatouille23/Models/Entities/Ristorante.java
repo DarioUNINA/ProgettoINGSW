@@ -31,6 +31,10 @@ public class Ristorante{
     @JsonBackReference
     private List<Utente> utenti;
 
+    @OneToMany(mappedBy = "ristorante", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Tavolo> tavoli;
+
     @OneToOne(mappedBy = "ristorante", fetch = FetchType.EAGER)
     @JsonBackReference
     private Menu menu;
@@ -49,12 +53,13 @@ public class Ristorante{
         this.telefono = telefono;
     }
 
-    public Ristorante(Integer idRistorante, List<Utente> utenti, String nome, String indirizzo, String telefono) {
+    public Ristorante(Integer idRistorante, List<Utente> utenti, String nome, String indirizzo, String telefono, List<Tavolo> tavoli) {
         this.idRistorante = idRistorante;
         this.utenti = utenti;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.telefono = telefono;
+        this.tavoli = tavoli;
     }
 
 
@@ -107,5 +112,12 @@ public class Ristorante{
         this.telefono = telefono;
     }
 
+    public List<Tavolo> getTavoli() {
+        return tavoli;
+    }
+
+    public void setTavoli(List<Tavolo> tavoli) {
+        this.tavoli = tavoli;
+    }
 
 }

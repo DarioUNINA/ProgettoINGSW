@@ -6,5 +6,5 @@ import java.util.List;
 
 
 public interface IOrdineService {
-    public Optional<List<Ordine>> getByTavolo(Integer idtavolo);
+    public Optional<List<Ordine>> getByTavolo(Integer idTavolo);
 }

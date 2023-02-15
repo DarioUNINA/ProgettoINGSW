@@ -6,12 +6,12 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import com.ingsw.server.ratatouille23.Utils.Ruolo;
-import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "utente")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "username")
-public class Utente implements Serializable{
+public class Utente {
 
     
     //Primary key
@@ -33,6 +33,10 @@ public class Utente implements Serializable{
     @JoinColumn(name="id_ristorante", referencedColumnName = "id_ristorante")
     @JsonBackReference
     private Ristorante ristorante;
+
+    @OneToMany(mappedBy = "cameriere", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Tavolo> tavoli;
     
 
     //Constructos
@@ -46,6 +50,13 @@ public class Utente implements Serializable{
         this.ristorante = ristorante;
     }
 
+    public Utente(String username, String password, Ruolo ruolo, Ristorante ristorante, List<Tavolo> tavoli) {
+        this.username = username;
+        this.password = password;
+        this.ruolo = ruolo;
+        this.ristorante = ristorante;
+        this.tavoli = tavoli;
+    }
     
     //Getters and Setters
     public String getUsername() {
@@ -79,5 +90,15 @@ public class Utente implements Serializable{
     public void setRuolo(Ruolo ruolo) {
         this.ruolo = ruolo;
     }
+
+    public List<Tavolo> getTavoli() {
+        return tavoli;
+    }
+
+    public void setTavoli(List<Tavolo> tavoli) {
+        this.tavoli = tavoli;
+    }
+
+    
 
 }

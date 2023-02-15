@@ -28,7 +28,7 @@ public class OrdineController {
     @GetMapping("/get/{id}")
     public List<OrdineDTO> getById(@PathVariable("id") Integer id) {
         Optional<List<Ordine>> ordini = OrdineService.getByTavolo(id);
-        
+
         if (ordini.isPresent()){
             List<Ordine> ordiniList = ordini.get();
             List<OrdineDTO> ordiniDTO = new ArrayList<OrdineDTO>();
@@ -42,5 +42,6 @@ public class OrdineController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
 
     }
+
     
 }
