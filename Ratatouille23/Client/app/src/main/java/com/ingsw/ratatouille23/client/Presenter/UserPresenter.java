@@ -8,6 +8,7 @@ import com.ingsw.ratatouille23.client.View.LogInActivity;
 
 
 public class UserPresenter {
+
     private UserService service;
     private LogInActivity logInActivity;
 

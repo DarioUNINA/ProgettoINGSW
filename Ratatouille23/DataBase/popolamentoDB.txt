@@ -66,3 +66,9 @@ insert into ordinazione(id_ordine, id_elemento) values (1,5);
 insert into ordinazione(id_ordine, id_elemento) values (5,4);
 insert into ordinazione(id_ordine, id_elemento) values (3,3);
 insert into ordinazione(id_ordine, id_elemento) values (3,4);
+
+--Allergia
+insert into allergia(allergene, id_elemento) values ('pesce', 2);
+insert into allergia(allergene, id_elemento) values ('latte', 6);
+insert into allergia(allergene, id_elemento) values ('glutine', 9);
+insert into allergia(allergene, id_elemento) values ('lupini', 2);

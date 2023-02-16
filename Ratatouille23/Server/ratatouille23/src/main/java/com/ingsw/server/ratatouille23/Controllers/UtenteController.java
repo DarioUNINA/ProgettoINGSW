@@ -18,7 +18,6 @@ public class UtenteController {
     @Autowired
     private ModelMapper modelMapper;
 
-
     @Autowired
     @Qualifier("UtenteService")
     private IUtenteService utenteService;
