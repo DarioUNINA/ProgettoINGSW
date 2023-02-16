@@ -31,7 +31,7 @@ public class Tavolo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name = "username_cameriere", referencedColumnName = "username")
-    private String cameriere;
+    private Utente cameriere;
 
 
     //Attributes
@@ -54,7 +54,7 @@ public class Tavolo {
         this.ordini = ordini;
     }
 
-    public Tavolo(Integer idTavolo, List<Ordine> ordini, Ristorante ristorante, String cameriere, Integer posti, Boolean occupato) {
+    public Tavolo(Integer idTavolo, List<Ordine> ordini, Ristorante ristorante, Utente cameriere, Integer posti, Boolean occupato) {
         this.idTavolo = idTavolo;
         this.ordini = ordini;
         this.ristorante = ristorante;
@@ -88,11 +88,11 @@ public class Tavolo {
         this.ristorante = ristorante;
     }
 
-    public String getCameriere() {
+    public Utente getCameriere() {
         return cameriere;
     }
 
-    public void setCameriere(String cameriere) {
+    public void setCameriere(Utente cameriere) {
         this.cameriere = cameriere;
     }
 
