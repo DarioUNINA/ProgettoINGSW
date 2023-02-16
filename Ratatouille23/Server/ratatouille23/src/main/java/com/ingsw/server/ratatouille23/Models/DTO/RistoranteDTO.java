@@ -9,6 +9,7 @@ public class RistoranteDTO {
     //Attributes
     private String nome;
     private String indirizzo;
+    private String telefono;
     
 
     //References
@@ -23,6 +24,14 @@ public class RistoranteDTO {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
+        this.idMenu = idMenu;
+    }
+
+    public RistoranteDTO(int idRistorante, String nome, String indirizzo, String telefono, Integer idMenu) {
+        this.idRistorante = idRistorante;
+        this.nome = nome;
+        this.indirizzo = indirizzo;
+        this.telefono = telefono;
         this.idMenu = idMenu;
     }
 
@@ -60,5 +69,14 @@ public class RistoranteDTO {
         this.idMenu = idMenu;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    
 
 }

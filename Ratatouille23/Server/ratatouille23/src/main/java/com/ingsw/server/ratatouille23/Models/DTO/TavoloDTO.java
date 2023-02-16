@@ -16,13 +16,13 @@ public class TavoloDTO {
     //References
     private Integer idRistorante;
     private List<OrdineDTO> idOrdini;
-    private String cameriere;
+    private UtenteDTO cameriere;
 
     //Constructors
     public TavoloDTO() {
     }
 
-    public TavoloDTO(int idTavolo, Integer posti, boolean occupato, Integer idRistorante, List<OrdineDTO> ordini, String cameriere) {
+    public TavoloDTO(int idTavolo, Integer posti, boolean occupato, Integer idRistorante, List<OrdineDTO> ordini, UtenteDTO cameriere) {
         this.idTavolo = idTavolo;
         this.posti = posti;
         this.occupato = occupato;
@@ -78,10 +78,10 @@ public class TavoloDTO {
     }
 
     public String getCameriere() {
-        return cameriere;
+        return cameriere.getUsername();
     }
 
-    public void setCameriere(String cameriere) {
+    public void setCameriere(UtenteDTO cameriere) {
         this.cameriere = cameriere;
     }
 

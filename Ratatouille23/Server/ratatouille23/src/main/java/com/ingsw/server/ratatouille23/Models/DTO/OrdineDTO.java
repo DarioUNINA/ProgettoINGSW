@@ -1,5 +1,7 @@
 package com.ingsw.server.ratatouille23.Models.DTO;
 
+import java.util.List;
+
 public class OrdineDTO {
     
     //Primary Key
@@ -7,6 +9,8 @@ public class OrdineDTO {
 
     //References
     private Integer idTavolo;
+    private List<ElementoDTO> elementi;
+
 
     //Constructors
     public OrdineDTO() {
@@ -19,6 +23,12 @@ public class OrdineDTO {
     public OrdineDTO(Integer idOrdine, Integer idTavolo) {
         this.idOrdine = idOrdine;
         this.idTavolo = idTavolo;
+    }
+
+    public OrdineDTO(Integer idOrdine, Integer idTavolo, List<ElementoDTO> elementi) {
+        this.idOrdine = idOrdine;
+        this.idTavolo = idTavolo;
+        this.elementi = elementi;
     }
 
     //Getters and Setters
@@ -38,5 +48,12 @@ public class OrdineDTO {
         this.idTavolo = idTavolo;
     }
 
+    public List<ElementoDTO> getElementi() {
+        return elementi;
+    }
+
+    public void setElementi(List<ElementoDTO> elementi) {
+        this.elementi = elementi;
+    }
 
 }
