@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -66,6 +67,7 @@ public class LogInActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new Intent(LogInActivity.this, HomeActivity.class);
                 userPresenter.login();
 
             }

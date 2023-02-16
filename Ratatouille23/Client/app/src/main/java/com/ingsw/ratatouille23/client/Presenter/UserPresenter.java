@@ -1,9 +1,11 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.Class.UserService;
+import com.ingsw.ratatouille23.client.View.HomeActivity;
 import com.ingsw.ratatouille23.client.View.LogInActivity;
 
 
@@ -22,9 +24,10 @@ public class UserPresenter {
         service.checkUser(new Callback(){
             @Override
             public void returnResult(Object o){
-                if((Boolean)o)
+                if((Boolean)o) {
                     System.out.println(" login effettuato\n");
-                else
+
+                }else
                     System.out.println("Login fallito\n");
             }
 
