@@ -17,7 +17,7 @@
         app:cardCornerRadius="15dp"
         app:strokeWidth="2dp"
         app:strokeColor="@color/black"
-        android:background="@color/white">
+        app:cardBackgroundColor="@color/white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +37,8 @@
         app:cardCornerRadius="30dp"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/white"/>
 
 
 
