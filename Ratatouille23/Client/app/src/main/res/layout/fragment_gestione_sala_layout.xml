@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.GestioneSalaLayout">
+    tools:context=".View.GestioneSalaLayout"
+    android:background="#2C3552">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tavoli_layout"

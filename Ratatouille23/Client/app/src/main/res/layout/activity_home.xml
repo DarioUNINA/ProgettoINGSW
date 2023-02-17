@@ -97,7 +97,7 @@
             android:id="@+id/txtLinea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="---------------"
+            android:text="-"
             android:textColor="#C1C1C1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +127,7 @@
             android:background="@drawable/ic_baseline_person"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.550"
+            app:layout_constraintHorizontal_bias="0.460"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.372" />
@@ -140,7 +140,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.550"
+            app:layout_constraintHorizontal_bias="0.460"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.875" />
