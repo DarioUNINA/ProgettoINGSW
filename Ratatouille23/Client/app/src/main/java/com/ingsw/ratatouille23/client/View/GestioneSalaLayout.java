@@ -60,12 +60,9 @@ public class GestioneSalaLayout extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_gestione_sala_layout, container, false);
 
-
+        //inserisci cose
 
         return rootView;
-
-
-
     }
 
 

@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.gestione_sala_layout, GestioneSalaLayout.class,null);
+        fragmentTransaction.add(R.id.homelayoutForFragment, GestioneSalaLayout.class,null);
 
         fragmentTransaction.commitNow();
     }
