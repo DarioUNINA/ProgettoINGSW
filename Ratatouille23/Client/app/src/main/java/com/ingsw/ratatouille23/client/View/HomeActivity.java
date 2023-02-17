@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.tabs.TabLayout;
 import com.ingsw.ratatouille23.client.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.homelayoutForFragment, GestioneSalaLayout.class,null);
+        fragmentTransaction.add(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
 
         fragmentTransaction.commitNow();
     }
