@@ -13,23 +13,99 @@
         android:background="#182341"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="1.0">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/homeTabLayout"
-            android:layout_width="88dp"
-            android:layout_height="400dp"
-            android:background="#182341"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorColor="@color/white"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPersonale"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_baseline_people"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.150" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSala"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/table"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.280" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnMenu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_baseline_menu_"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.410"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCuinca"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/chef"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.540" />
+
+
+        <TextView
+            android:id="@+id/txtIndirizzo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C1C1C1"
+            android:text="Indirizzo"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.298" />
+            app:layout_constraintVertical_bias="0.920" />
+
+        <TextView
+            android:id="@+id/txtNumeroTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C1C1C1"
+            android:text="NumeroTelefono"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.980"/>
+
+        <TextView
+            android:id="@+id/txtLinea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---------------"
+            android:textColor="#C1C1C1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.825" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,9 +136,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/homelayoutForFragment"
-        android:layout_width="879dp"
-        android:layout_height="518dp"
-        android:background="@color/black"
+        android:layout_width="1119dp"
+        android:layout_height="700dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/homeConstraintLayoutVertical"
