@@ -14,10 +14,10 @@ import com.ingsw.ratatouille23.client.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GestioneSalaLayout#newInstance} factory method to
+ * Use the {@link GestioneSalaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GestioneSalaLayout extends Fragment {
+public class GestioneSalaFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -25,12 +25,12 @@ public class GestioneSalaLayout extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GestioneSalaLayout() {
+    public GestioneSalaFragment() {
         // Required empty public constructor
     }
 
-    public static GestioneSalaLayout newInstance(String param1, String param2) {
-        GestioneSalaLayout fragment = new GestioneSalaLayout();
+    public static GestioneSalaFragment newInstance(String param1, String param2) {
+        GestioneSalaFragment fragment = new GestioneSalaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

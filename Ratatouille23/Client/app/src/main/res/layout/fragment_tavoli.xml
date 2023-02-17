@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.TavoliFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="15dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
@@ -23,7 +25,7 @@
             android:text="TAVOLI"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="50dp"
+            android:textSize="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
 
