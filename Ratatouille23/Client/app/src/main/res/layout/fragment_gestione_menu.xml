@@ -6,6 +6,10 @@
     tools:context=".View.GestioneMenuFragment"
     android:orientation="horizontal">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="400dp"
+        android:layout_height="match_parent"/>
+
 
 
 </LinearLayout>

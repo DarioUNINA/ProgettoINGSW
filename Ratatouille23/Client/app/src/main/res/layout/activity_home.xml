@@ -161,7 +161,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/homelayoutForFragment"
         android:layout_width="1119dp"
-        android:layout_height="670dp"
+        android:layout_height="660dp"
         android:background="#2C3552"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
