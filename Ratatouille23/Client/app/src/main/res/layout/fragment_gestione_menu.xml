@@ -7,8 +7,16 @@
     android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="400dp"
+        android:id="@+id/categorie_layout"
+        android:layout_width="560dp"
         android:layout_height="match_parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/elementi_layout"
+        android:layout_width="560dp"
+        android:layout_height="match_parent"/>
+
+<!--       tasto per QR code-->
 
 
 

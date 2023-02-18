@@ -21,7 +21,9 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+        //fragmentTransaction.add(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+        fragmentTransaction.add(R.id.homelayoutForFragment, GestioneMenuFragment.class,null);
+
 
         fragmentTransaction.commitNow();
     }
