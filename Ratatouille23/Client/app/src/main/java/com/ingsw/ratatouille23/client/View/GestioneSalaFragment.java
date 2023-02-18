@@ -58,7 +58,7 @@ public class GestioneSalaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View rootView = inflater.inflate(R.layout.fragment_gestione_sala_layout, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_gestione_sala, container, false);
 
         //inserisci cose
 
