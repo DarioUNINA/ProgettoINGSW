@@ -10,26 +10,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tavoli_layout"
-        android:layout_width="320dp"
-        android:layout_height="match_parent"
+        android:layout_width="365dp"
+        android:layout_height="660dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ordini_layout"
-        android:layout_marginLeft="320dp"
-        android:layout_width="320dp"
-        android:layout_height="match_parent"
+        android:layout_width="365dp"
+        android:layout_height="660dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/elementi_layout"
-        android:layout_marginLeft="640dp"
-        android:layout_width="322dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/elementi_GM_layout"
+            android:layout_width="365dp"
+            android:layout_height="660dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

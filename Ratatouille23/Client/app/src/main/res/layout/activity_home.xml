@@ -40,7 +40,8 @@
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.280" />
+            app:layout_constraintVertical_bias="0.280"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnMenu"
@@ -52,7 +53,8 @@
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.410"/>
+            app:layout_constraintVertical_bias="0.410"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCuinca"
@@ -64,7 +66,8 @@
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.540" />
+            app:layout_constraintVertical_bias="0.540"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
         <TextView
@@ -121,6 +124,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GESTIONE SALA"
+            android:textColor="@color/white"
+            android:textSize="42dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.15" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -161,7 +178,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/homelayoutForFragment"
         android:layout_width="1119dp"
-        android:layout_height="660dp"
+        android:layout_height="670dp"
         android:background="#2C3552"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

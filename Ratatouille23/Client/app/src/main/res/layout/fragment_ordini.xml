@@ -39,6 +39,52 @@
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/white">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="350dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#79C4FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="515dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#01FD56"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                app:fabCustomSize="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="60dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_remove_circle_24"
+                app:fabCustomSize="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="60dp"
+                android:backgroundTint="#FF0000"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
 
     </com.google.android.material.card.MaterialCardView>
 
