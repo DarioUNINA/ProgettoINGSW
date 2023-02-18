@@ -18,6 +18,52 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="1.0">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectedFragmentPerosnale"
+            android:layout_width="5dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.150" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectedFragmentSala"
+            android:layout_width="5dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.280" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectedFragmentMenu"
+            android:layout_width="5dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.410"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectedFragmentCucina"
+            android:layout_width="5dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.540"
+            />
+
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnPersonale"
             android:layout_width="60dp"
@@ -81,7 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.920" />
+            app:layout_constraintVertical_bias="0.890" />
 
         <TextView
             android:id="@+id/txtNumeroTelefono"
@@ -94,7 +140,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.980"/>
+            app:layout_constraintVertical_bias="0.920"/>
 
         <TextView
             android:id="@+id/txtLinea"
@@ -109,6 +155,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.825" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.970"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -125,11 +182,12 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/txtFragmentAttuale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GESTIONE SALA"
             android:textColor="@color/white"
-            android:textSize="42dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

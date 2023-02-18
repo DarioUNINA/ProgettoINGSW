@@ -51,7 +51,7 @@ public class GestioneSalaFragment extends Fragment {
 
         fragmentTransaction.replace(R.id.tavoli_layout, new TavoliFragment());
         fragmentTransaction.add(R.id.ordini_layout, new OrdiniFragment());
-        fragmentTransaction.add(R.id.elementi_GM_layout, new ElementiGMFragment());
+        fragmentTransaction.add(R.id.elementi_GM_layout, new ElementiGSFragment());
         fragmentTransaction.commit();
     }
 

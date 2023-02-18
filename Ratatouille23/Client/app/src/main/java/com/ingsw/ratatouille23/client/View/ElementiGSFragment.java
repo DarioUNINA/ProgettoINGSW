@@ -12,10 +12,10 @@ import com.ingsw.ratatouille23.client.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ElementiGMFragment#newInstance} factory method to
+ * Use the {@link ElementiGSFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ElementiGMFragment extends Fragment {
+public class ElementiGSFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class ElementiGMFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ElementiGMFragment() {
+    public ElementiGSFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class ElementiGMFragment extends Fragment {
      * @return A new instance of fragment ElementiGMFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ElementiGMFragment newInstance(String param1, String param2) {
-        ElementiGMFragment fragment = new ElementiGMFragment();
+    public static ElementiGSFragment newInstance(String param1, String param2) {
+        ElementiGSFragment fragment = new ElementiGSFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class ElementiGMFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_elementi_g_m, container, false);
+        return inflater.inflate(R.layout.fragment_elementi_g_s, container, false);
     }
 }

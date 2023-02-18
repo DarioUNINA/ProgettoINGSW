@@ -62,6 +62,7 @@ public class GestioneMenuFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.replace(R.id.categorie_layout, new CategorieFragment());
+        fragmentTransaction.add(R.id.elementi_Menu_layout, new ElementiMenuFragment());
         fragmentTransaction.commit();
     }
 

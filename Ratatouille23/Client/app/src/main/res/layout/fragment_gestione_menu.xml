@@ -8,13 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/categorie_layout"
-        android:layout_width="560dp"
-        android:layout_height="match_parent"/>
+        android:layout_width="547dp"
+        android:layout_height="660dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/elementi_layout"
-        android:layout_width="560dp"
-        android:layout_height="match_parent"/>
+        android:id="@+id/elementi_Menu_layout"
+        android:layout_width="547dp"
+        android:layout_height="660dp"/>
 
 <!--       tasto per QR code-->
 
