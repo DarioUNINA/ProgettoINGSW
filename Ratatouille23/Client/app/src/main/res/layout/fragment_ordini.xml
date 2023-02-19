@@ -51,10 +51,16 @@
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
 
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/line_1"
+                android:layout_gravity="center"/>
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="230dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#01FD56"
                 android:src="@drawable/ic_baseline_add_circle_24"
@@ -69,7 +75,7 @@
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="60dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_baseline_remove_circle_24"
                 app:fabCustomSize="60dp"

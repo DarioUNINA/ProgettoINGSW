@@ -12,11 +12,6 @@ import android.view.ViewGroup;
 
 import com.ingsw.ratatouille23.client.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GestioneSalaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class GestioneSalaFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
