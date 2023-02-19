@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 
 /**
@@ -16,6 +18,8 @@ import com.ingsw.ratatouille23.client.R;
  * create an instance of this fragment.
  */
 public class ElementiMenuFragment extends Fragment {
+
+    FloatingActionButton btnPrezzoDecrescente;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +59,27 @@ public class ElementiMenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_elementi_gm, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_elementi_gm, container, false);
+            btnPrezzoDecrescente = rootView.findViewById(R.id.btnPrezDecrescente);
+
+            btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        return  rootView;
+
+
     }
 }

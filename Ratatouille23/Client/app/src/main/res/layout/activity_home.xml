@@ -120,52 +120,59 @@
             android:id="@+id/txtIndirizzo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#C1C1C1"
             android:text="Indirizzo"
+            android:textColor="#C1C1C1"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.890" />
+            app:layout_constraintVertical_bias="0.848" />
 
         <TextView
             android:id="@+id/txtNumeroTelefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#C1C1C1"
             android:text="NumeroTelefono"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.920"/>
-
-        <TextView
-            android:id="@+id/txtLinea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
             android:textColor="#C1C1C1"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
+            app:layout_constraintVertical_bias="0.867" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:src="@drawable/line_1"
+            android:background="#C1C1C1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.70" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSettingsRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:backgroundTint="#182341"
+            android:tint="@color/white"
             android:src="@drawable/settings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.970"
-            />
+            app:layout_constraintVertical_bias="0.978" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -208,6 +215,7 @@
             app:layout_constraintVertical_bias="0.372" />
 
         <TextView
+            android:id="@+id/txtNomeUtente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome Utente"

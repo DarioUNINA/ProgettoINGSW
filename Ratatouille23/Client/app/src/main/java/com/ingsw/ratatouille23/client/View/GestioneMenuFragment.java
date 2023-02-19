@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.View;
 
 import android.os.Bundle;
 
+import androidx.core.view.ContentInfoCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 
 /**
@@ -71,7 +73,6 @@ public class GestioneMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_gestione_menu, container, false);
-
         return rootView;
     }
 }
