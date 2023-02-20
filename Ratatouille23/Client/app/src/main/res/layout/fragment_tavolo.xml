@@ -3,15 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TavoloFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TavoloFragment"
+    app:cardCornerRadius="30dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="2dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/black">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/person_logo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
     </com.google.android.material.card.MaterialCardView>
+
+
 
 </com.google.android.material.card.MaterialCardView>
