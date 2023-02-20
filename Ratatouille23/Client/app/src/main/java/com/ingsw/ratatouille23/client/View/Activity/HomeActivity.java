@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.View.Fragment.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneMenuFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
@@ -17,6 +20,7 @@ import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
 public class HomeActivity extends AppCompatActivity {
 
     AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina;
+    FloatingActionButton btnSettings;
     TextView txtFragmentAttuale;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
@@ -29,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnPersonale = findViewById(R.id.btnPersonale);
         btnSala = findViewById(R.id.btnSala);
+        btnSettings = findViewById(R.id.btnSettingsRestaurant);
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
 
@@ -59,6 +64,10 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragmentMenu.setVisibility(View.INVISIBLE);
                 selectedFragmentCucina.setVisibility(View.VISIBLE);
                 selectedFragmentCucina.setCardBackgroundColor(getResources().getColor(R.color.green));
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class,null);
+                fragmentTransaction.commitNow();
             }
         });
 
@@ -104,6 +113,13 @@ public class HomeActivity extends AppCompatActivity {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneMenuFragment.class,null);
                 fragmentTransaction.commitNow();
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
 

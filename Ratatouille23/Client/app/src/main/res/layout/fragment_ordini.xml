@@ -39,6 +39,19 @@
         android:layout_marginTop="10dp"
         app:cardBackgroundColor="@color/white">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintContenitoreRecycler"
+            android:layout_width="575dp"
+            android:layout_height="517dp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewOrdini"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="350dp"
             android:layout_height="80dp"

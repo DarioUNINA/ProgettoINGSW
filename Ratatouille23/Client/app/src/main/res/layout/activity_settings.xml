@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#182341"
+    tools:context=".View.Activity.SettingsActivity">
+
+    <ImageView
+        android:layout_width="97dp"
+        android:layout_height="83dp"
+        android:src="@drawable/fns"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="450dp"
+        android:layout_height="650dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#79C4FF"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="555dp"
+            android:layout_width="450dp"
+            android:layout_height="70dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#79C4FF"
+                android:src="@drawable/icon_back"
+                app:borderWidth="0dp"
+                app:tint="@color/black"
+                app:fabCustomSize="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="50dp"
+                app:layout_constraintVertical_bias="0.94"
+                app:layout_constraintHorizontal_bias="0.10"
+                tools:ignore="SpeakableTextPresentCheck"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/confirmvector"
+                android:backgroundTint="@color/white"
+                app:tint="#77B255"
+                android:background="@color/white"
+                app:borderWidth="0dp"
+                app:fabCustomSize="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="50dp"
+                app:layout_constraintVertical_bias="0.94"
+                app:layout_constraintHorizontal_bias="0.90"
+                tools:ignore="SpeakableTextPresentCheck"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeSetting"
+            android:layout_width="match_parent"
+            android:layout_height="555dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
