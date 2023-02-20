@@ -13,11 +13,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ElementiMenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ElementiMenuFragment extends Fragment {
 
     FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente;
@@ -35,15 +31,6 @@ public class ElementiMenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ElementiMenuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ElementiMenuFragment newInstance(String param1, String param2) {
         ElementiMenuFragment fragment = new ElementiMenuFragment();
         Bundle args = new Bundle();
@@ -66,7 +53,6 @@ public class ElementiMenuFragment extends Fragment {
 
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,10 +63,20 @@ public class ElementiMenuFragment extends Fragment {
         btnPrezzoCrescente = rootView.findViewById(R.id.btnPrezzoCrescente);
         btnOrdineAlfaDecrescente = rootView.findViewById(R.id.btnOrdineAlfaDecrescente);
         btnOrdineAlfaCrescente = rootView.findViewById(R.id.btnOrdineAlfaCrescente);
-            btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
+
+        btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
+                    if(btnPrezzoDecrescente.isActivated()) {
+                        btnPrezzoDecrescente.setActivated(false);
+                        //modificare colori
+                        btnPrezzoDecrescente.setBackgroundColor(0);
+                    }else {
+                        btnPrezzoDecrescente.setActivated(true);
+                        Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
+                        btnPrezzoDecrescente.setBackgroundColor(0);
+                        //modificare colori
+                    }
                 }
             });
 
@@ -95,14 +91,14 @@ public class ElementiMenuFragment extends Fragment {
             btnOrdineAlfaCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Ordine ALfabetico Crescente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Ordine Alfabetico Crescente", Toast.LENGTH_SHORT).show();
                 }
             });
 
         btnOrdineAlfaDecrescente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ordine ALfabetico Decrescente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Ordine Alfabetico Decrescente", Toast.LENGTH_SHORT).show();
             }
         });
 

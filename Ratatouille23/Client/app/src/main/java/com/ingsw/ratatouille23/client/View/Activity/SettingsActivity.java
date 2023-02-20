@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.SettingRestaurantFragment;
@@ -15,6 +16,7 @@ import com.ingsw.ratatouille23.client.View.Fragment.SettingUserFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    FloatingActionButton btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         fragmentTransaction.replace(R.id.homeSetting, SettingUserFragment.class,null);
         fragmentTransaction.commitNow();
+
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
