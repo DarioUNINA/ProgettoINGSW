@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View;
+package com.ingsw.ratatouille23.client.View.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;

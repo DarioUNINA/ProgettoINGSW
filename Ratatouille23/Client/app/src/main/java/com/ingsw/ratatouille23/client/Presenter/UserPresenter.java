@@ -1,12 +1,8 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
-import android.content.Intent;
-import android.util.Log;
-
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.Class.UserService;
-import com.ingsw.ratatouille23.client.View.HomeActivity;
-import com.ingsw.ratatouille23.client.View.LogInActivity;
+import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 
 
 public class UserPresenter {

@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View;
+package com.ingsw.ratatouille23.client.View.Fragment;
 
 import android.os.Bundle;
 
@@ -7,19 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ElementiMenuFragment#newInstance} factory method to
+ * Use the {@link TavoliFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ElementiMenuFragment extends Fragment {
-
-    FloatingActionButton btnPrezzoDecrescente;
+public class TavoliFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +26,7 @@ public class ElementiMenuFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ElementiMenuFragment() {
+    public TavoliFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +36,11 @@ public class ElementiMenuFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ElementiMenuFragment.
+     * @return A new instance of fragment TavoliFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ElementiMenuFragment newInstance(String param1, String param2) {
-        ElementiMenuFragment fragment = new ElementiMenuFragment();
+    public static TavoliFragment newInstance(String param1, String param2) {
+        TavoliFragment fragment = new TavoliFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,27 +55,12 @@ public class ElementiMenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =  inflater.inflate(R.layout.fragment_elementi_gm, container, false);
-            btnPrezzoDecrescente = rootView.findViewById(R.id.btnPrezDecrescente);
-
-            btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-        return  rootView;
-
-
+        return inflater.inflate(R.layout.fragment_tavoli, container, false);
     }
 }

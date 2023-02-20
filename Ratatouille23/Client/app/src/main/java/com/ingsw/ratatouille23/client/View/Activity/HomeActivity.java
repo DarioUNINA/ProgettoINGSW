@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View;
+package com.ingsw.ratatouille23.client.View.Activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.GestioneMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
