@@ -68,59 +68,62 @@
                     android:backgroundTint="#D9D9D9"
                     android:src="@drawable/prezzo_crescente"
                     app:borderWidth="0dp"
+                    app:fabCustomSize="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.530"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:fabCustomSize="50dp"
-                    app:maxImageSize="30dp"/>
+                    app:maxImageSize="30dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnPrezDecrescente"
                     android:layout_width="wrap_content"
-                    app:borderWidth="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D9D9D9"
                     android:src="@drawable/prezzo_decrescente"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.680"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:fabCustomSize="50dp"
                     app:maxImageSize="30dp"
-                    />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnOrdineAlfaCrescente"
-                    app:borderWidth="0dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D9D9D9"
                     android:src="@drawable/ordine_alfabetico_crescente"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.830"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:fabCustomSize="50dp"
-                    app:maxImageSize="30dp"/>
+                    app:maxImageSize="30dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnOrdineAlfaDecrescente"
-                    app:borderWidth="0dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#D9D9D9"
                     android:src="@drawable/ordine_alfabetico_decrescente"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.980"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:fabCustomSize="50dp"
-                    app:maxImageSize="30dp"/>
+                    app:maxImageSize="30dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:layout_width="390dp"
@@ -201,5 +204,30 @@
             </com.google.android.material.card.MaterialCardView>
 
         </com.google.android.material.card.MaterialCardView>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:id="@+id/toast_root">
+
+        <ImageView
+            android:id="@+id/toast_image"
+            android:layout_width="227dp"
+            android:layout_height="92dp"
+            android:src="@drawable/logo_completo" />
+
+        <TextView
+            android:layout_width="320dp"
+            android:layout_height="62dp"
+            android:text="this is a custom toast"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
 
     </LinearLayout>
