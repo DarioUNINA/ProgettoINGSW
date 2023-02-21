@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.ingsw.ratatouille23.client.Presenter.UserPresenter;
+import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 
 public class LogInActivity extends AppCompatActivity {
@@ -17,17 +17,37 @@ public class LogInActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private AppCompatButton loginButton;
 
-    private UserPresenter userPresenter;
+    private UtentePresenter utentePresenter;
+
+    private Intent intent;
 
 
     //Getters and Setters
 
-    public UserPresenter getUserPresenter() {
-        return userPresenter;
+    public UtentePresenter getUtentePresenter() {
+        return utentePresenter;
     }
 
-    public void setUserPresenter(UserPresenter userPresenter) {
-        this.userPresenter = userPresenter;
+    public void setUtentePresenter(UtentePresenter utentePresenter) {
+        this.utentePresenter = utentePresenter;
+    }
+
+    @Override
+    public Intent getIntent() {
+        return intent;
+    }
+
+    @Override
+    public void setIntent(Intent intent) {
+        this.intent = intent;
+    }
+
+    public UtentePresenter getUserPresenter() {
+        return utentePresenter;
+    }
+
+    public void setUserPresenter(UtentePresenter utentePresenter) {
+        this.utentePresenter = utentePresenter;
     }
 
     public EditText getPasswordEditText() {
@@ -62,13 +82,13 @@ public class LogInActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.login_username_editText);
         passwordEditText = findViewById(R.id.login_password_editText);
         loginButton = findViewById(R.id.login_login_button);
-        userPresenter = new UserPresenter(this);
+        intent = new Intent(LogInActivity.this, HomeActivity.class);
+        utentePresenter = new UtentePresenter(this);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LogInActivity.this, HomeActivity.class));
-                //userPresenter.login();
+                utentePresenter.login();
 
             }
         });

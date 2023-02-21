@@ -1,7 +1,9 @@
 package com.ingsw.ratatouille23.client.View.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -69,13 +71,11 @@ public class ElementiMenuFragment extends Fragment {
                 public void onClick(View v) {
                     if(btnPrezzoDecrescente.isActivated()) {
                         btnPrezzoDecrescente.setActivated(false);
-                        //modificare colori
-                        btnPrezzoDecrescente.setBackgroundColor(0);
+                        btnPrezzoDecrescente.setImageTintList(ContextCompat.getColorStateList(getContext(),R.color.black));
                     }else {
                         btnPrezzoDecrescente.setActivated(true);
                         Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
                         btnPrezzoDecrescente.setBackgroundColor(0);
-                        //modificare colori
                     }
                 }
             });

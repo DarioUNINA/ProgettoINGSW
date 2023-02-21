@@ -1,14 +1,14 @@
 package com.ingsw.ratatouille23.client.Retrofit;
 
-import com.ingsw.ratatouille23.client.Model.User;
+import com.ingsw.ratatouille23.client.Model.Utente;
 
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface UserApi {
+public interface UtenteApi {
 
     @GET("/utente/get/{username}/{password}")
-    Single<User> getByEmailAndPassword(@Path("username") String username, @Path("password") String password);
+    Single<Utente> getByEmailAndPassword(@Path("username") String username, @Path("password") String password);
 
 }
