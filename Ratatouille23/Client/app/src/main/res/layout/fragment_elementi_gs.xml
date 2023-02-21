@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="15dp"
-    tools:context=".View.ElementiGSFragment">
+    tools:context=".View.Fragment.ElementiGSFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
