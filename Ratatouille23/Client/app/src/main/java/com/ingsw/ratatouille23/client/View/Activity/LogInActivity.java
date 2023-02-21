@@ -89,7 +89,6 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 utentePresenter.login();
-
             }
         });
 

@@ -165,8 +165,10 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:backgroundTint="#182341"
-            android:tint="@color/white"
+            android:outlineSpotShadowColor="#182341"
             android:src="@drawable/settings"
+            android:tint="@color/white"
+            app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.482"
@@ -174,7 +176,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.990"
             app:tint="@color/white"
-            app:borderWidth="0dp"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -206,6 +208,7 @@
             app:layout_constraintVertical_bias="1.15" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/TabUserItem"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_baseline_person"
@@ -253,6 +256,12 @@
         app:layout_constraintStart_toEndOf="@+id/homeConstraintLayoutVertical"
         app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayoutHorizontal"
         app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

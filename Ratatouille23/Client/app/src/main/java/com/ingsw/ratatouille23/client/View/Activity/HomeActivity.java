@@ -1,26 +1,35 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telecom.StatusHints;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
+import com.google.android.material.tabs.TabItem;
 import com.ingsw.ratatouille23.client.View.Fragment.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneMenuFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
+import com.ingsw.ratatouille23.client.View.SettingCreateDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
-    AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina;
+    AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
+    MaterialCardView cardViewSetting;
+    TabItem tabItemUser, logTabUser;
     FloatingActionButton btnSettings;
     TextView txtFragmentAttuale;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
@@ -36,12 +45,16 @@ public class HomeActivity extends AppCompatActivity {
         btnSala = findViewById(R.id.btnSala);
         btnSettings = findViewById(R.id.btnSettingsRestaurant);
 
+
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
 
         selectedFragmentPersonale = findViewById(R.id.selectedFragmentPerosnale);
         selectedFragmentSala = findViewById(R.id.selectedFragmentSala);
         selectedFragmentMenu = findViewById(R.id.selectedFragmentMenu);
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
+
+        tabItemUser = findViewById(R.id.TabUserItem);
+
 
         selectedFragmentPersonale.setVisibility(View.INVISIBLE);
         selectedFragmentSala.setVisibility(View.VISIBLE);
@@ -126,8 +139,23 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+        tabItemUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openDialog();
+//                SettingCreateDialog settingCreateDialog = new SettingCreateDialog();
+//                settingCreateDialog.show(fragmentManager, "prova");
+            }
+        });
 
 
+    }
+
+
+    public void openDialog(){
+        SettingCreateDialog categoryCreateDialog = new SettingCreateDialog();
+        categoryCreateDialog.show(HomeActivity.this.getSupportFragmentManager(),"Setting");
     }
 
     @Override
