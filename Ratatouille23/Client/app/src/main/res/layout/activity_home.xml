@@ -132,7 +132,7 @@
             app:layout_constraintVertical_bias="0.848" />
 
         <TextView
-            android:id="@+id/txtNumeroTelefono"
+            android:id="@+id/txtTelefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NumeroTelefono"
@@ -196,7 +196,6 @@
             android:id="@+id/txtFragmentAttuale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GESTIONE SALA"
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold"
@@ -255,12 +254,6 @@
         app:layout_constraintStart_toEndOf="@+id/homeConstraintLayoutVertical"
         app:layout_constraintTop_toBottomOf="@+id/homeConstraintLayoutHorizontal"
         app:layout_constraintVertical_bias="0.0" />
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
@@ -33,10 +34,11 @@ public class HomeActivity extends AppCompatActivity {
     MaterialCardView cardViewSetting;
     TabItem tabItemUser, logTabUser;
     FloatingActionButton btnSettings;
-    TextView txtFragmentAttuale, txtUtente;
+    TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
     private Utente utente;
+    private Ristorante ristorante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         utente = (Utente)getIntent().getSerializableExtra("utente");
+        ristorante = (Ristorante)getIntent().getSerializableExtra("ristorante");
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -54,7 +57,12 @@ public class HomeActivity extends AppCompatActivity {
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
         txtUtente = findViewById(R.id.txtUtente);
+        txtTelefono = findViewById(R.id.txtTelefono);
+        txtIndirizzo = findViewById(R.id.txtIndirizzo);
+
         txtUtente.setText(utente.getUsername());
+        txtTelefono.setText(ristorante.getTelefono());
+        txtIndirizzo.setText(ristorante.getIndirizzo());
 
         selectedFragmentPersonale = findViewById(R.id.selectedFragmentPerosnale);
         selectedFragmentSala = findViewById(R.id.selectedFragmentSala);
@@ -62,8 +70,6 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
 
         tabItemUser = findViewById(R.id.TabUserItem);
-
-        selectedFragmentSala.setCardBackgroundColor(getResources().getColor(R.color.green));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -149,7 +155,9 @@ public class HomeActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                intent.putExtra("utente", utente);
+                startActivity(intent);
 
             }
         });

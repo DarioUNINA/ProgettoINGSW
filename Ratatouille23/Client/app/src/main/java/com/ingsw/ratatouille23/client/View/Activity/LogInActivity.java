@@ -107,7 +107,9 @@ public class LogInActivity extends AppCompatActivity {
         }
     }
 
-
+    public void logInFailed(){
+        //
+    }
 
 
 }

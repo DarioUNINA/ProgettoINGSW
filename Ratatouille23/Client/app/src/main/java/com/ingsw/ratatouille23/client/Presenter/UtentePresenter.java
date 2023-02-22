@@ -31,7 +31,7 @@ public class UtentePresenter {
                     RistorantePresenter ristorantePresenter = new RistorantePresenter(logInActivity);
                     ristorantePresenter.logIn(((Utente) o).getIdRistorante());
                 }else
-                    System.out.println("Login fallito\n");
+                    logInActivity.logInFailed();
             }
 
             @Override
