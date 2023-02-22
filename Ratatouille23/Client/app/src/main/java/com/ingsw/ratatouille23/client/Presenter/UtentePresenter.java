@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.Class.UtenteService;
@@ -22,19 +23,13 @@ public class UtentePresenter {
 
 
     public void login(){
-
         service.checkUser(new Callback(){
             @Override
             public void returnResult(Object o){
                 if(o!=null) {
-                   // Utente u = (Utente)o;
-                   // logInActivity.getIntent().putExtra("utente", u);
-
-                   // RistorantePresenter ristorantePresenter = new RistorantePresenter();
-                    //ristorantePresenter.getByIdIntent(u.getIdRistorante() ,logInActivity.getIntent());
-
-
-                   // logInActivity.startActivity(logInActivity.getIntent());
+                    logInActivity.getIntent().putExtra("utente", (Utente)o);
+                    RistorantePresenter ristorantePresenter = new RistorantePresenter(logInActivity);
+                    ristorantePresenter.logIn(((Utente) o).getIdRistorante());
                 }else
                     System.out.println("Login fallito\n");
             }

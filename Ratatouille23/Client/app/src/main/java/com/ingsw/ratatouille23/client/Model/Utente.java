@@ -17,9 +17,12 @@ public class Utente implements Serializable {
     private String password;
 
     @Expose
-    @SerializedName("idRistorante")
+    @SerializedName("ristorante")
     private int idRistorante;
 
+    @Expose
+    @SerializedName("ruolo")
+    private Ruolo ruolo;
 
 
     //Constructors
@@ -32,6 +35,14 @@ public class Utente implements Serializable {
 
 
     //Getters and Setters
+
+    public Ruolo getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
+    }
 
     public String getUsername() {
         return username;

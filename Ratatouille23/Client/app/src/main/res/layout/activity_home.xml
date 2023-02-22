@@ -220,10 +220,9 @@
             app:layout_constraintVertical_bias="0.372" />
 
         <TextView
-            android:id="@+id/txtNomeUtente"
+            android:id="@+id/txtUtente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome Utente"
             android:textColor="#C1C1C1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

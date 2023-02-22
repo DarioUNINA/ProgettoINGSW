@@ -12,14 +12,14 @@ public class UtenteDTO {
     private Ruolo ruolo;
     
     //References
-    private RistoranteDTO ristorante;
+    private Integer ristorante;
 
 
     //Constructors
     public UtenteDTO() {
     }
 
-    public UtenteDTO(String username, String password, Ruolo ruolo, RistoranteDTO ristorante) {
+    public UtenteDTO(String username, String password, Ruolo ruolo, Integer ristorante) {
         this.username = username;
         this.password = password;
         this.ruolo = ruolo;
@@ -53,11 +53,11 @@ public class UtenteDTO {
     }
 
 
-    public RistoranteDTO getRistorante() {
+    public Integer getRistorante() {
         return ristorante;
     }
 
-    public void setRistorante(RistoranteDTO ristorante) {
+    public void setRistorante(Integer ristorante) {
         this.ristorante = ristorante;
     }
 

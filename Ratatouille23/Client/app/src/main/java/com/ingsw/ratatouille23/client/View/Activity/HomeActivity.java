@@ -17,6 +17,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.google.android.material.tabs.TabItem;
 import com.ingsw.ratatouille23.client.View.Fragment.CucinaFragment;
@@ -31,13 +33,17 @@ public class HomeActivity extends AppCompatActivity {
     MaterialCardView cardViewSetting;
     TabItem tabItemUser, logTabUser;
     FloatingActionButton btnSettings;
-    TextView txtFragmentAttuale;
+    TextView txtFragmentAttuale, txtUtente;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
+
+    private Utente utente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        utente = (Utente)getIntent().getSerializableExtra("utente");
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -47,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
+        txtUtente = findViewById(R.id.txtUtente);
+        txtUtente.setText(utente.getUsername());
 
         selectedFragmentPersonale = findViewById(R.id.selectedFragmentPerosnale);
         selectedFragmentSala = findViewById(R.id.selectedFragmentSala);
@@ -55,19 +63,27 @@ public class HomeActivity extends AppCompatActivity {
 
         tabItemUser = findViewById(R.id.TabUserItem);
 
-
-        selectedFragmentPersonale.setVisibility(View.INVISIBLE);
-        selectedFragmentSala.setVisibility(View.VISIBLE);
-        selectedFragmentMenu.setVisibility(View.INVISIBLE);
-        selectedFragmentCucina.setVisibility(View.INVISIBLE);
         selectedFragmentSala.setCardBackgroundColor(getResources().getColor(R.color.green));
-
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+        if(utente.getRuolo()==Ruolo.admin)
+            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
+            //Gestione personale
+
+        if(utente.getRuolo()==Ruolo.supervisore)
+            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
+            //Gestione personale
+
+        if(utente.getRuolo()==Ruolo.cuoco)
+            fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class,null);
+
+        if(utente.getRuolo()==Ruolo.cameriere)
+            fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+
         fragmentTransaction.commitNow();
+
 
         btnCucina.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.ingsw.ratatouille23.client.Model.Ristorante;
+import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.RistorantePresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 
@@ -18,8 +21,9 @@ public class LogInActivity extends AppCompatActivity {
     private AppCompatButton loginButton;
 
     private UtentePresenter utentePresenter;
+    private RistorantePresenter ristorantePresenter;
 
-    private Intent intent;
+    //private Intent intent;
 
 
     //Getters and Setters
@@ -32,15 +36,7 @@ public class LogInActivity extends AppCompatActivity {
         this.utentePresenter = utentePresenter;
     }
 
-    @Override
-    public Intent getIntent() {
-        return intent;
-    }
 
-    @Override
-    public void setIntent(Intent intent) {
-        this.intent = intent;
-    }
 
     public UtentePresenter getUserPresenter() {
         return utentePresenter;
@@ -82,9 +78,10 @@ public class LogInActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.login_username_editText);
         passwordEditText = findViewById(R.id.login_password_editText);
         loginButton = findViewById(R.id.login_login_button);
-        intent = new Intent(LogInActivity.this, HomeActivity.class);
         utentePresenter = new UtentePresenter(this);
+        ristorantePresenter = new RistorantePresenter(this);
 
+        setIntent(new Intent(LogInActivity.this, HomeActivity.class));
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
