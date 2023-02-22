@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.View;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.HardwarePropertiesManager;
 import android.view.LayoutInflater;
@@ -19,61 +20,23 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
 
     private AppCompatButton btnChangePass, btnLogOut;
 
-    //SettingCreateDialogListner settingCreateDialog;
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_alert_dialog_settings, null);
 
-        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                .setView(view)
-                .show();
+        View v = LayoutInflater.from(getActivity())
+                .inflate(R.layout.layout_alert_dialog_settings, null);
 
 
-        btnChangePass = (AppCompatButton) view.findViewById(R.id.btnChangePass);
-        btnLogOut = (AppCompatButton) view.findViewById(R.id.btnLogOut);
-
-        btnChangePass.setOnClickListener(new View.OnClickListener() {
+        DialogInterface.OnClickListener listner = new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
 
             }
-        });
-
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-
-        });
-
-        return dialog;
+        };
+        return new AlertDialog.Builder(getActivity())
+                .setTitle("SettingLIstner")
+                .setView(v)
+                .create();
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        try{
-            //categoryCreateDialogListener = (CategoryCreateDialog.CategoryCreateDialogListener) context;
-        }
-        catch(ClassCastException e){
-            throw new ClassCastException(context.toString());
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        getDialog().getWindow().getAttributes().width=700;
-        getDialog().getWindow().setAttributes(
-                getDialog().getWindow().getAttributes());
-    }
-
-//    public interface CategoryCreateDialogListener{
-//        void createCategory(ULocale.Category category, MenuCategoriesFoodFragment menuCategoriesFoodFragment, MenuCategoriesDrinkFragment menuCategoriesDrinkFragment);
-//    }
 }

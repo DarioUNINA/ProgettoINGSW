@@ -159,7 +159,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                openDialog();
+                FragmentManager manager = getSupportFragmentManager();
+                SettingCreateDialog dialog = new SettingCreateDialog();
+                dialog.show(manager, "SettingDialog");
 //                SettingCreateDialog settingCreateDialog = new SettingCreateDialog();
 //                settingCreateDialog.show(fragmentManager, "prova");
             }
