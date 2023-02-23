@@ -118,7 +118,7 @@ public class LogInActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        System.exit(0);
+                        dialogInterface.dismiss();
                     }
                 }).create().show();
     }
