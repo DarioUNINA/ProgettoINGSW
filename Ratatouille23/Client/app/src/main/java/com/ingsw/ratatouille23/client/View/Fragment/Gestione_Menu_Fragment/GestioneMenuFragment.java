@@ -11,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
-import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
-import com.ingsw.ratatouille23.client.View.Dialog.SettingCreateDialog;
 
 /**
  * A simple {@link Fragment} subclass.

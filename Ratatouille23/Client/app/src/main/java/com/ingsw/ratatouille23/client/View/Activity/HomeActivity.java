@@ -22,7 +22,7 @@ import com.ingsw.ratatouille23.client.View.Fragment.Gestion_Cucina_Fragment.Cuci
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.GestioneMenuFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment.GestioneSalaFragment;
-import com.ingsw.ratatouille23.client.View.Dialog.SettingCreateDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -217,7 +217,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void openDialog(){
-        SettingCreateDialog settingCreateDialog = new SettingCreateDialog(HomeActivity.this);
-        settingCreateDialog.show(getSupportFragmentManager(), "setting");
+        SettingUtenteDialog settingUtenteDialog = new SettingUtenteDialog(HomeActivity.this);
+        settingUtenteDialog.show(getSupportFragmentManager(), "setting");
     }
 }

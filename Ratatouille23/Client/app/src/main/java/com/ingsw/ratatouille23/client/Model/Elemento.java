@@ -1,2 +1,4 @@
-package com.ingsw.ratatouille23.client.Model;public class Elemento {
+package com.ingsw.ratatouille23.client.Model;
+
+public class Elemento {
 }

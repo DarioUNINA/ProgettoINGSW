@@ -19,9 +19,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
 
-public class SettingCreateDialog extends AppCompatDialogFragment {
+public class SettingUtenteDialog extends AppCompatDialogFragment {
 
     private AppCompatButton btnChangePass, btnLogOut;
     private HomeActivity home;
@@ -29,7 +30,7 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
     private Utente utente;
 
 
-    public SettingCreateDialog(HomeActivity home){
+    public SettingUtenteDialog(HomeActivity home){
         this.home = home;
     }
     @NonNull
@@ -41,13 +42,11 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
 
         btnChangePass = (AppCompatButton) v.findViewById(R.id.btnChangePass);
         btnLogOut = (AppCompatButton) v.findViewById(R.id.btnLogOut);
-        utente = new Utente();
+        utente = (Utente)getActivity().getIntent().getSerializableExtra("utente");
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                intent.putExtra("utente", utente);
-                startActivity(intent);
+                startActivity(getActivity().getIntent());
             }
         });
 
@@ -61,7 +60,7 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
                         .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                System.exit(0);
+                                startActivity(new Intent(getActivity(), LogInActivity.class));
                             }
                         }).create().show();
             }
