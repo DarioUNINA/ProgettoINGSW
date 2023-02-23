@@ -33,6 +33,9 @@ public class Ristorante implements Serializable {
     //Constructors
     public Ristorante(int idRistorante) {this.idRistorante = idRistorante;}
 
+    public Ristorante() {}
+
+
 
     public Ristorante(int idRistorante, String nome, String indirizzo, String telefono, int idMenu) {
         this.idRistorante = idRistorante;

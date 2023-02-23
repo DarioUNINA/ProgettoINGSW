@@ -1,17 +1,12 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telecom.StatusHints;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -20,7 +15,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
-import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.google.android.material.tabs.TabItem;
 import com.ingsw.ratatouille23.client.View.Fragment.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
@@ -31,7 +25,6 @@ import com.ingsw.ratatouille23.client.View.SettingCreateDialog;
 public class HomeActivity extends AppCompatActivity {
 
     AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
-    MaterialCardView cardViewSetting;
     TabItem tabItemUser, logTabUser;
     FloatingActionButton btnSettings;
     TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
@@ -46,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         utente = (Utente)getIntent().getSerializableExtra("utente");
-        ristorante = (Ristorante)getIntent().getSerializableExtra("ristorante");
+        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -166,23 +159,13 @@ public class HomeActivity extends AppCompatActivity {
         tabItemUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FragmentManager manager = getSupportFragmentManager();
-                SettingCreateDialog dialog = new SettingCreateDialog();
-                dialog.show(manager, "SettingDialog");
-//                SettingCreateDialog settingCreateDialog = new SettingCreateDialog();
-//                settingCreateDialog.show(fragmentManager, "prova");
+                    openDialog();
             }
         });
 
 
     }
 
-
-    public void openDialog(){
-        SettingCreateDialog categoryCreateDialog = new SettingCreateDialog();
-        categoryCreateDialog.show(HomeActivity.this.getSupportFragmentManager(),"Setting");
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
@@ -198,5 +181,10 @@ public class HomeActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         }
+    }
+
+    public void openDialog(){
+        SettingCreateDialog settingCreateDialog = new SettingCreateDialog(HomeActivity.this);
+        settingCreateDialog.show(getSupportFragmentManager(), "setting");
     }
 }
