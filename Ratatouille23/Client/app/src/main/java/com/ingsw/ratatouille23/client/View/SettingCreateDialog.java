@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.HardwarePropertiesManager;
 import android.view.Gravity;
@@ -16,11 +19,13 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.AppCompatButton;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
+import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
 
 public class SettingCreateDialog extends AppCompatDialogFragment {
 
     private AppCompatButton btnChangePass, btnLogOut;
-    HomeActivity home;
+    private HomeActivity home;
 
 
     public SettingCreateDialog(HomeActivity home){
@@ -33,12 +38,32 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
         View v = inflater.inflate(R.layout.layout_alert_dialog_settings, null);
 
 
-        DialogInterface.OnClickListener listner = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        btnChangePass = (AppCompatButton) v.findViewById(R.id.btnChangePass);
+        btnLogOut = (AppCompatButton) v.findViewById(R.id.btnLogOut);
 
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
             }
-        };
+        });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new androidx.appcompat.app.AlertDialog.Builder(getActivity())
+                        .setTitle("EXIT")
+                        .setMessage("Sei sicuro di voler uscire?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                System.exit(0);
+                            }
+                        }).create().show();
+            }
+        });
+
 
       AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(v)
@@ -50,9 +75,10 @@ public class SettingCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=700;
+        getDialog().getWindow().getAttributes().width=640;
         getDialog().getWindow().getAttributes().height=700;
         getDialog().getWindow().setGravity(Gravity.TOP);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }

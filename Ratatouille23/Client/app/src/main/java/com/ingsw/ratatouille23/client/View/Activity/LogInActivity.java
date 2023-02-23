@@ -88,6 +88,7 @@ public class LogInActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //startActivity(new Intent(LogInActivity.this, HomeActivity.class));
                 utentePresenter.login();
             }
         });
@@ -114,7 +115,12 @@ public class LogInActivity extends AppCompatActivity {
         new AlertDialog.Builder(LogInActivity.this)
                 .setTitle("LOGIN FALLITO")
                 .setMessage("Nome Utente o Password errate, riprovare...")
-                .setPositiveButton(android.R.string.yes, null).create().show();
+                .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        System.exit(0);
+                    }
+                }).create().show();
     }
 
 
