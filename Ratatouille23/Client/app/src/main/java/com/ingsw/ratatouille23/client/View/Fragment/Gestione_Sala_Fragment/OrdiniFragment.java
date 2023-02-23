@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +20,7 @@ import com.ingsw.ratatouille23.client.R;
  */
 public class OrdiniFragment extends Fragment {
 
+    private FloatingActionButton btnAddOrder;
     RecyclerView listOrdini;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -67,7 +70,20 @@ public class OrdiniFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
 
 
+        btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
+
+        btnAddOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
 
         return rootView;
+    }
+
+    public void openDialog(){
+        AddOrderDialog addOrderDialog = new AddOrderDialog(this);
+        addOrderDialog.show(getParentFragmentManager(), "newOrdine");
     }
 }

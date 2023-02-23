@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +19,8 @@ import com.ingsw.ratatouille23.client.R;
  * create an instance of this fragment.
  */
 public class OrdineFragment extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +66,9 @@ public class OrdineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ordine, container, false);
+        View viewRoot =  inflater.inflate(R.layout.fragment_ordine, container, false);
+
+        return viewRoot;
     }
+
 }

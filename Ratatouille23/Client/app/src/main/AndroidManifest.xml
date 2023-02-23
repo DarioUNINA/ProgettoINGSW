@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".View.Dialog.AddOrderDialog"
+            android:exported="false" />
+        <activity
             android:name=".View.Dialog.AddElementoOrdineDialog"
             android:exported="false" />
         <activity
