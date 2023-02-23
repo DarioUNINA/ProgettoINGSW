@@ -1,22 +1,20 @@
-package com.ingsw.ratatouille23.client.Service.Class;
+package com.ingsw.ratatouille23.client.Service;
 
-import com.ingsw.ratatouille23.client.Retrofit.TavoloApi;
-import com.ingsw.ratatouille23.client.Model.Tavolo;
+import com.ingsw.ratatouille23.client.Retrofit.CategoriaApi;
 import com.ingsw.ratatouille23.client.Retrofit.RetrofitService;
-import com.ingsw.ratatouille23.client.Retrofit.UtenteApi;
 import com.ingsw.ratatouille23.client.Service.Callback;
+import com.ingsw.ratatouille23.client.Model.Categoria;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-public class TavoloService {
+public class CategoriaService {
 
-    private TavoloApi tavoloApi;
+    private CategoriaApi categoriaApi;
 
-    public TavoloService(){tavoloApi = RetrofitService.getRetrofit().create(TavoloApi.class);}
-
-
-
+    public CategoriaService(){
+        categoriaApi = RetrofitService.getRetrofit().create(CategoriaApi.class);
+    }
 }

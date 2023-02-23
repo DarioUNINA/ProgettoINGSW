@@ -1,35 +1,34 @@
-package com.ingsw.ratatouille23.client.Service.Class;
+package com.ingsw.ratatouille23.client.Service;
 
-import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Retrofit.RetrofitService;
+import com.ingsw.ratatouille23.client.Retrofit.RistoranteApi;
 import com.ingsw.ratatouille23.client.Service.Callback;
-import com.ingsw.ratatouille23.client.Retrofit.UtenteApi;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-public class UtenteService {
 
-    private UtenteApi utenteApi;
+public class RistoranteService {
 
-    public UtenteService(){
-        utenteApi = RetrofitService.getRetrofit().create(UtenteApi.class);
-    }
+    private RistoranteApi ristoranteApi;
 
-    public void checkUser(Callback callback, String username, String password){
+    public RistoranteService(){ristoranteApi = RetrofitService.getRetrofit().create(RistoranteApi.class);}
 
-        utenteApi.getByEmailAndPassword(username,password)
+    public void getById(Callback callback, int id){
+
+        ristoranteApi.getById(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Utente>() {
+                .subscribe(new SingleObserver<Ristorante>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onSuccess(@NonNull Utente utente) {
-                        callback.returnResult(utente);
+                    public void onSuccess(@NonNull Ristorante ristorante) {
+                        callback.returnResult(ristorante);
                     }
 
                     @Override
@@ -38,6 +37,6 @@ public class UtenteService {
                         callback.returnResult(null);
                     }
                 });
-
     }
+
 }

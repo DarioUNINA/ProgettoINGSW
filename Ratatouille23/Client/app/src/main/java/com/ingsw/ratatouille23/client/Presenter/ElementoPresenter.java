@@ -1,8 +1,7 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
-import com.ingsw.ratatouille23.client.Service.Class.ElementoService;
-import com.ingsw.ratatouille23.client.Model.Elemento;
-import com.ingsw.ratatouille23.client.Service.Callback;
+import com.ingsw.ratatouille23.client.Service.ElementoService;
+
 public class ElementoPresenter {
 
     private ElementoService service;

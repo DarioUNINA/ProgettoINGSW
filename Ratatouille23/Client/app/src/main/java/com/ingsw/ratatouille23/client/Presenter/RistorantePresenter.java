@@ -1,10 +1,8 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
-import android.content.Intent;
-
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Service.Callback;
-import com.ingsw.ratatouille23.client.Service.Class.RistoranteService;
+import com.ingsw.ratatouille23.client.Service.RistoranteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 
 public class RistorantePresenter {

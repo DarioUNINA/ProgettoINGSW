@@ -3,7 +3,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
-import com.ingsw.ratatouille23.client.Service.Class.UtenteService;
+import com.ingsw.ratatouille23.client.Service.UtenteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 
 

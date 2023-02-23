@@ -1,6 +1,6 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
-import com.ingsw.ratatouille23.client.Service.Class.MenuService;
+import com.ingsw.ratatouille23.client.Service.MenuService;
 
 public class MenuPresenter {
 
