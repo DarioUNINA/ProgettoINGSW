@@ -1,18 +1,18 @@
-package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.Setting;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 
-public class GestioneSalaFragment extends Fragment {
+public class SettingUserFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -20,12 +20,17 @@ public class GestioneSalaFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GestioneSalaFragment() {
+
+    private Utente utente;
+
+    private TextView txtUtente;
+
+    public SettingUserFragment() {
         // Required empty public constructor
     }
 
-    public static GestioneSalaFragment newInstance(String param1, String param2) {
-        GestioneSalaFragment fragment = new GestioneSalaFragment();
+    public static SettingUserFragment newInstance(String param1, String param2) {
+        SettingUserFragment fragment = new SettingUserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -41,26 +46,24 @@ public class GestioneSalaFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.tavoli_layout, new TavoliFragment());
-        fragmentTransaction.add(R.id.ordini_layout, new OrdiniFragment());
-        fragmentTransaction.add(R.id.elementi_GM_layout, new ElementiGSFragment());
-        fragmentTransaction.commit();
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_setting_user, container, false);
 
-        View rootView = inflater.inflate(R.layout.fragment_gestione_sala, container, false);
+        utente = (Utente)getActivity().getIntent().getSerializableExtra("utente");
 
-        //inserisci cose
+        txtUtente = rootView.findViewById(R.id.txtNomeUtente);
+        txtUtente.setText(utente.getUsername());
 
         return rootView;
+
+
     }
-
-
 }

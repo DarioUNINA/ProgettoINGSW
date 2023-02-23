@@ -12,8 +12,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.SettingRestaurantFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.SettingUserFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingRestaurantFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUserFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 

@@ -1,9 +1,8 @@
-package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +10,16 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrdiniFragment#newInstance} factory method to
+ * Use the {@link CategorieFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrdiniFragment extends Fragment {
+public class CategorieFragment extends Fragment {
 
-    private FloatingActionButton btnAddOrder;
-    RecyclerView listOrdini;
+    private FloatingActionButton btnAddCategory;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +30,7 @@ public class OrdiniFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public OrdiniFragment() {
+    public CategorieFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +40,11 @@ public class OrdiniFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OrdiniFragment.
+     * @return A new instance of fragment CategorieFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OrdiniFragment newInstance(String param1, String param2) {
-        OrdiniFragment fragment = new OrdiniFragment();
+    public static CategorieFragment newInstance(String param1, String param2) {
+        CategorieFragment fragment = new CategorieFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,12 +65,12 @@ public class OrdiniFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_categorie, container, false);
+
+        btnAddCategory = (FloatingActionButton) rootView.findViewById(R.id.btnAddCategory);
 
 
-        btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
-
-        btnAddOrder.setOnClickListener(new View.OnClickListener() {
+        btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
@@ -83,7 +81,7 @@ public class OrdiniFragment extends Fragment {
     }
 
     public void openDialog(){
-        AddOrderDialog addOrderDialog = new AddOrderDialog(this);
-        addOrderDialog.show(getParentFragmentManager(), "newOrdine");
+        AddCategoryMenuDialog addCategoryMenuDialog = new AddCategoryMenuDialog(this);
+        addCategoryMenuDialog.show(getParentFragmentManager(), "NewCategory");
     }
 }

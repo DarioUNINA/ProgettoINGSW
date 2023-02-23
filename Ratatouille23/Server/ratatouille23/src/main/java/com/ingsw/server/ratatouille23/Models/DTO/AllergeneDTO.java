@@ -7,6 +7,8 @@ public class AllergeneDTO {
     
     //Primary Key
     private String nome;
+
+    //References
     private List<ElementoDTO> elementi;
 
     //Consytuctors

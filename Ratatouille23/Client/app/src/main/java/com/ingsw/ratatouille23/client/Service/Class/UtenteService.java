@@ -15,7 +15,7 @@ public class UtenteService {
     private UtenteApi utenteApi;
 
     public UtenteService(){
-        this.utenteApi = RetrofitService.getRetrofit().create(UtenteApi.class);
+        utenteApi = RetrofitService.getRetrofit().create(UtenteApi.class);
     }
 
     public void checkUser(Callback callback, String username, String password){

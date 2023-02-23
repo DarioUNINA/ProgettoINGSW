@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu;
 
 import android.os.Bundle;
 
@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
 
 

@@ -16,9 +16,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.CategorieFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.GestioneMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.CategorieFragment;
 
 public class AddCategoryMenuDialog extends AppCompatDialogFragment {
 

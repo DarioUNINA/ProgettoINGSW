@@ -2,7 +2,6 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import android.app.AlertDialog;
@@ -15,8 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment.OrdineFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment.OrdiniFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 public class AddOrderDialog extends AppCompatDialogFragment {
 

@@ -2,9 +2,7 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,10 +12,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.ElementiMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 
 public class AddElementoMenuDialog extends AppCompatDialogFragment {
 

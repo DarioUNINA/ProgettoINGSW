@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.Fragment.Gestione_Menu_Fragment.CategorieFragment"
+    tools:context=".View.Fragment.FragmentGestioneMenu.CategorieFragment"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="15dp">
 
