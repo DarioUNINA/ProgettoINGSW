@@ -1,6 +1,8 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         btnPersonale = findViewById(R.id.btnPersonale);
         btnSala = findViewById(R.id.btnSala);
         btnSettings = findViewById(R.id.btnSettingsRestaurant);
+        btnSettings.setVisibility(View.INVISIBLE);
 
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
@@ -67,38 +70,6 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if(utente.getRuolo()==Ruolo.admin)
-            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
-            //Gestione personale
-
-        if(utente.getRuolo()==Ruolo.supervisore)
-            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
-            //Gestione personale
-
-        if(utente.getRuolo()==Ruolo.cuoco)
-            fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class,null);
-
-        if(utente.getRuolo()==Ruolo.cameriere)
-            fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
-
-        fragmentTransaction.commitNow();
-
-
-        btnCucina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txtFragmentAttuale.setText("GESTIONE CUCINA");
-                selectedFragmentPersonale.setVisibility(View.INVISIBLE);
-                selectedFragmentSala.setVisibility(View.INVISIBLE);
-                selectedFragmentMenu.setVisibility(View.INVISIBLE);
-                selectedFragmentCucina.setVisibility(View.VISIBLE);
-                selectedFragmentCucina.setCardBackgroundColor(getResources().getColor(R.color.green));
-
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class,null);
-                fragmentTransaction.commitNow();
-            }
-        });
 
         btnSala.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +84,22 @@ public class HomeActivity extends AppCompatActivity {
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+                fragmentTransaction.commitNow();
+            }
+        });
+
+        btnCucina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtFragmentAttuale.setText("GESTIONE CUCINA");
+                selectedFragmentPersonale.setVisibility(View.INVISIBLE);
+                selectedFragmentSala.setVisibility(View.INVISIBLE);
+                selectedFragmentMenu.setVisibility(View.INVISIBLE);
+                selectedFragmentCucina.setVisibility(View.VISIBLE);
+                selectedFragmentCucina.setCardBackgroundColor(getResources().getColor(R.color.green));
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class,null);
                 fragmentTransaction.commitNow();
             }
         });
@@ -145,11 +132,55 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+
+        if(utente.getRuolo()==Ruolo.admin) {
+            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
+            //Gestione personale
+            btnSettings.setVisibility(View.VISIBLE);
+            btnPersonale.callOnClick();
+        }
+
+        if(utente.getRuolo()==Ruolo.supervisore) {
+            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
+            //Gestione personale
+            btnPersonale.callOnClick();
+        }
+        if(utente.getRuolo()==Ruolo.cuoco) {
+            fragmentTransaction.replace(R.id.homelayoutForFragment, CucinaFragment.class, null);
+            btnCucina.callOnClick();
+
+            btnMenu.setEnabled(false);
+            btnMenu.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+            btnPersonale.setEnabled(false);
+            btnPersonale.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+            btnSala.setEnabled(false);
+            btnSala.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+        }
+        if(utente.getRuolo()==Ruolo.cameriere) {
+            fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class, null);
+            btnSala.callOnClick();
+
+            btnSettings.setEnabled(false);
+            btnSettings.setImageTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+            btnPersonale.setEnabled(false);
+            btnPersonale.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+            btnCucina.setEnabled(false);
+            btnCucina.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+        }
+
+        fragmentTransaction.commitNow();
+
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                intent.putExtra("utente", utente);
+                intent.putExtra("ristorante", ristorante);
                 startActivity(intent);
 
             }

@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Ristorante;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.SettingRestaurantFragment;
@@ -17,6 +19,10 @@ import com.ingsw.ratatouille23.client.View.Fragment.SettingUserFragment;
 public class SettingsActivity extends AppCompatActivity {
 
     FloatingActionButton btnBack;
+    Utente utente;
+    Ristorante ristorante;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +31,16 @@ public class SettingsActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.homeSetting, SettingUserFragment.class,null);
+        if(getIntent().hasExtra("utente")) {
+            utente = (Utente) getIntent().getSerializableExtra("utente");
+            fragmentTransaction.replace(R.id.homeSetting, SettingUserFragment.class, null);
+        }
+
+            if (getIntent().hasExtra("ristorante")){
+                ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
+                fragmentTransaction.replace(R.id.homeSetting, SettingRestaurantFragment.class, null);
+        }
+
         fragmentTransaction.commitNow();
 
         btnBack = findViewById(R.id.btnBack);
