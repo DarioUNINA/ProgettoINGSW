@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.Fragment.CategorieFragment"
+    tools:context=".View.Fragment.Gestione_Menu_Fragment.CategorieFragment"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="15dp">
 
@@ -60,6 +60,7 @@
             android:layout_gravity="center"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAddCategory"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="310dp"

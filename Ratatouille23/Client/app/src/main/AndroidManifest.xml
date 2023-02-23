@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".View.Dialog.AddElementoOrdineDialog"
+            android:exported="false" />
+        <activity
+            android:name=".View.Dialog.AddElementoMenuDialog"
+            android:exported="false" />
+        <activity
+            android:name=".AddCategoryMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.Activity.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings_restaurant"

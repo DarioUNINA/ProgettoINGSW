@@ -18,11 +18,11 @@ import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.google.android.material.tabs.TabItem;
-import com.ingsw.ratatouille23.client.View.Fragment.CucinaFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Gestion_Cucina_Fragment.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.GestioneMenuFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.GestioneSalaFragment;
-import com.ingsw.ratatouille23.client.View.SettingCreateDialog;
+import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.GestioneMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment.GestioneSalaFragment;
+import com.ingsw.ratatouille23.client.View.Dialog.SettingCreateDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -40,8 +40,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        utente = (Utente)getIntent().getSerializableExtra("utente");
-        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        //utente = (Utente)getIntent().getSerializableExtra("utente");
+        //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+
+        utente = new Utente();
+        ristorante = new Ristorante();
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -139,7 +142,6 @@ public class HomeActivity extends AppCompatActivity {
             btnSettings.setVisibility(View.VISIBLE);
             btnPersonale.callOnClick();
         }
-
         if(utente.getRuolo()==Ruolo.supervisore) {
             //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
             //Gestione personale

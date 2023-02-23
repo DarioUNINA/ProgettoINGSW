@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment;
 
 import android.os.Bundle;
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2C3552"
-    tools:context=".View.Fragment.GestioneSalaFragment">
+    tools:context=".View.Fragment.Gestione_Sala_Fragment.GestioneSalaFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tavoli_layout"

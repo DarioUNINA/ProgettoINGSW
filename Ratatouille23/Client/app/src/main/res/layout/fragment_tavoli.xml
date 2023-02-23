@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".View.Fragment.TavoliFragment"
+    tools:context=".View.Fragment.Gestione_Sala_Fragment.TavoliFragment"
     android:orientation="vertical"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="15dp">

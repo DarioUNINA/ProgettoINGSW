@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="15dp"
-    tools:context=".View.Fragment.ElementiGSFragment">
+    tools:context=".View.Fragment.Gestione_Sala_Fragment.ElementiGSFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
@@ -110,6 +110,7 @@
                 android:layout_gravity="center"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addElementoOrdine"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="235dp"

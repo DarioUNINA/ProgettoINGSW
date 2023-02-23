@@ -1,25 +1,24 @@
-package com.ingsw.ratatouille23.client.View.Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment;
 
 import android.os.Bundle;
 
-import androidx.core.view.ContentInfoCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GestioneMenuFragment#newInstance} factory method to
+ * Use the {@link OrdiniFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GestioneMenuFragment extends Fragment {
+public class OrdiniFragment extends Fragment {
+
+    RecyclerView listOrdini;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +29,7 @@ public class GestioneMenuFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GestioneMenuFragment() {
+    public OrdiniFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +39,11 @@ public class GestioneMenuFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GestioneMenuFragment.
+     * @return A new instance of fragment OrdiniFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GestioneMenuFragment newInstance(String param1, String param2) {
-        GestioneMenuFragment fragment = new GestioneMenuFragment();
+    public static OrdiniFragment newInstance(String param1, String param2) {
+        OrdiniFragment fragment = new OrdiniFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,20 +58,16 @@ public class GestioneMenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.categorie_layout, new CategorieFragment());
-        fragmentTransaction.add(R.id.elementi_Menu_layout, new ElementiMenuFragment());
-        fragmentTransaction.commit();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_gestione_menu, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
+
+
+
         return rootView;
     }
 }

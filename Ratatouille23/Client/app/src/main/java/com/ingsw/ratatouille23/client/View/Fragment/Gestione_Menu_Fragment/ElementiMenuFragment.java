@@ -1,12 +1,10 @@
-package com.ingsw.ratatouille23.client.View.Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +12,13 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
 
 
 public class ElementiMenuFragment extends Fragment {
 
-    FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente;
+    FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente, btnRemoveElement, btnAddElement;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +65,8 @@ public class ElementiMenuFragment extends Fragment {
         btnPrezzoCrescente = rootView.findViewById(R.id.btnPrezzoCrescente);
         btnOrdineAlfaDecrescente = rootView.findViewById(R.id.btnOrdineAlfaDecrescente);
         btnOrdineAlfaCrescente = rootView.findViewById(R.id.btnOrdineAlfaCrescente);
+        btnAddElement= rootView.findViewById(R.id.btnAddElement);
+        btnRemoveElement = rootView.findViewById(R.id.btnRemoveElement);
 
         btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -81,14 +83,14 @@ public class ElementiMenuFragment extends Fragment {
             });
 
 
-            btnPrezzoCrescente.setOnClickListener(new View.OnClickListener() {
+        btnPrezzoCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getActivity(), "Prezzo Crescente", Toast.LENGTH_SHORT).show();
                 }
             });
 
-            btnOrdineAlfaCrescente.setOnClickListener(new View.OnClickListener() {
+        btnOrdineAlfaCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getActivity(), "Ordine Alfabetico Crescente", Toast.LENGTH_SHORT).show();
@@ -102,10 +104,21 @@ public class ElementiMenuFragment extends Fragment {
             }
         });
 
+        btnAddElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
 
         return  rootView;
 
 
+    }
+
+    public void openDialog(){
+        AddElementoMenuDialog addElementoMenuDialog = new AddElementoMenuDialog(this);
+        addElementoMenuDialog.show(getParentFragmentManager(), "NewCategory");
     }
 
 
