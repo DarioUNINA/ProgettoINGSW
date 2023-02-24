@@ -33,16 +33,16 @@ public class SettingsActivity extends AppCompatActivity {
         if(getIntent().hasExtra("utente")) {
             utente = (Utente) getIntent().getSerializableExtra("utente");
             fragmentTransaction.replace(R.id.homeSetting, SettingUserFragment.class, null);
-        }
-
-            if (getIntent().hasExtra("ristorante")){
-                ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
-                fragmentTransaction.replace(R.id.homeSetting, SettingRestaurantFragment.class, null);
+        }else{
+             ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
+             fragmentTransaction.replace(R.id.homeSetting, SettingRestaurantFragment.class, null);
         }
 
         fragmentTransaction.commitNow();
 
         btnBack = findViewById(R.id.btnBack);
+        if(utente.getPassword().equals("123"))
+            btnBack.setVisibility(View.INVISIBLE);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

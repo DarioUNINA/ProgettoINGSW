@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 
@@ -20,10 +23,11 @@ public class SettingUserFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
     private Utente utente;
 
     private TextView txtUtente;
+    private EditText pwdAttuale;
+    private MaterialCardView cardViewPwdAttuale;
 
     public SettingUserFragment() {
         // Required empty public constructor
@@ -48,7 +52,6 @@ public class SettingUserFragment extends Fragment {
 
 
 
-
     }
 
     @Override
@@ -59,6 +62,14 @@ public class SettingUserFragment extends Fragment {
 
         utente = (Utente)getActivity().getIntent().getSerializableExtra("utente");
 
+        pwdAttuale = rootView.findViewById(R.id.editTxtPwdAttuale);
+        cardViewPwdAttuale = rootView.findViewById(R.id.cardViewPwdAttuale);
+
+        if(utente.getPassword().equals("123")){
+            pwdAttuale.setText(utente.getPassword());
+            pwdAttuale.setVisibility(View.INVISIBLE);
+            cardViewPwdAttuale.setVisibility(View.INVISIBLE);
+        }
         txtUtente = rootView.findViewById(R.id.txtNomeUtente);
         txtUtente.setText(utente.getUsername());
 

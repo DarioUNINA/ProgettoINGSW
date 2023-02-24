@@ -40,11 +40,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //utente = (Utente)getIntent().getSerializableExtra("utente");
-        //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        utente = (Utente)getIntent().getSerializableExtra("utente");
+        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        utente = new Utente("Dario", "123", 1, Ruolo.admin);
-        ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
+        //utente = new Utente("Dario", "123", 1, Ruolo.admin);
+        //ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -195,6 +195,13 @@ public class HomeActivity extends AppCompatActivity {
                     openDialog();
             }
         });
+
+        if(utente.getPassword().equals("123")){
+            setIntent(new Intent(HomeActivity.this, SettingsActivity.class));
+            getIntent().putExtra("utente", utente);
+            startActivity(getIntent());
+        }
+
 
 
     }

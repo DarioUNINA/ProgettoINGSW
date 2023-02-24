@@ -1,6 +1,7 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
 import com.ingsw.ratatouille23.client.Model.Ristorante;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.RistoranteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
@@ -27,7 +28,6 @@ public class RistorantePresenter {
             public void returnResult(Object o) {
                 if(o!=null) {
                     logInActivity.getIntent().putExtra("ristorante", (Ristorante)o);
-                    logInActivity.getIntent().setClass(logInActivity, SettingsActivity.class);
                     logInActivity.startActivity(logInActivity.getIntent());
                 }else
                     System.out.println("Nessun ristorante trovato con l'id "+idRistorante);
