@@ -57,16 +57,6 @@ insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 4);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 4);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
 
-
---Ordinazione 
-insert into ordinazione(id_ordine, id_elemento) values (1,1);
-insert into ordinazione(id_ordine, id_elemento) values (2,4);
-insert into ordinazione(id_ordine, id_elemento) values (2,3);
-insert into ordinazione(id_ordine, id_elemento) values (1,5);
-insert into ordinazione(id_ordine, id_elemento) values (5,4);
-insert into ordinazione(id_ordine, id_elemento) values (3,3);
-insert into ordinazione(id_ordine, id_elemento) values (3,4);
-
 --Allergia
 insert into allergia(allergene, id_elemento) values ('pesce', 2);
 insert into allergia(allergene, id_elemento) values ('latte', 6);

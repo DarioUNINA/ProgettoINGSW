@@ -137,22 +137,6 @@ ALTER TABLE IF EXISTS public.menu
     OWNER to postgres;
 
 
---------------------------------
-
-
-DROP TABLE IF EXISTS public.ordinazione;
-
-CREATE TABLE IF NOT EXISTS public.ordinazione
-(
-    id_ordine integer NOT NULL,
-    id_elemento integer NOT NULL,
-    quantita integer NOT NULL DEFAULT 1
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.ordinazione
-    OWNER to postgres;
 
 
 --------------------------------
