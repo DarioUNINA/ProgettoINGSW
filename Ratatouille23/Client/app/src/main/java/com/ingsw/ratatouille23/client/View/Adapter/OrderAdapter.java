@@ -1,86 +1,76 @@
-//package com.ingsw.ratatouille23.client.View.Adapter;
-//
-//import android.view.ViewGroup;
-//
-//import androidx.annotation.NonNull;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import java.util.ArrayList;
-//
-//public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
+package com.ingsw.ratatouille23.client.View.Adapter;
 
-//    private ArrayList<Order> orderArrayList = new ArrayList<>();
-//    public ArrayList<Order> selectedItemsArrayList = new ArrayList<>();
-//
-//    public int currentLayout = -1;
-//
-//    public OrderAdapter(Context context, ArrayList<Order> orderArrayList){
-//        this.orderArrayList = orderArrayList;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public OrderAdapter.OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull OrderAdapter.OrderHolder holder, int position) {
-//
-//    }
-//
-//
-//    @Override
-//    public int getItemCount() {
-//        return orderArrayList.size();
-//    }
-//
-//    @Override
-//    public int getItemViewType(int position){
-//        return currentLayout;
-//    }
-//
-//    public ArrayList<Order> getOrderArrayList() {
-//        return orderArrayList;
-//    }
-//
-//    public void setOrderArrayList(ArrayList<Order> orderArrayList) {
-//        this.orderArrayList = orderArrayList;
-//    }
-//
-//    public int getCurrentLayout() {
-//        return currentLayout;
-//    }
-//
-//    public void setCurrentLayout(int currentLayout) {
-//        this.currentLayout = currentLayout;
-//    }
-//
-//    public void clearList(){
-//        orderArrayList.clear();
-//    }
-//
-//    public ArrayList<Order> getSelectedItemsArrayList() {
-//        return selectedItemsArrayList;
-//    }
-//
-//    public void setSelectedItemsArrayList(ArrayList<Order> selectedItemsArrayList) {
-//        this.selectedItemsArrayList = selectedItemsArrayList;
-//    }
-//
-//    // ***************************************************************************************
-//    // ***************************************************************************************
-//    // ***************************************************************************************
-//
-//    public class OrderHolder extends RecyclerView.ViewHolder{
-//
-//        TextView orderElement;
-//        TextView orderPrice;
-//        CheckBox checkBox;
-//
-//        public OrderHolder(@NonNull View itemView) {
-//            super(itemView);
-//        }
-//    }
+import android.content.Context;
+import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-//}
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
+
+import java.util.ArrayList;
+
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
+
+    //private ArrayList<Ordine> ordini;
+    private Context context;
+    private OnOrdineClickListner onOrdineClickListner;
+    Ordine ordine;
+
+    public OrderAdapter(Ordine ordini, Context context, OnOrdineClickListner onOrdineClickListner) {
+        this.ordine = ordini;
+        this.context = context;
+        this.onOrdineClickListner = onOrdineClickListner;
+    }
+
+     public interface OnOrdineClickListner{
+        void onOrdineClicked(int position);
+    }
+
+    @NonNull
+    @Override
+    public OrderAdapter.OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.fragment_ordine, parent, false);
+
+        ordine.setIdOrdine(100);
+
+        return new OrderHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull OrderAdapter.OrderHolder holder, int position) {
+        holder.txtIdOrdine.setText("prova");//ordini.get(position).getIdOrdine()
+    }
+
+    @Override
+    public int getItemCount() {
+        //return ordini.size();
+        return 3;
+    }
+
+    class OrderHolder extends RecyclerView.ViewHolder{
+
+
+        TextView txtIdOrdine;
+        TextView txtIdCameriere;
+
+        public OrderHolder(@NonNull View itemView) {
+            super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //onOrdineClickListner.onOrderClicked(getAdapterPosition());
+                }
+            });
+            txtIdOrdine = itemView.findViewById(R.id.txtIdOrdine);
+            txtIdCameriere = itemView.findViewById(R.id.txtCameriere);
+        }
+    }
+}

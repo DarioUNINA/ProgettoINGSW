@@ -3,6 +3,8 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.OrderAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +27,13 @@ import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 public class OrdiniFragment extends Fragment {
 
     private FloatingActionButton btnAddOrder;
-    RecyclerView listOrdini;
+    private RecyclerView listOrdini;
+
+    private OrderAdapter orderAdapter;
+    private OrderAdapter.OnOrdineClickListner onOrdineCLickListner;
+
+    private Ordine ordine;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,7 +82,20 @@ public class OrdiniFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
 
 
+        listOrdini = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
+        ordine = new Ordine();
+
+        orderAdapter = new OrderAdapter(ordine, getContext(), onOrdineCLickListner);
+
+
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listOrdini.setLayoutManager(linearLayoutManager);
+        listOrdini.setAdapter(orderAdapter);
+        listOrdini.setVisibility(View.VISIBLE);
 
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,4 +111,5 @@ public class OrdiniFragment extends Fragment {
         AddOrderDialog addOrderDialog = new AddOrderDialog(this);
         addOrderDialog.show(getParentFragmentManager(), "newOrdine");
     }
+
 }
