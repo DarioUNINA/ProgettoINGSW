@@ -42,13 +42,23 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintContenitoreRecycler"
             android:layout_width="575dp"
-            android:layout_height="517dp">
+            android:layout_height="517dp"
+            android:backgroundTint="@color/white"
+            android:background="@color/white">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewOrdini"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_width="471dp"
+                android:layout_height="479dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.153"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.578" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
