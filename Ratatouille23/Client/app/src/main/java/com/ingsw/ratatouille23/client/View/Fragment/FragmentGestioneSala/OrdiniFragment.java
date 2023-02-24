@@ -32,7 +32,7 @@ public class OrdiniFragment extends Fragment {
     private OrderAdapter orderAdapter;
     private OrderAdapter.OnOrdineClickListner onOrdineCLickListner;
 
-    private Ordine ordine;
+    private ArrayList<Ordine> ordine;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -84,7 +84,7 @@ public class OrdiniFragment extends Fragment {
 
         listOrdini = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
-        ordine = new Ordine();
+        ordine = new ArrayList<Ordine>();
 
         orderAdapter = new OrderAdapter(ordine, getContext(), onOrdineCLickListner);
 

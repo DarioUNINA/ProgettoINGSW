@@ -18,13 +18,12 @@ import java.util.ArrayList;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
 
-    //private ArrayList<Ordine> ordini;
+    private ArrayList<Ordine> ordini;
     private Context context;
     private OnOrdineClickListner onOrdineClickListner;
-    Ordine ordine;
 
-    public OrderAdapter(Ordine ordini, Context context, OnOrdineClickListner onOrdineClickListner) {
-        this.ordine = ordini;
+    public OrderAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner) {
+        this.ordini = ordini;
         this.context = context;
         this.onOrdineClickListner = onOrdineClickListner;
     }
@@ -38,20 +37,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     public OrderAdapter.OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.fragment_ordine, parent, false);
 
-        ordine.setIdOrdine(100);
-
         return new OrderHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.OrderHolder holder, int position) {
-        holder.txtIdOrdine.setText("prova");//ordini.get(position).getIdOrdine()
+        holder.txtIdOrdine.setText(ordini.get(position).getIdOrdine());
     }
 
     @Override
     public int getItemCount() {
-        //return ordini.size();
-        return 3;
+        return ordini.size();
     }
 
     class OrderHolder extends RecyclerView.ViewHolder{
