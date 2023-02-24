@@ -45,6 +45,8 @@ public class Ristorante implements Serializable {
         this.idMenu = idMenu;
     }
 
+
+
     //Getters and Setters
     public int getIdRistorante() {
         return idRistorante;

@@ -18,10 +18,10 @@ import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.google.android.material.tabs.TabItem;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestion_Cucina_Fragment.CucinaFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneCucina.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment.GestioneMenuFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.Gestione_Sala_Fragment.GestioneSalaFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.GestioneMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.GestioneSalaFragment;
 import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
 public class HomeActivity extends AppCompatActivity {
@@ -43,8 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         //utente = (Utente)getIntent().getSerializableExtra("utente");
         //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        utente = new Utente();
-        ristorante = new Ristorante();
+        utente = new Utente("Dario", "123", 1, Ruolo.admin);
+        ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);

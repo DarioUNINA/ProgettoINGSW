@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Fragment.Gestione_Menu_Fragment;
+package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu;
 
 import android.os.Bundle;
 

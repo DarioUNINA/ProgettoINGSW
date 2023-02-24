@@ -33,6 +33,13 @@ public class Utente implements Serializable {
         this.password = password;
     }
 
+    public Utente(String username, String password, int idRistorante, Ruolo ruolo) {
+        this.username = username;
+        this.password = password;
+        this.idRistorante = idRistorante;
+        this.ruolo = ruolo;
+    }
+
 
     //Getters and Setters
 
