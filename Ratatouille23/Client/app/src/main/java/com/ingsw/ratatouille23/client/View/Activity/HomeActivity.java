@@ -21,6 +21,7 @@ import com.google.android.material.tabs.TabItem;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneCucina.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.GestioneMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.GestionePersonaleFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.GestioneSalaFragment;
 import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
@@ -40,11 +41,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        utente = (Utente)getIntent().getSerializableExtra("utente");
-        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        //utente = (Utente)getIntent().getSerializableExtra("utente");
+        //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        //utente = new Utente("Dario", "123", 1, Ruolo.admin);
-        //ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
+        utente = new Utente("Dario", "pwd", 1, Ruolo.admin);
+        ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -117,6 +118,10 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragmentCucina.setVisibility(View.INVISIBLE);
                 selectedFragmentPersonale.setCardBackgroundColor(getResources().getColor(R.color.green));
 
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.homelayoutForFragment, GestionePersonaleFragment.class,null);
+                fragmentTransaction.commitNow();
+
             }
         });
 
@@ -129,6 +134,7 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragmentMenu.setVisibility(View.VISIBLE);
                 selectedFragmentCucina.setVisibility(View.INVISIBLE);
                 selectedFragmentMenu.setCardBackgroundColor(getResources().getColor(R.color.green));
+
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneMenuFragment.class,null);
                 fragmentTransaction.commitNow();
@@ -187,8 +193,6 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-
-
         tabItemUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,8 +205,6 @@ public class HomeActivity extends AppCompatActivity {
             getIntent().putExtra("utente", utente);
             startActivity(getIntent());
         }
-
-
 
     }
 
