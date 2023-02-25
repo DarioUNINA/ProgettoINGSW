@@ -64,7 +64,6 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
-            android:text="ASDEUE"
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold"

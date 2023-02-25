@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
 
 public class GestioneSalaFragment extends Fragment {
@@ -19,6 +20,7 @@ public class GestioneSalaFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
 
     public GestioneSalaFragment() {
         // Required empty public constructor
@@ -58,6 +60,8 @@ public class GestioneSalaFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_gestione_sala, container, false);
 
         //inserisci cose
+
+
 
         return rootView;
     }

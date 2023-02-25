@@ -11,11 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 
-public class SettingUserFragment extends Fragment {
+public class SettingUtenteFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -29,12 +28,12 @@ public class SettingUserFragment extends Fragment {
     private EditText pwdAttuale;
     private MaterialCardView cardViewPwdAttuale;
 
-    public SettingUserFragment() {
+    public SettingUtenteFragment() {
         // Required empty public constructor
     }
 
-    public static SettingUserFragment newInstance(String param1, String param2) {
-        SettingUserFragment fragment = new SettingUserFragment();
+    public static SettingUtenteFragment newInstance(String param1, String param2) {
+        SettingUtenteFragment fragment = new SettingUtenteFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

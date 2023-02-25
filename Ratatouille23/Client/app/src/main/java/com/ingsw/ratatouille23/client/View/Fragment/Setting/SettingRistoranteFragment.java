@@ -12,10 +12,10 @@ import com.ingsw.ratatouille23.client.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SettingRestaurantFragment#newInstance} factory method to
+ * Use the {@link SettingRistoranteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingRestaurantFragment extends Fragment {
+public class SettingRistoranteFragment extends Fragment {
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -27,7 +27,7 @@ public class SettingRestaurantFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SettingRestaurantFragment() {
+    public SettingRistoranteFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +37,11 @@ public class SettingRestaurantFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingRestaurantFragment.
+     * @return A new instance of fragment SettingRistoranteFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SettingRestaurantFragment newInstance(String param1, String param2) {
-        SettingRestaurantFragment fragment = new SettingRestaurantFragment();
+    public static SettingRistoranteFragment newInstance(String param1, String param2) {
+        SettingRistoranteFragment fragment = new SettingRistoranteFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

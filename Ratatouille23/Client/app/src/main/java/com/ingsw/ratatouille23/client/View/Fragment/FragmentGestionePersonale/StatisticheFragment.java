@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Adapter.StatsAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.StatisticheAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,7 +79,7 @@ public class StatisticheFragment extends Fragment {
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#2C3552"));
 
-        final StatsAdapter adapter = new StatsAdapter(getFragmentManager(), getContext(), tabLayout.getTabCount());
+        final StatisticheAdapter adapter = new StatisticheAdapter(getFragmentManager(), getContext(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
 

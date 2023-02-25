@@ -12,8 +12,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingRestaurantFragment;
-import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUserFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingRistoranteFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUtenteFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -32,10 +32,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         if(getIntent().hasExtra("utente")) {
             utente = (Utente) getIntent().getSerializableExtra("utente");
-            fragmentTransaction.replace(R.id.homeSetting, SettingUserFragment.class, null);
+            fragmentTransaction.replace(R.id.homeSetting, SettingUtenteFragment.class, null);
         }else{
              ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
-             fragmentTransaction.replace(R.id.homeSetting, SettingRestaurantFragment.class, null);
+             fragmentTransaction.replace(R.id.homeSetting, SettingRistoranteFragment.class, null);
         }
 
         fragmentTransaction.commitNow();

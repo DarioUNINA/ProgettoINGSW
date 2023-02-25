@@ -3,7 +3,6 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,34 +12,29 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Adapter.OrderAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 
-import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OrdiniFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class OrdiniFragment extends Fragment {
 
     private FloatingActionButton btnAddOrder;
-    private RecyclerView listOrdini;
+    private RecyclerView ordiniRecyclerView;
 
-    private OrderAdapter orderAdapter;
-    private OrderAdapter.OnOrdineClickListner onOrdineCLickListner;
+    private OrdineAdapter ordineAdapter;
+    private OrdineAdapter.OnOrdineClickListner onOrdineCLickListner;
 
-    private ArrayList<Ordine> ordine;
+    private OrdinePresenter ordinePresenter;
+
+    private List<Ordine> ordini;
 
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -48,15 +42,7 @@ public class OrdiniFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OrdiniFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static OrdiniFragment newInstance(String param1, String param2) {
         OrdiniFragment fragment = new OrdiniFragment();
         Bundle args = new Bundle();
@@ -82,20 +68,17 @@ public class OrdiniFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
 
 
-        listOrdini = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
+        ordiniRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
-        ordine = new ArrayList<Ordine>();
 
-        orderAdapter = new OrderAdapter(ordine, getContext(), onOrdineCLickListner);
-
-
+        ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
+        ordinePresenter.getByTavolo(1);//tavolo 1 selezionato
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        listOrdini.setLayoutManager(linearLayoutManager);
-        listOrdini.setAdapter(orderAdapter);
-        listOrdini.setVisibility(View.VISIBLE);
+        ordiniRecyclerView.setLayoutManager(linearLayoutManager);
+
 
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,4 +95,35 @@ public class OrdiniFragment extends Fragment {
         addOrderDialog.show(getParentFragmentManager(), "newOrdine");
     }
 
+    public List<Ordine> getOrdini() {
+        return ordini;
+    }
+
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
+    }
+
+    public OrdineAdapter getOrderAdapter() {
+        return ordineAdapter;
+    }
+
+    public void setOrderAdapter(OrdineAdapter ordineAdapter) {
+        this.ordineAdapter = ordineAdapter;
+    }
+
+    public OrdineAdapter.OnOrdineClickListner getOnOrdineCLickListner() {
+        return onOrdineCLickListner;
+    }
+
+    public void setOnOrdineCLickListner(OrdineAdapter.OnOrdineClickListner onOrdineCLickListner) {
+        this.onOrdineCLickListner = onOrdineCLickListner;
+    }
+
+    public RecyclerView getOrdiniRecyclerView() {
+        return ordiniRecyclerView;
+    }
+
+    public void setOrdiniRecyclerView(RecyclerView ordiniRecyclerView) {
+        this.ordiniRecyclerView = ordiniRecyclerView;
+    }
 }

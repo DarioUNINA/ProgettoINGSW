@@ -6,6 +6,7 @@ import com.ingsw.server.ratatouille23.Models.Entities.Tavolo;
 import com.ingsw.server.ratatouille23.Repositories.TavoloRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.ITavoloService;
 import java.util.Optional;
+import java.util.List;
 
 
 @Service("TavoloService")
@@ -18,4 +19,9 @@ public class TavoloService implements ITavoloService{
     public Optional<Tavolo> getById(Integer idTavolo){
         return TavoloRepository.findById(idTavolo);
     } 
+
+    @Override
+    public Optional<List<Tavolo>> getByRistorante(Integer idRistorante){
+        return TavoloRepository.findByRistorante(idRistorante);
+    }
 }

@@ -10,12 +10,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.StatisticheGeneraleFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.StatisticheUtenteFragment;
 
-public class StatsAdapter extends FragmentPagerAdapter {
+public class StatisticheAdapter extends FragmentPagerAdapter {
 
     private Context context;
     int totalTabs;
 
-    public StatsAdapter(FragmentManager fm, Context context, int totalTabs){
+    public StatisticheAdapter(FragmentManager fm, Context context, int totalTabs){
         super(fm);
         this.context = context;
         this.totalTabs = totalTabs;
