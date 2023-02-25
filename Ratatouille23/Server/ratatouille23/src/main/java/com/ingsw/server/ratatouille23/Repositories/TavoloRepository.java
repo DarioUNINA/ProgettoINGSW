@@ -4,6 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.ingsw.server.ratatouille23.Models.Entities.Tavolo;
 
 import java.util.List;
+import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import java.util.Optional;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 
@@ -13,6 +14,8 @@ public interface TavoloRepository extends CrudRepository<Tavolo,Integer>{
     public Optional<Tavolo> findById(Integer idTavolo);
     
     public Optional<List<Tavolo>> findByRistorante(Ristorante ristorante);
+
+    public Optional<List<Tavolo>> findByCameriere(Utente cameriere);
 
 }
 

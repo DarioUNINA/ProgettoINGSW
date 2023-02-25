@@ -42,7 +42,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     @Override
     public void onBindViewHolder(@NonNull OrdineAdapter.OrderHolder holder, int position) {
         holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
-
+        //bisogna passare il tavolo per prendere il nome del cameriere
     }
 
     @Override

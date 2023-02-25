@@ -50,6 +50,10 @@ public class Utente {
         this.ristorante = ristorante;
     }
 
+    public Utente(String username){
+        this.username = username;
+    }
+
     public Utente(String username, String password, Ruolo ruolo, Ristorante ristorante, List<Tavolo> tavoli) {
         this.username = username;
         this.password = password;

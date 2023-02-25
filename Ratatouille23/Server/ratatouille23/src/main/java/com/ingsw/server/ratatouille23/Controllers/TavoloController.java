@@ -12,6 +12,7 @@ import java.util.Optional;
 import com.ingsw.server.ratatouille23.Models.DTO.TavoloDTO;
 import java.util.ArrayList;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
+import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import java.util.List;
 
 
@@ -54,5 +55,20 @@ public class TavoloController {
         }else
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
 
+    }
+
+    @GetMapping("/get/cameriere/{username}")
+    public List<TavoloDTO> getByCameriere(@PathVariable("username") String username) {
+        Optional<List<Tavolo>> tavoli = TavoloService.getByCameriere(new Utente(username));
+    
+        if (tavoli.isPresent()){
+            List<TavoloDTO> tavoliDTO = new ArrayList<TavoloDTO>();
+    
+            for(Tavolo t : tavoli.get())
+                tavoliDTO.add(modelMapper.map(t, TavoloDTO.class));
+    
+            return tavoliDTO;
+        }else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
     }
 }
