@@ -1,7 +1,5 @@
 package com.ingsw.server.ratatouille23.Models.DTO;
 
-import java.util.ArrayList;
-
 import java.util.List;
 
 public class TavoloDTO {
@@ -15,7 +13,7 @@ public class TavoloDTO {
 
     //References
     private Integer idRistorante;
-    private List<OrdineDTO> idOrdini;
+    private List<OrdineDTO> ordini;
     private UtenteDTO cameriere;
 
     //Constructors
@@ -27,7 +25,7 @@ public class TavoloDTO {
         this.posti = posti;
         this.occupato = occupato;
         this.idRistorante = idRistorante;
-        this.idOrdini = ordini;
+        this.ordini = ordini;
         this.cameriere = cameriere;
     }
 
@@ -65,16 +63,12 @@ public class TavoloDTO {
         this.idRistorante = idRistorante;
     }
 
-    public List<Integer> getIdOrdini() {
-        List<Integer> ordini = new ArrayList<>();
-        for(OrdineDTO o : this.idOrdini){
-            ordini.add(o.getIdOrdine());
-        }
+    public List<OrdineDTO> getOrdini() {
         return ordini;
     }
 
-    public void setIdOrdini(List<OrdineDTO> ordini) {
-        this.idOrdini = ordini;
+    public void setordini(List<OrdineDTO> ordini) {
+        this.ordini = ordini;
     }
 
     public String getCameriere() {

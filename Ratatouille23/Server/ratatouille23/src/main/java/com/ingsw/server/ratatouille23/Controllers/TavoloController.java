@@ -10,6 +10,11 @@ import com.ingsw.server.ratatouille23.Services.Interfaces.ITavoloService;
 import com.ingsw.server.ratatouille23.Models.Entities.Tavolo;
 import java.util.Optional;
 import com.ingsw.server.ratatouille23.Models.DTO.TavoloDTO;
+import java.util.ArrayList;
+import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
+import java.util.List;
+
+
 
 @RestController
 @RequestMapping("/tavolo")
@@ -33,5 +38,21 @@ public class TavoloController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
 
     }
-    
+
+    @GetMapping("/get/ristorante/{id}")
+    public List<TavoloDTO> getByRistorante(@PathVariable("id") Integer id) {
+        Optional<List<Tavolo>> tavoli = TavoloService.getByRistorante(new Ristorante(id));
+
+
+        if (tavoli.isPresent()){
+            List<TavoloDTO> tavoliDTO = new ArrayList<TavoloDTO>();
+
+            for(Tavolo t : tavoli.get())
+                tavoliDTO.add(modelMapper.map(t, TavoloDTO.class));
+
+            return tavoliDTO;
+        }else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
+
+    }
 }

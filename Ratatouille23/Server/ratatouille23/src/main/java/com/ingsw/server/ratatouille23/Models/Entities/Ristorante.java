@@ -44,6 +44,10 @@ public class Ristorante{
     public Ristorante() {
     }
 
+    public Ristorante(int idRistorante) {
+        this.idRistorante = idRistorante;
+    }
+
     public Ristorante(Integer idRistorante, List<Utente> utenti, Menu menu, String nome, String indirizzo, String telefono) {
         this.idRistorante = idRistorante;
         this.utenti = utenti;
