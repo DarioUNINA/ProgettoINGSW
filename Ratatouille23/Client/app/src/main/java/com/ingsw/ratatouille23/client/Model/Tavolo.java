@@ -24,20 +24,31 @@ public class Tavolo implements Serializable {
     private boolean occupato;
 
     //References
+
+    @Expose
+    @SerializedName("idRistorante")
     private int idRistorante;
-    private List<Ordine> idOrdini;
+
+    @Expose
+    @SerializedName("ordini")
+
+    private List<Ordine> ordini;
+
+    @Expose
+    @SerializedName("cameriere")
     private String cameriere;
+
 
     //Constructors
 
     public Tavolo() {}
 
-    public Tavolo(int idTavolo, int posti, boolean occupato, int idRistorante, List<Ordine> idOrdini, String cameriere) {
+    public Tavolo(int idTavolo, int posti, boolean occupato, int idRistorante, List<Ordine> ordini, String cameriere) {
         this.idTavolo = idTavolo;
         this.posti = posti;
         this.occupato = occupato;
         this.idRistorante = idRistorante;
-        this.idOrdini = idOrdini;
+        this.ordini = ordini;
         this.cameriere = cameriere;
     }
 
@@ -83,12 +94,12 @@ public class Tavolo implements Serializable {
         this.idRistorante = idRistorante;
     }
 
-    public List<Ordine> getIdOrdini() {
-        return idOrdini;
+    public List<Ordine> getOrdini() {
+        return ordini;
     }
 
-    public void setIdOrdini(List<Ordine> idOrdini) {
-        this.idOrdini = idOrdini;
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
     }
 
     public String getCameriere() {

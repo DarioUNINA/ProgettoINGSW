@@ -23,7 +23,13 @@ public class Elemento implements Serializable {
     List<Allergene> allergeni;
 
     //Attributes
+
+    @Expose
+    @SerializedName("nome")
     private String nome;
+
+    @Expose
+    @SerializedName("prezzo")
     private float prezzo;
 
     //Constructors

@@ -27,6 +27,9 @@ public class Ristorante implements Serializable {
 
 
     //References
+
+    @Expose
+    @SerializedName("idMenu")
     private int idMenu;
 
 
