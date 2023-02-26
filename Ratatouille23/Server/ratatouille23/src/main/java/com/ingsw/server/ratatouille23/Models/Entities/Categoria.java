@@ -35,6 +35,10 @@ public class Categoria {
     public Categoria() {
     }
 
+    public Categoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
     public Categoria(int idCategoria, String nome) {
         this.idCategoria = idCategoria;
         this.nome = nome;

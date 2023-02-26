@@ -6,6 +6,8 @@ import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import com.ingsw.server.ratatouille23.Repositories.ElementoRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IElementoService;
 import java.util.Optional;
+import java.util.List;
+import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 
 @Service("ElementoService")
 public class ElementoService implements IElementoService {
@@ -17,4 +19,9 @@ public class ElementoService implements IElementoService {
     public Optional<Elemento> getById(Integer id){
         return elementoRepository.findById(id);
     } 
+
+    @Override
+    public Optional<List<Elemento>> getByCategoria(Integer idCategoria) {
+        return elementoRepository.findByCategoria(new Categoria(idCategoria));
+    }
 }
