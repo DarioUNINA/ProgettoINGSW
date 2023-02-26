@@ -62,13 +62,11 @@ public class TavoliFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         tavoloPresenter = new TavoloPresenter(TavoliFragment.this);
-        if(((HomeActivity)getActivity()).getUtente().getRuolo().equals(Ruolo.admin))
-            tavoloPresenter.getByIdRistorante(((HomeActivity)getActivity()).getRistorante().getIdRistorante());
-        else
-            tavoloPresenter.getByCameriere(((HomeActivity)getActivity()).getUtente().getUsername());
 
-
+        tavoloPresenter.getTavoli();
 
         return inflater.inflate(R.layout.fragment_tavoli, container, false);
     }
+
+
 }
