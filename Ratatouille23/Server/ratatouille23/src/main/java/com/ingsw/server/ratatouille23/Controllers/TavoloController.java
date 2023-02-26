@@ -57,7 +57,7 @@ public class TavoloController {
 
     }
 
-    @GetMapping("/get/cameriere/{username}")
+    @GetMapping("/get/cameriere/    {username}")
     public List<TavoloDTO> getByCameriere(@PathVariable("username") String username) {
         Optional<List<Tavolo>> tavoli = TavoloService.getByCameriere(new Utente(username));
     

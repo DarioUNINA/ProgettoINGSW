@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.Service;
 
+import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Retrofit.TavoloApi;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
@@ -41,5 +42,29 @@ public class TavoloService {
                 });
 
     }
+
+    public void getByRistorante(Callback callback, Ristorante ristorante){
+        tavoloApi.getByRistorante(ristorante.getIdRistorante())
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Tavolo>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Tavolo> tavoli) {
+                        callback.returnResult(tavoli);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+
+    }
+
+
 
 }
