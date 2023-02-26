@@ -31,11 +31,7 @@ public class TavoloPresenter {
             public void returnResult(Object o) {
                 if(o!=null){
                     //Inserire i tavoli nella recycler view
-                    System.out.println("E ANDATO\n\n\n\n\n\n");
-                    for(Tavolo t:(List<Tavolo>)o)
-                        System.out.println(t.getIdTavolo());
-                }else
-                    System.out.println("NON E ANDATO\n\n\n\n\n\n");
+                }
 
             }
 

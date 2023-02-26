@@ -26,12 +26,13 @@ public class Tavolo implements Serializable {
     //References
     private int idRistorante;
     private List<Ordine> idOrdini;
-    private Utente cameriere;
+    private String cameriere;
 
     //Constructors
+
     public Tavolo() {}
 
-    public Tavolo(int idTavolo, int posti, boolean occupato, int idRistorante, List<Ordine> idOrdini, Utente cameriere) {
+    public Tavolo(int idTavolo, int posti, boolean occupato, int idRistorante, List<Ordine> idOrdini, String cameriere) {
         this.idTavolo = idTavolo;
         this.posti = posti;
         this.occupato = occupato;
@@ -90,11 +91,11 @@ public class Tavolo implements Serializable {
         this.idOrdini = idOrdini;
     }
 
-    public Utente getCameriere() {
+    public String getCameriere() {
         return cameriere;
     }
 
-    public void setCameriere(Utente cameriere) {
+    public void setCameriere(String cameriere) {
         this.cameriere = cameriere;
     }
 }
