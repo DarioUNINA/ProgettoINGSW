@@ -24,7 +24,7 @@ public class TavoloPresenter {
         this.tavoliFragment = tavoliFragment;
     }
 
-    public void getByRistorante(Ristorante ristorante){
+    public void getByRistorante(int idRistorante){
 
         service.getByRistorante(new Callback() {
             @Override
@@ -39,7 +39,7 @@ public class TavoloPresenter {
             public void returnError(Throwable e) {
                 System.out.println("Errore\n");
             }
-        }, ristorante);
+        }, idRistorante);
 
 
     }
@@ -66,7 +66,7 @@ public class TavoloPresenter {
     public void getTavoli(){
 
         if(((HomeActivity)tavoliFragment.getActivity()).getUtente().getRuolo().equals(Ruolo.admin))
-            getByRistorante(new Ristorante(((HomeActivity)tavoliFragment.getActivity()).getRistorante().getIdRistorante()));
+            getByRistorante(((HomeActivity)tavoliFragment.getActivity()).getRistorante().getIdRistorante());
         else
             getByCameriere(((HomeActivity)tavoliFragment.getActivity()).getUtente().getUsername());
     }

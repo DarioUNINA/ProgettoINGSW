@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
     public Optional<Elemento> findById(Integer id);
+
 }

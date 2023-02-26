@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 import com.ingsw.server.ratatouille23.Repositories.CategoriaRepository;
 import java.util.Optional;
+import java.util.List;
+import com.ingsw.server.ratatouille23.Models.Entities.Menu;
 
 @Service("CategoriaService")
 public class CategoriaService implements ICategoriaService {
@@ -16,5 +18,10 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public Optional<Categoria> getById(Integer idCategoria) {
         return categoriaRepository.findById(idCategoria);
+    }
+
+    @Override
+    public Optional<List<Categoria>> getByMenu(Integer idMenu) {
+        return categoriaRepository.findByMenu(new Menu(idMenu));
     }
 }

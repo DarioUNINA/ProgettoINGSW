@@ -31,6 +31,10 @@ public class Menu {
     public Menu() {
     }
 
+    public Menu(int idMenu) {
+        this.idMenu = idMenu;
+    }
+
     public Menu(int idMenu, Ristorante ristorante) {
         this.idMenu = idMenu;
         this.ristorante = ristorante;

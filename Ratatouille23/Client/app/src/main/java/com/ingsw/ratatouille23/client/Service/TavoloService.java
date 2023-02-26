@@ -43,8 +43,8 @@ public class TavoloService {
 
     }
 
-    public void getByRistorante(Callback callback, Ristorante ristorante){
-        tavoloApi.getByRistorante(ristorante.getIdRistorante())
+    public void getByRistorante(Callback callback, int idRistorante){
+        tavoloApi.getByRistorante(idRistorante)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<List<Tavolo>>() {

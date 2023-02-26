@@ -10,6 +10,8 @@ import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 import com.ingsw.server.ratatouille23.Services.Interfaces.ICategoriaService;
 import com.ingsw.server.ratatouille23.Models.DTO.CategoriaDTO;
 import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -33,5 +35,19 @@ public class CategoriaController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Categoria non trovata");
     }
 
+    @GetMapping("/get/menu/{id}")
+    public List<CategoriaDTO> getByMenu(@PathVariable("id") Integer id) {
+        Optional<List<Categoria>> categorie = categoriaService.getByMenu(id);
+
+        if (categorie.isPresent()){
+            List<CategoriaDTO> categorieDTO = new ArrayList<CategoriaDTO>();
+            for (Categoria categoria : categorie.get())
+                categorieDTO.add(modelMapper.map(categoria, CategoriaDTO.class));
+
+            return categorieDTO;
+
+        }else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessuna categoria trovata");
+    }
 
 }
