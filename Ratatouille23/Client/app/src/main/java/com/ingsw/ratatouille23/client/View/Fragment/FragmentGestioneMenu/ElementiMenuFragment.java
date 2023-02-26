@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +13,32 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
+
+import java.util.List;
 
 
 public class ElementiMenuFragment extends Fragment {
 
-    FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente, btnRemoveElement, btnAddElement;
+    private FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente, btnRemoveElement, btnAddElement;
+
+
+    private RecyclerView elementiMenuRecyclerView;
+
+    private ElementiGMAdapter elementiGMAdapter;
+    private ElementiGMAdapter.OnElementiClickListner onElementiClickListner;
+
+    private ElementoPresenter elementoPresenter;
+
+    private List<Elemento> elementi;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,7 +102,6 @@ public class ElementiMenuFragment extends Fragment {
                 }
             });
 
-
         btnPrezzoCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -110,6 +130,17 @@ public class ElementiMenuFragment extends Fragment {
             }
         });
 
+
+        elementiMenuRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGM);
+
+        elementoPresenter = new ElementoPresenter();
+        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        elementiMenuRecyclerView.setLayoutManager(linearLayoutManager);
+
         return  rootView;
 
 
@@ -120,5 +151,91 @@ public class ElementiMenuFragment extends Fragment {
         addElementoMenuDialog.show(getParentFragmentManager(), "NewCategory");
     }
 
+    public FloatingActionButton getBtnPrezzoDecrescente() {
+        return btnPrezzoDecrescente;
+    }
 
+    public void setBtnPrezzoDecrescente(FloatingActionButton btnPrezzoDecrescente) {
+        this.btnPrezzoDecrescente = btnPrezzoDecrescente;
+    }
+
+    public FloatingActionButton getBtnPrezzoCrescente() {
+        return btnPrezzoCrescente;
+    }
+
+    public void setBtnPrezzoCrescente(FloatingActionButton btnPrezzoCrescente) {
+        this.btnPrezzoCrescente = btnPrezzoCrescente;
+    }
+
+    public FloatingActionButton getBtnOrdineAlfaCrescente() {
+        return btnOrdineAlfaCrescente;
+    }
+
+    public void setBtnOrdineAlfaCrescente(FloatingActionButton btnOrdineAlfaCrescente) {
+        this.btnOrdineAlfaCrescente = btnOrdineAlfaCrescente;
+    }
+
+    public FloatingActionButton getBtnOrdineAlfaDecrescente() {
+        return btnOrdineAlfaDecrescente;
+    }
+
+    public void setBtnOrdineAlfaDecrescente(FloatingActionButton btnOrdineAlfaDecrescente) {
+        this.btnOrdineAlfaDecrescente = btnOrdineAlfaDecrescente;
+    }
+
+    public FloatingActionButton getBtnRemoveElement() {
+        return btnRemoveElement;
+    }
+
+    public void setBtnRemoveElement(FloatingActionButton btnRemoveElement) {
+        this.btnRemoveElement = btnRemoveElement;
+    }
+
+    public FloatingActionButton getBtnAddElement() {
+        return btnAddElement;
+    }
+
+    public void setBtnAddElement(FloatingActionButton btnAddElement) {
+        this.btnAddElement = btnAddElement;
+    }
+
+    public RecyclerView getElementiMenuRecyclerView() {
+        return elementiMenuRecyclerView;
+    }
+
+    public void setElementiMenuRecyclerView(RecyclerView elementiMenuRecyclerView) {
+        this.elementiMenuRecyclerView = elementiMenuRecyclerView;
+    }
+
+    public ElementiGMAdapter getElementiGMAdapter() {
+        return elementiGMAdapter;
+    }
+
+    public void setElementiGMAdapter(ElementiGMAdapter elementiGMAdapter) {
+        this.elementiGMAdapter = elementiGMAdapter;
+    }
+
+    public ElementiGMAdapter.OnElementiClickListner getOnElementiClickListner() {
+        return onElementiClickListner;
+    }
+
+    public void setOnElementiClickListner(ElementiGMAdapter.OnElementiClickListner onElementiClickListner) {
+        this.onElementiClickListner = onElementiClickListner;
+    }
+
+    public ElementoPresenter getElementoPresenter() {
+        return elementoPresenter;
+    }
+
+    public void setElementoPresenter(ElementoPresenter elementoPresenter) {
+        this.elementoPresenter = elementoPresenter;
+    }
+
+    public List<Elemento> getElementi() {
+        return elementi;
+    }
+
+    public void setElementi(List<Elemento> elementi) {
+        this.elementi = elementi;
+    }
 }
