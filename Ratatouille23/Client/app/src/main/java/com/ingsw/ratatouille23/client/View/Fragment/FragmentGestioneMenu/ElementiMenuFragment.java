@@ -21,8 +21,9 @@ import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
-import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,9 +40,6 @@ public class ElementiMenuFragment extends Fragment {
     private ElementoPresenter elementoPresenter;
 
     private List<Elemento> elementi;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -133,13 +131,14 @@ public class ElementiMenuFragment extends Fragment {
 
         elementiMenuRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGM);
 
-        elementoPresenter = new ElementoPresenter();
+        elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
         //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-
+        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         elementiMenuRecyclerView.setLayoutManager(linearLayoutManager);
+        elementiMenuRecyclerView.setAdapter(elementiGMAdapter);
 
         return  rootView;
 
@@ -235,7 +234,7 @@ public class ElementiMenuFragment extends Fragment {
         return elementi;
     }
 
-    public void setElementi(List<Elemento> elementi) {
+    public void setElementi(ArrayList<Elemento> elementi) {
         this.elementi = elementi;
     }
 }

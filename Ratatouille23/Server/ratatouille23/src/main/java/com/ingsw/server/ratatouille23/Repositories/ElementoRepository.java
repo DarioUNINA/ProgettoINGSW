@@ -11,5 +11,5 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
     public Optional<Elemento> findById(Integer id);
 
     public Optional<List<Elemento>> findByCategoria(Categoria categoria);
-
+    
 }

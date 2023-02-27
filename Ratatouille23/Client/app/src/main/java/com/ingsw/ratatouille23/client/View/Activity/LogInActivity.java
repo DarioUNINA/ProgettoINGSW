@@ -114,7 +114,7 @@ public class LogInActivity extends AppCompatActivity {
     public void logInFailed(){
         new AlertDialog.Builder(LogInActivity.this)
                 .setTitle("LOGIN FALLITO")
-                .setMessage("Nome Utente o Password errate, riprovare...")
+                .setMessage("Nome Utente o Password errate, riprovare")
                 .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

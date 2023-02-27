@@ -10,5 +10,5 @@ public interface IUtenteService {
 
     public Optional<List<Utente>> getByRistorante(Integer idRistorante);
 
-    
+    public void save(Utente utente);
 }

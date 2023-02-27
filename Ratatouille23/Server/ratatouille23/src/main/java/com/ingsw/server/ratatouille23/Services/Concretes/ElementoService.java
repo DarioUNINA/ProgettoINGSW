@@ -24,4 +24,9 @@ public class ElementoService implements IElementoService {
     public Optional<List<Elemento>> getByCategoria(Integer idCategoria) {
         return elementoRepository.findByCategoria(new Categoria(idCategoria));
     }
+
+    @Override
+    public void save(Elemento elemento){
+        elementoRepository.save(elemento);
+    }
 }

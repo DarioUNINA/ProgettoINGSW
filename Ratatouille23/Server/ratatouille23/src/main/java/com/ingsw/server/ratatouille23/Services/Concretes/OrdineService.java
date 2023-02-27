@@ -20,4 +20,9 @@ public class OrdineService implements IOrdineService{
         Tavolo tavolo = new Tavolo(idTavolo);
         return OrdineRepository.findByTavolo(tavolo);
     } 
+
+    @Override
+    public void save(Ordine ordine){
+        OrdineRepository.save(ordine);
+    }
 }

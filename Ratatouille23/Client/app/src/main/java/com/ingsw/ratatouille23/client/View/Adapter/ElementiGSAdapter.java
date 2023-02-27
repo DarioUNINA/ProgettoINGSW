@@ -13,14 +13,15 @@ import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.ElementiHolder> {
+public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.ElementiHolder> {
 
-    private ArrayList<Elemento> elementi;
+    private List<Elemento> elementi;
     private Context context;
-    private OnElementiClickListner onElementiClickListner;
+    private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
 
-    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner) {
+    public ElementiGSAdapter(ArrayList<Elemento> elementi, Context context, ElementiGSAdapter.OnElementiClickListner onElementiClickListner) {
         this.elementi = elementi;
         this.context = context;
         this.onElementiClickListner = onElementiClickListner;
@@ -32,14 +33,14 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
     @NonNull
     @Override
-    public ElementiGMAdapter.ElementiHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.fragment_elemento_gm, parent, false);
+    public ElementiGSAdapter.ElementiHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.fragment_elemento_gs, parent, false);
 
-        return new ElementiHolder(v);
+        return new ElementiGSAdapter.ElementiHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ElementiGMAdapter.ElementiHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ElementiGSAdapter.ElementiHolder holder, int position) {
         //holder.txtNomeElemento.setText(elementi.get(position).getNome());
 //        holder.txtNomeElemento.setText("puttan");
 //        holder.txtPrezzoElemento.setText("2$");
@@ -54,14 +55,14 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
     }
 
     class ElementiHolder extends RecyclerView.ViewHolder{
-        TextView txtNomeElemento;
-        TextView txtPrezzoElemento;
+        TextView txtNomeElementoGS;
+        TextView txtPrezzoElementoGS;
 
         public ElementiHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtNomeElemento = itemView.findViewById(R.id.txtNomeElemento);
-            txtPrezzoElemento = itemView.findViewById(R.id.txtPrezzoElemento);
+            txtNomeElementoGS = itemView.findViewById(R.id.txtNomeElementoGS);
+            txtPrezzoElementoGS = itemView.findViewById(R.id.txtPrezzoElementoGS);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

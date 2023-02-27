@@ -19,7 +19,7 @@ public class UtentePresenter {
 
 
     public void login(){
-        service.checkUser(new Callback(){
+        service.getByUsernamePassword(new Callback(){
             @Override
             public void returnResult(Object o){
                 if(o!=null) {
@@ -38,4 +38,5 @@ public class UtentePresenter {
         }, logInActivity.getUsernameEditText().getText().toString(), logInActivity.getPasswordEditText().getText().toString());
 
     }
+
 }

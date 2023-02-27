@@ -36,11 +36,17 @@ public class OrdineController {
             for(Ordine ordine : ordiniList)
                 ordiniDTO.add(modelMapper.map(ordine, OrdineDTO.class));
 
-            return ordiniDTO;
+                return ordiniDTO;
             }
         else
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
 
+    }
+
+    @PostMapping("/save")
+    public void save(@RequestBody OrdineDTO ordineDTO) {
+        Ordine ordine = modelMapper.map(ordineDTO, Ordine.class);
+        OrdineService.save(ordine);
     }
 
     

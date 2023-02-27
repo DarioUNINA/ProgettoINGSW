@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         //utente = (Utente)getIntent().getSerializableExtra("utente");
         //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        utente = new Utente("Dario", "pwd", 1, Ruolo.admin);
+        utente = new Utente("Dario", "123", 1, Ruolo.admin);
         ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);

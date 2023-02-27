@@ -8,4 +8,7 @@ public interface ICategoriaService {
     public Optional<Categoria> getById(Integer idCategoria);
 
     public Optional<List<Categoria>> getByMenu(Integer idMenu);
+
+    public void save(Categoria categoria);
+    
 }

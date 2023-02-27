@@ -14,9 +14,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrdiniFragment extends Fragment {
@@ -75,11 +77,12 @@ public class OrdiniFragment extends Fragment {
 
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
         ordinePresenter.getByTavolo(1);//tavolo 1 selezionato
-
+        ordineAdapter = new OrdineAdapter( (ArrayList<Ordine>) ordini, getContext(), onOrdineCLickListner);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
+        ordiniRecyclerView.setAdapter(ordineAdapter);
 
 
         btnAddOrder.setOnClickListener(new View.OnClickListener() {

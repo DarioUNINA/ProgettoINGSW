@@ -3,14 +3,24 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,8 +31,14 @@ public class ElementiGSFragment extends Fragment {
 
     private FloatingActionButton addElementoOrdine;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private RecyclerView elementiGSRecyclerView;
+
+    private ElementiGSAdapter elementiGSAdapter;
+    private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
+
+    private ElementoPresenter elementoPresenter;
+
+    private List<Elemento> elementi;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -71,6 +87,16 @@ public class ElementiGSFragment extends Fragment {
         addElementoOrdine = (FloatingActionButton) rootView.findViewById(R.id.addElementoOrdine);
 
 
+        elementiGSRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGS);
+
+        elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
+        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
+        elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        elementiGSRecyclerView.setLayoutManager(linearLayoutManager);
+        elementiGSRecyclerView.setAdapter(elementiGSAdapter);
         addElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

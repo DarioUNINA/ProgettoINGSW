@@ -46,4 +46,22 @@ public class OrdinePresenter {
         }, idTavolo);
     }
 
+    public void create(Ordine ordine){
+
+        service.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean)o)
+                    System.out.println("creato");
+                else
+                    System.out.println("non creato");
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, ordine);
+    }
+
 }

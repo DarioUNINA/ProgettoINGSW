@@ -26,4 +26,9 @@ public class UtenteService implements IUtenteService{
     public Optional<List<Utente>> getByRistorante(Integer idRistorante){
         return utenteRepository.findByRistorante(new Ristorante(idRistorante));
     }
+
+    @Override
+    public void save(Utente utente){
+        utenteRepository.save(utente);
+    }
 }

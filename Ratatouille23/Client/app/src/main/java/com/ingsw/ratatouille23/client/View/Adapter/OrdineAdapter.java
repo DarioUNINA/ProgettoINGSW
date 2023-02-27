@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolder> {
-
+        int prova = 2;
     private ArrayList<Ordine> ordini;
     private Context context;
     private OnOrdineClickListner onOrdineClickListner;
@@ -41,13 +41,14 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     @Override
     public void onBindViewHolder(@NonNull OrdineAdapter.OrderHolder holder, int position) {
-        holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
+        //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
         //bisogna passare il tavolo per prendere il nome del cameriere
     }
 
     @Override
     public int getItemCount() {
-        return ordini.size();
+        return 3;
+        //return ordini.size();
     }
 
     class OrderHolder extends RecyclerView.ViewHolder{

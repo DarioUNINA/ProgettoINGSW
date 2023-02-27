@@ -24,4 +24,9 @@ public class CategoriaService implements ICategoriaService {
     public Optional<List<Categoria>> getByMenu(Integer idMenu) {
         return categoriaRepository.findByMenu(new Menu(idMenu));
     }
+
+    @Override
+    public void save(Categoria categoria) {
+        categoriaRepository.save(categoria);
+    }
 }

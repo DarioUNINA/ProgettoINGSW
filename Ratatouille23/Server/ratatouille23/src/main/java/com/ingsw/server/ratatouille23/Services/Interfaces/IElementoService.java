@@ -8,4 +8,6 @@ public interface IElementoService {
     public Optional<Elemento> getById(Integer id);   
 
     public Optional <List<Elemento>> getByCategoria(Integer idCategoria);
+
+    public void save(Elemento elemento);
 }
