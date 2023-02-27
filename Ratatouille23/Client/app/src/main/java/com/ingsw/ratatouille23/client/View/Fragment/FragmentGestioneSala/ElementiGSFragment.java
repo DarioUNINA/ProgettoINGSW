@@ -97,6 +97,7 @@ public class ElementiGSFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         elementiGSRecyclerView.setLayoutManager(linearLayoutManager);
         elementiGSRecyclerView.setAdapter(elementiGSAdapter);
+
         addElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

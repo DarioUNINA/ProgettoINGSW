@@ -3,17 +3,26 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.TavoloPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.TavoliAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +38,13 @@ public class TavoliFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private FloatingActionButton addElementoOrdine;
+
+    private RecyclerView tavoliRecyclerView;
+
+    private TavoliAdapter tavoliAdapter;
+    private TavoliAdapter.OnTavoliClickListner onTavoliClickListner;
 
 
     private List<Tavolo> tavoli;
@@ -60,6 +76,7 @@ public class TavoliFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView =  inflater.inflate(R.layout.fragment_tavoli, container, false);
 
         tavoloPresenter = new TavoloPresenter(TavoliFragment.this);
 
@@ -69,10 +86,18 @@ public class TavoliFragment extends Fragment {
 
         tavoloPresenter.getTavoli();
 
+        tavoliRecyclerView = (RecyclerView) rootView.findViewById(R.id.tavoliRecyclerView);
 
-        //fine  dell' adapter
+        tavoliAdapter = new TavoliAdapter((ArrayList<Tavolo>) tavoli, getContext(), onTavoliClickListner);
 
-        return inflater.inflate(R.layout.fragment_tavoli, container, false);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 2);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        tavoliRecyclerView.setLayoutManager(linearLayoutManager);
+        tavoliRecyclerView.setAdapter(tavoliAdapter);
+
+
+
+        return rootView;
     }
 
     public List<Tavolo> getTavoli() {

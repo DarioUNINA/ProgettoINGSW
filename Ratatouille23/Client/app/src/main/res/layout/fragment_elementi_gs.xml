@@ -41,12 +41,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="437dp">
+            android:layout_height="400dp"
+            android:layout_marginTop="20dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewElementiGS"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="100dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

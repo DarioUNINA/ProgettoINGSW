@@ -3,14 +3,25 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Categoria;
+import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.CategoriaAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,8 +32,14 @@ public class CategorieFragment extends Fragment {
 
     private FloatingActionButton btnAddCategory;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private RecyclerView categoriaRecyclerView;
+
+    private CategoriaAdapter categoriaAdapter;
+    private CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner;
+
+    private CategoriaPresenter categoriaPresenter;
+
+    private List<Categoria> categoria;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -69,6 +86,17 @@ public class CategorieFragment extends Fragment {
 
         btnAddCategory = (FloatingActionButton) rootView.findViewById(R.id.btnAddCategory);
 
+
+        categoriaRecyclerView = (RecyclerView) rootView.findViewById(R.id.categorieRecyclerView);
+
+        categoriaPresenter = new CategoriaPresenter(CategorieFragment.this);
+        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
+        categoriaAdapter = new CategoriaAdapter( (ArrayList<Categoria>) categoria, getContext(),onCategoriaClickListner);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        categoriaRecyclerView.setLayoutManager(linearLayoutManager);
+        categoriaRecyclerView.setAdapter(categoriaAdapter);
 
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
