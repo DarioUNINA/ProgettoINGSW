@@ -21,6 +21,10 @@ public class GestioneSalaFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    TavoliFragment tavoliFragment;
+    OrdiniFragment ordiniFragment;
+    ElementiGSFragment elementiGSFragment;
+
 
     public GestioneSalaFragment() {
         // Required empty public constructor
@@ -46,9 +50,13 @@ public class GestioneSalaFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.tavoli_layout, new TavoliFragment());
-        fragmentTransaction.add(R.id.ordini_layout, new OrdiniFragment());
-        fragmentTransaction.add(R.id.elementi_GM_layout, new ElementiGSFragment());
+        tavoliFragment = new TavoliFragment();
+        ordiniFragment = new OrdiniFragment();
+        elementiGSFragment = new ElementiGSFragment();
+
+        fragmentTransaction.replace(R.id.tavoli_layout, tavoliFragment);
+        fragmentTransaction.add(R.id.ordini_layout, ordiniFragment);
+        fragmentTransaction.add(R.id.elementi_GM_layout, elementiGSFragment);
         fragmentTransaction.commit();
     }
 
@@ -66,5 +74,27 @@ public class GestioneSalaFragment extends Fragment {
         return rootView;
     }
 
+    public TavoliFragment getTavoliFragment() {
+        return tavoliFragment;
+    }
 
+    public void setTavoliFragment(TavoliFragment tavoliFragment) {
+        this.tavoliFragment = tavoliFragment;
+    }
+
+    public OrdiniFragment getOrdiniFragment() {
+        return ordiniFragment;
+    }
+
+    public void setOrdiniFragment(OrdiniFragment ordiniFragment) {
+        this.ordiniFragment = ordiniFragment;
+    }
+
+    public ElementiGSFragment getElementiGSFragment() {
+        return elementiGSFragment;
+    }
+
+    public void setElementiGSFragment(ElementiGSFragment elementiGSFragment) {
+        this.elementiGSFragment = elementiGSFragment;
+    }
 }

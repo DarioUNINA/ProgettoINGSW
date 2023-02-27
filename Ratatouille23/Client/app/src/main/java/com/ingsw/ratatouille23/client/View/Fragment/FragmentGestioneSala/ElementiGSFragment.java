@@ -110,4 +110,20 @@ public class ElementiGSFragment extends Fragment {
         AddElementoOrdineDialog addElementoOrdineDialog = new AddElementoOrdineDialog(this);
         addElementoOrdineDialog.show(getParentFragmentManager(), "newElementoOrdine");
     }
+
+    public ElementiGSAdapter getElementiGSAdapter() {
+        return elementiGSAdapter;
+    }
+
+    public void setElementiGSAdapter(ElementiGSAdapter elementiGSAdapter) {
+        this.elementiGSAdapter = elementiGSAdapter;
+    }
+
+    public List<Elemento> getElementi() {
+        return elementi;
+    }
+
+    public void setElementi(List<Elemento> elementi) {
+        this.elementi = elementi;
+    }
 }

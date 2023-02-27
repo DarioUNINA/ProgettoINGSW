@@ -30,7 +30,7 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    //Inserire i tavoli nella recycler view
+                    tavoliFragment.setTavoli((List<Tavolo>)o);
                 }
 
             }
@@ -49,9 +49,10 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    //Inserire i tavoli nella recycler view
+                    tavoliFragment.setTavoli((List<Tavolo>)o);
 
-                }
+                }else
+                    System.out.println("non e andato\n\n\n");
 
             }
 
@@ -69,6 +70,8 @@ public class TavoloPresenter {
             getByRistorante(((HomeActivity)tavoliFragment.getActivity()).getRistorante().getIdRistorante());
         else
             getByCameriere(((HomeActivity)tavoliFragment.getActivity()).getUtente().getUsername());
+
+        //((HomeActivity)tavoliFragment.getActivity()).getGestioneSala().getOrdiniFragment().setOrdiniBytavolo(tavoliFragment.getTavoli().get(0).getOrdini());
     }
 
 

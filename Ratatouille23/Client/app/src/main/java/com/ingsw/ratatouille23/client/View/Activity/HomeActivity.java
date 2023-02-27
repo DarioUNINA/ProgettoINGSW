@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -33,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
+    GestioneSalaFragment gestioneSala;
+
     private Utente utente;
     private Ristorante ristorante;
 
@@ -41,11 +44,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //utente = (Utente)getIntent().getSerializableExtra("utente");
-        //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        utente = (Utente)getIntent().getSerializableExtra("utente");
+        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        utente = new Utente("Dario", "123", 1, Ruolo.admin);
-        ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
+        //utente = new Utente("Dario", "123", 1, Ruolo.admin);
+        //ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -53,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         btnSala = findViewById(R.id.btnSala);
         btnSettings = findViewById(R.id.btnSettingsRestaurant);
         btnSettings.setVisibility(View.INVISIBLE);
+
 
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
@@ -68,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentSala = findViewById(R.id.selectedFragmentSala);
         selectedFragmentMenu = findViewById(R.id.selectedFragmentMenu);
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
+
+        gestioneSala = new GestioneSalaFragment();
 
         tabItemUser = findViewById(R.id.TabUserItem);
 
@@ -87,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class,null);
+                fragmentTransaction.replace(R.id.homelayoutForFragment, gestioneSala,null);
                 fragmentTransaction.commitNow();
             }
         });
@@ -244,5 +250,13 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setRistorante(Ristorante ristorante) {
         this.ristorante = ristorante;
+    }
+
+    public GestioneSalaFragment getGestioneSala() {
+        return gestioneSala;
+    }
+
+    public void setGestioneSala(GestioneSalaFragment gestioneSala) {
+        this.gestioneSala = gestioneSala;
     }
 }

@@ -72,18 +72,11 @@ public class OrdiniFragment extends Fragment {
 
         ordiniRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
-
-        //Questo dovrebbe essere rimosso e perche' gli ordini sono disponibili dai tavoli in TavoliFragment tramite un Listener
-
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
-        ordinePresenter.getByTavolo(1);//tavolo 1 selezionato
-        ordineAdapter = new OrdineAdapter( (ArrayList<Ordine>) ordini, getContext(), onOrdineCLickListner);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
-        ordiniRecyclerView.setAdapter(ordineAdapter);
-
 
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +86,11 @@ public class OrdiniFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    public void setOrdiniBytavolo(List<Ordine> ordini){
+        ordineAdapter = new OrdineAdapter((ArrayList<Ordine>) ordini, getContext(), onOrdineCLickListner);
+        ordiniRecyclerView.setAdapter(ordineAdapter);
     }
 
     public void openDialog(){
@@ -130,5 +128,13 @@ public class OrdiniFragment extends Fragment {
 
     public void setOrdiniRecyclerView(RecyclerView ordiniRecyclerView) {
         this.ordiniRecyclerView = ordiniRecyclerView;
+    }
+
+    public OrdineAdapter getOrdineAdapter() {
+        return ordineAdapter;
+    }
+
+    public void setOrdineAdapter(OrdineAdapter ordineAdapter) {
+        this.ordineAdapter = ordineAdapter;
     }
 }

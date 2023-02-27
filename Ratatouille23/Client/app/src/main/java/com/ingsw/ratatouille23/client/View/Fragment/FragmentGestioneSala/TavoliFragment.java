@@ -63,10 +63,23 @@ public class TavoliFragment extends Fragment {
 
         tavoloPresenter = new TavoloPresenter(TavoliFragment.this);
 
+
+
+        //Tutto quello che segue va nell' adapter, NON in questa classe
+
         tavoloPresenter.getTavoli();
+
+
+        //fine  dell' adapter
 
         return inflater.inflate(R.layout.fragment_tavoli, container, false);
     }
 
+    public List<Tavolo> getTavoli() {
+        return tavoli;
+    }
 
+    public void setTavoli(List<Tavolo> tavoli) {
+        this.tavoli = tavoli;
+    }
 }
