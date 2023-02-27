@@ -64,7 +64,7 @@ public class SettingUtenteFragment extends Fragment {
         pwdAttuale = rootView.findViewById(R.id.editTxtPwdAttuale);
         cardViewPwdAttuale = rootView.findViewById(R.id.cardViewPwdAttuale);
 
-        if(utente.getPassword().equals("123")){
+        if(utente.getPassword().equals("pwd")){
             pwdAttuale.setText(utente.getPassword());
             pwdAttuale.setVisibility(View.INVISIBLE);
             cardViewPwdAttuale.setVisibility(View.INVISIBLE);
