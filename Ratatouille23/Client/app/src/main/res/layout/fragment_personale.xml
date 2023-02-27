@@ -67,8 +67,8 @@
                     app:layout_constraintHorizontal_bias="0.59"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:textAlignment="center"
-                    />
+                    android:textAlignment="center" />
+
             </com.google.android.material.card.MaterialCardView>
 
 
@@ -95,9 +95,11 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="448dp"
-                android:layout_height="492dp"
-                android:layout_marginTop="64dp"
+                android:id="@+id/listaUtentiRecyclerView"
+                android:layout_width="430dp"
+                android:layout_height="484dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

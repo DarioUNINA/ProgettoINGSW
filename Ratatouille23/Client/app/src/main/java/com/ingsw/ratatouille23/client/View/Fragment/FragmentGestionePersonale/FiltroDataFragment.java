@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.CalendarDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,8 +20,8 @@ import com.ingsw.ratatouille23.client.R;
  */
 public class FiltroDataFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    private TextView txtFrom;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -63,6 +66,30 @@ public class FiltroDataFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_filtro_data, container, false);
 
+        txtFrom = rootView.findViewById(R.id.txtFrom);
+
+        txtFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+
+            }
+        });
+
         return rootView;
+    }
+
+    public void openDialog(){
+        CalendarDialog calendarDialog = new CalendarDialog(this);
+        calendarDialog.show(getParentFragmentManager(), "Calendar");
+
+    }
+
+    public TextView getTxtFrom() {
+        return txtFrom;
+    }
+
+    public void setTxtFrom(TextView txtFrom) {
+        this.txtFrom = txtFrom;
     }
 }

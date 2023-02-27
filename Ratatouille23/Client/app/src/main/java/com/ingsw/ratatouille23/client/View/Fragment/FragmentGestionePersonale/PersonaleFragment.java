@@ -3,12 +3,24 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.PersonaleAdapter;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,12 +29,19 @@ import com.ingsw.ratatouille23.client.R;
  */
 public class PersonaleFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private RecyclerView listaUtentiRecyclerView;
+
+    private PersonaleAdapter personaleAdapter;
+    private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
+
+    private UtentePresenter utentePresenter;
+
+    private List<Utente> utenti;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -62,6 +81,18 @@ public class PersonaleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_personale, container, false);
+
+
+        listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
+
+        utentePresenter = new UtentePresenter(PersonaleFragment.this);
+        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
+        personaleAdapter = new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listaUtentiRecyclerView.setLayoutManager(linearLayoutManager);
+        listaUtentiRecyclerView.setAdapter(personaleAdapter);
 
         return rootView;
     }

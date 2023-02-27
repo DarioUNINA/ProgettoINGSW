@@ -5,6 +5,7 @@ import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.UtenteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 
 
 public class UtentePresenter {
@@ -12,8 +13,15 @@ public class UtentePresenter {
     private UtenteService service;
     private LogInActivity logInActivity;
 
+    private PersonaleFragment personaleFragment;
+
     public UtentePresenter(LogInActivity logInActivity){
         this.logInActivity = logInActivity;
+        service = new UtenteService();
+    }
+
+    public UtentePresenter(PersonaleFragment personaleFragment){
+        this.personaleFragment = personaleFragment;
         service = new UtenteService();
     }
 
