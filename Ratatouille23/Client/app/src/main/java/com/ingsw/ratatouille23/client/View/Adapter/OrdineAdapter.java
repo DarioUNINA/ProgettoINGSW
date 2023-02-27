@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolder> {
-        int prova = 2;
+
     private ArrayList<Ordine> ordini;
     private Context context;
     private OnOrdineClickListner onOrdineClickListner;

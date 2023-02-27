@@ -38,11 +38,19 @@
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
         android:layout_marginTop="10dp"
-        app:cardBackgroundColor="@color/white"/>
+        app:cardBackgroundColor="@color/white">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tavoliRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="13dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 
 
 
