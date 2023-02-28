@@ -81,9 +81,11 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
                 @Override
                 public void onClick(View view) {
                     HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
-                    activity.getGestioneSala().getOrdiniFragment().
+                            activity.getGestioneSala().getOrdiniFragment().
                             setOrdineAdapter(new OrdineAdapter(((ArrayList<Ordine>) tavoli.get(getAdapterPosition()).getOrdini())
-                                            , activity.getGestioneSala().getOrdiniFragment().getContext(), activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(), activity.getGestioneSala().getOrdiniFragment()));
+                                            , activity.getGestioneSala().getOrdiniFragment().getContext(),
+                                            activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(),
+                                            activity.getGestioneSala().getOrdiniFragment()));
 
                 }
 

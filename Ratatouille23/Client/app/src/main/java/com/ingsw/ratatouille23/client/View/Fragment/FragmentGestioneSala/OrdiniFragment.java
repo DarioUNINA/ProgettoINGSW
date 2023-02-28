@@ -78,6 +78,11 @@ public class OrdiniFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
+        ArrayList<Ordine> p = new ArrayList<>();
+        p.add(new Ordine(1,1,null));
+        ordineAdapter = new OrdineAdapter(p, getContext(), onOrdineCLickListner, OrdiniFragment.this);
+        ordiniRecyclerView.setAdapter(ordineAdapter);
+
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,5 +121,6 @@ public class OrdiniFragment extends Fragment {
     public void setOrdineAdapter(OrdineAdapter ordineAdapter) {
         ordiniRecyclerView.setAdapter(ordineAdapter);
         this.ordineAdapter = ordineAdapter;
+        this.ordineAdapter.notifyDataSetChanged();
     }
 }

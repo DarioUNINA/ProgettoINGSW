@@ -44,6 +44,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     @Override
     public void onBindViewHolder(@NonNull OrdineAdapter.OrderHolder holder, int position) {
         holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
+        holder.txtIdCameriere.setText("cameriere");
     }
 
     @Override
@@ -71,5 +72,11 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         }
     }
 
+    public ArrayList<Ordine> getOrdini() {
+        return ordini;
+    }
 
+    public void setOrdini(ArrayList<Ordine> ordini) {
+        this.ordini = ordini;
+    }
 }
