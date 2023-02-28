@@ -143,6 +143,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/removeElementoOrdine"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="60dp"

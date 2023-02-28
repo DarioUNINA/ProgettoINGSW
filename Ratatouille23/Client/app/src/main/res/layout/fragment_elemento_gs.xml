@@ -93,6 +93,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardCounter"
             android:layout_width="30dp"
             android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -113,6 +114,17 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+
+        <CheckBox
+            android:id="@+id/chechBoxElementiGs"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
 
@@ -20,6 +22,10 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     private List<Elemento> elementi;
     private Context context;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
+
+    private MaterialCardView counter;
+
+    private CheckBox rimozioneCB;
 
     public ElementiGSAdapter(ArrayList<Elemento> elementi, Context context, ElementiGSAdapter.OnElementiClickListner onElementiClickListner) {
         this.elementi = elementi;
@@ -58,18 +64,45 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         TextView txtNomeElementoGS;
         TextView txtPrezzoElementoGS;
 
+         MaterialCardView counter;
+
+         CheckBox rimozioneCB;
+
         public ElementiHolder(@NonNull View itemView) {
             super(itemView);
 
             txtNomeElementoGS = itemView.findViewById(R.id.txtNomeElementoGS);
             txtPrezzoElementoGS = itemView.findViewById(R.id.txtPrezzoElementoGS);
+            counter = itemView.findViewById(R.id.materialCardCounter);
+            rimozioneCB = itemView.findViewById(R.id.chechBoxElementiGs);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onElementiClickListner.onElementiClicked(getAdapterPosition());
+                    rimozioneCB.setVisibility(View.INVISIBLE);
+
                 }
             });
 
         }
     }
+
+    public MaterialCardView getCounter() {
+        return counter;
+    }
+
+    public void setCounter(MaterialCardView counter) {
+        this.counter = counter;
+    }
+
+    public CheckBox getRimozioneCB() {
+        return rimozioneCB;
+    }
+
+    public void setRimozioneCB(CheckBox rimozioneCB) {
+        this.rimozioneCB = rimozioneCB;
+    }
 }
+
+

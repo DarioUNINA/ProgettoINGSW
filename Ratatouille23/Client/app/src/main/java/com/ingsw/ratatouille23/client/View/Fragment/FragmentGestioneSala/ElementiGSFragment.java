@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
@@ -29,7 +31,9 @@ import java.util.List;
  */
 public class ElementiGSFragment extends Fragment {
 
-    private FloatingActionButton addElementoOrdine;
+
+
+    private FloatingActionButton addElementoOrdine, removeElementoOrdine;
 
     private RecyclerView elementiGSRecyclerView;
 
@@ -84,10 +88,12 @@ public class ElementiGSFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_elementi_gs, container, false);
 
-        addElementoOrdine = (FloatingActionButton) rootView.findViewById(R.id.addElementoOrdine);
+        addElementoOrdine = rootView.findViewById(R.id.addElementoOrdine);
+        removeElementoOrdine = rootView.findViewById(R.id.removeElementoOrdine);
+
+        elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
 
 
-        elementiGSRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGS);
 
         elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
         //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
@@ -104,6 +110,15 @@ public class ElementiGSFragment extends Fragment {
                 openDialog();
             }
         });
+
+        removeElementoOrdine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //elementiGSAdapter.getCounter().setVisibility(View.INVISIBLE);
+                //elementiGSAdapter.getRimozioneCB().setVisibility(View.VISIBLE);
+            }
+        });
+
         return rootView;
     }
 
@@ -126,5 +141,46 @@ public class ElementiGSFragment extends Fragment {
 
     public void setElementi(List<Elemento> elementi) {
         this.elementi = elementi;
+    }
+
+
+    public FloatingActionButton getAddElementoOrdine() {
+        return addElementoOrdine;
+    }
+
+    public void setAddElementoOrdine(FloatingActionButton addElementoOrdine) {
+        this.addElementoOrdine = addElementoOrdine;
+    }
+
+    public RecyclerView getElementiGSRecyclerView() {
+        return elementiGSRecyclerView;
+    }
+
+    public void setElementiGSRecyclerView(RecyclerView elementiGSRecyclerView) {
+        this.elementiGSRecyclerView = elementiGSRecyclerView;
+    }
+
+    public ElementiGSAdapter.OnElementiClickListner getOnElementiClickListner() {
+        return onElementiClickListner;
+    }
+
+    public void setOnElementiClickListner(ElementiGSAdapter.OnElementiClickListner onElementiClickListner) {
+        this.onElementiClickListner = onElementiClickListner;
+    }
+
+    public ElementoPresenter getElementoPresenter() {
+        return elementoPresenter;
+    }
+
+    public void setElementoPresenter(ElementoPresenter elementoPresenter) {
+        this.elementoPresenter = elementoPresenter;
+    }
+
+    public FloatingActionButton getRemoveElementoOrdine() {
+        return removeElementoOrdine;
+    }
+
+    public void setRemoveElementoOrdine(FloatingActionButton removeElementoOrdine) {
+        this.removeElementoOrdine = removeElementoOrdine;
     }
 }

@@ -40,27 +40,84 @@
         app:cardBackgroundColor="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintContenitoreRecycler"
-            android:layout_width="575dp"
-            android:layout_height="517dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:backgroundTint="@color/white"
             android:background="@color/white">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewOrdini"
-                android:layout_width="471dp"
-                android:layout_height="479dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:paddingTop="30dp"
+                android:text="       Tavolo: "
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.153"
+                app:layout_constraintHorizontal_bias="0.009"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.578" />
+                app:layout_constraintVertical_bias="0.10" />
+
+            <TextView
+                android:id="@+id/txtIdTavoloSelzionato"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:paddingTop="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.45"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.10" />
+
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:src="@drawable/line_1"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.99" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:backgroundTint="@color/white"
+                android:background="@color/white"
+                android:layout_marginTop="100dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewOrdini"
+                    android:layout_width="450dp"
+                    android:layout_height="379dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.155"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.857" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="350dp"
