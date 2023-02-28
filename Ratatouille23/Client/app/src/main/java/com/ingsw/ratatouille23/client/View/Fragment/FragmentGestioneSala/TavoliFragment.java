@@ -42,6 +42,8 @@ public class TavoliFragment extends Fragment {
     private TavoliAdapter.OnTavoliClickListner onTavoliClickListner;
 
 
+
+
     private TavoloPresenter tavoloPresenter;
 
     public TavoliFragment() {
@@ -76,8 +78,6 @@ public class TavoliFragment extends Fragment {
         tavoliRecyclerView = (RecyclerView) rootView.findViewById(R.id.tavoliRecyclerView);
 
         tavoloPresenter.getTavoli();
-
-        //tavoliAdapter = new TavoliAdapter((ArrayList<Tavolo>) tavoli, getContext(), onTavoliClickListner);
 
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 2);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

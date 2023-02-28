@@ -31,10 +31,6 @@ public class OrdinePresenter {
             public void returnResult(Object o) {
 
                 if(o!=null) {
-                    ordiniFragment.setOrdini((List<Ordine>) o);
-                    ordiniFragment.setOrderAdapter(new OrdineAdapter((ArrayList<Ordine>) ordiniFragment.getOrdini(), ordiniFragment.getContext(), ordiniFragment.getOnOrdineCLickListner()));
-                    ordiniFragment.getOrdiniRecyclerView().setAdapter(ordiniFragment.getOrderAdapter());
-                    ordiniFragment.getOrdiniRecyclerView().setVisibility(View.VISIBLE);
                 }
 
             }

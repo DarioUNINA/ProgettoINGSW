@@ -88,30 +88,9 @@ public class OrdiniFragment extends Fragment {
         return rootView;
     }
 
-    public void setOrdiniBytavolo(List<Ordine> ordini){
-        ordineAdapter = new OrdineAdapter((ArrayList<Ordine>) ordini, getContext(), onOrdineCLickListner);
-        ordiniRecyclerView.setAdapter(ordineAdapter);
-    }
-
     public void openDialog(){
         AddOrderDialog addOrderDialog = new AddOrderDialog(this);
         addOrderDialog.show(getParentFragmentManager(), "newOrdine");
-    }
-
-    public List<Ordine> getOrdini() {
-        return ordini;
-    }
-
-    public void setOrdini(List<Ordine> ordini) {
-        this.ordini = ordini;
-    }
-
-    public OrdineAdapter getOrderAdapter() {
-        return ordineAdapter;
-    }
-
-    public void setOrderAdapter(OrdineAdapter ordineAdapter) {
-        this.ordineAdapter = ordineAdapter;
     }
 
     public OrdineAdapter.OnOrdineClickListner getOnOrdineCLickListner() {
@@ -136,5 +115,6 @@ public class OrdiniFragment extends Fragment {
 
     public void setOrdineAdapter(OrdineAdapter ordineAdapter) {
         this.ordineAdapter = ordineAdapter;
+        ordiniRecyclerView.setAdapter(ordineAdapter);
     }
 }

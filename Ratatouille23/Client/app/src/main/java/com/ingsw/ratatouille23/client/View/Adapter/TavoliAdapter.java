@@ -16,6 +16,8 @@ import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;
 
@@ -25,11 +27,13 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
     private Context context;
     private TavoliAdapter.OnTavoliClickListner onTavoliClickListner;
 
-    public TavoliAdapter(ArrayList<Tavolo> tavoli, Context context, TavoliAdapter.OnTavoliClickListner onTavoliClickListner) {
+    private TavoliFragment tavoliFragment;
+
+    public TavoliAdapter(ArrayList<Tavolo> tavoli, Context context, TavoliAdapter.OnTavoliClickListner onTavoliClickListner, TavoliFragment tavoliFragment) {
         this.tavoli = tavoli;
         this.context = context;
         this.onTavoliClickListner = onTavoliClickListner;
-
+        this.tavoliFragment = tavoliFragment;
     }
 
     public interface OnTavoliClickListner{
@@ -77,8 +81,13 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //set ordini
+                    HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
+                    activity.getGestioneSala().getOrdiniFragment().
+                            setOrdineAdapter(new OrdineAdapter(((ArrayList<Ordine>) tavoli.get(getAdapterPosition()).getOrdini())
+                                            , activity.getGestioneSala().getOrdiniFragment().getContext(), activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(), activity.getGestioneSala().getOrdiniFragment()));
+
                 }
+
             });
 
         }

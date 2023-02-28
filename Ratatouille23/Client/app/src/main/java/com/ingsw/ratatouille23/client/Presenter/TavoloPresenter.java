@@ -31,7 +31,7 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner()));
+                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner(), tavoliFragment));
                 }
 
             }
@@ -50,7 +50,7 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner()));
+                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner(), tavoliFragment));
                 }else
                     System.out.println("La lista e' null\n");
 

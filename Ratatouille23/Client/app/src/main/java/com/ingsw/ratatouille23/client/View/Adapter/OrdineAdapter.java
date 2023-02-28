@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,10 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     private ArrayList<Ordine> ordini;
     private Context context;
     private OnOrdineClickListner onOrdineClickListner;
-
-    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner) {
+    private OrdiniFragment ordiniFragment;
+    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment) {
         this.ordini = ordini;
+        this.ordiniFragment = ordiniFragment;
         this.context = context;
         this.onOrdineClickListner = onOrdineClickListner;
     }
@@ -47,8 +49,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     @Override
     public int getItemCount() {
-        return 3;
-        //return ordini.size();
+        return ordini.size();
     }
 
     class OrderHolder extends RecyclerView.ViewHolder{
