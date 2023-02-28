@@ -124,7 +124,7 @@
                 android:layout_gravity="center"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnAddCategory"
+                android:id="@+id/btnAddUser"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="310dp"
@@ -142,6 +142,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/removeUser"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="85dp"

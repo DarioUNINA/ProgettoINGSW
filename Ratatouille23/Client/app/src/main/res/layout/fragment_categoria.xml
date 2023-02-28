@@ -18,6 +18,16 @@
         android:textStyle="bold"
         android:textSize="50dp"
         android:textColor="@color/black"
-        android:background="#B9E0FF" />
+        android:background="#B9E0FF"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxCategorie"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintHorizontal_bias="0.999"
+        android:layout_marginLeft="300dp"
+        android:textColorHint="@color/black"
+        android:buttonTint="@color/red"
+        />
 
 </com.google.android.material.card.MaterialCardView>

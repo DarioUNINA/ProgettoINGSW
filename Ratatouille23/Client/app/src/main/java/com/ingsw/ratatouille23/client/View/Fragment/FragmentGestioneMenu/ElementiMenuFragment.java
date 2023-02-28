@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class ElementiMenuFragment extends Fragment {
 
     private FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente, btnRemoveElement, btnAddElement;
 
+    private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
 
     private RecyclerView elementiMenuRecyclerView;
 
@@ -71,20 +73,34 @@ public class ElementiMenuFragment extends Fragment {
 
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_elementi_gm, container, false);
 
-        btnPrezzoDecrescente = rootView.findViewById(R.id.btnPrezDecrescente);
-        btnPrezzoCrescente = rootView.findViewById(R.id.btnPrezzoCrescente);
-        btnOrdineAlfaDecrescente = rootView.findViewById(R.id.btnOrdineAlfaDecrescente);
-        btnOrdineAlfaCrescente = rootView.findViewById(R.id.btnOrdineAlfaCrescente);
-        btnAddElement= rootView.findViewById(R.id.btnAddElement);
-        btnRemoveElement = rootView.findViewById(R.id.btnRemoveElement);
+        {
+            btnPrezzoDecrescente = rootView.findViewById(R.id.btnPrezDecrescente);
+            btnPrezzoCrescente = rootView.findViewById(R.id.btnPrezzoCrescente);
+            btnOrdineAlfaDecrescente = rootView.findViewById(R.id.btnOrdineAlfaDecrescente);
+            btnOrdineAlfaCrescente = rootView.findViewById(R.id.btnOrdineAlfaCrescente);
+            btnAddElement = rootView.findViewById(R.id.btnAddElement);
+            btnRemoveElement = rootView.findViewById(R.id.btnRemoveElement);
+            elementiMenuRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGM);
+            btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozione);
+            btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozione);
+        }
+
+        btnConfermaRimozione.setVisibility(View.INVISIBLE);
+        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+
+        elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
+        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        elementiMenuRecyclerView.setLayoutManager(linearLayoutManager);
+        elementiMenuRecyclerView.setAdapter(elementiGMAdapter);
 
         btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -128,17 +144,39 @@ public class ElementiMenuFragment extends Fragment {
             }
         });
 
+        btnRemoveElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                elementiGMAdapter.getBtnInfo().setVisibility(View.INVISIBLE);
+                elementiGMAdapter.getRemoveCB().setVisibility(View.VISIBLE);
+                btnConfermaRimozione.setVisibility(View.VISIBLE);
+                btnAnnullaRimozione.setVisibility(View.VISIBLE);
+                btnRemoveElement.setVisibility(View.INVISIBLE);
+                btnAddElement.setVisibility(View.INVISIBLE);
+            }
+        });
 
-        elementiMenuRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGM);
+        btnAnnullaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                elementiGMAdapter.getBtnInfo().setVisibility(View.VISIBLE);
+                elementiGMAdapter.getRemoveCB().setVisibility(View.INVISIBLE);
+                btnRemoveElement.setVisibility(View.VISIBLE);
+                btnAddElement.setVisibility(View.VISIBLE);
+            }
+        });
 
-        elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
-        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        elementiMenuRecyclerView.setLayoutManager(linearLayoutManager);
-        elementiMenuRecyclerView.setAdapter(elementiGMAdapter);
+        btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i = 0; i<elementi.size();i++){
+                    if(elementiGMAdapter.getRemoveCB().isChecked()){
+                        }
+                    }
+                }
+        });
 
         return  rootView;
 
@@ -236,5 +274,21 @@ public class ElementiMenuFragment extends Fragment {
 
     public void setElementi(ArrayList<Elemento> elementi) {
         this.elementi = elementi;
+    }
+
+    public AppCompatButton getBtnAnnullaRimzione() {
+        return btnAnnullaRimozione;
+    }
+
+    public void setBtnAnnullaRimzione(AppCompatButton btnAnnullaRimzione) {
+        this.btnAnnullaRimozione = btnAnnullaRimzione;
+    }
+
+    public AppCompatButton getBtnConfermaRimozione() {
+        return btnConfermaRimozione;
+    }
+
+    public void setBtnConfermaRimozione(AppCompatButton btnConfermaRimozione) {
+        this.btnConfermaRimozione = btnConfermaRimozione;
     }
 }
