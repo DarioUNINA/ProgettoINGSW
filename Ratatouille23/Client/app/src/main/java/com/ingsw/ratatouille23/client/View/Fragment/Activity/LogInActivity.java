@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Activity;
+package com.ingsw.ratatouille23.client.View.Fragment.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,12 +7,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.ingsw.ratatouille23.client.Model.Ristorante;
-import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.RistorantePresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -26,7 +23,6 @@ public class LogInActivity extends AppCompatActivity {
     private UtentePresenter utentePresenter;
     private RistorantePresenter ristorantePresenter;
 
-    //private Intent intent;
 
 
     //Getters and Setters
@@ -88,8 +84,8 @@ public class LogInActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LogInActivity.this, HomeActivity.class));
-                //utentePresenter.login();
+                //startActivity(new Intent(LogInActivity.this, HomeActivity.class));
+                utentePresenter.login();
             }
         });
 

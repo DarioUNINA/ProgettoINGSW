@@ -59,14 +59,17 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         public OrderHolder(@NonNull View itemView) {
             super(itemView);
 
+            txtIdOrdine = itemView.findViewById(R.id.txtIdOrdine);
+            txtIdCameriere = itemView.findViewById(R.id.txtCameriere);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onOrdineClickListner.onOrdineClicked(getAdapterPosition());
                 }
             });
-            txtIdOrdine = itemView.findViewById(R.id.txtIdOrdine);
-            txtIdCameriere = itemView.findViewById(R.id.txtCameriere);
+
         }
     }
+
+
 }

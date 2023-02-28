@@ -18,9 +18,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
-import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
-import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.Activity.LogInActivity;
 
 public class SettingUtenteDialog extends AppCompatDialogFragment {
 

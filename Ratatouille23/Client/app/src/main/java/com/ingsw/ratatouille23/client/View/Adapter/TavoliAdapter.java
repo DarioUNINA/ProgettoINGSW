@@ -1,14 +1,18 @@
 package com.ingsw.ratatouille23.client.View.Adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
@@ -17,15 +21,15 @@ import java.util.ArrayList;
 
 public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHolder>{
 
-
-    private ArrayList<Tavolo> tavolo;
+    private ArrayList<Tavolo> tavoli;
     private Context context;
     private TavoliAdapter.OnTavoliClickListner onTavoliClickListner;
 
-    public TavoliAdapter(ArrayList<Tavolo> tavolo, Context context, TavoliAdapter.OnTavoliClickListner onTavoliClickListner) {
-        this.tavolo = tavolo;
+    public TavoliAdapter(ArrayList<Tavolo> tavoli, Context context, TavoliAdapter.OnTavoliClickListner onTavoliClickListner) {
+        this.tavoli = tavoli;
         this.context = context;
         this.onTavoliClickListner = onTavoliClickListner;
+
     }
 
     public interface OnTavoliClickListner{
@@ -42,28 +46,38 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
 
     @Override
     public void onBindViewHolder(@NonNull TavoliAdapter.TavoliHolder holder, int position) {
-        //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
-        //bisogna passare il tavolo per prendere il nome del cameriere
+        holder.txtIdTavolo.setText(Integer.toString(tavoli.get(position).getIdTavolo()));
+        holder.txtPosti.setText(Integer.toString(tavoli.get(position).getPosti()));
+
+        if(tavoli.get(position).isOccupato())
+            holder.ringOccupato.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("red")));
     }
 
     @Override
     public int getItemCount() {
-        return 3;
-        //return ordini.size();
+        return tavoli.size();
     }
+
+
 
     class TavoliHolder extends RecyclerView.ViewHolder{
 
-        //TextView txtIdOrdine;
+        MaterialCardView mcdSelecetd, ringOccupato;
 
-
+        TextView txtPosti, txtIdTavolo;
         public TavoliHolder(@NonNull View itemView) {
             super(itemView);
+
+            mcdSelecetd = itemView.findViewById(R.id.materialCardViewSelected);
+            ringOccupato = itemView.findViewById(R.id.ringOccupato);
+            txtPosti = itemView.findViewById(R.id.textViewPosti);
+            txtIdTavolo = itemView.findViewById(R.id.textViewIdtTavolo);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onTavoliClickListner.onTavoliClicked(getAdapterPosition());
+                    //set ordini
                 }
             });
 

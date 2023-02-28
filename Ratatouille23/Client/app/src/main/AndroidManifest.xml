@@ -28,12 +28,12 @@
             android:name=".AddCategoryMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".View.Activity.SettingsActivity"
+            android:name=".View.Fragment.Activity.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings_restaurant"
             android:theme="@style/Theme.Ratatouille23.NoActionBar" />
         <activity
-            android:name=".View.Activity.LogInActivity"
+            android:name=".View.Fragment.Activity.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.Activity.HomeActivity"
+            android:name=".View.Fragment.Activity.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -38,7 +38,6 @@ public class ElementiGSFragment extends Fragment {
 
     private ElementoPresenter elementoPresenter;
 
-    private List<Elemento> elementi;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -50,15 +49,7 @@ public class ElementiGSFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ElementiGMFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ElementiGSFragment newInstance(String param1, String param2) {
         ElementiGSFragment fragment = new ElementiGSFragment();
         Bundle args = new Bundle();
@@ -89,9 +80,9 @@ public class ElementiGSFragment extends Fragment {
 
         elementiGSRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewElementiGS);
 
-        elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
+        //elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
         //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner);
+        //elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -120,11 +111,6 @@ public class ElementiGSFragment extends Fragment {
         this.elementiGSAdapter = elementiGSAdapter;
     }
 
-    public List<Elemento> getElementi() {
-        return elementi;
-    }
 
-    public void setElementi(List<Elemento> elementi) {
-        this.elementi = elementi;
-    }
+
 }

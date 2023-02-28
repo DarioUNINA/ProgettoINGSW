@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+
+import java.util.List;
 
 public class GestioneSalaFragment extends Fragment {
 
@@ -21,9 +24,9 @@ public class GestioneSalaFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    TavoliFragment tavoliFragment;
-    OrdiniFragment ordiniFragment;
-    ElementiGSFragment elementiGSFragment;
+    private TavoliFragment tavoliFragment;
+    private OrdiniFragment ordiniFragment;
+    private ElementiGSFragment elementiGSFragment;
 
 
     public GestioneSalaFragment() {
@@ -50,14 +53,16 @@ public class GestioneSalaFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        tavoliFragment = new TavoliFragment();
-        ordiniFragment = new OrdiniFragment();
+
         elementiGSFragment = new ElementiGSFragment();
+        ordiniFragment = new OrdiniFragment();
+        tavoliFragment = new TavoliFragment();
 
         fragmentTransaction.replace(R.id.tavoli_layout, tavoliFragment);
         fragmentTransaction.add(R.id.ordini_layout, ordiniFragment);
         fragmentTransaction.add(R.id.elementi_GM_layout, elementiGSFragment);
         fragmentTransaction.commit();
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Activity;
+package com.ingsw.ratatouille23.client.View.Fragment.Activity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -44,11 +43,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //utente = (Utente)getIntent().getSerializableExtra("utente");
-        //ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        utente = (Utente)getIntent().getSerializableExtra("utente");
+        ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
 
-        utente = new Utente("Dario", "123", 1, Ruolo.admin);
-        ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
+        //utente = new Utente("Dario", "123", 1, Ruolo.admin);
+        //ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#182341"
-    tools:context=".View.Activity.SettingsActivity">
+    tools:context=".View.Fragment.Activity.SettingsActivity">
 
     <ImageView
         android:layout_width="97dp"

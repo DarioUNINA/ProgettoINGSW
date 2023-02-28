@@ -12,14 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.ingsw.ratatouille23.client.Model.Elemento;
-import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
-import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.TavoloPresenter;
 import com.ingsw.ratatouille23.client.R;
-import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
-import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.TavoliAdapter;
 
 import java.util.ArrayList;
@@ -47,7 +42,6 @@ public class TavoliFragment extends Fragment {
     private TavoliAdapter.OnTavoliClickListner onTavoliClickListner;
 
 
-    private List<Tavolo> tavoli;
     private TavoloPresenter tavoloPresenter;
 
     public TavoliFragment() {
@@ -79,32 +73,34 @@ public class TavoliFragment extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_tavoli, container, false);
 
         tavoloPresenter = new TavoloPresenter(TavoliFragment.this);
-
-
-
-        //Tutto quello che segue va nell' adapter, NON in questa classe
+        tavoliRecyclerView = (RecyclerView) rootView.findViewById(R.id.tavoliRecyclerView);
 
         tavoloPresenter.getTavoli();
 
-        tavoliRecyclerView = (RecyclerView) rootView.findViewById(R.id.tavoliRecyclerView);
-
-        tavoliAdapter = new TavoliAdapter((ArrayList<Tavolo>) tavoli, getContext(), onTavoliClickListner);
+        //tavoliAdapter = new TavoliAdapter((ArrayList<Tavolo>) tavoli, getContext(), onTavoliClickListner);
 
         LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 2);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         tavoliRecyclerView.setLayoutManager(linearLayoutManager);
-        tavoliRecyclerView.setAdapter(tavoliAdapter);
-
-
 
         return rootView;
     }
 
-    public List<Tavolo> getTavoli() {
-        return tavoli;
+
+    public TavoliAdapter getTavoliAdapter() {
+        return tavoliAdapter;
     }
 
-    public void setTavoli(List<Tavolo> tavoli) {
-        this.tavoli = tavoli;
+    public void setTavoliAdapter(TavoliAdapter tavoliAdapter) {
+        tavoliRecyclerView.setAdapter(tavoliAdapter);
+        this.tavoliAdapter = tavoliAdapter;
+    }
+
+    public TavoliAdapter.OnTavoliClickListner getOnTavoliClickListner() {
+        return onTavoliClickListner;
+    }
+
+    public void setOnTavoliClickListner(TavoliAdapter.OnTavoliClickListner onTavoliClickListner) {
+        this.onTavoliClickListner = onTavoliClickListner;
     }
 }

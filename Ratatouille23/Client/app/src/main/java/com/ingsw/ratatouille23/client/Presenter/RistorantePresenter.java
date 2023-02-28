@@ -1,11 +1,9 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
 import com.ingsw.ratatouille23.client.Model.Ristorante;
-import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.RistoranteService;
-import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
-import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.Activity.LogInActivity;
 
 public class RistorantePresenter {
 

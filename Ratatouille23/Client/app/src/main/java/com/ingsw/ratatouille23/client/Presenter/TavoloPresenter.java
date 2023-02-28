@@ -1,13 +1,14 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
-import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.TavoloService;
-import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Adapter.TavoliAdapter;
+import com.ingsw.ratatouille23.client.View.Fragment.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    tavoliFragment.setTavoli((List<Tavolo>)o);
+                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner()));
                 }
 
             }
@@ -49,10 +50,9 @@ public class TavoloPresenter {
             @Override
             public void returnResult(Object o) {
                 if(o!=null){
-                    tavoliFragment.setTavoli((List<Tavolo>)o);
-
+                    tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner()));
                 }else
-                    System.out.println("non e andato\n\n\n");
+                    System.out.println("La lista e' null\n");
 
             }
 
@@ -71,7 +71,6 @@ public class TavoloPresenter {
         else
             getByCameriere(((HomeActivity)tavoliFragment.getActivity()).getUtente().getUsername());
 
-        //((HomeActivity)tavoliFragment.getActivity()).getGestioneSala().getOrdiniFragment().setOrdiniBytavolo(tavoliFragment.getTavoli().get(0).getOrdini());
     }
 
 
