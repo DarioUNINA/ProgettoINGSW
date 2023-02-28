@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,9 @@ import java.util.List;
 
 public class OrdiniFragment extends Fragment {
 
-    private FloatingActionButton btnAddOrder;
+    private FloatingActionButton btnAddOrder, btnRemoveOrder;
+
+    private AppCompatButton btnAnnullaRimozioneOrdine, btnConfermaRimozioneOrdine;
     private RecyclerView ordiniRecyclerView;
 
     private OrdineAdapter ordineAdapter;
@@ -32,6 +35,8 @@ public class OrdiniFragment extends Fragment {
     private OrdinePresenter ordinePresenter;
 
     private List<Ordine> ordini;
+
+    Boolean flag = false;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -72,16 +77,49 @@ public class OrdiniFragment extends Fragment {
 
         ordiniRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
+        btnRemoveOrder = rootView.findViewById(R.id.btnRemoveOrder);
+        btnAnnullaRimozioneOrdine = rootView.findViewById(R.id.btnAnnullaRimozioneOrdine);
+        btnConfermaRimozioneOrdine = rootView.findViewById(R.id.btnConfermaRimozioneOrdine);
+
+
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
+
+        btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
+        btnAnnullaRimozioneOrdine.setVisibility(View.INVISIBLE);
+
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
+            }
+        });
+
+        btnRemoveOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnRemoveOrder.setVisibility(View.INVISIBLE);
+                btnAddOrder.setVisibility(View.INVISIBLE);
+                btnConfermaRimozioneOrdine.setVisibility(View.VISIBLE);
+                btnAnnullaRimozioneOrdine.setVisibility(View.VISIBLE);
+                flag = true;
+                //ordiniRecyclerView.setAdapter();
+            }
+        });
+
+        btnAnnullaRimozioneOrdine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnAddOrder.setVisibility(View.VISIBLE);
+                btnRemoveOrder.setVisibility(View.VISIBLE);
+                btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
+                btnAnnullaRimozioneOrdine.setVisibility(View.INVISIBLE);
+                flag = false;
+                //ordiniRecyclerView.setAdapter();
             }
         });
 

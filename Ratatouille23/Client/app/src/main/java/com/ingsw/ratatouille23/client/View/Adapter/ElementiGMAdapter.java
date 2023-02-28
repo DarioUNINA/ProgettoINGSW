@@ -22,14 +22,15 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
     private Context context;
     private OnElementiClickListner onElementiClickListner;
 
-    private FloatingActionButton btnInfo;
 
-    private CheckBox removeCB;
 
-    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner) {
+    private Boolean flag;
+
+    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner,  Boolean flag) {
         this.elementi = elementi;
         this.context = context;
         this.onElementiClickListner = onElementiClickListner;
+        this.flag = flag;
     }
 
     public interface OnElementiClickListner{
@@ -46,6 +47,15 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
     @Override
     public void onBindViewHolder(@NonNull ElementiGMAdapter.ElementiHolder holder, int position) {
+
+        if(flag){
+            holder.elementiCB.setVisibility(View.VISIBLE);
+            holder.btnInfo.setVisibility(View.INVISIBLE);
+        }
+        else{
+            holder.elementiCB.setVisibility(View.INVISIBLE);
+            holder.btnInfo.setVisibility(View.VISIBLE);
+        }
         //holder.txtNomeElemento.setText(elementi.get(position).getNome());
 //        holder.txtNomeElemento.setText("puttan");
 //        holder.txtPrezzoElemento.setText("2$");
@@ -63,13 +73,15 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
         TextView txtNomeElemento;
         TextView txtPrezzoElemento;
 
+        private CheckBox elementiCB;
+        private FloatingActionButton btnInfo;
 
         public ElementiHolder(@NonNull View itemView) {
             super(itemView);
 
             txtNomeElemento = itemView.findViewById(R.id.txtNomeElemento);
             txtPrezzoElemento = itemView.findViewById(R.id.txtPrezzoElemento);
-            removeCB = itemView.findViewById(R.id.chechBoxElementiGm);
+            elementiCB = itemView.findViewById(R.id.chechBoxElementiGm);
             btnInfo = itemView.findViewById(R.id.btnInfo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -80,24 +92,42 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
                 }
             });
 
-            removeCB.setVisibility(View.INVISIBLE);
+            elementiCB.setVisibility(View.INVISIBLE);
+            btnInfo.setVisibility(View.VISIBLE);
+        }
 
+        public TextView getTxtNomeElemento() {
+            return txtNomeElemento;
+        }
+
+        public void setTxtNomeElemento(TextView txtNomeElemento) {
+            this.txtNomeElemento = txtNomeElemento;
+        }
+
+        public TextView getTxtPrezzoElemento() {
+            return txtPrezzoElemento;
+        }
+
+        public void setTxtPrezzoElemento(TextView txtPrezzoElemento) {
+            this.txtPrezzoElemento = txtPrezzoElemento;
+        }
+
+        public CheckBox getElementiCB() {
+            return elementiCB;
+        }
+
+        public void setElementiCB(CheckBox elementiCB) {
+            this.elementiCB = elementiCB;
+        }
+        public FloatingActionButton getBtnInfo() {
+            return btnInfo;
+        }
+
+        public void setBtnInfo(FloatingActionButton btnInfo) {
+            this.btnInfo = btnInfo;
         }
     }
 
-    public FloatingActionButton getBtnInfo() {
-        return btnInfo;
-    }
 
-    public void setBtnInfo(FloatingActionButton btnInfo) {
-        this.btnInfo = btnInfo;
-    }
 
-    public CheckBox getRemoveCB() {
-        return removeCB;
-    }
-
-    public void setRemoveCB(CheckBox removeCB) {
-        this.removeCB = removeCB;
-    }
 }

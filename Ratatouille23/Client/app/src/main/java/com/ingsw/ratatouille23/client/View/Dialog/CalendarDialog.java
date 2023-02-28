@@ -23,9 +23,12 @@ public class CalendarDialog extends AppCompatDialogFragment  {
     CalendarView calendarView;
 
     private FiltroDataFragment filtroDataFragment;
-
-    public CalendarDialog(FiltroDataFragment filtroDataFragment) {
+    private boolean from;
+    public CalendarDialog(FiltroDataFragment filtroDataFragment, boolean from) {
         this.filtroDataFragment = filtroDataFragment;
+        this.from = from;
+
+
     }
     @NonNull
     @Override
@@ -34,7 +37,20 @@ public class CalendarDialog extends AppCompatDialogFragment  {
         View v = inflater.inflate(R.layout.dialog_calendar, null);
 
         calendarView = v.findViewById(R.id.calendarioView);
-        calendarView.getDate();
+
+
+                calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @Override
+                    public void onSelectedDayChange(@NonNull CalendarView calendarView, int anno, int mese, int giorno) {
+                        String date = anno + "/" + mese + "/" + giorno;
+                        if(from)
+                            getFiltroDataFragment().getTxtFrom().setText(date);
+                        else
+                            getFiltroDataFragment().getTxtTo().setText(date);
+
+                    }
+                });
+
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -55,4 +71,20 @@ public class CalendarDialog extends AppCompatDialogFragment  {
                 getDialog().getWindow().getAttributes());
     }
 
+    public FiltroDataFragment getFiltroDataFragment() {
+        return filtroDataFragment;
+    }
+
+    public void setFiltroDataFragment(FiltroDataFragment filtroDataFragment) {
+        this.filtroDataFragment = filtroDataFragment;
+    }
+
+
+    public CalendarView getCalendarView() {
+        return calendarView;
+    }
+
+    public void setCalendarView(CalendarView calendarView) {
+        this.calendarView = calendarView;
+    }
 }

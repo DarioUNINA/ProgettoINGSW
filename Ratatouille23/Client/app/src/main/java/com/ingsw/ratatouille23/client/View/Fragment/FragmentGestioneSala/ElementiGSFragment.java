@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,8 @@ public class ElementiGSFragment extends Fragment {
 
     private FloatingActionButton addElementoOrdine, removeElementoOrdine;
 
+    private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
+
     private RecyclerView elementiGSRecyclerView;
 
     private ElementiGSAdapter elementiGSAdapter;
@@ -42,6 +45,7 @@ public class ElementiGSFragment extends Fragment {
 
     private ElementoPresenter elementoPresenter;
 
+    Boolean flag = false;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -81,6 +85,8 @@ public class ElementiGSFragment extends Fragment {
 
         addElementoOrdine = rootView.findViewById(R.id.addElementoOrdine);
         removeElementoOrdine = rootView.findViewById(R.id.removeElementoOrdine);
+        btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozioneElementiGS);
+        btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneElmentiGS);
 
         elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
 
@@ -88,12 +94,15 @@ public class ElementiGSFragment extends Fragment {
 
         //elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
         //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        //elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner);
+        //elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner, flag);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         elementiGSRecyclerView.setLayoutManager(linearLayoutManager);
         elementiGSRecyclerView.setAdapter(elementiGSAdapter);
+
+        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+        btnConfermaRimozione.setVisibility(View.INVISIBLE);
 
         addElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,8 +114,24 @@ public class ElementiGSFragment extends Fragment {
         removeElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //elementiGSAdapter.getCounter().setVisibility(View.INVISIBLE);
-                //elementiGSAdapter.getRimozioneCB().setVisibility(View.VISIBLE);
+                removeElementoOrdine.setVisibility(View.INVISIBLE);
+                addElementoOrdine.setVisibility(View.INVISIBLE);
+                btnAnnullaRimozione.setVisibility(View.VISIBLE);
+                btnConfermaRimozione.setVisibility(View.VISIBLE);
+                flag = true;
+                //elementiGSRecyclerView.setAdapter();
+            }
+        });
+
+        btnAnnullaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeElementoOrdine.setVisibility(View.VISIBLE);
+                addElementoOrdine.setVisibility(View.VISIBLE);
+                btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                flag = false;
+                //elementiGSRecyclerView.setAdapter();
             }
         });
 
