@@ -44,6 +44,8 @@ public class ElementiMenuFragment extends Fragment {
     private ElementoPresenter elementoPresenter;
 
     private List<Elemento> elementi;
+
+    private Boolean var = false;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -97,7 +99,7 @@ public class ElementiMenuFragment extends Fragment {
         btnAnnullaRimozione.setVisibility(View.INVISIBLE);
 
         elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
-        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner);
+        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -147,12 +149,12 @@ public class ElementiMenuFragment extends Fragment {
         btnRemoveElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                elementiGMAdapter.getBtnInfo().setVisibility(View.INVISIBLE);
-                elementiGMAdapter.getRemoveCB().setVisibility(View.VISIBLE);
                 btnConfermaRimozione.setVisibility(View.VISIBLE);
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnRemoveElement.setVisibility(View.INVISIBLE);
                 btnAddElement.setVisibility(View.INVISIBLE);
+                var = true;
+                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var));
             }
         });
 
@@ -161,20 +163,16 @@ public class ElementiMenuFragment extends Fragment {
             public void onClick(View view) {
                 btnConfermaRimozione.setVisibility(View.INVISIBLE);
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
-                elementiGMAdapter.getBtnInfo().setVisibility(View.VISIBLE);
-                elementiGMAdapter.getRemoveCB().setVisibility(View.INVISIBLE);
                 btnRemoveElement.setVisibility(View.VISIBLE);
                 btnAddElement.setVisibility(View.VISIBLE);
+                var = false;
+                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var));
             }
         });
 
         btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i<elementi.size();i++){
-                    if(elementiGMAdapter.getRemoveCB().isChecked()){
-                        }
-                    }
                 }
         });
 

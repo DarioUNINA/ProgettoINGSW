@@ -2,11 +2,13 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.ingsw.ratatouille23.client.R;
@@ -21,7 +23,8 @@ import com.ingsw.ratatouille23.client.View.Dialog.CalendarDialog;
 public class FiltroDataFragment extends Fragment {
 
 
-    private TextView txtFrom;
+    private TextView txtFrom, txtTo;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -67,21 +70,37 @@ public class FiltroDataFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_filtro_data, container, false);
 
         txtFrom = rootView.findViewById(R.id.txtFrom);
+    txtTo = rootView.findViewById(R.id.txtTo);
 
         txtFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
-
+                openDialogFrom();
             }
         });
+
+        txtTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialogTo();
+            }
+        });
+
+
 
         return rootView;
     }
 
-    public void openDialog(){
-        CalendarDialog calendarDialog = new CalendarDialog(this);
-        calendarDialog.show(getParentFragmentManager(), "Calendar");
+
+    public void openDialogFrom(){
+        CalendarDialog calendarDialogFrom = new CalendarDialog(this, true);
+        calendarDialogFrom.show(getParentFragmentManager(), "Calendar");
+
+    }
+
+    public void openDialogTo(){
+        CalendarDialog calendarDialogTo = new CalendarDialog(this, false);
+        calendarDialogTo.show(getParentFragmentManager(), "Calendar");
 
     }
 
@@ -92,4 +111,13 @@ public class FiltroDataFragment extends Fragment {
     public void setTxtFrom(TextView txtFrom) {
         this.txtFrom = txtFrom;
     }
+
+    public TextView getTxtTo() {
+        return txtTo;
+    }
+
+    public void setTxtTo(TextView txtTo) {
+        this.txtTo = txtTo;
+    }
+
 }

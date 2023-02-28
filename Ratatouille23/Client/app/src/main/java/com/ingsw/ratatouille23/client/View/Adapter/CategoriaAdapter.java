@@ -24,13 +24,15 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     private Context context;
     private CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner;
 
+    private Boolean flag;
     private CategorieFragment categorieFragment;
 
-    public CategoriaAdapter(ArrayList<Categoria> categoria, Context context, CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner, CategorieFragment categorieFragment) {
+    public CategoriaAdapter(ArrayList<Categoria> categoria, Context context, CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner, CategorieFragment categorieFragment, boolean flag) {
         this.categoria = categoria;
         this.context = context;
         this.onCategoriaClickListner = onCategoriaClickListner;
         this.categorieFragment = categorieFragment;
+        this.flag = flag;
     }
 
     public interface OnCategoriaClickListner{
@@ -48,7 +50,10 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
 
     @Override
     public void onBindViewHolder(@NonNull CategoriaAdapter.CategoriaHolder holder, int position) {
-
+        if(flag)
+            holder.categoriaCB.setVisibility(View.VISIBLE);
+        else
+            holder.categoriaCB.setVisibility(View.INVISIBLE);
         //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
         //bisogna passare il tavolo per prendere il nome del cameriere
     }
@@ -82,29 +87,10 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
                     onCategoriaClickListner.onCategoriaClicked(getAdapterPosition());
                 }
             });
-//            getCategorieFragment().getBtnRemoveCategory().setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    getCategorieFragment().getBtnConfermaRimozione().setVisibility(View.VISIBLE);
-//                    getCategorieFragment().getBtnAnnullaRimozione().setVisibility(View.VISIBLE);
-//                    getCategorieFragment().getBtnRemoveCategory().setVisibility(View.INVISIBLE);
-//                    getCategorieFragment().getBtnAddCategory().setVisibility(View.INVISIBLE);
-//                    categoriaCB.setVisibility(View.VISIBLE);
-//                }
-//            });
-
-//            getCategorieFragment().getBtnAnnullaRimozione().setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    getCategorieFragment().getBtnConfermaRimozione().setVisibility(View.INVISIBLE);
-//                    getCategorieFragment().getBtnAnnullaRimozione().setVisibility(View.INVISIBLE);
-//                    getCategorieFragment().getBtnRemoveCategory().setVisibility(View.VISIBLE);
-//                    getCategorieFragment().getBtnAddCategory().setVisibility(View.VISIBLE);
-//                    categoriaCB.setVisibility(View.INVISIBLE);
-//                }
-//            });
 
             categoriaCB.setVisibility(View.INVISIBLE);
+
+
 
         }
 
@@ -132,4 +118,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     public void setCategorieFragment(CategorieFragment categorieFragment) {
         this.categorieFragment = categorieFragment;
     }
+
+
 }

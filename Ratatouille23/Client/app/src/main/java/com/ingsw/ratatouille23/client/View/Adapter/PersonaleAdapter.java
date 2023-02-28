@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,10 +23,13 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
     private Context context;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
 
-    public PersonaleAdapter(ArrayList<Utente> utenti, Context context, PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner) {
+    Boolean flag;
+
+    public PersonaleAdapter(ArrayList<Utente> utenti, Context context, PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner, Boolean flag) {
         this.utenti = utenti;
         this.context = context;
         this.onPersonaleClickListner = onPersonaleClickListner;
+        this.flag = flag;
     }
 
     public interface OnPersonaleClickListner{
@@ -42,6 +46,10 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
     @Override
     public void onBindViewHolder(@NonNull PersonaleAdapter.PersonaleHolder holder, int position) {
+        if(flag)
+            holder.personaleCheckBox.setVisibility(View.VISIBLE);
+        else
+            holder.personaleCheckBox.setVisibility(View.INVISIBLE);
         //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
         //bisogna passare il tavolo per prendere il nome del cameriere
     }
@@ -57,8 +65,14 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
         TextView txtIdOrdine;
         TextView txtIdCameriere;
 
+        CheckBox personaleCheckBox;
+
+
+
         public PersonaleHolder(@NonNull View itemView) {
             super(itemView);
+
+            personaleCheckBox = itemView.findViewById(R.id.chechBoxPersonale);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,6 +81,7 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
                 }
             });
 
+            personaleCheckBox.setVisibility(View.INVISIBLE);
         }
     }
 }

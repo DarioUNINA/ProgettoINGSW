@@ -46,6 +46,8 @@ public class CategorieFragment extends Fragment {
 
     private CategoriaPresenter categoriaPresenter;
 
+    private Boolean var = false;
+
     private List<Categoria> categoria;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -93,7 +95,7 @@ public class CategorieFragment extends Fragment {
 
             categoriaPresenter = new CategoriaPresenter(CategorieFragment.this);
             //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-            categoriaAdapter = new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this);
+            categoriaAdapter = new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var);
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -110,6 +112,8 @@ public class CategorieFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnRemoveCategory.setVisibility(View.INVISIBLE);
                 btnAddCategory.setVisibility(View.INVISIBLE);
+                var = true;
+                categoriaRecyclerView.setAdapter(new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var));
             }
         });
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +130,8 @@ public class CategorieFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnRemoveCategory.setVisibility(View.VISIBLE);
                 btnAddCategory.setVisibility(View.VISIBLE);
+                var = false;
+                categoriaRecyclerView.setAdapter(new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var));
             }
         });
 
@@ -171,5 +177,13 @@ public class CategorieFragment extends Fragment {
 
     public void setBtnRemoveCategory(FloatingActionButton btnRemoveCategory) {
         this.btnRemoveCategory = btnRemoveCategory;
+    }
+
+    public Boolean getVar() {
+        return var;
+    }
+
+    public void setVar(Boolean var) {
+        this.var = var;
     }
 }

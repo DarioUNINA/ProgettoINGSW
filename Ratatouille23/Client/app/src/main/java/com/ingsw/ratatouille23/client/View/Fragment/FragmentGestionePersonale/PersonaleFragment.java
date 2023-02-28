@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,7 @@ public class PersonaleFragment extends Fragment {
 
     private FloatingActionButton addUser, removeUser;
 
+    private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
     private RecyclerView listaUtentiRecyclerView;
 
     private PersonaleAdapter personaleAdapter;
@@ -42,6 +44,8 @@ public class PersonaleFragment extends Fragment {
     private UtentePresenter utentePresenter;
 
     private List<Utente> utenti;
+
+    Boolean flag = false;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -88,16 +92,22 @@ public class PersonaleFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_personale, container, false);
 
         addUser = rootView.findViewById(R.id.btnAddUser);
+        removeUser = rootView.findViewById(R.id.removeUser);
+        btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozioneUser);
+        btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneUser);
         listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
         //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        personaleAdapter = new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner);
+        personaleAdapter = new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listaUtentiRecyclerView.setLayoutManager(linearLayoutManager);
         listaUtentiRecyclerView.setAdapter(personaleAdapter);
+
+        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+        btnConfermaRimozione.setVisibility(View.INVISIBLE);
 
 
         addUser.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +117,29 @@ public class PersonaleFragment extends Fragment {
             }
         });
 
+        removeUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeUser.setVisibility(View.INVISIBLE);
+                addUser.setVisibility(View.INVISIBLE);
+                btnAnnullaRimozione.setVisibility(View.VISIBLE);
+                btnConfermaRimozione.setVisibility(View.VISIBLE);
+                flag = true;
+                listaUtentiRecyclerView.setAdapter(new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag));
+            }
+        });
+
+        btnAnnullaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeUser.setVisibility(View.VISIBLE);
+                addUser.setVisibility(View.VISIBLE);
+                btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                flag = false;
+                listaUtentiRecyclerView.setAdapter(new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag));
+            }
+        });
 
         return rootView;
     }
