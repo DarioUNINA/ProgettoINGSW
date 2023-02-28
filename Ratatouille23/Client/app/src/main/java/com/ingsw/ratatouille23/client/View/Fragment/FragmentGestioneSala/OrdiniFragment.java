@@ -114,7 +114,7 @@ public class OrdiniFragment extends Fragment {
     }
 
     public void setOrdineAdapter(OrdineAdapter ordineAdapter) {
-        this.ordineAdapter = ordineAdapter;
         ordiniRecyclerView.setAdapter(ordineAdapter);
+        this.ordineAdapter = ordineAdapter;
     }
 }

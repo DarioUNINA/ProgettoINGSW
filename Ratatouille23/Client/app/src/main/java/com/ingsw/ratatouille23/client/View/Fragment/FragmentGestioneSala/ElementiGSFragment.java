@@ -126,9 +126,6 @@ public class ElementiGSFragment extends Fragment {
         this.elementiGSAdapter = elementiGSAdapter;
     }
 
-    public void setElementi(List<Elemento> elementi) {
-        this.elementi = elementi;
-    }
 
 
     public FloatingActionButton getAddElementoOrdine() {

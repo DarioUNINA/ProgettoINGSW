@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#182341"
     android:orientation="horizontal"
-    tools:context=".View.Fragment.Activity.LogInActivity"
+    tools:context=".View.Activity.LogInActivity"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="-8dp">
 

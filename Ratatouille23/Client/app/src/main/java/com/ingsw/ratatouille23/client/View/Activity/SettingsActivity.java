@@ -1,4 +1,4 @@
-package com.ingsw.ratatouille23.client.View.Fragment.Activity;
+package com.ingsw.ratatouille23.client.View.Activity;
 
 import android.os.Bundle;
 
