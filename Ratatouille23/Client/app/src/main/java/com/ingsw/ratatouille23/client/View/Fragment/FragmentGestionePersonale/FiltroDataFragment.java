@@ -15,6 +15,9 @@ import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.CalendarDialog;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FiltroDataFragment#newInstance} factory method to
@@ -70,7 +73,12 @@ public class FiltroDataFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_filtro_data, container, false);
 
         txtFrom = rootView.findViewById(R.id.txtFrom);
-    txtTo = rootView.findViewById(R.id.txtTo);
+        txtTo = rootView.findViewById(R.id.txtTo);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        txtFrom.setText(dtf.format(now));
+        txtTo.setText(dtf.format(now));
 
         txtFrom.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,6 +18,9 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.FiltroDataFragment;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class CalendarDialog extends AppCompatDialogFragment  {
 
     CalendarView calendarView;
@@ -39,10 +42,11 @@ public class CalendarDialog extends AppCompatDialogFragment  {
         calendarView = v.findViewById(R.id.calendarioView);
 
 
+
                 calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int anno, int mese, int giorno) {
-                        String date = anno + "/" + mese + "/" + giorno;
+                        String date = giorno + "/" + mese + "/" + anno;
                         if(from)
                             getFiltroDataFragment().getTxtFrom().setText(date);
                         else
@@ -64,7 +68,7 @@ public class CalendarDialog extends AppCompatDialogFragment  {
     public void onStart() {
         super.onStart();
         getDialog().getWindow().getAttributes().width=850;
-        getDialog().getWindow().getAttributes().height=1150;
+        getDialog().getWindow().getAttributes().height=600;
         getDialog().getWindow().setGravity(Gravity.CENTER_VERTICAL);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
