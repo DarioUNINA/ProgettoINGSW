@@ -30,7 +30,7 @@ public class CategoriaPresenter {
         service.getByIdMenu(new Callback() {
             @Override
             public void returnResult(Object o) {
-            if(o!=null)
+            //if(o!=null)
                 //categorieFragment.setCategoriaAdapter(new CategoriaAdapter((ArrayList<Categoria>) o, categorieFragment.getContext(),categorieFragment.getCategoriaAdapter().getOnCategoriaClickListner(), categorieFragment, false));
 
             }
