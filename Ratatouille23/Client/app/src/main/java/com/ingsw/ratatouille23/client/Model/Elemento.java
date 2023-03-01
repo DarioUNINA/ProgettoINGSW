@@ -20,7 +20,7 @@ public class Elemento implements Serializable {
 
     @Expose
     @SerializedName("allergeni")
-    List<Allergene> allergeni;
+    List<String> allergeni;
 
     //Attributes
 
@@ -35,7 +35,7 @@ public class Elemento implements Serializable {
     //Constructors
     public Elemento(){}
 
-    public Elemento(int idElemento, int idCategoria, List<Allergene> allergeni, String nome, float prezzo) {
+    public Elemento(int idElemento, int idCategoria, List<String> allergeni, String nome, float prezzo) {
         this.idElemento = idElemento;
         this.idCategoria = idCategoria;
         this.allergeni = allergeni;
@@ -59,11 +59,11 @@ public class Elemento implements Serializable {
         this.idCategoria = idCategoria;
     }
 
-    public List<Allergene> getAllergeni() {
+    public List<String> getAllergeni() {
         return allergeni;
     }
 
-    public void setAllergeni(List<Allergene> allergeni) {
+    public void setAllergeni(List<String> allergeni) {
         this.allergeni = allergeni;
     }
 

@@ -20,15 +20,15 @@ import java.util.ArrayList;
 
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaHolder> {
 
-    private ArrayList<Categoria> categoria;
+    private ArrayList<Categoria> categorie;
     private Context context;
     private CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner;
 
     private Boolean flag;
     private CategorieFragment categorieFragment;
 
-    public CategoriaAdapter(ArrayList<Categoria> categoria, Context context, CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner, CategorieFragment categorieFragment, boolean flag) {
-        this.categoria = categoria;
+    public CategoriaAdapter(ArrayList<Categoria> categorie, Context context, CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner, CategorieFragment categorieFragment, boolean flag) {
+        this.categorie = categorie;
         this.context = context;
         this.onCategoriaClickListner = onCategoriaClickListner;
         this.categorieFragment = categorieFragment;
@@ -54,14 +54,13 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
             holder.categoriaCB.setVisibility(View.VISIBLE);
         else
             holder.categoriaCB.setVisibility(View.INVISIBLE);
-        //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
-        //bisogna passare il tavolo per prendere il nome del cameriere
+
+        holder.txtCategoria.setText(categorie.get(position).getNome());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
-        //return ordini.size();
+        return categorie.size();
     }
 
 
@@ -119,5 +118,11 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         this.categorieFragment = categorieFragment;
     }
 
+    public OnCategoriaClickListner getOnCategoriaClickListner() {
+        return onCategoriaClickListner;
+    }
 
+    public void setOnCategoriaClickListner(OnCategoriaClickListner onCategoriaClickListner) {
+        this.onCategoriaClickListner = onCategoriaClickListner;
+    }
 }

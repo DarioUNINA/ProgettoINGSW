@@ -88,9 +88,8 @@ public class OrdiniFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ArrayList<Ordine> p = new ArrayList<>();
-        p.add(new Ordine(1,1,null));
-        ordineAdapter = new OrdineAdapter(p, getContext(), onOrdineCLickListner, OrdiniFragment.this);
+
+        ordineAdapter = new OrdineAdapter(new ArrayList<Ordine>(), getContext(), onOrdineCLickListner, OrdiniFragment.this, true);
         ordiniRecyclerView.setAdapter(ordineAdapter);
 
         btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
@@ -99,6 +98,7 @@ public class OrdiniFragment extends Fragment {
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 openDialog();
             }
         });
@@ -160,4 +160,8 @@ public class OrdiniFragment extends Fragment {
         this.ordineAdapter = ordineAdapter;
         this.ordineAdapter.notifyDataSetChanged();
     }
+
+
+
+
 }

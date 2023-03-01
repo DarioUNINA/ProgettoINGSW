@@ -27,11 +27,7 @@ import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CategorieFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class CategorieFragment extends Fragment {
 
     private FloatingActionButton btnAddCategory, btnRemoveCategory;
@@ -94,8 +90,7 @@ public class CategorieFragment extends Fragment {
             categoriaRecyclerView = rootView.findViewById(R.id.categorieRecyclerView);
 
             categoriaPresenter = new CategoriaPresenter(CategorieFragment.this);
-            //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-            categoriaAdapter = new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var);
+            categoriaPresenter.getByMenu(((HomeActivity)getActivity()).getRistorante().getIdMenu());
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -185,5 +180,13 @@ public class CategorieFragment extends Fragment {
 
     public void setVar(Boolean var) {
         this.var = var;
+    }
+
+    public CategoriaAdapter getCategoriaAdapter() {
+        return categoriaAdapter;
+    }
+
+    public void setCategoriaAdapter(CategoriaAdapter categoriaAdapter) {
+        this.categoriaAdapter = categoriaAdapter;
     }
 }

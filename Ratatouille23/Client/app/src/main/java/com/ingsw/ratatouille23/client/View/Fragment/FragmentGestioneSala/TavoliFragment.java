@@ -103,4 +103,5 @@ public class TavoliFragment extends Fragment {
     public void setOnTavoliClickListner(TavoliAdapter.OnTavoliClickListner onTavoliClickListner) {
         this.onTavoliClickListner = onTavoliClickListner;
     }
+
 }

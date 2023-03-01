@@ -52,6 +52,16 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
         holder.txtIdTavolo.setText(Integer.toString(tavoli.get(position).getIdTavolo()));
         holder.txtPosti.setText(Integer.toString(tavoli.get(position).getPosti()));
 
+        holder.txtIdTavolo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
+                activity.getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini((ArrayList<Ordine>)tavoli.get(0).getOrdini());
+            }
+        });
+
+
+
         if(tavoli.get(position).isOccupato())
             holder.ringOccupato.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("red")));
     }
@@ -60,6 +70,7 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
     public int getItemCount() {
         return tavoli.size();
     }
+
 
 
 
@@ -76,16 +87,9 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
             txtPosti = itemView.findViewById(R.id.textViewPosti);
             txtIdTavolo = itemView.findViewById(R.id.textViewIdtTavolo);
 
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
-                            activity.getGestioneSala().getOrdiniFragment().
-                            setOrdineAdapter(new OrdineAdapter(((ArrayList<Ordine>) tavoli.get(getAdapterPosition()).getOrdini())
-                                            , activity.getGestioneSala().getOrdiniFragment().getContext(),
-                                            activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(),
-                                            activity.getGestioneSala().getOrdiniFragment()));
 
                 }
 
@@ -93,4 +97,17 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
 
         }
     }
+
+    public ArrayList<Tavolo> getTavoli() {
+        return tavoli;
+    }
+
+    public void setTavoli(ArrayList<Tavolo> tavoli) {
+        this.tavoli = tavoli;
+        notifyDataSetChanged();
+    }
+
+
+
+
 }

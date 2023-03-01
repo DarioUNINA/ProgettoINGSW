@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     Boolean flag;
 
-    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, flag) {
+    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, Boolean flag) {
         this.ordini = ordini;
         this.ordiniFragment = ordiniFragment;
         this.context = context;
@@ -51,14 +53,13 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     @Override
     public void onBindViewHolder(@NonNull OrdineAdapter.OrderHolder holder, int position) {
 
-//        if(flag){
-//            holder.rimozioneCB.setVisibility(View.VISIBLE);
-//        }
-//        else{
-//            holder.rimozioneCB.setVisibility(View.INVISIBLE);
-//        }
-        holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
-        holder.txtIdCameriere.setText("cameriere");
+        if(flag){
+            holder.rimozioneCB.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.rimozioneCB.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     @Override
@@ -70,9 +71,6 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
         TextView txtIdOrdine;
         TextView txtIdCameriere;
-
-
-
 
         CheckBox rimozioneCB;
 
@@ -86,7 +84,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onOrdineClickListner.onOrdineClicked(getAdapterPosition());
+                    //onOrdineClickListner.onOrdineClicked(getAdapterPosition());
                 }
             });
             rimozioneCB.setVisibility(View.INVISIBLE);
@@ -100,5 +98,11 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     public void setOrdini(ArrayList<Ordine> ordini) {
         this.ordini = ordini;
+        notifyDataSetChanged();
     }
+
+
+
+
+
 }
