@@ -84,7 +84,6 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //onOrdineClickListner.onOrdineClicked(getAdapterPosition());
                 }
             });
             rimozioneCB.setVisibility(View.INVISIBLE);
@@ -97,7 +96,8 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     }
 
     public void setOrdini(ArrayList<Ordine> ordini) {
-        this.ordini = ordini;
+        this.ordini.clear();
+        this.ordini.addAll(ordini);
         notifyDataSetChanged();
     }
 

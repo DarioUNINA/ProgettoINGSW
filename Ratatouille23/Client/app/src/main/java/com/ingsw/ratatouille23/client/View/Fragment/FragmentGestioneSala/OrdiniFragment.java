@@ -86,10 +86,10 @@ public class OrdiniFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ordineAdapter = new OrdineAdapter(new ArrayList<Ordine>(), getContext(), onOrdineCLickListner, OrdiniFragment.this, true);
+        ordineAdapter = new OrdineAdapter(new ArrayList<Ordine>(), getContext(), onOrdineCLickListner, OrdiniFragment.this, false);
         ordiniRecyclerView.setAdapter(ordineAdapter);
+        ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
         btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
         btnAnnullaRimozioneOrdine.setVisibility(View.INVISIBLE);

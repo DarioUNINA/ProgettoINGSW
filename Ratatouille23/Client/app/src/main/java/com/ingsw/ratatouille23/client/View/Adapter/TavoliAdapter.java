@@ -54,11 +54,11 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
         holder.txtIdTavolo.setText(Integer.toString(tavoli.get(position).getIdTavolo()));
         holder.txtPosti.setText(Integer.toString(tavoli.get(position).getPosti()));
 
-        holder.txtIdTavolo.setOnClickListener(new View.OnClickListener() {
+        holder.mcdSelecetd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
-                activity.getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini((ArrayList<Ordine>)tavoli.get(0).getOrdini());
+                activity.getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini((ArrayList<Ordine>)tavoli.get(position).getOrdini());
             }
         });
 
@@ -92,12 +92,6 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
-//                            activity.getGestioneSala().getOrdiniFragment().
-//                            setOrdineAdapter(new OrdineAdapter(((ArrayList<Ordine>) tavoli.get(getAdapterPosition()).getOrdini())
-//                                            , activity.getGestioneSala().getOrdiniFragment().getContext(),
-//                                            activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(),
-//                                            activity.getGestioneSala().getOrdiniFragment()), flag);
                 }
 
             });
@@ -110,7 +104,8 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
     }
 
     public void setTavoli(ArrayList<Tavolo> tavoli) {
-        this.tavoli = tavoli;
+        this.tavoli.clear();
+        this.tavoli.addAll(tavoli);
         notifyDataSetChanged();
     }
 

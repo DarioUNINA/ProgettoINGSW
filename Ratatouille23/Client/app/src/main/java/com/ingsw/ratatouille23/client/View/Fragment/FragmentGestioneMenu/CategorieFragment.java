@@ -188,5 +188,15 @@ public class CategorieFragment extends Fragment {
 
     public void setCategoriaAdapter(CategoriaAdapter categoriaAdapter) {
         this.categoriaAdapter = categoriaAdapter;
+        categoriaRecyclerView.setAdapter(categoriaAdapter);
+        categoriaAdapter.notifyDataSetChanged();
+    }
+
+    public CategoriaAdapter.OnCategoriaClickListner getOnCategoriaClickListner() {
+        return onCategoriaClickListner;
+    }
+
+    public void setOnCategoriaClickListner(CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner) {
+        this.onCategoriaClickListner = onCategoriaClickListner;
     }
 }
