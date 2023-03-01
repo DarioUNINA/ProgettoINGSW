@@ -52,4 +52,12 @@ public class UtenteController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessun utente trovato");
     }
 
+    @PostMapping("/save")
+    public void save(@RequestBody UtenteDTO utenteDTO){
+        Utente utente = this.modelMapper.map(utenteDTO, Utente.class);
+
+        utenteService.save(utente);
+    }
+
+
 }

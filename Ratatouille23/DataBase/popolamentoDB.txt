@@ -49,13 +49,13 @@ insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1, 'GianMarco');
 
 --Ordine
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 1);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 1);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 2);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 4);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 4);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
 
 
 --Ordinazione

@@ -11,5 +11,6 @@ public interface UtenteRepository extends CrudRepository<Utente,String>{
     public Optional<Utente> findByUsernameAndPassword(String username, String password);
 
     public Optional<List<Utente>> findByRistorante(Ristorante ristorante);
+
     
 }

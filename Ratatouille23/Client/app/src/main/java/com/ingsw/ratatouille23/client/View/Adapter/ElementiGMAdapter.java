@@ -8,11 +8,14 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.InfoElementDialog;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 
 import java.util.ArrayList;
 
@@ -23,14 +26,19 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
     private OnElementiClickListner onElementiClickListner;
 
 
+    private ElementiMenuFragment elementiMenuFragment;
 
     private Boolean flag;
 
-    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner,  Boolean flag) {
+
+
+    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner, Boolean flag, ElementiMenuFragment elementiMenuFragment) {
+
         this.elementi = elementi;
         this.context = context;
         this.onElementiClickListner = onElementiClickListner;
         this.flag = flag;
+        this.elementiMenuFragment = elementiMenuFragment;
     }
 
     public interface OnElementiClickListner{
@@ -56,6 +64,13 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
             holder.elementiCB.setVisibility(View.INVISIBLE);
             holder.btnInfo.setVisibility(View.VISIBLE);
         }
+
+        holder.btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialogInfoElemento();
+            }
+        });
         //holder.txtNomeElemento.setText(elementi.get(position).getNome());
 //        holder.txtNomeElemento.setText("puttan");
 //        holder.txtPrezzoElemento.setText("2$");
@@ -66,7 +81,7 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
     @Override
     public int getItemCount() {
         return 3;
-        //elementi.size();
+//        return elementi.size();
     }
 
     class ElementiHolder extends RecyclerView.ViewHolder{
@@ -84,13 +99,18 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
             elementiCB = itemView.findViewById(R.id.chechBoxElementiGm);
             btnInfo = itemView.findViewById(R.id.btnInfo);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onElementiClickListner.onElementiClicked(getAdapterPosition());
-
-                }
-            });
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onElementiClickListner.onElementiClicked(getAdapterPosition());
+                        btnInfo.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                openDialogInfoElemento();
+                            }
+                        });
+                    }
+                });
 
             elementiCB.setVisibility(View.INVISIBLE);
             btnInfo.setVisibility(View.VISIBLE);
@@ -127,6 +147,13 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
             this.btnInfo = btnInfo;
         }
     }
+
+    public void openDialogInfoElemento(){
+        InfoElementDialog infoElementDialog = new InfoElementDialog(elementiMenuFragment);
+        infoElementDialog.show(elementiMenuFragment.getParentFragmentManager(), "infoElement");
+    }
+
+
 
 
 
