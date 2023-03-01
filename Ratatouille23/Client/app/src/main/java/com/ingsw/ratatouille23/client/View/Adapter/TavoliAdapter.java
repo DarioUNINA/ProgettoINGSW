@@ -28,6 +28,8 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
 
     private TavoliFragment tavoliFragment;
 
+    Boolean flag = false;
+
     public TavoliAdapter(ArrayList<Tavolo> tavoli, Context context, TavoliAdapter.OnTavoliClickListner onTavoliClickListner, TavoliFragment tavoliFragment) {
         this.tavoli = tavoli;
         this.context = context;
@@ -85,7 +87,7 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
                             setOrdineAdapter(new OrdineAdapter(((ArrayList<Ordine>) tavoli.get(getAdapterPosition()).getOrdini())
                                             , activity.getGestioneSala().getOrdiniFragment().getContext(),
                                             activity.getGestioneSala().getOrdiniFragment().getOnOrdineCLickListner(),
-                                            activity.getGestioneSala().getOrdiniFragment()));
+                                            activity.getGestioneSala().getOrdiniFragment()), flag);
 
                 }
 

@@ -28,7 +28,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     Boolean flag;
 
-    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, flag) {
+    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, Boolean flag) {
         this.ordini = ordini;
         this.ordiniFragment = ordiniFragment;
         this.context = context;

@@ -90,7 +90,7 @@ public class OrdiniFragment extends Fragment {
 
         ArrayList<Ordine> p = new ArrayList<>();
         p.add(new Ordine(1,1,null));
-        ordineAdapter = new OrdineAdapter(p, getContext(), onOrdineCLickListner, OrdiniFragment.this);
+        ordineAdapter = new OrdineAdapter(p, getContext(), onOrdineCLickListner, OrdiniFragment.this, flag);
         ordiniRecyclerView.setAdapter(ordineAdapter);
 
         btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
