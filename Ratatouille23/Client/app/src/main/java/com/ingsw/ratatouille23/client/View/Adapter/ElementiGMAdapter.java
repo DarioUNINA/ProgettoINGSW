@@ -8,7 +8,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,16 +27,16 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
     private ElementiMenuFragment elementiMenuFragment;
 
-    private Boolean flag;
+    private Boolean modRimozione;
 
 
 
-    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner, Boolean flag, ElementiMenuFragment elementiMenuFragment) {
+    public ElementiGMAdapter(ArrayList<Elemento> elementi, Context context, OnElementiClickListner onElementiClickListner, Boolean modRimozione, ElementiMenuFragment elementiMenuFragment) {
 
         this.elementi = elementi;
         this.context = context;
         this.onElementiClickListner = onElementiClickListner;
-        this.flag = flag;
+        this.modRimozione = modRimozione;
         this.elementiMenuFragment = elementiMenuFragment;
     }
 
@@ -56,7 +55,7 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
     @Override
     public void onBindViewHolder(@NonNull ElementiGMAdapter.ElementiHolder holder, int position) {
 
-        if(flag){
+        if(modRimozione){
             holder.elementiCB.setVisibility(View.VISIBLE);
             holder.btnInfo.setVisibility(View.INVISIBLE);
         }
@@ -68,20 +67,17 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
         holder.btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialogInfoElemento();
+                openDialogInfoElemento(elementi.get(position));
             }
         });
-        //holder.txtNomeElemento.setText(elementi.get(position).getNome());
-//        holder.txtNomeElemento.setText("puttan");
-//        holder.txtPrezzoElemento.setText("2$");
-        //holder.txtPrezzoElemento.setText(Float.toString(elementi.get(position).getPrezzo()));
-        //bisogna passare il tavolo per prendere il nome del cameriere
+
+        holder.txtNomeElemento.setText(elementi.get(position).getNome());
+        holder.txtPrezzoElemento.setText(Float.toString(elementi.get(position).getPrezzo()));
     }
 
     @Override
     public int getItemCount() {
-        return 3;
-//        return elementi.size();
+        return elementi.size();
     }
 
     class ElementiHolder extends RecyclerView.ViewHolder{
@@ -98,19 +94,6 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
             txtPrezzoElemento = itemView.findViewById(R.id.txtPrezzoElemento);
             elementiCB = itemView.findViewById(R.id.chechBoxElementiGm);
             btnInfo = itemView.findViewById(R.id.btnInfo);
-
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        onElementiClickListner.onElementiClicked(getAdapterPosition());
-                        btnInfo.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                openDialogInfoElemento();
-                            }
-                        });
-                    }
-                });
 
             elementiCB.setVisibility(View.INVISIBLE);
             btnInfo.setVisibility(View.VISIBLE);
@@ -148,13 +131,19 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
         }
     }
 
-    public void openDialogInfoElemento(){
-        InfoElementDialog infoElementDialog = new InfoElementDialog(elementiMenuFragment);
+    public void openDialogInfoElemento(Elemento elemento){
+        InfoElementDialog infoElementDialog = new InfoElementDialog(elementiMenuFragment, elemento);
         infoElementDialog.show(elementiMenuFragment.getParentFragmentManager(), "infoElement");
     }
 
+    public ArrayList<Elemento> getElementi() {
+        return elementi;
+    }
 
-
-
-
+    public void setElementi(ArrayList<Elemento> elementi, boolean modRimozione) {
+        this.modRimozione = modRimozione;
+        this.elementi.clear();
+        this.elementi.addAll(elementi);
+        notifyDataSetChanged();
+    }
 }

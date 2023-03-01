@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -25,7 +26,11 @@ import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.ToIntFunction;
 
 
 public class CategorieFragment extends Fragment {
@@ -42,9 +47,6 @@ public class CategorieFragment extends Fragment {
 
     private CategoriaPresenter categoriaPresenter;
 
-    private Boolean var = false;
-
-    private List<Categoria> categoria;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -107,8 +109,12 @@ public class CategorieFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnRemoveCategory.setVisibility(View.INVISIBLE);
                 btnAddCategory.setVisibility(View.INVISIBLE);
-                var = true;
-                categoriaRecyclerView.setAdapter(new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var));
+                // true));
+                ArrayList<Categoria> o = new ArrayList<Categoria>();
+                o.addAll(categoriaAdapter.getCategorie());
+                o.add(new Categoria());
+                o.remove(o.size()-1);
+                categoriaAdapter.setCategorie(o, true);
             }
         });
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
@@ -125,8 +131,11 @@ public class CategorieFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnRemoveCategory.setVisibility(View.VISIBLE);
                 btnAddCategory.setVisibility(View.VISIBLE);
-                var = false;
-                categoriaRecyclerView.setAdapter(new CategoriaAdapter((ArrayList<Categoria>) categoria, getContext(), onCategoriaClickListner, CategorieFragment.this, var));
+                ArrayList<Categoria> o = new ArrayList<Categoria>();
+                o.addAll(categoriaAdapter.getCategorie());
+                o.add(new Categoria());
+                o.remove(o.size()-1);
+                categoriaAdapter.setCategorie(o, false);
             }
         });
 
@@ -172,14 +181,6 @@ public class CategorieFragment extends Fragment {
 
     public void setBtnRemoveCategory(FloatingActionButton btnRemoveCategory) {
         this.btnRemoveCategory = btnRemoveCategory;
-    }
-
-    public Boolean getVar() {
-        return var;
-    }
-
-    public void setVar(Boolean var) {
-        this.var = var;
     }
 
     public CategoriaAdapter getCategoriaAdapter() {

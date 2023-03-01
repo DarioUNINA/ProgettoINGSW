@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ordine;
@@ -25,14 +26,13 @@ import java.util.List;
 public class OrdiniFragment extends Fragment {
 
     private FloatingActionButton btnAddOrder, btnRemoveOrder;
-
     private AppCompatButton btnAnnullaRimozioneOrdine, btnConfermaRimozioneOrdine;
     private RecyclerView ordiniRecyclerView;
-
     private OrdineAdapter ordineAdapter;
     private OrdineAdapter.OnOrdineClickListner onOrdineCLickListner;
-
     private OrdinePresenter ordinePresenter;
+    private TextView idTavolo;
+
 
     private List<Ordine> ordini;
 
@@ -80,6 +80,7 @@ public class OrdiniFragment extends Fragment {
         btnRemoveOrder = rootView.findViewById(R.id.btnRemoveOrder);
         btnAnnullaRimozioneOrdine = rootView.findViewById(R.id.btnAnnullaRimozioneOrdine);
         btnConfermaRimozioneOrdine = rootView.findViewById(R.id.btnConfermaRimozioneOrdine);
+        idTavolo = rootView.findViewById(R.id.txtIdTavolo);
 
 
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
@@ -109,8 +110,14 @@ public class OrdiniFragment extends Fragment {
                 btnAddOrder.setVisibility(View.INVISIBLE);
                 btnConfermaRimozioneOrdine.setVisibility(View.VISIBLE);
                 btnAnnullaRimozioneOrdine.setVisibility(View.VISIBLE);
-                flag = true;
-                //ordiniRecyclerView.setAdapter();
+
+                ArrayList<Ordine> o = new ArrayList<Ordine>();
+                o.addAll(ordineAdapter.getOrdini());
+                o.add(new Ordine());
+                o.remove(o.size()-1);
+                ordineAdapter.setOrdini(o, true);
+                ordineAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -121,8 +128,12 @@ public class OrdiniFragment extends Fragment {
                 btnRemoveOrder.setVisibility(View.VISIBLE);
                 btnConfermaRimozioneOrdine.setVisibility(View.INVISIBLE);
                 btnAnnullaRimozioneOrdine.setVisibility(View.INVISIBLE);
-                flag = false;
-                //ordiniRecyclerView.setAdapter();
+
+                ArrayList<Ordine> o = new ArrayList<Ordine>();
+                o.addAll(ordineAdapter.getOrdini());
+                o.add(new Ordine());
+                o.remove(o.size()-1);
+                ordineAdapter.setOrdini(o, false);
             }
         });
 
@@ -160,7 +171,11 @@ public class OrdiniFragment extends Fragment {
         this.ordineAdapter.notifyDataSetChanged();
     }
 
+    public TextView getIdTavolo() {
+        return idTavolo;
+    }
 
-
-
+    public void setIdTavolo(TextView idTavolo) {
+        this.idTavolo = idTavolo;
+    }
 }

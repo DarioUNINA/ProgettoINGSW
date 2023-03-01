@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
@@ -58,7 +59,9 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
             @Override
             public void onClick(View view) {
                 HomeActivity activity = (HomeActivity)tavoliFragment.getActivity();
-                activity.getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini((ArrayList<Ordine>)tavoli.get(position).getOrdini());
+                activity.getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini((ArrayList<Ordine>)tavoli.get(position).getOrdini(), false);
+                activity.getGestioneSala().getOrdiniFragment().getIdTavolo().setText(String.valueOf(tavoli.get(position).getIdTavolo()));
+                activity.getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
             }
         });
 

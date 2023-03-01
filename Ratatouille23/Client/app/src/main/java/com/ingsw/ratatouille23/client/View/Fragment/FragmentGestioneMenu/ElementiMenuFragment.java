@@ -45,9 +45,6 @@ public class ElementiMenuFragment extends Fragment {
 
     private ElementoPresenter elementoPresenter;
 
-    private List<Elemento> elementi;
-
-    private Boolean flag = false;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -101,7 +98,7 @@ public class ElementiMenuFragment extends Fragment {
         btnAnnullaRimozione.setVisibility(View.INVISIBLE);
 
         elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
-        elementiGMAdapter = new ElementiGMAdapter((ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, this);
+        elementiGMAdapter = new ElementiGMAdapter(new ArrayList<Elemento>(), getContext(),onElementiClickListner, false, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -155,8 +152,12 @@ public class ElementiMenuFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnRemoveElement.setVisibility(View.INVISIBLE);
                 btnAddElement.setVisibility(View.INVISIBLE);
-                flag = true;
-                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, ElementiMenuFragment.this));
+
+                ArrayList<Elemento> l = new ArrayList<Elemento>();
+                l.addAll(elementiGMAdapter.getElementi());
+                l.add(new Elemento());
+                l.remove(l.size()-1);
+                elementiGMAdapter.setElementi(l, true);
             }
         });
 
@@ -167,8 +168,11 @@ public class ElementiMenuFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnRemoveElement.setVisibility(View.VISIBLE);
                 btnAddElement.setVisibility(View.VISIBLE);
-                flag = false;
-                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, ElementiMenuFragment.this));
+                ArrayList<Elemento> l = new ArrayList<Elemento>();
+                l.addAll(elementiGMAdapter.getElementi());
+                l.add(new Elemento());
+                l.remove(l.size()-1);
+                elementiGMAdapter.setElementi(l, false);
             }
         });
 
@@ -268,14 +272,6 @@ public class ElementiMenuFragment extends Fragment {
 
     public void setElementoPresenter(ElementoPresenter elementoPresenter) {
         this.elementoPresenter = elementoPresenter;
-    }
-
-    public List<Elemento> getElementi() {
-        return elementi;
-    }
-
-    public void setElementi(ArrayList<Elemento> elementi) {
-        this.elementi = elementi;
     }
 
     public AppCompatButton getBtnAnnullaRimzione() {

@@ -34,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
     GestioneSalaFragment gestioneSala;
+    GestioneMenuFragment gestioneMenuFragment;
+    GestionePersonaleFragment gestionePersonaleFragment;
 
     private Utente utente;
     private Ristorante ristorante;
@@ -45,9 +47,6 @@ public class HomeActivity extends AppCompatActivity {
 
         utente = (Utente)getIntent().getSerializableExtra("utente");
         ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
-
-        //utente = new Utente("Dario", "123", 1, Ruolo.admin);
-        //ristorante = new Ristorante(1, "Nome", "Indirizzo", "Telefono", 1);
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -73,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
 
         gestioneSala = new GestioneSalaFragment();
+        gestioneMenuFragment = new GestioneMenuFragment();
+        gestionePersonaleFragment = new GestionePersonaleFragment();
 
         tabItemUser = findViewById(R.id.TabUserItem);
 
@@ -124,7 +125,7 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragmentPersonale.setCardBackgroundColor(getResources().getColor(R.color.green));
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homelayoutForFragment, GestionePersonaleFragment.class,null);
+                fragmentTransaction.replace(R.id.homelayoutForFragment, gestionePersonaleFragment,null);
                 fragmentTransaction.commitNow();
 
             }
@@ -141,7 +142,7 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragmentMenu.setCardBackgroundColor(getResources().getColor(R.color.green));
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneMenuFragment.class,null);
+                fragmentTransaction.replace(R.id.homelayoutForFragment, gestioneMenuFragment,null);
                 fragmentTransaction.commitNow();
             }
         });
@@ -257,5 +258,29 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setGestioneSala(GestioneSalaFragment gestioneSala) {
         this.gestioneSala = gestioneSala;
+    }
+
+    public AppCompatButton getBtnPersonale() {
+        return btnPersonale;
+    }
+
+    public void setBtnPersonale(AppCompatButton btnPersonale) {
+        this.btnPersonale = btnPersonale;
+    }
+
+    public GestioneMenuFragment getGestioneMenuFragment() {
+        return gestioneMenuFragment;
+    }
+
+    public void setGestioneMenuFragment(GestioneMenuFragment gestioneMenuFragment) {
+        this.gestioneMenuFragment = gestioneMenuFragment;
+    }
+
+    public GestionePersonaleFragment getGestionePersonaleFragment() {
+        return gestionePersonaleFragment;
+    }
+
+    public void setGestionePersonaleFragment(GestionePersonaleFragment gestionePersonaleFragment) {
+        this.gestionePersonaleFragment = gestionePersonaleFragment;
     }
 }

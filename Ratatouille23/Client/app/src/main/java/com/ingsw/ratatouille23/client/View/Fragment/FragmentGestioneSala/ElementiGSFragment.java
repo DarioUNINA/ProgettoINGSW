@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,20 +33,17 @@ import java.util.List;
  */
 public class ElementiGSFragment extends Fragment {
 
-
-
     private FloatingActionButton addElementoOrdine, removeElementoOrdine;
-
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
-
+    private TextView txtUnita, txtTotale;
     private RecyclerView elementiGSRecyclerView;
-
     private ElementiGSAdapter elementiGSAdapter;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
-
     private ElementoPresenter elementoPresenter;
 
-    Boolean flag = false;
+
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -87,17 +85,14 @@ public class ElementiGSFragment extends Fragment {
         removeElementoOrdine = rootView.findViewById(R.id.removeElementoOrdine);
         btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozioneElementiGS);
         btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneElmentiGS);
+        txtTotale = rootView.findViewById(R.id.txtTotale);
+        txtUnita=rootView.findViewById(R.id.txtUnita);
 
         elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
 
-
-
-        //elementoPresenter = new ElementoPresenter(ElementiGSFragment.this);
-        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        //elementiGSAdapter = new ElementiGSAdapter( (ArrayList<Elemento>) elementi, getContext(), onElementiClickListner, flag);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        elementiGSAdapter =  new ElementiGSAdapter(new ArrayList<Elemento>(), getContext(), getOnElementiClickListner(), ElementiGSFragment.this, false);
         elementiGSRecyclerView.setLayoutManager(linearLayoutManager);
         elementiGSRecyclerView.setAdapter(elementiGSAdapter);
 
@@ -118,8 +113,12 @@ public class ElementiGSFragment extends Fragment {
                 addElementoOrdine.setVisibility(View.INVISIBLE);
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnConfermaRimozione.setVisibility(View.VISIBLE);
-                flag = true;
-                //elementiGSRecyclerView.setAdapter();
+                ArrayList<Elemento> l = new ArrayList<Elemento>();
+                l.addAll(elementiGSAdapter.getElementi());
+                l.add(new Elemento());
+                l.remove(l.size()-1);
+                elementiGSAdapter.setElementi(l, true);
+
             }
         });
 
@@ -130,8 +129,11 @@ public class ElementiGSFragment extends Fragment {
                 addElementoOrdine.setVisibility(View.VISIBLE);
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnConfermaRimozione.setVisibility(View.INVISIBLE);
-                flag = false;
-                //elementiGSRecyclerView.setAdapter();
+                ArrayList<Elemento> l = new ArrayList<Elemento>();
+                l.addAll(elementiGSAdapter.getElementi());
+                l.add(new Elemento());
+                l.remove(l.size()-1);
+                elementiGSAdapter.setElementi(l, false);
             }
         });
 
@@ -191,5 +193,21 @@ public class ElementiGSFragment extends Fragment {
 
     public void setRemoveElementoOrdine(FloatingActionButton removeElementoOrdine) {
         this.removeElementoOrdine = removeElementoOrdine;
+    }
+
+    public TextView getTxtUnita() {
+        return txtUnita;
+    }
+
+    public void setTxtUnita(TextView txtUnita) {
+        this.txtUnita = txtUnita;
+    }
+
+    public TextView getTxtTotale() {
+        return txtTotale;
+    }
+
+    public void setTxtTotale(TextView txtTotale) {
+        this.txtTotale = txtTotale;
     }
 }

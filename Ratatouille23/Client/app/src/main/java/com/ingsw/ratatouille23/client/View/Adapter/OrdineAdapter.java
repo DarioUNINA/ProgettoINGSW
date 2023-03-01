@@ -28,14 +28,14 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     private OnOrdineClickListner onOrdineClickListner;
     private OrdiniFragment ordiniFragment;
 
-    Boolean flag;
+    Boolean modRimozione;
 
-    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, Boolean flag) {
+    public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, Boolean modRimozione) {
         this.ordini = ordini;
         this.ordiniFragment = ordiniFragment;
         this.context = context;
         this.onOrdineClickListner = onOrdineClickListner;
-        this.flag = flag;
+        this.modRimozione = modRimozione;
     }
 
      public interface OnOrdineClickListner{
@@ -53,12 +53,19 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     @Override
     public void onBindViewHolder(@NonNull OrdineAdapter.OrderHolder holder, int position) {
 
-        if(flag){
+        if(modRimozione)
             holder.rimozioneCB.setVisibility(View.VISIBLE);
-        }
-        else{
+        else
             holder.rimozioneCB.setVisibility(View.INVISIBLE);
-        }
+
+        holder.txtIdOrdine.setText(String.valueOf(ordini.get(position).getIdOrdine()));
+        holder.cardViewOrdine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(ordini.get(position).getElementi().size());
+                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(ordini.get(position).getElementi(), false);
+            }
+        });
 
     }
 
@@ -67,11 +74,11 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         return ordini.size();
     }
 
+
     class OrderHolder extends RecyclerView.ViewHolder{
 
-        TextView txtIdOrdine;
-        TextView txtIdCameriere;
-
+        TextView txtIdOrdine, txtIdCameriere;
+        MaterialCardView cardViewOrdine;
         CheckBox rimozioneCB;
 
         public OrderHolder(@NonNull View itemView) {
@@ -79,15 +86,11 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
             txtIdOrdine = itemView.findViewById(R.id.txtIdOrdine);
             txtIdCameriere = itemView.findViewById(R.id.txtCameriere);
-
+            cardViewOrdine = itemView.findViewById(R.id.cardViewOrdine);
             rimozioneCB = itemView.findViewById(R.id.chechBoxOrdini);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                }
-            });
             rimozioneCB.setVisibility(View.INVISIBLE);
 
+            //txtIdOrdine.setText(ordini.get(getAdapterPosition()).getIdOrdine());
         }
     }
 
@@ -95,11 +98,14 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         return ordini;
     }
 
-    public void setOrdini(ArrayList<Ordine> ordini) {
+    public void setOrdini(ArrayList<Ordine> ordini, boolean modRimozione) {
+        this.modRimozione = modRimozione;
         this.ordini.clear();
         this.ordini.addAll(ordini);
         notifyDataSetChanged();
+        System.out.println("setOrdini\n");
     }
+
 
 
 

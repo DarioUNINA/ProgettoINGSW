@@ -14,7 +14,8 @@ import com.ingsw.ratatouille23.client.R;
 
 public class GestioneMenuFragment extends Fragment {
 
-
+    private ElementiMenuFragment elementiMenuFragment;
+    private CategorieFragment categorieFragment;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -47,8 +48,11 @@ public class GestioneMenuFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.categorie_layout, new CategorieFragment());
-        fragmentTransaction.add(R.id.elementi_Menu_layout, new ElementiMenuFragment());
+        categorieFragment = new CategorieFragment();
+        elementiMenuFragment = new ElementiMenuFragment();
+
+        fragmentTransaction.replace(R.id.categorie_layout, categorieFragment);
+        fragmentTransaction.add(R.id.elementi_Menu_layout, elementiMenuFragment);
         fragmentTransaction.commit();
     }
 
@@ -62,5 +66,19 @@ public class GestioneMenuFragment extends Fragment {
         return rootView;
     }
 
+    public ElementiMenuFragment getElementiMenuFragment() {
+        return elementiMenuFragment;
+    }
 
+    public void setElementiMenuFragment(ElementiMenuFragment elementiMenuFragment) {
+        this.elementiMenuFragment = elementiMenuFragment;
+    }
+
+    public CategorieFragment getCategorieFragment() {
+        return categorieFragment;
+    }
+
+    public void setCategorieFragment(CategorieFragment categorieFragment) {
+        this.categorieFragment = categorieFragment;
+    }
 }

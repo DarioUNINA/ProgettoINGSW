@@ -41,7 +41,7 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
 
         btnChangePass = (AppCompatButton) v.findViewById(R.id.btnChangePass);
         btnLogOut = (AppCompatButton) v.findViewById(R.id.btnLogOut);
-        utente = (Utente)getActivity().getIntent().getSerializableExtra("utente");
+        utente = ((HomeActivity)getActivity()).getUtente();
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
