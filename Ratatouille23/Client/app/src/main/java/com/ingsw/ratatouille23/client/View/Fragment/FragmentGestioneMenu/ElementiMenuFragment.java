@@ -23,7 +23,9 @@ import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
+import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.InfoElementDialog;
 
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class ElementiMenuFragment extends Fragment {
 
     private List<Elemento> elementi;
 
-    private Boolean var = false;
+    private Boolean flag = false;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -99,7 +101,7 @@ public class ElementiMenuFragment extends Fragment {
         btnAnnullaRimozione.setVisibility(View.INVISIBLE);
 
         elementoPresenter = new ElementoPresenter(ElementiMenuFragment.this);
-        elementiGMAdapter = new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var);
+        elementiGMAdapter = new ElementiGMAdapter((ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -142,7 +144,7 @@ public class ElementiMenuFragment extends Fragment {
         btnAddElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                openDialogNuovoElemento();
             }
         });
 
@@ -153,8 +155,8 @@ public class ElementiMenuFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnRemoveElement.setVisibility(View.INVISIBLE);
                 btnAddElement.setVisibility(View.INVISIBLE);
-                var = true;
-                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var));
+                flag = true;
+                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, ElementiMenuFragment.this));
             }
         });
 
@@ -165,8 +167,8 @@ public class ElementiMenuFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnRemoveElement.setVisibility(View.VISIBLE);
                 btnAddElement.setVisibility(View.VISIBLE);
-                var = false;
-                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, var));
+                flag = false;
+                elementiMenuRecyclerView.setAdapter(new ElementiGMAdapter( (ArrayList<Elemento>) elementi, getContext(),onElementiClickListner, flag, ElementiMenuFragment.this));
             }
         });
 
@@ -176,15 +178,17 @@ public class ElementiMenuFragment extends Fragment {
                 }
         });
 
+
         return  rootView;
 
 
     }
 
-    public void openDialog(){
+    public void openDialogNuovoElemento(){
         AddElementoMenuDialog addElementoMenuDialog = new AddElementoMenuDialog(this);
         addElementoMenuDialog.show(getParentFragmentManager(), "NewCategory");
     }
+
 
     public FloatingActionButton getBtnPrezzoDecrescente() {
         return btnPrezzoDecrescente;
