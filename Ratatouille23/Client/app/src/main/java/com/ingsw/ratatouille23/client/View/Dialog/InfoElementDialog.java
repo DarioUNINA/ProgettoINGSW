@@ -18,11 +18,14 @@ import com.ingsw.ratatouille23.client.Model.Allergene;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 
 
 public class InfoElementDialog extends AppCompatDialogFragment {
 
     private ElementiMenuFragment elementiMenuFragment;
+
+    private ElementiGSFragment elementiGSFragment;
     private TextView txtDescrizione, txtAllergeni;
     private Elemento elemento;
 
@@ -30,6 +33,12 @@ public class InfoElementDialog extends AppCompatDialogFragment {
         this.elementiMenuFragment = elementiMenuFragment;
         this.elemento = elemento;
     }
+
+    public InfoElementDialog(ElementiGSFragment elementiGSFragment, Elemento elemento) {
+        this.elementiGSFragment = elementiGSFragment;
+        this.elemento = elemento;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

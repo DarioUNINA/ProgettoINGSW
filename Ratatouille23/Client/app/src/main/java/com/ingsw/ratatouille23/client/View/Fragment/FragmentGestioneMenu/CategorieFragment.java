@@ -12,11 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -38,6 +41,8 @@ public class CategorieFragment extends Fragment {
     private FloatingActionButton btnAddCategory, btnRemoveCategory;
 
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
+
+    private MaterialCardView materialCategorie;
 
     private RecyclerView categoriaRecyclerView;
 
@@ -91,6 +96,8 @@ public class CategorieFragment extends Fragment {
 
             categoriaRecyclerView = rootView.findViewById(R.id.categorieRecyclerView);
 
+            materialCategorie = rootView.findViewById(R.id.materialCategorie);
+
             categoriaPresenter = new CategoriaPresenter(CategorieFragment.this);
             categoriaPresenter.getByMenu(((HomeActivity)getActivity()).getRistorante().getIdMenu());
 
@@ -138,6 +145,11 @@ public class CategorieFragment extends Fragment {
                 categoriaAdapter.setCategorie(o, false);
             }
         });
+
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
+            materialCategorie.setVisibility(View.INVISIBLE);
+
 
         return rootView;
     }
@@ -199,5 +211,13 @@ public class CategorieFragment extends Fragment {
 
     public void setOnCategoriaClickListner(CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner) {
         this.onCategoriaClickListner = onCategoriaClickListner;
+    }
+
+    public MaterialCardView getMaterialCategorie() {
+        return materialCategorie;
+    }
+
+    public void setMaterialCategorie(MaterialCardView materialCategorie) {
+        this.materialCategorie = materialCategorie;
     }
 }

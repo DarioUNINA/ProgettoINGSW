@@ -13,14 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddCategoryMenuDialog;
@@ -40,10 +44,14 @@ public class ElementiMenuFragment extends Fragment {
 
     private RecyclerView elementiMenuRecyclerView;
 
+    private TextView txtCategoriaElementi;
+
     private ElementiGMAdapter elementiGMAdapter;
     private ElementiGMAdapter.OnElementiClickListner onElementiClickListner;
 
     private ElementoPresenter elementoPresenter;
+
+    private MaterialCardView materialElementi;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -92,6 +100,8 @@ public class ElementiMenuFragment extends Fragment {
             elementiMenuRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGM);
             btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozione);
             btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozione);
+            txtCategoriaElementi = rootView.findViewById(R.id.txtCategoriaPerElementi);
+            materialElementi = rootView.findViewById(R.id.materialElementi);
         }
 
         btnConfermaRimozione.setVisibility(View.INVISIBLE);
@@ -182,6 +192,9 @@ public class ElementiMenuFragment extends Fragment {
                 }
         });
 
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
+            materialElementi.setVisibility(View.INVISIBLE);
 
         return  rootView;
 
@@ -288,5 +301,29 @@ public class ElementiMenuFragment extends Fragment {
 
     public void setBtnConfermaRimozione(AppCompatButton btnConfermaRimozione) {
         this.btnConfermaRimozione = btnConfermaRimozione;
+    }
+
+    public AppCompatButton getBtnAnnullaRimozione() {
+        return btnAnnullaRimozione;
+    }
+
+    public void setBtnAnnullaRimozione(AppCompatButton btnAnnullaRimozione) {
+        this.btnAnnullaRimozione = btnAnnullaRimozione;
+    }
+
+    public MaterialCardView getMaterialElementi() {
+        return materialElementi;
+    }
+
+    public void setMaterialElementi(MaterialCardView materialElementi) {
+        this.materialElementi = materialElementi;
+    }
+
+    public TextView getTxtCategoriaElementi() {
+        return txtCategoriaElementi;
+    }
+
+    public void setTxtCategoriaElementi(TextView txtCategoriaElementi) {
+        this.txtCategoriaElementi = txtCategoriaElementi;
     }
 }

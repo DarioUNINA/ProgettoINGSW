@@ -11,6 +11,7 @@
     android:layout_marginTop="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintElementoGM"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#B9E0FF">
@@ -19,10 +20,10 @@
             android:id="@+id/txtNomeElemento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold"
             android:text="ASD"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.09"
@@ -34,22 +35,35 @@
             android:id="@+id/txtPrezzoElemento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold"
             android:text="PROVA"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.7"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="2dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/line_1"
             android:background="#C1C1C1"
+            android:src="@drawable/line_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.85"
@@ -61,31 +75,29 @@
             android:id="@+id/btnInfo"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/ic_baseline_info_24"
-            app:maxImageSize="25dp"
-            app:fabCustomSize="25dp"
             android:backgroundTint="#B9E0FF"
+            android:src="@drawable/ic_baseline_info_24"
+            app:borderWidth="0dp"
+            app:fabCustomSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.98"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:borderWidth="0dp"
-            />
+            app:maxImageSize="25dp" />
 
         <CheckBox
             android:id="@+id/chechBoxElementiGm"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_marginRight="-7dp"
+            android:buttonTint="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.999"
-            android:layout_marginRight="-7dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColorHint="@color/black"
-            android:buttonTint="@color/red"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

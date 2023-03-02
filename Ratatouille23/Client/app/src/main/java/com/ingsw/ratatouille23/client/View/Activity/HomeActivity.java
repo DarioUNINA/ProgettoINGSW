@@ -3,8 +3,10 @@ package com.ingsw.ratatouille23.client.View.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,9 @@ public class HomeActivity extends AppCompatActivity {
     FloatingActionButton btnSettings;
     TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
+
+    ImageView ristorante_img;
+    Uri imagePath;
 
     GestioneSalaFragment gestioneSala;
     GestioneMenuFragment gestioneMenuFragment;
@@ -70,6 +75,8 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentSala = findViewById(R.id.selectedFragmentSala);
         selectedFragmentMenu = findViewById(R.id.selectedFragmentMenu);
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
+
+        ristorante_img = findViewById(R.id.imageView);
 
         gestioneSala = new GestioneSalaFragment();
         gestioneMenuFragment = new GestioneMenuFragment();
@@ -181,7 +188,6 @@ public class HomeActivity extends AppCompatActivity {
 
             btnCucina.setEnabled(false);
             btnCucina.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
-
         }
 
         fragmentTransaction.commitNow();
