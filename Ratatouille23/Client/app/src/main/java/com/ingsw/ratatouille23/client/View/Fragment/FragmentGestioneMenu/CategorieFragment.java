@@ -220,4 +220,8 @@ public class CategorieFragment extends Fragment {
     public void setMaterialCategorie(MaterialCardView materialCategorie) {
         this.materialCategorie = materialCategorie;
     }
+
+    public void setCategoriaAdapterSpinner(CategoriaAdapter categoriaAdapter){
+        this.categoriaAdapter = categoriaAdapter;
+    }
 }
