@@ -20,6 +20,7 @@ import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
+import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
 
 public class SettingUtenteDialog extends AppCompatDialogFragment {
 
@@ -45,7 +46,9 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(getActivity().getIntent());
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                intent.putExtra("utente", ((HomeActivity) getActivity()).getUtente());
+                startActivity(intent);
             }
         });
 

@@ -113,6 +113,7 @@ public class ElementiGSFragment extends Fragment {
                 addElementoOrdine.setVisibility(View.INVISIBLE);
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnConfermaRimozione.setVisibility(View.VISIBLE);
+
                 ArrayList<Elemento> l = new ArrayList<Elemento>();
                 l.addAll(elementiGSAdapter.getElementi());
                 l.add(new Elemento());
@@ -129,6 +130,7 @@ public class ElementiGSFragment extends Fragment {
                 addElementoOrdine.setVisibility(View.VISIBLE);
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnConfermaRimozione.setVisibility(View.INVISIBLE);
+
                 ArrayList<Elemento> l = new ArrayList<Elemento>();
                 l.addAll(elementiGSAdapter.getElementi());
                 l.add(new Elemento());

@@ -29,10 +29,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        btnBack = findViewById(R.id.btnBack);
+
 
         if(getIntent().hasExtra("utente")) {
             utente = (Utente) getIntent().getSerializableExtra("utente");
             fragmentTransaction.replace(R.id.homeSetting, SettingUtenteFragment.class, null);
+
+            if(utente.getPassword().equals("pwd"))
+                btnBack.setVisibility(View.INVISIBLE);
         }else{
              ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
              fragmentTransaction.replace(R.id.homeSetting, SettingRistoranteFragment.class, null);
@@ -40,9 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         fragmentTransaction.commitNow();
 
-        btnBack = findViewById(R.id.btnBack);
-        if(utente.getPassword().equals("123"))
-            btnBack.setVisibility(View.INVISIBLE);
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,4 +71,19 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
+    public Ristorante getRistorante() {
+        return ristorante;
+    }
+
+    public void setRistorante(Ristorante ristorante) {
+        this.ristorante = ristorante;
+    }
 }

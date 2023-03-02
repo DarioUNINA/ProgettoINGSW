@@ -1,2 +1,1 @@
--Modificare Popolamento
--Controllare velocemente vincolu di unicita' sulle tabelle (come categoria_menu_unique)
+-Modificare tavolo-Utente (settare utente quando si crea un ordine per tavolo libero, settarlo quindi occupato)
