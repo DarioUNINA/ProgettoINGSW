@@ -47,25 +47,26 @@
 
 
             <TextView
-                android:layout_width="150dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingTop="30dp"
-                android:text="       Tavolo: "
-                android:textStyle="bold"
+                android:text="Tavolo: "
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="25dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.009"
+                app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.10" />
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginTop="-25dp"/>
 
             <TextView
                 android:id="@+id/txtIdTavolo"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -73,11 +74,46 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.45"
+                app:layout_constraintHorizontal_bias="0.35"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.10" />
+                app:layout_constraintVertical_bias="0.10"
+                android:layout_marginTop="-27dp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="Serve: "
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginTop="2dp" />
+
+
+            <TextView
+                android:id="@+id/txtServitoDa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="prova"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:layout_width="300dp"
@@ -99,12 +135,12 @@
                 android:layout_height="400dp"
                 android:backgroundTint="@color/white"
                 android:background="@color/white"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="90dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewOrdini"
-                    android:layout_width="450dp"
-                    android:layout_height="379dp"
+                    android:layout_width="445dp"
+                    android:layout_height="400dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

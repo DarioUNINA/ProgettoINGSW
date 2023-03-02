@@ -14,6 +14,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Dialog.InfoElementDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 
 import java.util.ArrayList;
@@ -68,6 +69,13 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
         holder.txtNomeElementoGS.setText(elementi.get(position).getNome());
         holder.txtPrezzoElementoGS.setText(Float.toString(elementi.get(position).getPrezzo()));
+
+        holder.txtNomeElementoGS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialogInfoElemento(elementi.get(position));
+            }
+        });
 
 
         int totale = 0;
@@ -129,6 +137,11 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
     public List<Elemento> getElementi() {
         return elementi;
+    }
+
+    public void openDialogInfoElemento(Elemento elemento){
+        InfoElementDialog infoElementDialog = new InfoElementDialog(elementiGSFragment, elemento);
+        infoElementDialog.show(elementiGSFragment.getParentFragmentManager(), "infoElement");
     }
 
     public void setElementi(List<Elemento> elementi, boolean modRimozione) {

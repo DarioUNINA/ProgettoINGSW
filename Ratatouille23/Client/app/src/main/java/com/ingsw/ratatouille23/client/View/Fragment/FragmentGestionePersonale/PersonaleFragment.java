@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
@@ -38,6 +40,8 @@ public class PersonaleFragment extends Fragment {
 
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
     private RecyclerView listaUtentiRecyclerView;
+
+    private MaterialCardView materialPersonale;
 
     private PersonaleAdapter personaleAdapter;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
@@ -93,6 +97,7 @@ public class PersonaleFragment extends Fragment {
         btnAnnullaRimozione = rootView.findViewById(R.id.btnAnnullaRimozioneUser);
         btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneUser);
         listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
+        materialPersonale = rootView.findViewById(R.id.materialPersonale);
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
         utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());
@@ -145,6 +150,10 @@ public class PersonaleFragment extends Fragment {
 
             }
         });
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
+            materialPersonale.setVisibility(View.INVISIBLE);
+
 
         return rootView;
     }
@@ -204,4 +213,27 @@ public class PersonaleFragment extends Fragment {
         this.utentePresenter = utentePresenter;
     }
 
+    public AppCompatButton getBtnAnnullaRimozione() {
+        return btnAnnullaRimozione;
+    }
+
+    public void setBtnAnnullaRimozione(AppCompatButton btnAnnullaRimozione) {
+        this.btnAnnullaRimozione = btnAnnullaRimozione;
+    }
+
+    public AppCompatButton getBtnConfermaRimozione() {
+        return btnConfermaRimozione;
+    }
+
+    public void setBtnConfermaRimozione(AppCompatButton btnConfermaRimozione) {
+        this.btnConfermaRimozione = btnConfermaRimozione;
+    }
+
+    public MaterialCardView getMaterialPersonale() {
+        return materialPersonale;
+    }
+
+    public void setMaterialPersonale(MaterialCardView materialPersonale) {
+        this.materialPersonale = materialPersonale;
+    }
 }

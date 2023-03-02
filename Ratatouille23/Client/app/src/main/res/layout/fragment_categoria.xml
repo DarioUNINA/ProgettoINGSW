@@ -7,14 +7,14 @@
     app:strokeWidth="2dp"
     app:cardCornerRadius="10dp"
     android:layout_marginBottom="10dp"
-    android:layout_marginLeft="35dp">
+    android:layout_marginLeft="35dp"
+    android:id="@+id/materialCategoriaRecyclerView">
 
     <TextView
         android:id="@+id/txtCategoria"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAlignment="center"
-        android:text="categoria"
         android:textStyle="bold"
         android:textSize="50dp"
         android:textColor="@color/black"
@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.999"
         android:layout_marginLeft="300dp"
         android:textColorHint="@color/black"
-        android:buttonTint="@color/red"
+        android:buttonTint="@color/black"
         />
 
 </com.google.android.material.card.MaterialCardView>

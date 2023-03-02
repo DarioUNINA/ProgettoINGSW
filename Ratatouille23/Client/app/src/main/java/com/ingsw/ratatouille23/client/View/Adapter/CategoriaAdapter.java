@@ -1,6 +1,7 @@
 package com.ingsw.ratatouille23.client.View.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.R;
@@ -55,12 +57,13 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         else
             holder.categoriaCB.setVisibility(View.INVISIBLE);
 
-        holder.txtCategoria.setText(categorie.get(position).getNome());
+        holder.txtCategoria.setText(categorie.get(position).getNome().toUpperCase());
         holder.txtCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HomeActivity activity = (HomeActivity)categorieFragment.getActivity();
                 activity.getGestioneMenuFragment().getElementiMenuFragment().getElementiGMAdapter().setElementi((ArrayList<Elemento>)categorie.get(position).getElementi(), false);
+                activity.getGestioneMenuFragment().getElementiMenuFragment().getTxtCategoriaElementi().setText(holder.txtCategoria.getText());
             }
         });
 
@@ -83,14 +86,10 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         public CategoriaHolder(@NonNull View itemView) {
             super(itemView);
 
-
             txtCategoria = itemView.findViewById(R.id.txtCategoria);
             categoriaCB = itemView.findViewById(R.id.checkBoxCategorie);
 
             categoriaCB.setVisibility(View.INVISIBLE);
-
-
-
         }
 
         public TextView getTxtCategoria() {
