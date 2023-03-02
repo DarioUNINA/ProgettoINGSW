@@ -32,6 +32,10 @@ public class Elemento implements Serializable {
     @SerializedName("prezzo")
     private float prezzo;
 
+    @Expose
+    @SerializedName("descrizione")
+    private String descrizione;
+
     //Constructors
     public Elemento(){}
 
@@ -41,6 +45,15 @@ public class Elemento implements Serializable {
         this.allergeni = allergeni;
         this.nome = nome;
         this.prezzo = prezzo;
+    }
+
+    public Elemento(int idElemento, int idCategoria, List<String> allergeni, String nome, float prezzo, String descrizione) {
+        this.idElemento = idElemento;
+        this.idCategoria = idCategoria;
+        this.allergeni = allergeni;
+        this.nome = nome;
+        this.prezzo = prezzo;
+        this.descrizione = descrizione;
     }
 
     public int getIdElemento() {
@@ -81,5 +94,13 @@ public class Elemento implements Serializable {
 
     public void setPrezzo(float prezzo) {
         this.prezzo = prezzo;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 }

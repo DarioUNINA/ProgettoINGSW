@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS public.elemento
     id_elemento integer NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     prezzo double precision NOT NULL,
+    descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     id_categoria integer,
     CONSTRAINT "Elemento_pkey" PRIMARY KEY (id_elemento)
 )

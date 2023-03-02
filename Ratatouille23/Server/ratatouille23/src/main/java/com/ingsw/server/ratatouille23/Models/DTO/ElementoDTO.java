@@ -15,6 +15,7 @@ public class ElementoDTO {
     //Attributes
     private String nome;
     private float prezzo;
+    private String descrizione;
 
 
     //Constructors
@@ -38,6 +39,14 @@ public class ElementoDTO {
         this.nome = nome;
         this.prezzo = prezzo;
         this.allergeni = allergeni;
+    }
+
+    public ElementoDTO(Integer idElemento, Integer idCategoria, String nome, String descrizione, float prezzo) {
+        this.idElemento = idElemento;
+        this.idCategoria = idCategoria;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
     }
 
     //Getters and Setters
@@ -85,6 +94,14 @@ public class ElementoDTO {
 
     public void setallergeni(List<AllergeneDTO> allergeni) {
         this.allergeni = allergeni;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
 }

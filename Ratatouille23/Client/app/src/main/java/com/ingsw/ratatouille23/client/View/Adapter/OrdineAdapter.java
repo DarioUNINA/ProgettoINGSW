@@ -90,7 +90,6 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
             rimozioneCB = itemView.findViewById(R.id.chechBoxOrdini);
             rimozioneCB.setVisibility(View.INVISIBLE);
 
-            //txtIdOrdine.setText(ordini.get(getAdapterPosition()).getIdOrdine());
         }
     }
 

@@ -38,6 +38,9 @@ public class Elemento {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "descrizione")
+    private String descrizione;
+
     @Column(name = "prezzo")
     private float prezzo;
 
@@ -64,6 +67,14 @@ public class Elemento {
         this.nome = nome;
         this.prezzo = prezzo;
         this.allergeni = allergeni;
+    }
+
+    public Elemento(int idElemento, Categoria categoria, String nome, String descrizione, float prezzo) {
+        this.idElemento = idElemento;
+        this.categoria = categoria;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
     }
 
     //Getters and Setters
@@ -105,6 +116,14 @@ public class Elemento {
 
     public void setAllergeni(List<Allergene> allergeni) {
         this.allergeni = allergeni;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
     }
 
 }

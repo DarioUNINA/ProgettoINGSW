@@ -31,7 +31,8 @@ public class TavoloPresenter {
             public void returnResult(Object o) {
                 if(o!=null){
                     tavoliFragment.setTavoliAdapter(new TavoliAdapter((ArrayList<Tavolo>)o, tavoliFragment.getContext(), tavoliFragment.getOnTavoliClickListner(), tavoliFragment));
-                }
+                }else
+                    System.out.println("lista vuota");
 
             }
 

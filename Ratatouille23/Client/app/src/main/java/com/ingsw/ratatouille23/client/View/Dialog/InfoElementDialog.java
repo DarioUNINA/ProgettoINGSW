@@ -46,6 +46,7 @@ public class InfoElementDialog extends AppCompatDialogFragment {
             allergeni+=a+", ";
 
         txtAllergeni.setText(allergeni);
+        txtDescrizione.setText(elemento.getDescrizione());
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

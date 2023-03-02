@@ -149,14 +149,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
         if(utente.getRuolo()==Ruolo.admin) {
-            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
-            //Gestione personale
             btnSettings.setVisibility(View.VISIBLE);
             btnPersonale.callOnClick();
         }
         if(utente.getRuolo()==Ruolo.supervisore) {
-            //fragmentTransaction.replace(R.id.homelayoutForFragment, .class,null);
-            //Gestione personale
             btnPersonale.callOnClick();
         }
         if(utente.getRuolo()==Ruolo.cuoco) {
