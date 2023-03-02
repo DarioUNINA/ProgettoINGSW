@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,6 +44,7 @@ public class PersonaleFragment extends Fragment {
 
     private MaterialCardView materialPersonale;
 
+    private Spinner spinner;
     private PersonaleAdapter personaleAdapter;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
 
@@ -98,6 +100,7 @@ public class PersonaleFragment extends Fragment {
         btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneUser);
         listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
         materialPersonale = rootView.findViewById(R.id.materialPersonale);
+        spinner = rootView.findViewById(R.id.spinnerRuoli);
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
         utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());
