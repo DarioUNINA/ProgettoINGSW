@@ -41,7 +41,71 @@ public class ElementoController {
         Optional<List<Elemento>> elementi = elementoService.getByCategoria(idCategoria);
 
         if (elementi.isPresent()){
-            List<ElementoDTO> elementiDTO = new ArrayList<>();
+            List<ElementoDTO> elementiDTO = new ArrayList<ElementoDTO>();
+            
+            for (Elemento elemento : elementi.get())
+                elementiDTO.add(modelMapper.map(elemento, ElementoDTO.class));
+
+            return elementiDTO;
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "elementi non trovati");
+    }
+
+    @GetMapping("/get/categoria/{idCategoria}/PrezzoAsc")
+    public List<ElementoDTO> getByCategoriaPrezzoAsc(@PathVariable("idCategoria") Integer idCategoria) {
+        Optional<List<Elemento>> elementi = elementoService.getByCategoriaOrderByPrezzoAsc(idCategoria);
+
+        if (elementi.isPresent()){
+            List<ElementoDTO> elementiDTO = new ArrayList<ElementoDTO>();
+            
+            for (Elemento elemento : elementi.get())
+                elementiDTO.add(modelMapper.map(elemento, ElementoDTO.class));
+
+            return elementiDTO;
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "elementi non trovati");
+    }
+
+    @GetMapping("/get/categoria/{idCategoria}/PrezzoDesc")
+    public List<ElementoDTO> getByCategoriaPrezzoDesc(@PathVariable("idCategoria") Integer idCategoria) {
+        Optional<List<Elemento>> elementi = elementoService.getByCategoriaOrderByPrezzoDesc(idCategoria);
+
+        if (elementi.isPresent()){
+            List<ElementoDTO> elementiDTO = new ArrayList<ElementoDTO>();
+            
+            for (Elemento elemento : elementi.get())
+                elementiDTO.add(modelMapper.map(elemento, ElementoDTO.class));
+
+            return elementiDTO;
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "elementi non trovati");
+    }
+
+    @GetMapping("/get/categoria/{idCategoria}/NomeAsc")
+    public List<ElementoDTO> getByCategoriaNomeAsc(@PathVariable("idCategoria") Integer idCategoria) {
+        Optional<List<Elemento>> elementi = elementoService.getByCategoriaOrderByNomeAsc(idCategoria);
+
+        if (elementi.isPresent()){
+            List<ElementoDTO> elementiDTO = new ArrayList<ElementoDTO>();
+            
+            for (Elemento elemento : elementi.get())
+                elementiDTO.add(modelMapper.map(elemento, ElementoDTO.class));
+
+            return elementiDTO;
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "elementi non trovati");
+    }
+
+    @GetMapping("/get/categoria/{idCategoria}/NomeDesc")
+    public List<ElementoDTO> getByCategoriaNomeDesc(@PathVariable("idCategoria") Integer idCategoria) {
+        Optional<List<Elemento>> elementi = elementoService.getByCategoriaOrderByNomeDesc(idCategoria);
+
+        if (elementi.isPresent()){
+            List<ElementoDTO> elementiDTO = new ArrayList<ElementoDTO>();
             
             for (Elemento elemento : elementi.get())
                 elementiDTO.add(modelMapper.map(elemento, ElementoDTO.class));

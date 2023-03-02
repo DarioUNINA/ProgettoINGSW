@@ -29,4 +29,24 @@ public class ElementoService implements IElementoService {
     public void save(Elemento elemento){
         elementoRepository.save(elemento);
     }
+
+    @Override
+    public Optional<List<Elemento>> getByCategoriaOrderByPrezzoAsc(Integer idCategoria) {
+        return elementoRepository.findByCategoriaOrderByPrezzoAsc(idCategoria);
+    }
+
+    @Override
+    public Optional<List<Elemento>> getByCategoriaOrderByPrezzoDesc(Integer idCategoria) {
+        return elementoRepository.findByCategoriaOrderByPrezzoDesc(idCategoria);
+    }
+
+    @Override
+    public Optional<List<Elemento>> getByCategoriaOrderByNomeAsc(Integer idCategoria) {
+        return elementoRepository.findByCategoriaOrderByNomeAsc(idCategoria);
+    }
+
+    @Override
+    public Optional<List<Elemento>> getByCategoriaOrderByNomeDesc(Integer idCategoria) {
+        return elementoRepository.findByCategoriaOrderByNomeDesc(idCategoria);
+    }
 }

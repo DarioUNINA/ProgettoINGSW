@@ -14,5 +14,7 @@ public interface ITavoloService {
 
     public Optional<List<Tavolo>> getByCameriere(Utente cameriere);
 
+    public Optional<List<Tavolo>> getByCameriereOrLibero(String cameriere);
+
     
 }

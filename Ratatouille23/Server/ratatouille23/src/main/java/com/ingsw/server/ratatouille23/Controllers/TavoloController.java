@@ -12,7 +12,6 @@ import java.util.Optional;
 import com.ingsw.server.ratatouille23.Models.DTO.TavoloDTO;
 import java.util.ArrayList;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
-import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import java.util.List;
 
 
@@ -58,8 +57,8 @@ public class TavoloController {
     }
 
     @GetMapping("/get/cameriere/{username}")
-    public List<TavoloDTO> getByCameriere(@PathVariable("username") String username) {
-        Optional<List<Tavolo>> tavoli = TavoloService.getByCameriere(new Utente(username));
+    public List<TavoloDTO> getByCameriereOrLibero(@PathVariable("username") String username) {
+        Optional<List<Tavolo>> tavoli = TavoloService.getByCameriereOrLibero(username);
     
         if (tavoli.isPresent()){
             List<TavoloDTO> tavoliDTO = new ArrayList<TavoloDTO>();

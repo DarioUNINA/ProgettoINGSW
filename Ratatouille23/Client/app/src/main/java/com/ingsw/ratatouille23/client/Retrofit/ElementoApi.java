@@ -11,4 +11,18 @@ public interface ElementoApi {
 
     @GET("elemento/get/categoria/{id}")
     Single<List<Elemento>> getByIdCategoria(@Path("id")int idCategoria);
+
+    @GET("elemento/get/categoria/{id}/PrezzoAsc")
+    Single<List<Elemento>> getByCategoriaOrderByPrezzoAsc(@Path("id")int idCategoria);
+
+    @GET("elemento/get/categoria/{id}/PrezzoDesc")
+    Single<List<Elemento>> getByCategoriaOrderByPrezzoDesc(@Path("id")int idCategoria);
+
+    @GET("elemento/get/categoria/{id}/NomeAsc")
+    Single<List<Elemento>> getByCategoriaOrderByNomeAsc(@Path("id")int idCategoria);
+
+    @GET("elemento/get/categoria/{id}/NomeDesc")
+    Single<List<Elemento>> getByCategoriaOrderByNomeDesc(@Path("id")int idCategoria);
+
+
 }

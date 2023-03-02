@@ -118,11 +118,15 @@ public class ElementiMenuFragment extends Fragment {
         btnPrezzoDecrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(btnPrezzoDecrescente.isActivated()) {
-                        btnPrezzoDecrescente.setActivated(false);
-                    }else {
+                    if(!getElementiGMAdapter().getElementi().isEmpty()) {
                         btnPrezzoDecrescente.setActivated(true);
                         Toast.makeText(getActivity(), "Prezzo Decrescente", Toast.LENGTH_SHORT).show();
+                        elementoPresenter.getElementiByPrezzoDesc(getElementiGMAdapter().getElementi().get(0).getIdCategoria());
+
+                        btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                        btnRemoveElement.setVisibility(View.VISIBLE);
+                        btnAddElement.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -130,21 +134,48 @@ public class ElementiMenuFragment extends Fragment {
         btnPrezzoCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Prezzo Crescente", Toast.LENGTH_SHORT).show();
+                    if(!getElementiGMAdapter().getElementi().isEmpty()) {
+                        btnPrezzoCrescente.setActivated(true);
+                        Toast.makeText(getActivity(), "Prezzo Crescente", Toast.LENGTH_SHORT).show();
+                        elementoPresenter.getElementiByPrezzoAsc(getElementiGMAdapter().getElementi().get(0).getIdCategoria());
+
+                        btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                        btnRemoveElement.setVisibility(View.VISIBLE);
+                        btnAddElement.setVisibility(View.VISIBLE);
+                    }
                 }
             });
 
         btnOrdineAlfaCrescente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Ordine Alfabetico Crescente", Toast.LENGTH_SHORT).show();
+                    if(!getElementiGMAdapter().getElementi().isEmpty()) {
+                        btnOrdineAlfaCrescente.setActivated(true);
+                        Toast.makeText(getActivity(), "Ordine Alfabetico Crescente", Toast.LENGTH_SHORT).show();
+                        elementoPresenter.getElementiByNomeAsc(getElementiGMAdapter().getElementi().get(0).getIdCategoria());
+
+                        btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                        btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                        btnRemoveElement.setVisibility(View.VISIBLE);
+                        btnAddElement.setVisibility(View.VISIBLE);
+                    }
                 }
             });
 
         btnOrdineAlfaDecrescente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Ordine Alfabetico Decrescente", Toast.LENGTH_SHORT).show();
+                if(!getElementiGMAdapter().getElementi().isEmpty()) {
+                    btnOrdineAlfaDecrescente.setActivated(true);
+                    Toast.makeText(getActivity(), "Ordine Alfabetico Decrescente", Toast.LENGTH_SHORT).show();
+                    elementoPresenter.getElementiByNomeDesc(getElementiGMAdapter().getElementi().get(0).getIdCategoria());
+
+                    btnConfermaRimozione.setVisibility(View.INVISIBLE);
+                    btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                    btnRemoveElement.setVisibility(View.VISIBLE);
+                    btnAddElement.setVisibility(View.VISIBLE);
+                }
             }
         });
 

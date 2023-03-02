@@ -10,4 +10,12 @@ public interface IElementoService {
     public Optional <List<Elemento>> getByCategoria(Integer idCategoria);
 
     public void save(Elemento elemento);
+
+    public Optional<List<Elemento>> getByCategoriaOrderByPrezzoAsc(Integer idCategoria);
+
+    public Optional<List<Elemento>> getByCategoriaOrderByPrezzoDesc(Integer idCategoria);
+
+    public Optional<List<Elemento>> getByCategoriaOrderByNomeAsc(Integer idCategoria);
+
+    public Optional<List<Elemento>> getByCategoriaOrderByNomeDesc(Integer idCategoria);
 }

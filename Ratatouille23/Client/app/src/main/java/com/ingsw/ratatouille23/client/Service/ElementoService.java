@@ -44,4 +44,92 @@ public class ElementoService {
                 });
 
     }
+
+    public void getByCategoriaOrderByPrezzoAsc(Callback callback, int idCategoria){
+
+        elementoApi.getByCategoriaOrderByPrezzoAsc(idCategoria)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Elemento>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Elemento> elementi) {
+                        callback.returnResult(elementi);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void getByCategoriaOrderByPrezzoDesc(Callback callback, int idCategoria){
+
+        elementoApi.getByCategoriaOrderByPrezzoDesc(idCategoria)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Elemento>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Elemento> elementi) {
+                        callback.returnResult(elementi);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void getByCategoriaOrderByNomeAsc(Callback callback, int idCategoria){
+
+        elementoApi.getByCategoriaOrderByNomeAsc(idCategoria)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Elemento>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Elemento> elementi) {
+                        callback.returnResult(elementi);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void getByCategoriaOrderByNomeDesc(Callback callback, int idCategoria){
+
+        elementoApi.getByCategoriaOrderByNomeDesc(idCategoria)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Elemento>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Elemento> elementi) {
+                        callback.returnResult(elementi);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
 }
