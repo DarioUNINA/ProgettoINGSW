@@ -38,7 +38,6 @@ public class InfoElementDialog extends AppCompatDialogFragment {
 
         txtDescrizione = (TextView)v.findViewById(R.id.txtDescrizone);
         txtAllergeni = (TextView)v.findViewById(R.id.txtAllergeni);
-
         txtDescrizione.setText("descrizione momentanea");
 
         String allergeni = "";

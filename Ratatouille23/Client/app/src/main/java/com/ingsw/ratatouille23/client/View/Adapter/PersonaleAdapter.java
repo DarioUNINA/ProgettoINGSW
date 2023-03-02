@@ -10,10 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ingsw.ratatouille23.client.Model.Ordine;
-import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 
 import java.util.ArrayList;
 
@@ -22,14 +21,16 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
     private ArrayList<Utente> utenti;
     private Context context;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
+    private PersonaleFragment personaleFragment;
 
-    Boolean flag;
+    Boolean modRimozione;
 
-    public PersonaleAdapter(ArrayList<Utente> utenti, Context context, PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner, Boolean flag) {
+    public PersonaleAdapter(ArrayList<Utente> utenti, Context context, PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner, PersonaleFragment personaleFragment, Boolean modRimozione) {
         this.utenti = utenti;
         this.context = context;
         this.onPersonaleClickListner = onPersonaleClickListner;
-        this.flag = flag;
+        this.modRimozione = modRimozione;
+        this.personaleFragment = personaleFragment;
     }
 
     public interface OnPersonaleClickListner{
@@ -46,25 +47,23 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
     @Override
     public void onBindViewHolder(@NonNull PersonaleAdapter.PersonaleHolder holder, int position) {
-        if(flag)
+        if(modRimozione)
             holder.personaleCheckBox.setVisibility(View.VISIBLE);
         else
             holder.personaleCheckBox.setVisibility(View.INVISIBLE);
-        //holder.txtIdOrdine.setText(Integer.toString(ordini.get(position).getIdOrdine()));
-        //bisogna passare il tavolo per prendere il nome del cameriere
+
+        holder.txtNomeUtente.setText(utenti.get(position).getUsername());
+        holder.txtRuolo.setText(utenti.get(position).getRuolo().toString());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
-        //return ordini.size();
+        return utenti.size();
     }
 
     class PersonaleHolder extends RecyclerView.ViewHolder{
 
-        TextView txtIdOrdine;
-        TextView txtIdCameriere;
-
+        TextView txtNomeUtente, txtRuolo;
         CheckBox personaleCheckBox;
 
 
@@ -73,16 +72,23 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
             super(itemView);
 
             personaleCheckBox = itemView.findViewById(R.id.chechBoxPersonale);
+            txtNomeUtente = itemView.findViewById(R.id.txtNomeUtente);
+            txtRuolo = itemView.findViewById(R.id.txtRuolo);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onPersonaleClickListner.onPersonaleClicked(getAdapterPosition());
-                }
-            });
 
-            personaleCheckBox.setVisibility(View.INVISIBLE);
+            //personaleCheckBox.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public ArrayList<Utente> getUtenti() {
+        return utenti;
+    }
+
+    public void setUtenti(ArrayList<Utente> utenti, boolean modRimozione) {
+        this.modRimozione = modRimozione;
+        utenti.clear();
+        utenti.addAll(utenti);
+        notifyDataSetChanged();
     }
 }
 

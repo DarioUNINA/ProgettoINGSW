@@ -17,6 +17,7 @@ import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.PersonaleAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
@@ -42,10 +43,6 @@ public class PersonaleFragment extends Fragment {
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
 
     private UtentePresenter utentePresenter;
-
-    private List<Utente> utenti;
-
-    Boolean flag = false;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -98,8 +95,7 @@ public class PersonaleFragment extends Fragment {
         listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
-        //elementoPresenter.getByTavolo(1);//tavolo 1 selezionato
-        personaleAdapter = new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag);
+        utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -124,8 +120,12 @@ public class PersonaleFragment extends Fragment {
                 addUser.setVisibility(View.INVISIBLE);
                 btnAnnullaRimozione.setVisibility(View.VISIBLE);
                 btnConfermaRimozione.setVisibility(View.VISIBLE);
-                flag = true;
-                listaUtentiRecyclerView.setAdapter(new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag));
+
+                ArrayList<Utente> u = new ArrayList<Utente>();
+                u.addAll(personaleAdapter.getUtenti());
+                u.add(new Utente());
+                u.remove(u.size()-1);
+                personaleAdapter.setUtenti(u, true);
             }
         });
 
@@ -136,8 +136,13 @@ public class PersonaleFragment extends Fragment {
                 addUser.setVisibility(View.VISIBLE);
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnConfermaRimozione.setVisibility(View.INVISIBLE);
-                flag = false;
-                listaUtentiRecyclerView.setAdapter(new PersonaleAdapter( (ArrayList<Utente>) utenti, getContext(), onPersonaleClickListner, flag));
+
+                ArrayList<Utente> u = new ArrayList<Utente>();
+                u.addAll(personaleAdapter.getUtenti());
+                u.add(new Utente());
+                u.remove(u.size()-1);
+                personaleAdapter.setUtenti(u, false);
+
             }
         });
 
@@ -179,6 +184,8 @@ public class PersonaleFragment extends Fragment {
 
     public void setPersonaleAdapter(PersonaleAdapter personaleAdapter) {
         this.personaleAdapter = personaleAdapter;
+        this.listaUtentiRecyclerView.setAdapter(personaleAdapter);
+        this.personaleAdapter.notifyDataSetChanged();
     }
 
     public PersonaleAdapter.OnPersonaleClickListner getOnPersonaleClickListner() {
@@ -197,11 +204,4 @@ public class PersonaleFragment extends Fragment {
         this.utentePresenter = utentePresenter;
     }
 
-    public List<Utente> getUtenti() {
-        return utenti;
-    }
-
-    public void setUtenti(List<Utente> utenti) {
-        this.utenti = utenti;
-    }
 }

@@ -32,7 +32,7 @@
             app:layout_constraintVertical_bias="0.063" />
 
         <TextView
-            android:id="@+id/idPersonale"
+            android:id="@+id/txtIdUtente"
             android:layout_width="50dp"
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

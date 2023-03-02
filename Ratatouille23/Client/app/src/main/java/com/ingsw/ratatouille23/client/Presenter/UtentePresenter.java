@@ -5,7 +5,10 @@ import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.UtenteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
+import com.ingsw.ratatouille23.client.View.Adapter.PersonaleAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
+
+import java.util.ArrayList;
 
 
 public class UtentePresenter {
@@ -45,6 +48,25 @@ public class UtentePresenter {
             }
         }, logInActivity.getUsernameEditText().getText().toString(), logInActivity.getPasswordEditText().getText().toString());
 
+    }
+
+    public void getByRistorante(int idRistorante){
+        service.getByIdRistorante(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null){
+                    personaleFragment.setPersonaleAdapter(new PersonaleAdapter((ArrayList<Utente>) o, personaleFragment.getContext(), personaleFragment.getOnPersonaleClickListner(), personaleFragment, false));
+                }
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println("errore");
+                e.getMessage();
+
+            }
+        }, idRistorante);
     }
 
 }
