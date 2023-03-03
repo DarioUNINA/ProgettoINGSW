@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class OrdiniFragment extends Fragment {
 
+    private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton btnAddOrder, btnRemoveOrder;
     private AppCompatButton btnAnnullaRimozioneOrdine, btnConfermaRimozioneOrdine;
     private RecyclerView ordiniRecyclerView;
@@ -35,9 +37,6 @@ public class OrdiniFragment extends Fragment {
 
 
     private List<Ordine> ordini;
-
-    Boolean flag = false;
-
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -74,6 +73,7 @@ public class OrdiniFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_ordini, container, false);
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
         ordiniRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewOrdini);
         btnAddOrder = (FloatingActionButton) rootView.findViewById(R.id.btnAddOrder);
@@ -100,6 +100,12 @@ public class OrdiniFragment extends Fragment {
             public void onClick(View view) {
 
                 openDialog();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Ordine");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 
@@ -117,6 +123,13 @@ public class OrdiniFragment extends Fragment {
                 o.remove(o.size()-1);
                 ordineAdapter.setOrdini(o, true);
                 ordineAdapter.notifyDataSetChanged();
+
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Ordine");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
             }
         });

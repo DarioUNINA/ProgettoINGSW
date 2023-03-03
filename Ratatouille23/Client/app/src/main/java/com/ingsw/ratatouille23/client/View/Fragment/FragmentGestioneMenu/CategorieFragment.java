@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
@@ -38,6 +39,7 @@ import java.util.function.ToIntFunction;
 
 public class CategorieFragment extends Fragment {
 
+    private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton btnAddCategory, btnRemoveCategory;
 
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
@@ -81,6 +83,8 @@ public class CategorieFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
     @Override
@@ -122,12 +126,26 @@ public class CategorieFragment extends Fragment {
                 o.add(new Categoria());
                 o.remove(o.size()-1);
                 categoriaAdapter.setCategorie(o, true);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Categoria");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "CategorieFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Categoria");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "CategorieFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
+
             }
         });
 

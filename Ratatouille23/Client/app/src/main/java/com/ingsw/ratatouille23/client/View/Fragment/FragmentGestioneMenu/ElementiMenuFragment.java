@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
@@ -38,6 +39,7 @@ import java.util.List;
 
 public class ElementiMenuFragment extends Fragment {
 
+    private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton btnPrezzoDecrescente, btnPrezzoCrescente, btnOrdineAlfaCrescente, btnOrdineAlfaDecrescente, btnRemoveElement, btnAddElement;
 
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
@@ -81,7 +83,7 @@ public class ElementiMenuFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
     @Override
@@ -183,6 +185,12 @@ public class ElementiMenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openDialogNuovoElemento();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 
@@ -199,6 +207,12 @@ public class ElementiMenuFragment extends Fragment {
                 l.add(new Elemento());
                 l.remove(l.size()-1);
                 elementiGMAdapter.setElementi(l, true);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Elemento");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 

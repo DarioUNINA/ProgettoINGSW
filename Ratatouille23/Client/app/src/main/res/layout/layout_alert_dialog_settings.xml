@@ -15,8 +15,8 @@
         android:layout_height="300dp"
         android:background="#79C4FF">
 
-    <com.google.android.material.tabs.TabItem
-        android:id="@+id/LogUserItemSetting"
+    <ImageView
+        android:id="@+id/imageViewUtente"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

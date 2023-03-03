@@ -3,7 +3,6 @@ package com.ingsw.ratatouille23.client.View.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,10 +15,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
-import com.google.android.material.tabs.TabItem;
 import com.ingsw.ratatouille23.client.Utility.StorageManager;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneCucina.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
@@ -30,18 +29,19 @@ import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
-    StorageManager storageManager;
+    private StorageManager storageManager;
+    private FirebaseAnalytics firebaseAnalytics;
 
-    AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
-    TabItem tabItemUser, logTabUser;
-    FloatingActionButton btnSettings;
-    TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
-    MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
+    private AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
+    private FloatingActionButton btnSettings;
 
-    ImageView ristorante_img;
-    GestioneSalaFragment gestioneSala;
-    GestioneMenuFragment gestioneMenuFragment;
-    GestionePersonaleFragment gestionePersonaleFragment;
+    private ImageView imageViewUtente, imageViewRistorante;
+    private TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
+    private MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
+
+    private GestioneSalaFragment gestioneSala;
+    private GestioneMenuFragment gestioneMenuFragment;
+    private GestionePersonaleFragment gestionePersonaleFragment;
 
     private Utente utente;
     private Ristorante ristorante;
@@ -51,8 +51,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schemata Principale");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "HomeActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
         utente = (Utente)getIntent().getSerializableExtra("utente");
         ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");
+        storageManager = new StorageManager();
 
         btnCucina = findViewById(R.id.btnCuinca);
         btnMenu = findViewById(R.id.btnMenu);
@@ -60,7 +69,6 @@ public class HomeActivity extends AppCompatActivity {
         btnSala = findViewById(R.id.btnSala);
         btnSettings = findViewById(R.id.btnSettingsRestaurant);
         btnSettings.setVisibility(View.INVISIBLE);
-
 
 
         txtFragmentAttuale = findViewById(R.id.txtFragmentAttuale);
@@ -77,15 +85,17 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentMenu = findViewById(R.id.selectedFragmentMenu);
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
 
-        ristorante_img = findViewById(R.id.ristorante_img);
-        storageManager = new StorageManager();
-        storageManager.downloadLogoRistorante(ristorante, ristorante_img);
+        imageViewUtente = findViewById(R.id.imageViewUtente);
+        imageViewRistorante = findViewById(R.id.imageViewRistorante);
+
+        storageManager.downloadLogoRistorante(ristorante, imageViewRistorante);
+        storageManager.downloadPropicUtente(utente, imageViewUtente);
+
 
         gestioneSala = new GestioneSalaFragment();
         gestioneMenuFragment = new GestioneMenuFragment();
         gestionePersonaleFragment = new GestionePersonaleFragment();
 
-        tabItemUser = findViewById(R.id.TabUserItem);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -204,7 +214,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-        tabItemUser.setOnClickListener(new View.OnClickListener() {
+        imageViewUtente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     openDialog();
@@ -222,6 +232,12 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
+        System.out.println("daihsbdahdjahs\n\n\n");
+        if(imageViewRistorante !=null)
+            storageManager.downloadLogoRistorante(ristorante, imageViewRistorante);
+        if(imageViewUtente!=null)
+            storageManager.downloadPropicUtente(utente, imageViewUtente);
+
         super.onWindowFocusChanged(hasFocus);
         View view = getWindow().getDecorView();
         if(hasFocus){
@@ -287,5 +303,27 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setGestionePersonaleFragment(GestionePersonaleFragment gestionePersonaleFragment) {
         this.gestionePersonaleFragment = gestionePersonaleFragment;
+    }
+
+    public ImageView getImageViewUtente() {
+        return imageViewUtente;
+    }
+
+    public void setImageViewUtente(ImageView imageViewUtente) {
+        this.imageViewUtente = imageViewUtente;
+    }
+
+    public ImageView getImageViewRistorante() {
+        return imageViewRistorante;
+    }
+
+    public void setImageViewRistorante(ImageView imageViewRistorante) {
+        this.imageViewRistorante = imageViewRistorante;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //dialog conferma logout volendo
     }
 }

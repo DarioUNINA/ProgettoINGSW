@@ -14,6 +14,7 @@ import android.widget.Spinner;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
@@ -37,6 +38,7 @@ import java.util.List;
  */
 public class PersonaleFragment extends Fragment {
 
+    private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton addUser, removeUser;
 
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
@@ -86,6 +88,8 @@ public class PersonaleFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
     @Override
@@ -118,6 +122,12 @@ public class PersonaleFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openDialog();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Creazione Utente");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "PersonaleFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 
@@ -134,6 +144,12 @@ public class PersonaleFragment extends Fragment {
                 u.add(new Utente());
                 u.remove(u.size()-1);
                 personaleAdapter.setUtenti(u, true);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Utente");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "PersonaleFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 

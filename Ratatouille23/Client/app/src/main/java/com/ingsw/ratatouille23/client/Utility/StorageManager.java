@@ -27,7 +27,7 @@ public class StorageManager {
     }
 
     public void uploadLogoRistorante(Ristorante ristorante, Uri imageUri){
-        String nomeFile = Integer.toString(ristorante.getIdRistorante())+"_"+ristorante.getNome()+".jpeg";
+        String nomeFile = Integer.toString(ristorante.getIdRistorante())+"_"+ristorante.getNome()+".jpg";
         storageReference = storageReference.child("ristorante/"+nomeFile);
         storageReference.putFile(imageUri);
         storageReference = storageReference.getRoot();
@@ -35,10 +35,10 @@ public class StorageManager {
     }
 
     public void downloadLogoRistorante(Ristorante ristorante, ImageView imageView){
-        String nomeFile = Integer.toString(ristorante.getIdRistorante())+"_"+ristorante.getNome()+".jpeg";
+        String nomeFile = Integer.toString(ristorante.getIdRistorante())+"_"+ristorante.getNome()+".jpg";
 
         try {
-            File file = File.createTempFile("tempfile", ".jpeg");
+            File file = File.createTempFile("tempfile", ".jpg");
             storageReference = storageReference.child("ristorante/"+nomeFile);
             storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
@@ -63,7 +63,7 @@ public class StorageManager {
 
 
     public void uploadPropicUtente(Utente utente, Uri imageUri){
-        String nomeFile = Integer.toString(utente.getIdRistorante())+"_"+utente.getUsername()+".jpeg";
+        String nomeFile = Integer.toString(utente.getIdRistorante())+"_"+utente.getUsername()+".jpg";
         storageReference = storageReference.child("utente/"+nomeFile);
         storageReference.putFile(imageUri);
         storageReference = storageReference.getRoot();
@@ -72,10 +72,10 @@ public class StorageManager {
 
 
     public void downloadPropicUtente(Utente utente, ImageView imageView){
-        String nomeFile = Integer.toString(utente.getIdRistorante())+"_"+utente.getUsername()+".jpeg";
+        String nomeFile = Integer.toString(utente.getIdRistorante())+"_"+utente.getUsername()+".jpg";
 
         try {
-            File file = File.createTempFile("tempfile", ".jpeg");
+            File file = File.createTempFile("tempfile", ".jpg");
             storageReference = storageReference.child("utente/"+nomeFile);
             storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override

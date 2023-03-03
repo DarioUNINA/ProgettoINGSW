@@ -19,12 +19,14 @@ import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Utility.StorageManager;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
 
 import java.io.File;
@@ -44,8 +46,8 @@ public class SettingRistoranteFragment extends Fragment {
     private AppCompatButton btnCambiaLogo;
     private ImageView imgViewLogo;
 
-
-    StorageManager storageManager;
+    private FirebaseAnalytics firebaseAnalytics;
+    private StorageManager storageManager;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -72,6 +74,14 @@ public class SettingRistoranteFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Opzioni Ristorante");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "SettingRistoranteFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 
     @Override
@@ -87,7 +97,6 @@ public class SettingRistoranteFragment extends Fragment {
         btnCambiaLogo = root.findViewById(R.id.btnCambiaLogo);
         imgViewLogo = root.findViewById(R.id.imgViewLogo);
 
-        String nomeFile = ristorante.getIdRistorante()+"_"+ristorante.getNome()+".jpeg";
         storageManager.downloadLogoRistorante(ristorante, imgViewLogo);
 
         btnCambiaLogo.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +105,7 @@ public class SettingRistoranteFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                getActivity().startActivityForResult(intent, 1926);
+                startActivityForResult(intent, 1926);
             }
         });
 
@@ -119,6 +128,15 @@ public class SettingRistoranteFragment extends Fragment {
     public void uploadImage(Uri imageUri){
         imgViewLogo.setImageURI(imageUri);
         storageManager.uploadLogoRistorante(ristorante, imageUri);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1926 && data != null && data.getData() != null){
+            imgViewLogo.setImageURI(data.getData());
+            storageManager.uploadLogoRistorante(ristorante, data.getData());
+        }
     }
 }

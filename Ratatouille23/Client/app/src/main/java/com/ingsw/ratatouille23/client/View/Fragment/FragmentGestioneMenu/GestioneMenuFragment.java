@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.R;
 
 public class GestioneMenuFragment extends Fragment {
 
     private ElementiMenuFragment elementiMenuFragment;
     private CategorieFragment categorieFragment;
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -45,6 +48,23 @@ public class GestioneMenuFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Gestione Menu");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "GestioneMenuFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_gestione_menu, container, false);
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -54,14 +74,6 @@ public class GestioneMenuFragment extends Fragment {
         fragmentTransaction.replace(R.id.categorie_layout, categorieFragment);
         fragmentTransaction.add(R.id.elementi_Menu_layout, elementiMenuFragment);
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_gestione_menu, container, false);
-
 
         return rootView;
     }
