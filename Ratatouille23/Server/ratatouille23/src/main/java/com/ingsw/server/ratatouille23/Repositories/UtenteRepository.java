@@ -13,4 +13,6 @@ public interface UtenteRepository extends CrudRepository<Utente,String>{
     public Optional<List<Utente>> findByRistorante(Ristorante ristorante);
 
     
+
+    
 }

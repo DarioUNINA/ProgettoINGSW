@@ -28,7 +28,7 @@ public class UtenteService implements IUtenteService{
     }
 
     @Override
-    public void save(Utente utente){
+    public void update(Utente utente){
         utenteRepository.save(utente);
     }
 }

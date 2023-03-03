@@ -70,4 +70,9 @@ public class TavoloController {
         }else
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
     }
+
+
+
+
+
 }

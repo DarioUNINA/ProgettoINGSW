@@ -1,19 +1,23 @@
 package com.ingsw.ratatouille23.client.View.Fragment.Setting;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.Utility.StorageManager;
 
 public class SettingUtenteFragment extends Fragment {
 
@@ -24,11 +28,13 @@ public class SettingUtenteFragment extends Fragment {
     private String mParam2;
 
     private FirebaseAnalytics firebaseAnalytics;
+    private StorageManager storageManager;
 
     private Utente utente;
 
+    private ImageView imageViewUtente;
     private TextView txtUtente;
-    private EditText pwdAttuale;
+    private EditText pwdAttuale, newPassword, confermaPassword;
     private MaterialCardView cardViewPwdAttuale;
 
     public SettingUtenteFragment() {
@@ -71,7 +77,10 @@ public class SettingUtenteFragment extends Fragment {
         utente = (Utente)getActivity().getIntent().getSerializableExtra("utente");
 
         pwdAttuale = rootView.findViewById(R.id.editTxtPwdAttuale);
+        newPassword = rootView.findViewById(R.id.editNuovaPwd);
+        confermaPassword = rootView.findViewById(R.id.editTxtConfermaPwd);
         cardViewPwdAttuale = rootView.findViewById(R.id.cardViewPwdAttuale);
+        imageViewUtente = rootView.findViewById(R.id.imageViewUtente);
 
         if(utente.getPassword().equals("pwd")){
             pwdAttuale.setText(utente.getPassword());
@@ -81,8 +90,57 @@ public class SettingUtenteFragment extends Fragment {
         txtUtente = rootView.findViewById(R.id.txtNomeUtente);
         txtUtente.setText(utente.getUsername());
 
+        storageManager = new StorageManager();
+        storageManager.downloadPropicUtente(utente, imageViewUtente);
+
+        imageViewUtente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 1926);
+            }
+        });
+
+
         return rootView;
 
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1926 && data != null && data.getData() != null){
+            imageViewUtente.setImageURI(data.getData());
+            storageManager.uploadPropicUtente(utente, data.getData());
+        }
+    }
+
+
+    public EditText getPwdAttuale() {
+        return pwdAttuale;
+    }
+
+    public void setPwdAttuale(EditText pwdAttuale) {
+        this.pwdAttuale = pwdAttuale;
+    }
+
+    public EditText getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(EditText newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public EditText getConfermaPassword() {
+        return confermaPassword;
+    }
+
+    public void setConfermaPassword(EditText confermaPassword) {
+        this.confermaPassword = confermaPassword;
     }
 }

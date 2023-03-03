@@ -13,6 +13,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.ArrayList;
+import com.ingsw.server.ratatouille23.Utils.Ruolo;
 
 
 @RestController
@@ -52,11 +53,13 @@ public class UtenteController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessun utente trovato");
     }
 
-    @PostMapping("/save")
-    public void save(@RequestBody UtenteDTO utenteDTO){
-        Utente utente = this.modelMapper.map(utenteDTO, Utente.class);
+    @PutMapping("/update")
+    public void update(@RequestBody UtenteDTO utenteDTO) {
 
-        utenteService.save(utente);
+        Utente utente = new Utente();
+        utente = modelMapper.map(utenteDTO, Utente.class);
+        utente.setRuolo(modelMapper.map(utenteDTO.getRuolo(), Ruolo.class));
+        utenteService.update(utente);
     }
 
 

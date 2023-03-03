@@ -33,7 +33,7 @@ public class OrdiniFragment extends Fragment {
     private OrdineAdapter ordineAdapter;
     private OrdineAdapter.OnOrdineClickListner onOrdineCLickListner;
     private OrdinePresenter ordinePresenter;
-    private TextView idTavolo;
+    private TextView idTavolo, nomeCameriere;
 
 
     private List<Ordine> ordini;
@@ -81,6 +81,7 @@ public class OrdiniFragment extends Fragment {
         btnAnnullaRimozioneOrdine = rootView.findViewById(R.id.btnAnnullaRimozioneOrdine);
         btnConfermaRimozioneOrdine = rootView.findViewById(R.id.btnConfermaRimozioneOrdine);
         idTavolo = rootView.findViewById(R.id.txtIdTavolo);
+        nomeCameriere = rootView.findViewById(R.id.txtNomeCameriere);
 
 
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
@@ -190,5 +191,14 @@ public class OrdiniFragment extends Fragment {
 
     public void setIdTavolo(TextView idTavolo) {
         this.idTavolo = idTavolo;
+    }
+
+
+    public TextView getNomeCameriere() {
+        return nomeCameriere;
+    }
+
+    public void setNomeCameriere(TextView nomeCameriere) {
+        this.nomeCameriere = nomeCameriere;
     }
 }

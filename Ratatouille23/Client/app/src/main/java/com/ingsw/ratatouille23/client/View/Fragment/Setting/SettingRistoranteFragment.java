@@ -139,4 +139,6 @@ public class SettingRistoranteFragment extends Fragment {
             storageManager.uploadLogoRistorante(ristorante, data.getData());
         }
     }
+
+
 }

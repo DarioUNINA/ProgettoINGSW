@@ -7,6 +7,7 @@ import com.ingsw.ratatouille23.client.Service.UtenteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.PersonaleAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUtenteFragment;
 
 import java.util.ArrayList;
 
@@ -16,11 +17,17 @@ public class UtentePresenter {
     private UtenteService service;
     private LogInActivity logInActivity;
 
+    private  SettingUtenteFragment settingUtenteFragment;
     private PersonaleFragment personaleFragment;
 
     public UtentePresenter(LogInActivity logInActivity){
         this.logInActivity = logInActivity;
         service = new UtenteService();
+    }
+
+    public UtentePresenter(SettingUtenteFragment settingUtenteFragment){
+        service = new UtenteService();
+        this.settingUtenteFragment = settingUtenteFragment;
     }
 
     public UtentePresenter(PersonaleFragment personaleFragment){
@@ -67,6 +74,21 @@ public class UtentePresenter {
 
             }
         }, idRistorante);
+    }
+
+    public void update(Utente utente){
+        service.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(!(Boolean)o)
+                    System.out.println("Update non effettuato\n");
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, utente);
     }
 
 }

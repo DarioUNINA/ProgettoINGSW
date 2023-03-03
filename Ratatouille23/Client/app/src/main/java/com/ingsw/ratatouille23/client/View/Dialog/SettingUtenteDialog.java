@@ -53,15 +53,7 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
         storageManager = new StorageManager();
         storageManager.downloadPropicUtente(utente, imageViewUtente);
 
-        imageViewUtente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 1926);
-            }
-        });
+
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,13 +98,7 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
                 getDialog().getWindow().getAttributes());
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1926 && data != null && data.getData() != null){
-            imageViewUtente.setImageURI(data.getData());
-            storageManager.uploadPropicUtente(utente, data.getData());
-        }
-    }
+
+
 }

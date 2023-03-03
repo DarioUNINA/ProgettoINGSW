@@ -13,17 +13,18 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingRistoranteFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUtenteFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    FloatingActionButton btnBack;
+    FloatingActionButton btnBack, btnConferma;
     Utente utente;
     Ristorante ristorante;
-
     SettingRistoranteFragment settingRistoranteFragment;
+    SettingUtenteFragment settingUtenteFragment;
 
 
     @Override
@@ -34,13 +35,15 @@ public class SettingsActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         btnBack = findViewById(R.id.btnBack);
+        btnConferma = findViewById(R.id.btnConferma);
 
         settingRistoranteFragment = new SettingRistoranteFragment();
+        settingUtenteFragment = new SettingUtenteFragment();
 
 
         if(getIntent().hasExtra("utente")) {
             utente = (Utente) getIntent().getSerializableExtra("utente");
-            fragmentTransaction.replace(R.id.homeSetting, SettingUtenteFragment.class, null);
+            fragmentTransaction.replace(R.id.homeSetting, settingUtenteFragment, null);
 
             if(utente.getPassword().equals("pwd"))
                 btnBack.setVisibility(View.INVISIBLE);
@@ -52,13 +55,20 @@ public class SettingsActivity extends AppCompatActivity {
         fragmentTransaction.commitNow();
 
 
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ristorante!=null)
-
                 onBackPressed();
+            }
+        });
+
+        btnConferma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(utente!=null){
+                    updatePassword();
+                }else
+                    updateInfoRistorante();
             }
         });
     }
@@ -95,4 +105,26 @@ public class SettingsActivity extends AppCompatActivity {
     public void setRistorante(Ristorante ristorante) {
         this.ristorante = ristorante;
     }
+
+
+    public void updatePassword(){
+        if(utente.getPassword().equals(settingUtenteFragment.getPwdAttuale().getText().toString())){
+            if(settingUtenteFragment.getConfermaPassword().getText().toString().equals(settingUtenteFragment.getNewPassword().getText().toString())){
+                UtentePresenter presenter = new UtentePresenter(settingUtenteFragment);
+                utente.setPassword(settingUtenteFragment.getNewPassword().getText().toString());
+                presenter.update(utente);
+                //Dialog update effettuato
+            }else
+                //Dialog password non coincidono
+            System.out.println("password non coincidono");
+        }else
+            //Password Errata inserita
+        System.out.println("password attuale errata " +settingUtenteFragment.getPwdAttuale().getText() +" " +utente.getPassword());
+
+    }
+
+    public void updateInfoRistorante(){
+
+    }
+
 }
