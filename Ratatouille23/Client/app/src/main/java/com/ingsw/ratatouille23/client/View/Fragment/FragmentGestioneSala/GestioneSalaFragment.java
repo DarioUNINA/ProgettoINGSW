@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -27,6 +28,7 @@ public class GestioneSalaFragment extends Fragment {
     private TavoliFragment tavoliFragment;
     private OrdiniFragment ordiniFragment;
     private ElementiGSFragment elementiGSFragment;
+    private FirebaseAnalytics firebaseAnalytics;
 
 
     public GestioneSalaFragment() {
@@ -50,6 +52,24 @@ public class GestioneSalaFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Gestione Sala");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "GestioneSalaFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View rootView = inflater.inflate(R.layout.fragment_gestione_sala, container, false);
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -62,18 +82,6 @@ public class GestioneSalaFragment extends Fragment {
         fragmentTransaction.add(R.id.ordini_layout, ordiniFragment);
         fragmentTransaction.add(R.id.elementi_GM_layout, elementiGSFragment);
         fragmentTransaction.commit();
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        View rootView = inflater.inflate(R.layout.fragment_gestione_sala, container, false);
-
-        //inserisci cose
-
 
 
         return rootView;

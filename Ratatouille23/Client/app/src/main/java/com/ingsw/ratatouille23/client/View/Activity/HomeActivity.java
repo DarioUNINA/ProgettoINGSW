@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
@@ -28,18 +29,19 @@ import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
-    StorageManager storageManager;
+    private StorageManager storageManager;
+    private FirebaseAnalytics firebaseAnalytics;
 
-    AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
-    FloatingActionButton btnSettings;
+    private AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
+    private FloatingActionButton btnSettings;
 
-    ImageView imageViewUtente, imageViewRistorante;
-    TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
-    MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
+    private ImageView imageViewUtente, imageViewRistorante;
+    private TextView txtFragmentAttuale, txtUtente, txtIndirizzo, txtTelefono;
+    private MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
-    GestioneSalaFragment gestioneSala;
-    GestioneMenuFragment gestioneMenuFragment;
-    GestionePersonaleFragment gestionePersonaleFragment;
+    private GestioneSalaFragment gestioneSala;
+    private GestioneMenuFragment gestioneMenuFragment;
+    private GestionePersonaleFragment gestionePersonaleFragment;
 
     private Utente utente;
     private Ristorante ristorante;
@@ -48,6 +50,14 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schemata Principale");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "HomeActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
         utente = (Utente)getIntent().getSerializableExtra("utente");
         ristorante =(Ristorante)getIntent().getSerializableExtra("ristorante");

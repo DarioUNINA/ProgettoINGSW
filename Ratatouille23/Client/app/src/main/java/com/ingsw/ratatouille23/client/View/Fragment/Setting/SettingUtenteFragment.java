@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 
@@ -21,6 +22,8 @@ public class SettingUtenteFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     private Utente utente;
 
@@ -49,7 +52,13 @@ public class SettingUtenteFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Opzioni Utente");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "SettingUtenteFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
     }
 

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Presenter.RistorantePresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
@@ -22,6 +23,7 @@ public class LogInActivity extends AppCompatActivity {
 
     private UtentePresenter utentePresenter;
     private RistorantePresenter ristorantePresenter;
+    private FirebaseAnalytics firebaseAnalytics;
 
 
 
@@ -73,6 +75,14 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Apertura App");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "LogInActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
         usernameEditText = findViewById(R.id.login_username_editText);
         passwordEditText = findViewById(R.id.login_password_editText);

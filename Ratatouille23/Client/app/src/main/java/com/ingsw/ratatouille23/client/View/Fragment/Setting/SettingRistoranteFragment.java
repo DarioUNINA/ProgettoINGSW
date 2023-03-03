@@ -19,6 +19,7 @@ import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -45,8 +46,8 @@ public class SettingRistoranteFragment extends Fragment {
     private AppCompatButton btnCambiaLogo;
     private ImageView imgViewLogo;
 
-
-    StorageManager storageManager;
+    private FirebaseAnalytics firebaseAnalytics;
+    private StorageManager storageManager;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -73,6 +74,14 @@ public class SettingRistoranteFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Opzioni Ristorante");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "SettingRistoranteFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 
     @Override
@@ -88,7 +97,6 @@ public class SettingRistoranteFragment extends Fragment {
         btnCambiaLogo = root.findViewById(R.id.btnCambiaLogo);
         imgViewLogo = root.findViewById(R.id.imgViewLogo);
 
-        String nomeFile = ristorante.getIdRistorante()+"_"+ristorante.getNome()+".jpeg";
         storageManager.downloadLogoRistorante(ristorante, imgViewLogo);
 
         btnCambiaLogo.setOnClickListener(new View.OnClickListener() {

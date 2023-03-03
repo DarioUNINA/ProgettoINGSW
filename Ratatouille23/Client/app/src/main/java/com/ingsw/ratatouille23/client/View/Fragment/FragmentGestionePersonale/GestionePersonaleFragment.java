@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.R;
 
 /**
@@ -27,6 +28,8 @@ public class GestionePersonaleFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     public GestionePersonaleFragment() {
         // Required empty public constructor
@@ -57,6 +60,14 @@ public class GestionePersonaleFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Gestione Personale");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "GestionePersonaleFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
@@ -33,6 +34,7 @@ import java.util.List;
  */
 public class ElementiGSFragment extends Fragment {
 
+    private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton addElementoOrdine, removeElementoOrdine;
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
     private TextView txtUnita, txtTotale;
@@ -72,6 +74,8 @@ public class ElementiGSFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
     @Override
@@ -103,6 +107,12 @@ public class ElementiGSFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openDialog();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiGSFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 
@@ -120,6 +130,7 @@ public class ElementiGSFragment extends Fragment {
                 l.remove(l.size()-1);
                 elementiGSAdapter.setElementi(l, true);
 
+
             }
         });
 
@@ -136,6 +147,19 @@ public class ElementiGSFragment extends Fragment {
                 l.add(new Elemento());
                 l.remove(l.size()-1);
                 elementiGSAdapter.setElementi(l, false);
+            }
+        });
+
+
+        btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Elemento");
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiGSFragment");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
 
