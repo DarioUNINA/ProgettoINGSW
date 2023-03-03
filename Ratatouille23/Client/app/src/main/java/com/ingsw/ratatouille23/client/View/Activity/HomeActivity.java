@@ -20,6 +20,7 @@ import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.google.android.material.tabs.TabItem;
+import com.ingsw.ratatouille23.client.Utility.StorageManager;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneCucina.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.GestioneMenuFragment;
@@ -29,6 +30,8 @@ import com.ingsw.ratatouille23.client.View.Dialog.SettingUtenteDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
+    StorageManager storageManager;
+
     AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
     TabItem tabItemUser, logTabUser;
     FloatingActionButton btnSettings;
@@ -36,8 +39,6 @@ public class HomeActivity extends AppCompatActivity {
     MaterialCardView selectedFragmentPersonale, selectedFragmentSala, selectedFragmentMenu, selectedFragmentCucina;
 
     ImageView ristorante_img;
-    Uri imagePath;
-
     GestioneSalaFragment gestioneSala;
     GestioneMenuFragment gestioneMenuFragment;
     GestionePersonaleFragment gestionePersonaleFragment;
@@ -76,7 +77,9 @@ public class HomeActivity extends AppCompatActivity {
         selectedFragmentMenu = findViewById(R.id.selectedFragmentMenu);
         selectedFragmentCucina = findViewById(R.id.selectedFragmentCucina);
 
-        ristorante_img = findViewById(R.id.imageView);
+        ristorante_img = findViewById(R.id.ristorante_img);
+        storageManager = new StorageManager();
+        storageManager.downloadLogoRistorante(ristorante, ristorante_img);
 
         gestioneSala = new GestioneSalaFragment();
         gestioneMenuFragment = new GestioneMenuFragment();

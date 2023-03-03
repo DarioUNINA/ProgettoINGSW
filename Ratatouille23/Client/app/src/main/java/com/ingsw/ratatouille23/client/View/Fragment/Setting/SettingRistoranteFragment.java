@@ -1,17 +1,35 @@
 package com.ingsw.ratatouille23.client.View.Fragment.Setting;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.Utility.StorageManager;
 import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,8 +40,12 @@ public class SettingRistoranteFragment extends Fragment {
 
 
     private Ristorante ristorante;
-
     private EditText txtTelefono, txtIndirizzo;
+    private AppCompatButton btnCambiaLogo;
+    private ImageView imgViewLogo;
+
+
+    StorageManager storageManager;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -56,15 +78,47 @@ public class SettingRistoranteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_setting_restaurant, container, false);
+        View root = inflater.inflate(R.layout.fragment_setting_ristorante, container, false);
 
         ristorante = ((SettingsActivity)getActivity()).getRistorante();
+        storageManager = new StorageManager();
         txtIndirizzo = root.findViewById(R.id.editTxtNumber);
         txtTelefono = root.findViewById(R.id.editTxtAddress);
+        btnCambiaLogo = root.findViewById(R.id.btnCambiaLogo);
+        imgViewLogo = root.findViewById(R.id.imgViewLogo);
+
+        String nomeFile = ristorante.getIdRistorante()+"_"+ristorante.getNome()+".jpeg";
+        storageManager.downloadLogoRistorante(ristorante, imgViewLogo);
+
+        btnCambiaLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                getActivity().startActivityForResult(intent, 1926);
+            }
+        });
 
         txtIndirizzo.setText(ristorante.getIndirizzo());
         txtTelefono.setText(ristorante.getTelefono());
 
         return root;
+    }
+
+    public ImageView getImgViewLogo() {
+        return imgViewLogo;
+    }
+
+    public void setImgViewLogo(ImageView imgViewLogo) {
+        this.imgViewLogo = imgViewLogo;
+    }
+
+
+
+    public void uploadImage(Uri imageUri){
+        imgViewLogo.setImageURI(imageUri);
+        storageManager.uploadLogoRistorante(ristorante, imageUri);
+
     }
 }

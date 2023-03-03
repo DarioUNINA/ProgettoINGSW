@@ -1,7 +1,9 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -21,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
     Utente utente;
     Ristorante ristorante;
 
+    SettingRistoranteFragment settingRistoranteFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         btnBack = findViewById(R.id.btnBack);
 
+        settingRistoranteFragment = new SettingRistoranteFragment();
+
 
         if(getIntent().hasExtra("utente")) {
             utente = (Utente) getIntent().getSerializableExtra("utente");
@@ -40,7 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
                 btnBack.setVisibility(View.INVISIBLE);
         }else{
              ristorante = (Ristorante) getIntent().getSerializableExtra("ristorante");
-             fragmentTransaction.replace(R.id.homeSetting, SettingRistoranteFragment.class, null);
+             fragmentTransaction.replace(R.id.homeSetting, settingRistoranteFragment, null);
         }
 
         fragmentTransaction.commitNow();
@@ -69,6 +75,15 @@ public class SettingsActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1926 && data != null && data.getData() != null)
+            settingRistoranteFragment.uploadImage(data.getData());
+
     }
 
     public Utente getUtente() {
