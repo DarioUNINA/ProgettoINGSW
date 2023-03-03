@@ -25,6 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Utility.StorageManager;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
 
 import java.io.File;
@@ -96,7 +97,7 @@ public class SettingRistoranteFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                getActivity().startActivityForResult(intent, 1926);
+                startActivityForResult(intent, 1926);
             }
         });
 
@@ -119,6 +120,15 @@ public class SettingRistoranteFragment extends Fragment {
     public void uploadImage(Uri imageUri){
         imgViewLogo.setImageURI(imageUri);
         storageManager.uploadLogoRistorante(ristorante, imageUri);
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1926 && data != null && data.getData() != null){
+            imgViewLogo.setImageURI(data.getData());
+            storageManager.uploadLogoRistorante(ristorante, data.getData());
+        }
     }
 }

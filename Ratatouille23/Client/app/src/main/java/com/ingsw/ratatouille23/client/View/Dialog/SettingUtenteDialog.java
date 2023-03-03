@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.Utility.StorageManager;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 import com.ingsw.ratatouille23.client.View.Activity.SettingsActivity;
@@ -27,7 +29,10 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
     private AppCompatButton btnChangePass, btnLogOut;
     private HomeActivity home;
 
+    private ImageView imageViewUtente;
     private Utente utente;
+
+    StorageManager storageManager;
 
 
     public SettingUtenteDialog(HomeActivity home){
@@ -39,10 +44,24 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.layout_alert_dialog_settings, null);
 
+        utente = ((HomeActivity)getActivity()).getUtente();
 
         btnChangePass = (AppCompatButton) v.findViewById(R.id.btnChangePass);
         btnLogOut = (AppCompatButton) v.findViewById(R.id.btnLogOut);
-        utente = ((HomeActivity)getActivity()).getUtente();
+        imageViewUtente = (ImageView)v.findViewById(R.id.imageViewUtente);
+
+        storageManager = new StorageManager();
+        storageManager.downloadPropicUtente(utente, imageViewUtente);
+
+        imageViewUtente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 1926);
+            }
+        });
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,5 +104,15 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1926 && data != null && data.getData() != null){
+            imageViewUtente.setImageURI(data.getData());
+            storageManager.uploadPropicUtente(utente, data.getData());
+        }
     }
 }

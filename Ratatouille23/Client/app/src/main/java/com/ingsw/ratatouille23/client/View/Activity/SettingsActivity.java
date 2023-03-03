@@ -56,6 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ristorante!=null)
+
                 onBackPressed();
             }
         });
@@ -77,14 +79,6 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1926 && data != null && data.getData() != null)
-            settingRistoranteFragment.uploadImage(data.getData());
-
-    }
 
     public Utente getUtente() {
         return utente;
