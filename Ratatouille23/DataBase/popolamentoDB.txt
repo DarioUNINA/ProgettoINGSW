@@ -12,14 +12,17 @@ where id_ristorante=1;
 Insert into utente(username, password, ruolo, id_ristorante)values ('Dario', '123', 'admin', 1);
 Insert into utente(username, password, ruolo, id_ristorante)values ('Renato', '123', 'supervisore', 1);
 Insert into utente(username, password, ruolo, id_ristorante)values ('GianMarco', '123', 'cameriere', 1);
+Insert into utente(username, password, ruolo, id_ristorante)values ('Diego', '123', 'cameriere', 1);
+
 
 --Categorie
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'primi', 1);
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'secondi', 1);
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'contorni', 1);
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'dessert', 1);
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'bibite', 1);
-insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'antipasti', 1);											   
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Antipasti', 1);	
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Primi', 1);
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Secondi', 1);
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Contorni', 1);
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Dessert', 1);
+insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria_seq'), 'Bibite', 1);
+										   
 
 --Allergeni
 insert into allergene(nome) values ('uova');
@@ -29,24 +32,55 @@ insert into allergene(nome) values ('latte');
 insert into allergene(nome) values ('glutine');
 
 --Elementi
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'pasta al pomodoro', '7', 1);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'spaghetto allo socglio', '12', 1);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'crostata di mele', '5', 4);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'ribs di carne', '13', 2);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'patate al forno', '3', 3);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'crocche', '2', 6);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'acqua naturale', '1', 5);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'coca cola', '2', 5);
-insert into elemento(id_elemento, nome, prezzo, id_categoria) values( nextval('id_elemento_seq'), 'zeppoline', '2', 6);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Pasta al pomodoro', '7', 'Pasta fresca con pomodorini gialli campani' , 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Spaghetti allo scoglio', '12', 'Pasta ai frutti di mare freschi', 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Crostata di mele', '5','Crostata fatta on casa dalla Nonna Pina', 5);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Ribs di carne', '13', 'Carne con cottura lenta di circa 10h', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Patate al forno', '3','Patate al forno con buccia' , 4);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Crocche', '2', 'Crocche di patate con mozzarella filante' , 1);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Acqua naturale', '1.50',  'Acqua liscia', 6);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Coca cola', '2', 'Coca cola no pepsi', 6);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Zeppoline', '2', 'Pastella fritta ', 1);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Carbonara', '9',  'Spaghetto romano con guanciale e uovo freschi', 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Bocconcini di mozzarella', '3', 'Mozzarella campana', 1);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Acqua frizzante', '1.50', 'Acqua leggermente frizzante' , 6);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Cacio e pepe', '13', 'Spaghetto romano fracico' , 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Gnocchi alla sorrentina' , '14', 'Gnocchi di patate freschi con salsa al pomodoro e ricotta', 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Salmone scottato', '15',  'Salmone pescato ieri dai nostri pescatori', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Selezione di salumi', '4', 'Cotto, crudo, bresaola, tocchetti di tacchino', 1);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Cotoletta di pollo', '7', ' Pollo impanto e fritto' , 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Zucchine grigliate', '4', 'Zucchine Sottili e cotte alla griglia', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Insalta', '3', 'Insalata iceberg ' , 4);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Tirmaisu', '5.50',  'Mascarpone, caffe, cacao e savoiardi', 5);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Caprese', '5', 'Torta al ciaccolato', 5);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Cheesecake', '5', 'Cheesecake all amarena', 5);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Riso all osso buco', '13', 'risotto con carne', 2 );
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Tonno', '16', 'Tonno rosso fresco' , 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Calamari' , '14', 'Calamari autoctoni', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Gamberi', '15', 'Gamberetti alla griglia', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Vino rosso', '17', 'Vino rosso moio57', 6);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Vino bianco', '19', ' Vino bianco', 6 );
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Insalatona', '8',  'Insalatona con tonno, pomodorini, crostini, noci, salsa yogurt', 2);
+
+
 
 --Tavoli
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, 'GianMarco');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, GianMarco);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1, 'GianMarco');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1, 'GianMarco');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'Diego');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', true, 1, 'Diego');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'GianMarco');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', true, 1, 'GianMarco');
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1);
+
+
 
 --Ordine
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
@@ -55,7 +89,23 @@ insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5); 
+
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 8);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 13);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 13);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
 insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 8);
+insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
 
 
 --Ordinazione
@@ -64,12 +114,83 @@ insert into ordinazione(id_ordine, id_elemento) values (1, 7);
 insert into ordinazione(id_ordine, id_elemento) values (1, 4);
 insert into ordinazione(id_ordine, id_elemento) values (3, 5);
 insert into ordinazione(id_ordine, id_elemento) values (2, 2);
-insert into ordinazione(id_ordine, id_elemento) values (4, 6);
+insert into ordinazione(id_ordine, id_elemento) values (4, 22);
 insert into ordinazione(id_ordine, id_elemento) values (5, 1);
 insert into ordinazione(id_ordine, id_elemento) values (6, 3);
 
+insert into ordinazione(id_ordine, id_elemento) values (1, 11);
+insert into ordinazione(id_ordine, id_elemento) values (1, 19);
+insert into ordinazione(id_ordine, id_elemento) values (1, 24);
+insert into ordinazione(id_ordine, id_elemento) values (3, 7);
+insert into ordinazione(id_ordine, id_elemento) values (2, 17);
+insert into ordinazione(id_ordine, id_elemento) values (4, 15);
+insert into ordinazione(id_ordine, id_elemento) values (5, 1);
+insert into ordinazione(id_ordine, id_elemento) values (6, 9);
+
+insert into ordinazione(id_ordine, id_elemento) values (1, 17);
+insert into ordinazione(id_ordine, id_elemento) values (6, 29);
+insert into ordinazione(id_ordine, id_elemento) values (17, 1);
+insert into ordinazione(id_ordine, id_elemento) values (17, 26);
+insert into ordinazione(id_ordine, id_elemento) values (2, 18);
+insert into ordinazione(id_ordine, id_elemento) values (17, 28);
+insert into ordinazione(id_ordine, id_elemento) values (5, 6);
+insert into ordinazione(id_ordine, id_elemento) values (17, 11);
+
+insert into ordinazione(id_ordine, id_elemento) values (1, 2);
+insert into ordinazione(id_ordine, id_elemento) values (1, 15);
+insert into ordinazione(id_ordine, id_elemento) values (1, 3);
+insert into ordinazione(id_ordine, id_elemento) values (3, 16);
+insert into ordinazione(id_ordine, id_elemento) values (7, 2);
+insert into ordinazione(id_ordine, id_elemento) values (4, 6);
+insert into ordinazione(id_ordine, id_elemento) values (18, 1);
+insert into ordinazione(id_ordine, id_elemento) values (6, 10);
+
+
+insert into ordinazione(id_ordine, id_elemento) values (1, 8);
+insert into ordinazione(id_ordine, id_elemento) values (1, 7);
+insert into ordinazione(id_ordine, id_elemento) values (1, 4);
+insert into ordinazione(id_ordine, id_elemento) values (8, 5);
+insert into ordinazione(id_ordine, id_elemento) values (8, 2);
+insert into ordinazione(id_ordine, id_elemento) values (9, 22);
+insert into ordinazione(id_ordine, id_elemento) values (9, 1);
+insert into ordinazione(id_ordine, id_elemento) values (9, 3);
+
+insert into ordinazione(id_ordine, id_elemento) values (16, 11);
+insert into ordinazione(id_ordine, id_elemento) values (10, 19);
+insert into ordinazione(id_ordine, id_elemento) values (20, 24);
+insert into ordinazione(id_ordine, id_elemento) values (11, 7);
+insert into ordinazione(id_ordine, id_elemento) values (11, 17);
+insert into ordinazione(id_ordine, id_elemento) values (11, 15);
+insert into ordinazione(id_ordine, id_elemento) values (13, 1);
+
+insert into ordinazione(id_ordine, id_elemento) values (13, 9);
+insert into ordinazione(id_ordine, id_elemento) values (14, 17);
+insert into ordinazione(id_ordine, id_elemento) values (19, 29);
+insert into ordinazione(id_ordine, id_elemento) values (21, 1);
+insert into ordinazione(id_ordine, id_elemento) values (21, 26);
+insert into ordinazione(id_ordine, id_elemento) values (12, 18);
+insert into ordinazione(id_ordine, id_elemento) values (15, 28);
+insert into ordinazione(id_ordine, id_elemento) values (12, 6);
+insert into ordinazione(id_ordine, id_elemento) values (15, 11);
+
+insert into ordinazione(id_ordine, id_elemento) values (12, 2);
+
+
+
 --Allergia
-insert into allergia(allergene, id_elemento) values ('pesce', 2);
-insert into allergia(allergene, id_elemento) values ('latte', 6);
-insert into allergia(allergene, id_elemento) values ('glutine', 9);
-insert into allergia(allergene, id_elemento) values ('lupini', 2);
+insert into allergia(allergene, id_elemento) values ('Pesce', 2);
+insert into allergia(allergene, id_elemento) values ('Latte', 6);
+insert into allergia(allergene, id_elemento) values ('Glutine', 9);
+insert into allergia(allergene, id_elemento) values ('Lupini', 2);
+insert into allergia(allergene, id_elemento) values ('Pesce', 15);
+insert into allergia(allergene, id_elemento) values ('Pesce', 24);
+insert into allergia(allergene, id_elemento) values ('Pesce', 25);
+insert into allergia(allergene, id_elemento) values ('Pesce', 26);
+insert into allergia(allergene, id_elemento) values ('Latte', 10);
+insert into allergia(allergene, id_elemento) values ('Latte', 11);
+insert into allergia(allergene, id_elemento) values ('Latte',13);
+insert into allergia(allergene, id_elemento) values ('Latte', 14);
+insert into allergia(allergene, id_elemento) values ('Latte', 21);
+insert into allergia(allergene, id_elemento) values ('Latte', 22);
+insert into allergia(allergene, id_elemento) values ('Latte', 23);
+

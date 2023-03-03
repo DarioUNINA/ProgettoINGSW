@@ -188,27 +188,10 @@ DROP TABLE IF EXISTS ordinazione;
 CREATE TABLE IF NOT EXISTS public.ordinazione
 (
     id_ordine integer NOT NULL,
-    id_elemento integer NOT NULL,
-    )
+    id_elemento integer NOT NULL
+)
 
 TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.ordinazione
-    OWNER to postgres;
-
-ALTER TABLE ordinazione
-   ADD CONSTRAINT Ordinazioni_fkey FOREIGN KEY (id_ordine)
-      REFERENCES ordine (id_ordine)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-;
-
-ALTER TABLE ordinazione
-   ADD CONSTRAINT Ordinazioni_fkey FOREIGN KEY (id_elemento)
-      REFERENCES elemento(id_elemento)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-;
 
 --------------------------------
 
