@@ -25,11 +25,11 @@ insert into categoria(id_categoria, nome, id_menu) values (nextval('id_categoria
 										   
 
 --Allergeni
-insert into allergene(nome) values ('uova');
-insert into allergene(nome) values ('pesce');
-insert into allergene(nome) values ('lupini');
-insert into allergene(nome) values ('latte');
-insert into allergene(nome) values ('glutine');
+insert into allergene(nome) values ('Uova');
+insert into allergene(nome) values ('Pesce');
+insert into allergene(nome) values ('Lupini');
+insert into allergene(nome) values ('Latte');
+insert into allergene(nome) values ('Glutine');
 
 --Elementi
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Pasta al pomodoro', '7', 'Pasta fresca con pomodorini gialli campani' , 2);
@@ -49,7 +49,7 @@ insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) value
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Salmone scottato', '15',  'Salmone pescato ieri dai nostri pescatori', 3);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Selezione di salumi', '4', 'Cotto, crudo, bresaola, tocchetti di tacchino', 1);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Cotoletta di pollo', '7', ' Pollo impanto e fritto' , 3);
-insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Zucchine grigliate', '4', 'Zucchine Sottili e cotte alla griglia', 3);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Zucchine grigliate', '4', 'Zucchine Sottili e cotte alla griglia', 4);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Insalta', '3', 'Insalata iceberg ' , 4);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Tirmaisu', '5.50',  'Mascarpone, caffe, cacao e savoiardi', 5);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Caprese', '5', 'Torta al ciaccolato', 5);
@@ -60,25 +60,25 @@ insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) value
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Gamberi', '15', 'Gamberetti alla griglia', 3);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Vino rosso', '17', 'Vino rosso moio57', 6);
 insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Vino bianco', '19', ' Vino bianco', 6 );
-insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Insalatona', '8',  'Insalatona con tonno, pomodorini, crostini, noci, salsa yogurt', 2);
+insert into elemento(id_elemento, nome, prezzo, descrizione, id_categoria) values( nextval('id_elemento_seq'), 'Insalatona', '8',  'Insalatona con tonno, pomodorini, crostini, noci, salsa yogurt', 3);
 
 
 
 --Tavoli
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, GianMarco);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', false, 1, null);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', true, 1, 'GianMarco');
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1, null);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', false, 1, null);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'Diego');
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '2', true, 1, 'Diego');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '3', false, 1, null);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1);
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '5', false, 1, null);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '8', false, 1, null);
 insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '10', true, 1, 'GianMarco');
-insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1);
+insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere) values(nextval('id_tavolo_seq'), '4', false, 1, null);
 
 
 
@@ -193,4 +193,5 @@ insert into allergia(allergene, id_elemento) values ('Latte', 14);
 insert into allergia(allergene, id_elemento) values ('Latte', 21);
 insert into allergia(allergene, id_elemento) values ('Latte', 22);
 insert into allergia(allergene, id_elemento) values ('Latte', 23);
+insert into allergia(allergene, id_elemento) values ('Latte', 20);
 

@@ -68,7 +68,7 @@ public class InfoElementDialog extends AppCompatDialogFragment {
     public void onStart() {
         super.onStart();
         getDialog().getWindow().getAttributes().width=850;
-        getDialog().getWindow().getAttributes().height=950;
+        getDialog().getWindow().getAttributes().height=650;
         getDialog().getWindow().setGravity(Gravity.CENTER_VERTICAL);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
