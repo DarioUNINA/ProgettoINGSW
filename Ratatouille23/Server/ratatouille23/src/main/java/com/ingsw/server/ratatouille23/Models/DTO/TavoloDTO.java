@@ -72,7 +72,10 @@ public class TavoloDTO {
     }
 
     public String getCameriere() {
-        return cameriere.getUsername();
+        if(cameriere!=null)
+            return cameriere.getUsername();
+        else
+            return null;
     }
 
     public void setCameriere(UtenteDTO cameriere) {
