@@ -52,9 +52,6 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
 //        ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(getContext(),
 //                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, categoriaList);
 
-//        spinnerElementoNewOrdine.setAdapter(adapter);
-
-
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

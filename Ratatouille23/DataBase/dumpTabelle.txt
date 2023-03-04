@@ -1,31 +1,3 @@
---Creazione DATABASE
-
---DROP DATABASE IF EXISTS "INGSW";
-
---CREATE DATABASE "INGSW"
---    WITH
---    OWNER = postgres
---    ENCODING = 'UTF8'
---    LC_COLLATE = 'Italian_Italy.1252'
---    LC_CTYPE = 'Italian_Italy.1252'
---    TABLESPACE = pg_default
---    CONNECTION LIMIT = -1
---    IS_TEMPLATE = False;
-
-
-
-
---Creazione Enumeartion
-
-DROP TYPE IF EXISTS public.ruolo;
-
-CREATE TYPE public.ruolo AS ENUM
-    ('admin', 'supervisore', 'cameriere', 'cuoco');
-
-ALTER TYPE public.ruolo
-    OWNER TO postgres;
-
-
 
 
 --Creazione Tabelle
@@ -88,7 +60,7 @@ CREATE TABLE IF NOT EXISTS public.utente
 (
     username character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
-    ruolo ruolo NOT NULL,
+    ruolo character varying COLLATE pg_catalog."default" NOT NULL,
     id_ristorante integer NOT NULL,
     CONSTRAINT utente_pkey PRIMARY KEY (username)
 )

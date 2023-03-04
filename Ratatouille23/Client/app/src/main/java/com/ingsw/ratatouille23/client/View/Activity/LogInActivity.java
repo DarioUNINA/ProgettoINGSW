@@ -129,5 +129,8 @@ public class LogInActivity extends AppCompatActivity {
                 }).create().show();
     }
 
-
+    @Override
+    public void onBackPressed(){
+        
+    }
 }

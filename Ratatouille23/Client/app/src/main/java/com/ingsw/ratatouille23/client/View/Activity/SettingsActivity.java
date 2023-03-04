@@ -113,13 +113,14 @@ public class SettingsActivity extends AppCompatActivity {
                 UtentePresenter presenter = new UtentePresenter(settingUtenteFragment);
                 utente.setPassword(settingUtenteFragment.getNewPassword().getText().toString());
                 presenter.update(utente);
-                //Dialog update effettuato
+                //Dialog update effettuato + logOut
+                startActivity(new Intent(SettingsActivity.this, LogInActivity.class));
             }else
                 //Dialog password non coincidono
-            System.out.println("password non coincidono");
+                System.out.println("password non coincidono");
         }else
             //Password Errata inserita
-        System.out.println("password attuale errata " +settingUtenteFragment.getPwdAttuale().getText() +" " +utente.getPassword());
+            System.out.println("password attuale errata " +settingUtenteFragment.getPwdAttuale().getText() +" " +utente.getPassword());
 
     }
 

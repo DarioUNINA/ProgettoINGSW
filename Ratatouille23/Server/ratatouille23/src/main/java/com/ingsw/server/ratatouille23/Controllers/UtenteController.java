@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
 import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
@@ -58,7 +60,7 @@ public class UtenteController {
 
         Utente utente = new Utente();
         utente = modelMapper.map(utenteDTO, Utente.class);
-        utente.setRuolo(modelMapper.map(utenteDTO.getRuolo(), Ruolo.class));
+        utente.setRistorante(new Ristorante(utenteDTO.getRistorante()));
         utenteService.update(utente);
     }
 
