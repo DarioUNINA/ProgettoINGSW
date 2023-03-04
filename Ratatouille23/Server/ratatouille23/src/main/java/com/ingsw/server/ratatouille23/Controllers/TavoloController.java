@@ -71,6 +71,10 @@ public class TavoloController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Tavolo non trovato");
     }
 
+    @PutMapping("/update")
+    public void update(@RequestBody TavoloDTO tavoloDTO) {
+        TavoloService.update(modelMapper.map(tavoloDTO, Tavolo.class));
+    }
 
 
 

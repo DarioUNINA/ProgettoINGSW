@@ -36,5 +36,10 @@ public class TavoloService implements ITavoloService{
     public Optional<List<Tavolo>> getByCameriereOrLibero(String cameriere){
         return TavoloRepository.findByCameriereOrLibero(cameriere);
     }
+
+    @Override
+    public void update(Tavolo tavolo){
+        TavoloRepository.save(tavolo);
+    }
     
 }
