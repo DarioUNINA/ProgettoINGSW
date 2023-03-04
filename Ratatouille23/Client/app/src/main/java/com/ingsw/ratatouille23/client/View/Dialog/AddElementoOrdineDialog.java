@@ -12,24 +12,34 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.ingsw.ratatouille23.client.Model.Categoria;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.CategoriaAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.CategorieFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddElementoOrdineDialog extends AppCompatDialogFragment {
 
     private ElementiGSFragment elementiGSFragment;
 
-    private List<String> categoriaList;
+    private TextView  txtNuovaCategoria, txtNuovoElementoOrdine;
+
+    ArrayList<Categoria> list;
+
+    int id;
+
     private Spinner spinnerElementoNewOrdine;
     private Spinner spinnerCategoriaNewOrdine;
 
@@ -45,15 +55,40 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
 
         spinnerElementoNewOrdine = v.findViewById(R.id.elemento_spinnerNewOrdine);
         spinnerCategoriaNewOrdine = v.findViewById(R.id.categoria_spinnerNewOrdine);
+        txtNuovaCategoria = v.findViewById(R.id.edtTxtNuovaCategoria);
+        txtNuovoElementoOrdine = v.findViewById(R.id.txtNuovoElementoOrdine);
+
 
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddElementoOrdineDialog.this);
-        categoriaPresenter.getAllSpinner(((HomeActivity)getActivity()).getRistorante().getIdMenu());
+        categoriaPresenter.getAllSpinnerChangeOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());
 
-//        ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(getContext(),
-//                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, categoriaList);
 
-//        spinnerElementoNewOrdine.setAdapter(adapter);
+        spinnerCategoriaNewOrdine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtNuovaCategoria.setText(spinnerCategoriaNewOrdine.getSelectedItem().toString());
 
+                ElementoPresenter elementoPresenter = new ElementoPresenter(AddElementoOrdineDialog.this);
+                elementoPresenter.getAllChangeOrdine(((HomeActivity)getActivity()).getRistorante().getIdRistorante(),spinnerCategoriaNewOrdine.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerElementoNewOrdine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtNuovoElementoOrdine.setText(spinnerElementoNewOrdine.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
@@ -83,12 +118,20 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
         this.elementiGSFragment = elementiGSFragment;
     }
 
-    public List<String> getCategoriaList() {
-        return categoriaList;
+    public TextView getTxtNuovaCategoria() {
+        return txtNuovaCategoria;
     }
 
-    public void setCategoriaList(List<String> categoriaList) {
-        this.categoriaList = categoriaList;
+    public void setTxtNuovaCategoria(TextView txtNuovaCategoria) {
+        this.txtNuovaCategoria = txtNuovaCategoria;
+    }
+
+    public TextView getTxtNuovoElementoOrdine() {
+        return txtNuovoElementoOrdine;
+    }
+
+    public void setTxtNuovoElementoOrdine(TextView txtNuovoElementoOrdine) {
+        this.txtNuovoElementoOrdine = txtNuovoElementoOrdine;
     }
 
     public Spinner getSpinnerElementoNewOrdine() {

@@ -82,11 +82,11 @@
             android:backgroundTint="@color/white">
 
             <TextView
+                android:id="@+id/txtNuovoElementoOrdine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Elemento"
-                android:textColor="#968C8C"
                 android:textSize="22dp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
@@ -98,7 +98,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/black"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"
+                android:popupBackground="#79C4FF" />
 
 
         </com.google.android.material.card.MaterialCardView>

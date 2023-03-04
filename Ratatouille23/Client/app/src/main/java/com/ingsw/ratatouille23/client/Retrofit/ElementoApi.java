@@ -24,5 +24,6 @@ public interface ElementoApi {
     @GET("elemento/get/categoria/{id}/NomeDesc")
     Single<List<Elemento>> getByCategoriaOrderByNomeDesc(@Path("id")int idCategoria);
 
-
+    @GET("elemento/get/ristorante/{id}/categoria/{nome}")
+    Single<List<Elemento>> getByNome(@Path("id") int id_ristorante, @Path("nome")String nome);
 }

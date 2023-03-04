@@ -9,6 +9,7 @@ import com.ingsw.ratatouille23.client.Service.CategoriaService;
 import com.ingsw.ratatouille23.client.Service.ElementoService;
 import com.ingsw.ratatouille23.client.View.Adapter.CategoriaAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
+import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.CategorieFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 
@@ -20,11 +21,15 @@ public class CategoriaPresenter {
 
     private CategorieFragment categorieFragment;
 
-
+    AddOrderDialog addOrderDialog;
     AddElementoOrdineDialog addElementoOrdineDialog;
 
     public CategoriaPresenter(CategorieFragment categorieFragment){
         this.categorieFragment = categorieFragment;
+        service = new CategoriaService();
+    }
+    public CategoriaPresenter(AddOrderDialog addOrderDialog){
+        this.addOrderDialog = addOrderDialog;
         service = new CategoriaService();
     }
 
@@ -55,7 +60,7 @@ public class CategoriaPresenter {
         }, idMenu);
     }
 
-    public void getAllSpinner(int idMenu){
+    public void getAllSpinnerChangeOrdine(int idMenu){
         service.getByIdMenu(new Callback() {
             @Override
             public void returnResult(Object o) {
@@ -67,7 +72,7 @@ public class CategoriaPresenter {
                     }
                     addElementoOrdineDialog.getSpinnerCategoriaNewOrdine().
                             setAdapter(new ArrayAdapter<String>(addElementoOrdineDialog.getContext(),
-                                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listCategoriaString));
+                                    R.layout.spinner_item, listCategoriaString));
                 }
 
             }
@@ -77,6 +82,28 @@ public class CategoriaPresenter {
 
             }
         }, idMenu);
+    }
+    public void getAllSpinnerNuovoOrdine(int idMenu){
+        service.getByIdMenu(new Callback() {
+            @Override
+            public void returnResult(Object o) {
 
+                if(o!=null) {
+                    ArrayList<String> listCategoriaString = new ArrayList<String>();
+                    for(Categoria cat: (ArrayList<Categoria>) o){
+                        listCategoriaString.add(cat.getNome());
+                    }
+                    addOrderDialog.getSpinnerCategoriaOrdine().
+                            setAdapter(new ArrayAdapter<String>(addOrderDialog.getContext(),
+                                    R.layout.spinner_item, listCategoriaString));
+                }
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, idMenu);
     }
 }

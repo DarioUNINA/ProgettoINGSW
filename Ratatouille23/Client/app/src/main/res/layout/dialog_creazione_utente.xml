@@ -39,7 +39,7 @@
             app:strokeWidth="2dp">
 
             <EditText
-                android:id="@+id/edtTxtNuovaUtente"
+                android:id="@+id/edtTxtNuovoNomeUtente"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:hint="Nome Utente"
@@ -68,7 +68,7 @@
             app:strokeWidth="2dp">
 
             <EditText
-                android:id="@+id/edtTxtRuoloNuovaUtente"
+                android:id="@+id/edtTxtNuovoRuoloUtente"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:hint="Ruolo"
@@ -86,7 +86,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/black"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"
+                android:popupBackground="#79C4FF"/>
 
         </com.google.android.material.card.MaterialCardView>
 

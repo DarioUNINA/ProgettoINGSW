@@ -132,4 +132,25 @@ public class ElementoService {
                     }
                 });
     }
+
+    public void getByNome(Callback callback, int id_ristorante, String nome){
+
+        elementoApi.getByNome(id_ristorante, nome).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Elemento>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Elemento> elementi) {
+                        callback.returnResult(elementi);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
 }

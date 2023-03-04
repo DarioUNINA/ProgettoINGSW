@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Space;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +24,11 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
 
     private PersonaleFragment personaleFragment;
 
+    private TextView txtNuovoRuolo, txtNuovoNome;
+    private Spinner spinnerRuoli;
+
+
+
     public CreazioneUtenteDialog(PersonaleFragment personaleFragment) {
         this.personaleFragment = personaleFragment;
     }
@@ -29,6 +37,11 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_creazione_utente, null);
+
+        spinnerRuoli = v.findViewById(R.id.spinnerRuoli);
+        txtNuovoNome = v.findViewById(R.id.edtTxtNuovoNomeUtente);
+        txtNuovoRuolo = v.findViewById(R.id.edtTxtNuovoRuoloUtente);
+
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

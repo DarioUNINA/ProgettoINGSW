@@ -18,4 +18,6 @@ public interface IElementoService {
     public Optional<List<Elemento>> getByCategoriaOrderByNomeAsc(Integer idCategoria);
 
     public Optional<List<Elemento>> getByCategoriaOrderByNomeDesc(Integer idCategoria);
+
+    public Optional<List<Elemento>> getByNome(Integer id_ristorante, String nome);
 }

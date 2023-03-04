@@ -27,4 +27,10 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
     @Query(value="SELECT * from elemento where id_categoria = :idCategoria ORDER BY nome DESC", nativeQuery = true)
     public Optional<List<Elemento>> findByCategoriaOrderByNomeDesc(@Param(value="idCategoria")int idCategoria);
 
+    @Query(value="SELECT * from elemento where id_categoria = " +
+            "( Select id_categoria from categoria where id_menu =" +
+            "(select id_menu from ristorante where id_ristorante = :id_ristorante)" +
+            "and nome = :nome)", nativeQuery = true)
+    public Optional<List<Elemento>> findByNome(@Param(value = "id_ristorante")int id_ristorante, @Param(value = "nome")String nome);
+
 }

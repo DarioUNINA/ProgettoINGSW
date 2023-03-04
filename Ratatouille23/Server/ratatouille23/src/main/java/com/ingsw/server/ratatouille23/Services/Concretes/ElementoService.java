@@ -49,4 +49,8 @@ public class ElementoService implements IElementoService {
     public Optional<List<Elemento>> getByCategoriaOrderByNomeDesc(Integer idCategoria) {
         return elementoRepository.findByCategoriaOrderByNomeDesc(idCategoria);
     }
+
+    public Optional<List<Elemento>> getByNome(Integer id_ristorante, String nome){
+        return elementoRepository.findByNome(id_ristorante, nome);
+    }
 }

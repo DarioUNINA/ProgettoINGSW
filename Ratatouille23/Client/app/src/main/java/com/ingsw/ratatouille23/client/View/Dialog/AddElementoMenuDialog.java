@@ -12,14 +12,19 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Spinner;
 
+import com.ingsw.ratatouille23.client.Model.Allergene;
+import com.ingsw.ratatouille23.client.Presenter.AllergenePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 
 public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
 
-    ElementiMenuFragment elementiMenuFragment;
+    private ElementiMenuFragment elementiMenuFragment;
+
+    private Spinner allergeniSpinner;
 
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment) {
         this.elementiMenuFragment = elementiMenuFragment;
@@ -30,6 +35,11 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_add_elemento_menu, null);
+
+        allergeniSpinner = v.findViewById(R.id.allergen_spinner);
+
+//        AllergenePresenter allergenePresenter = new AllergenePresenter(AddElementoMenuDialog.this);
+//        allergenePresenter =
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -48,5 +58,21 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
+    }
+
+    public ElementiMenuFragment getElementiMenuFragment() {
+        return elementiMenuFragment;
+    }
+
+    public void setElementiMenuFragment(ElementiMenuFragment elementiMenuFragment) {
+        this.elementiMenuFragment = elementiMenuFragment;
+    }
+
+    public Spinner getAllergeniSpinner() {
+        return allergeniSpinner;
+    }
+
+    public void setAllergeniSpinner(Spinner allergeniSpinner) {
+        this.allergeniSpinner = allergeniSpinner;
     }
 }
