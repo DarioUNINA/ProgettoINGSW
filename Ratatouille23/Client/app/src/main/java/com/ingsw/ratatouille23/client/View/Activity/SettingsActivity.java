@@ -13,6 +13,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.RistorantePresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingRistoranteFragment;
@@ -125,7 +126,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void updateInfoRistorante(){
-
+        RistorantePresenter presenter = new RistorantePresenter();
+        Ristorante ristorante = settingRistoranteFragment.getRistorante();
+        ristorante.setTelefono(settingRistoranteFragment.getTxtTelefono().getText().toString());
+        ristorante.setIndirizzo(settingRistoranteFragment.getTxtIndirizzo().getText().toString());
+        presenter.update(ristorante);
     }
+
 
 }

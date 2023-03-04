@@ -17,4 +17,9 @@ public class RistoranteService implements IRistoranteService{
     public Optional<Ristorante> getById(Integer id) {
         return ristoranteRepository.findById(id);
     }
+
+    @Override
+    public void update(Ristorante ristorante) {
+        ristoranteRepository.save(ristorante);
+    }
 }

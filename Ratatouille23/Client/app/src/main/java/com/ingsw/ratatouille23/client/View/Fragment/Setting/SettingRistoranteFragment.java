@@ -140,5 +140,27 @@ public class SettingRistoranteFragment extends Fragment {
         }
     }
 
+    public EditText getTxtTelefono() {
+        return txtTelefono;
+    }
 
+    public void setTxtTelefono(EditText txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+
+    public EditText getTxtIndirizzo() {
+        return txtIndirizzo;
+    }
+
+    public void setTxtIndirizzo(EditText txtIndirizzo) {
+        this.txtIndirizzo = txtIndirizzo;
+    }
+
+    public Ristorante getRistorante() {
+        return ristorante;
+    }
+
+    public void setRistorante(Ristorante ristorante) {
+        this.ristorante = ristorante;
+    }
 }

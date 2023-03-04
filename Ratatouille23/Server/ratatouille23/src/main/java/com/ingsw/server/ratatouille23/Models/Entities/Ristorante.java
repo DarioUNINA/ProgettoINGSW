@@ -44,7 +44,7 @@ public class Ristorante{
     public Ristorante() {
     }
 
-    public Ristorante(int idRistorante) {
+    public Ristorante(Integer idRistorante) {
         this.idRistorante = idRistorante;
     }
 

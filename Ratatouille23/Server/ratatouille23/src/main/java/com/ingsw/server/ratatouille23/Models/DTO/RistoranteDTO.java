@@ -4,7 +4,7 @@ package com.ingsw.server.ratatouille23.Models.DTO;
 public class RistoranteDTO {
     
     //Primary Key
-    private int idRistorante;
+    private Integer idRistorante;
     
     //Attributes
     private String nome;
@@ -20,14 +20,14 @@ public class RistoranteDTO {
     public RistoranteDTO() {
     }
 
-    public RistoranteDTO(int idRistorante, String nome, String indirizzo, Integer idMenu) {
+    public RistoranteDTO(Integer idRistorante, String nome, String indirizzo, Integer idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.idMenu = idMenu;
     }
 
-    public RistoranteDTO(int idRistorante, String nome, String indirizzo, String telefono, Integer idMenu) {
+    public RistoranteDTO(Integer idRistorante, String nome, String indirizzo, String telefono, Integer idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
@@ -37,11 +37,11 @@ public class RistoranteDTO {
 
 
     //Getters and Setters
-    public int getIdRistorante() {
+    public Integer getIdRistorante() {
         return idRistorante;
     }
 
-    public void setIdRistorante(int idRistorante) {
+    public void setIdRistorante(Integer idRistorante) {
         this.idRistorante = idRistorante;
     }
 

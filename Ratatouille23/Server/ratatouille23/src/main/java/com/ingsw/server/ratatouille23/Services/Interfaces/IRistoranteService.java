@@ -5,4 +5,6 @@ import java.util.Optional;
 
 public interface IRistoranteService {
     public Optional<Ristorante> getById(Integer id);
+
+    public void update(Ristorante ristorante);
 }

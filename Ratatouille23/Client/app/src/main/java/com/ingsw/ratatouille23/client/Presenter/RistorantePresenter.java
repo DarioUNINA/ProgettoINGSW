@@ -38,4 +38,22 @@ public class RistorantePresenter {
 
         }, idRistorante);
     }
+
+    public void update(Ristorante ristorante){
+        service.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(!(Boolean)o)
+                    System.out.println("Update non effettuato\n");
+                else
+                    System.out.println("Update effettuato\n\n\n");
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, ristorante);
+    }
+
 }

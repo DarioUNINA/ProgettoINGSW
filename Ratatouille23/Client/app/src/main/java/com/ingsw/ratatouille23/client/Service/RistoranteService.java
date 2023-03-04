@@ -1,12 +1,14 @@
 package com.ingsw.ratatouille23.client.Service;
 
 import com.ingsw.ratatouille23.client.Model.Ristorante;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Retrofit.RetrofitService;
 import com.ingsw.ratatouille23.client.Retrofit.RistoranteApi;
 import com.ingsw.ratatouille23.client.Service.Callback;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -38,5 +40,29 @@ public class RistoranteService {
                     }
                 });
     }
+
+
+    public void update(Callback callback, Ristorante ristorante){
+        ristoranteApi.update(ristorante)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
+
 
 }

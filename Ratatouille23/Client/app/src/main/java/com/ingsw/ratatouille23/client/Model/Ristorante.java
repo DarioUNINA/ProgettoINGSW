@@ -10,7 +10,7 @@ public class Ristorante implements Serializable {
     //Primary Key
     @Expose
     @SerializedName("idRistorante")
-    private int idRistorante;
+    private Integer idRistorante;
 
     //Attributes
     @Expose
@@ -30,17 +30,17 @@ public class Ristorante implements Serializable {
 
     @Expose
     @SerializedName("idMenu")
-    private int idMenu;
+    private Integer idMenu;
 
 
     //Constructors
-    public Ristorante(int idRistorante) {this.idRistorante = idRistorante;}
+    public Ristorante(Integer idRistorante) {this.idRistorante = idRistorante;}
 
     public Ristorante() {}
 
 
 
-    public Ristorante(int idRistorante, String nome, String indirizzo, String telefono, int idMenu) {
+    public Ristorante(Integer idRistorante, String nome, String indirizzo, String telefono, int idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
@@ -51,11 +51,11 @@ public class Ristorante implements Serializable {
 
 
     //Getters and Setters
-    public int getIdRistorante() {
+    public Integer getIdRistorante() {
         return idRistorante;
     }
 
-    public void setIdRistorante(int idRistorante) {
+    public void setIdRistorante(Integer idRistorante) {
         this.idRistorante = idRistorante;
     }
 
@@ -84,11 +84,12 @@ public class Ristorante implements Serializable {
         this.telefono = telefono;
     }
 
-    public int getIdMenu() {
+    public Integer getIdMenu() {
         return idMenu;
     }
 
-    public void setIdMenu(int idMenu) {
+
+    public void setIdMenu(Integer idMenu) {
         this.idMenu = idMenu;
     }
 }

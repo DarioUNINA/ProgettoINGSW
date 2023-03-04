@@ -25,6 +25,10 @@ public class UtentePresenter {
         service = new UtenteService();
     }
 
+    public UtentePresenter() {
+
+    }
+
     public UtentePresenter(SettingUtenteFragment settingUtenteFragment){
         service = new UtenteService();
         this.settingUtenteFragment = settingUtenteFragment;
