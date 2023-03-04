@@ -16,5 +16,5 @@ public interface ITavoloService {
 
     public Optional<List<Tavolo>> getByCameriereOrLibero(String cameriere);
 
-    
+    public void update(Tavolo tavolo);
 }

@@ -3,7 +3,6 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -13,22 +12,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.ingsw.ratatouille23.client.Model.Categoria;
-import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
-import com.ingsw.ratatouille23.client.View.Adapter.CategoriaAdapter;
-import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.CategorieFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class AddElementoOrdineDialog extends AppCompatDialogFragment {
 

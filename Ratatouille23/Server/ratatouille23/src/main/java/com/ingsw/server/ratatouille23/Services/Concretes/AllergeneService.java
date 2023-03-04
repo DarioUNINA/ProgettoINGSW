@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.ingsw.server.ratatouille23.Models.Entities.Allergene;
 import com.ingsw.server.ratatouille23.Repositories.AllergeneRepository;
 import java.util.Optional;
+import java.util.List;
+
 
 @Service("AllergeneService")
 public class AllergeneService implements IAllergeneService{
@@ -16,5 +18,10 @@ public class AllergeneService implements IAllergeneService{
     @Override
     public Optional<Allergene> getByNome(String nome) {
         return allergeneRepository.findByNome(nome);
+    }
+
+    @Override
+    public List<Allergene> getAll(){
+        return allergeneRepository.findAll();
     }
 }
