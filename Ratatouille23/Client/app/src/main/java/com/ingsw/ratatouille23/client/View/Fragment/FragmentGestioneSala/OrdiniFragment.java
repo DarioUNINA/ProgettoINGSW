@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
+import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
@@ -39,6 +40,8 @@ public class OrdiniFragment extends Fragment {
     private MaterialCardView materialBtnOrdini;
     private OrdinePresenter ordinePresenter;
     private TextView idTavolo, nomeCameriere;
+
+    private Tavolo tavoloSelected;
 
 
     private List<Ordine> ordini;
@@ -161,7 +164,7 @@ public class OrdiniFragment extends Fragment {
         });
 
 
-        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin || ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin && ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
             materialBtnOrdini.setVisibility(View.INVISIBLE);
 
         return rootView;

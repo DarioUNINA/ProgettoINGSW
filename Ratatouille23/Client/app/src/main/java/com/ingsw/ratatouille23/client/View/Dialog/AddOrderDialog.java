@@ -21,8 +21,10 @@ import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
@@ -36,9 +38,9 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     private OrdiniFragment ordiniFragment;
 
-    private Spinner spinnerElementoOrdine, spinnerCategoriaOrdine;
+    private Spinner spinnerElementoOrdine, spinnerCategoriaOrdine, spinnerCamerieri;
 
-    private TextView txtCategoria, txtElemento;
+    private TextView txtCategoria, txtElemento, txtCameriereOrdine;
 
     private RecyclerView recyclerViewNuovoOrdine;
 
@@ -67,9 +69,11 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
         spinnerCategoriaOrdine = v.findViewById(R.id.categoria_spinnerOrdine);
         spinnerElementoOrdine = v.findViewById(R.id.elemento_spinnerOrdine);
+        spinnerCamerieri = v.findViewById(R.id.spinnerCamerieri);
         materialCameriere = v.findViewById(R.id.materialCameriereOrdine);
         txtCategoria = v.findViewById(R.id.edtTxtCategoria);
         txtElemento = v.findViewById(R.id.txtElementoOrdine);
+        txtCameriereOrdine = v.findViewById(R.id.txtCameriereOrdine);
         recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -79,6 +83,8 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddOrderDialog.this);
         categoriaPresenter.getAllSpinnerNuovoOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());
 
+        UtentePresenter utentePresenter = new UtentePresenter(AddOrderDialog.this);
+        utentePresenter.getByRistoranteAndRuolo(((HomeActivity)getActivity()).getRistorante().getIdRistorante(), "cameriere");
 
         spinnerCategoriaOrdine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -118,6 +124,17 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             }
         });
 
+        spinnerCamerieri.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtCameriereOrdine.setText(spinnerCamerieri.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
             materialCameriere.setVisibility(View.INVISIBLE);
@@ -212,5 +229,29 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     public void setElementiNuovi(ArrayList<Elemento> elementiNuovi) {
         this.elementiNuovi = elementiNuovi;
+    }
+
+    public Spinner getSpinnerCamerieri() {
+        return spinnerCamerieri;
+    }
+
+    public void setSpinnerCamerieri(Spinner spinnerCamerieri) {
+        this.spinnerCamerieri = spinnerCamerieri;
+    }
+
+    public TextView getTxtCameriereOrdine() {
+        return txtCameriereOrdine;
+    }
+
+    public void setTxtCameriereOrdine(TextView txtCameriereOrdine) {
+        this.txtCameriereOrdine = txtCameriereOrdine;
+    }
+
+    public MaterialCardView getMaterialCameriere() {
+        return materialCameriere;
+    }
+
+    public void setMaterialCameriere(MaterialCardView materialCameriere) {
+        this.materialCameriere = materialCameriere;
     }
 }

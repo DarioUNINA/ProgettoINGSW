@@ -13,6 +13,7 @@ Insert into utente(username, password, ruolo, id_ristorante)values ('Dario', '12
 Insert into utente(username, password, ruolo, id_ristorante)values ('Renato', '123', 'supervisore', 1);
 Insert into utente(username, password, ruolo, id_ristorante)values ('GianMarco', '123', 'cameriere', 1);
 Insert into utente(username, password, ruolo, id_ristorante)values ('Diego', '123', 'cameriere', 1);
+Insert into utente(username, password, ruolo, id_ristorante)values ('Alessandro', '123', 'cuoco', 1);
 
 
 --Categorie

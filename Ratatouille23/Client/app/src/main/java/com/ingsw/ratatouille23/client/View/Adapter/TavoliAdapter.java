@@ -65,6 +65,7 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
                 activity.getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
                 activity.getGestioneSala().getElementiGSFragment().getTxtTotale().setText("");
                 activity.getGestioneSala().getElementiGSFragment().getTxtUnita().setText("");
+                
                 if(tavoli.get(position).isOccupato())
                     activity.getGestioneSala().getOrdiniFragment().getNomeCameriere().setText(tavoli.get(position).getCameriere());
                 else

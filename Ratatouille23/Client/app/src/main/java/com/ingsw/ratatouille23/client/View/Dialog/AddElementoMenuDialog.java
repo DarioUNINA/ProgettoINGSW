@@ -30,7 +30,7 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
     private Spinner allergeniSpinner;
 
-    private TextView txtAllergene;
+    private TextView txtAllergene, txtPrezzo;
 
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
@@ -45,6 +45,7 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
         allergeniSpinner = v.findViewById(R.id.allergen_spinner);
         txtAllergene = v.findViewById(R.id.txtNomeAllergene);
+        txtPrezzo = v.findViewById(R.id.edtTxtPrezzo);
 
         AllergenePresenter allergenePresenter = new AllergenePresenter(AddElementoMenuDialog.this);
         allergenePresenter.getAll();

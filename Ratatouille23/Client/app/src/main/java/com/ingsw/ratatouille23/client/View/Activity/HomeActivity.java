@@ -232,10 +232,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
-//        if(imageViewRistorante !=null)
-//            storageManager.downloadLogoRistorante(ristorante, imageViewRistorante);
-//        if(imageViewUtente!=null)
-//            storageManager.downloadPropicUtente(utente, imageViewUtente);
+        if(imageViewRistorante !=null)
+            storageManager.downloadLogoRistorante(ristorante, imageViewRistorante);
+        if(imageViewUtente!=null)
+            storageManager.downloadPropicUtente(utente, imageViewUtente);
 
         super.onWindowFocusChanged(hasFocus);
         View view = getWindow().getDecorView();

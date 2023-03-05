@@ -1,3 +1,7 @@
 -Modificare tavolo-Utente (settare utente quando si crea un ordine per tavolo libero, settarlo quindi occupato)
 
 Quando nella creazione del nuovo ordine si va ad settare il counter a 0 l'elemento deve essere rimosso dalla lista di elementi in modo da non esser più visualizzato.
+
+Quando sei cameriere e clicchi sui tavoli esplode
+
+chechBox allergeni
