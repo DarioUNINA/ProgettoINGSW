@@ -70,6 +70,29 @@ public class UtenteService {
 
     }
 
+    public void getByRuolo(Callback callback, int idRistorante, String ruolo){
+
+        utenteApi.getByRuolo(idRistorante, ruolo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Utente>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Utente> utenti) {
+                        callback.returnResult(utenti);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+
+    }
+
     public void update(Callback callback, Utente utente){
         utenteApi.update(utente)
                 .subscribeOn(Schedulers.newThread())

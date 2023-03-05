@@ -41,4 +41,13 @@ public class CategoriaService implements ICategoriaService {
         categoria.setIdCategoria(null);
         categoriaRepository.save(categoria);
     }
+
+    @Override
+    public void delete(CategoriaDTO categoriaDTO) {
+        Categoria c = modelMapper.map(categoriaDTO, Categoria.class);
+        Menu menu = new Menu(categoriaDTO.getIdMenu());
+        c.setMenu(menu);
+        categoriaRepository.delete(c);
+    }
+
 }

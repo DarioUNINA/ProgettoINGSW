@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaHolder> {
 
     private ArrayList<Categoria> categorie;
+    private ArrayList<Categoria> categorieDelete = new ArrayList<Categoria>();
     private Context context;
     private CategoriaAdapter.OnCategoriaClickListner onCategoriaClickListner;
 
@@ -65,6 +66,16 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
                 activity.getGestioneMenuFragment().getElementiMenuFragment().getElementiGMAdapter().setElementi((ArrayList<Elemento>)categorie.get(position).getElementi(), false);
                 activity.getGestioneMenuFragment().getElementiMenuFragment().getTxtCategoriaElementi().setText(holder.txtCategoria.getText());
                 activity.getGestioneMenuFragment().getElementiMenuFragment().setCategoriaSelected(categorie.get(position));
+            }
+        });
+
+        holder.categoriaCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked())
+                    categorieDelete.add(categorie.get(position));
+                else
+                    categorieDelete.remove(categorie.get(position));
             }
         });
 
@@ -135,5 +146,17 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         this.categorie.clear();
         this.categorie.addAll(categorie);
         notifyDataSetChanged();
+    }
+
+    public void setCategorie(ArrayList<Categoria> categorie) {
+        this.categorie = categorie;
+    }
+
+    public ArrayList<Categoria> getCategorieDelete() {
+        return categorieDelete;
+    }
+
+    public void setCategorieDelete(ArrayList<Categoria> categorieDelete) {
+        this.categorieDelete = categorieDelete;
     }
 }

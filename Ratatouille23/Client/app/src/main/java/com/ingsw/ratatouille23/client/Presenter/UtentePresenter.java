@@ -10,6 +10,7 @@ import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.Pe
 import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUtenteFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UtentePresenter {
@@ -67,6 +68,7 @@ public class UtentePresenter {
             public void returnResult(Object o) {
                 if(o!=null){
                     personaleFragment.setPersonaleAdapter(new PersonaleAdapter((ArrayList<Utente>) o, personaleFragment.getContext(), personaleFragment.getOnPersonaleClickListner(), personaleFragment, false));
+//                    personaleFragment.getPersonaleAdapter().setUtenti((ArrayList<Utente>) o, false);
                 }
 
             }
@@ -78,6 +80,24 @@ public class UtentePresenter {
 
             }
         }, idRistorante);
+    }
+
+    public void getByRuolo(int idRistorante, String ruolo){
+        service.getByRuolo(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null){
+                    personaleFragment.setPersonaleAdapter(new PersonaleAdapter((ArrayList<Utente>) o, personaleFragment.getContext(), personaleFragment.getOnPersonaleClickListner(), personaleFragment, false));
+                }
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println("errore");
+                e.getMessage();
+
+            }
+        }, idRistorante, ruolo);
     }
 
     public void update(Utente utente){

@@ -55,4 +55,8 @@ public class CategoriaController {
         categoriaService.save(categoriaDTO);
     }
 
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody CategoriaDTO categoriaDTO) {
+        categoriaService.delete(categoriaDTO);
+    }
 }

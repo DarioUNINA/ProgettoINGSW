@@ -14,6 +14,7 @@ import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.Categor
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaPresenter {
 
@@ -126,5 +127,27 @@ public class CategoriaPresenter {
             }
         }, idMenu, categoria);
 
+        getByMenu(idMenu);
+    }
+
+    public void delete(List<Categoria> categorie){
+        for(Categoria c: categorie){
+            service.delete(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                    if((boolean)o)
+                        System.out.println("eliminato "+c.getNome());
+                }
+
+                @Override
+                public void returnError(Throwable e) {
+
+                }
+            }, c);
+            categorieFragment.getCategoriaAdapter().getCategorie().remove(c);
+            categorieFragment.getCategoriaAdapter().notifyDataSetChanged();
+        }
+        categorieFragment.getBtnAnnullaRimozione().callOnClick();
+        categorieFragment.getCategoriaAdapter().getCategorieDelete().clear();
     }
 }

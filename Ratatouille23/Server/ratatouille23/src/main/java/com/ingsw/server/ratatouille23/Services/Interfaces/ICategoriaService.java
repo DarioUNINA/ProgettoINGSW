@@ -11,5 +11,7 @@ public interface ICategoriaService {
     public Optional<List<Categoria>> getByMenu(Integer idMenu);
 
     public void save(CategoriaDTO categoriaDTO);
+
+    public void delete(CategoriaDTO categoriaDTO);
     
 }

@@ -161,6 +161,18 @@ public class CategorieFragment extends Fragment {
                 o.add(new Categoria());
                 o.remove(o.size()-1);
                 categoriaAdapter.setCategorie(o, false);
+                categoriaAdapter.getCategorieDelete().clear();
+            }
+        });
+
+        btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Categoria> list = new ArrayList<Categoria>();
+                for(Categoria c: categoriaAdapter.getCategorieDelete())
+                    list.add(c);
+
+                categoriaPresenter.delete(list);
             }
         });
 
@@ -242,4 +254,6 @@ public class CategorieFragment extends Fragment {
     public void setCategoriaAdapterSpinner(CategoriaAdapter categoriaAdapter){
         this.categoriaAdapter = categoriaAdapter;
     }
+
+
 }

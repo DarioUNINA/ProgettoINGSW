@@ -111,6 +111,7 @@ public class PersonaleFragment extends Fragment {
         materialPersonale = rootView.findViewById(R.id.materialPersonale);
         spinnerRuoli = rootView.findViewById(R.id.spinnerRuoli);
         txtRuolo = rootView.findViewById(R.id.editTxtRuolo);
+        personaleAdapter = new PersonaleAdapter(new ArrayList<Utente>(), getContext(), onPersonaleClickListner, this, false);
 
         possibleValues.add("Tutti");
         for (Ruolo r: Ruolo.values()) {
@@ -123,6 +124,15 @@ public class PersonaleFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 txtRuolo.setText(spinnerRuoli.getSelectedItem().toString());
+                if(spinnerRuoli.getSelectedItem().toString().equals("Tutti"))
+                    utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());
+                else
+                    utentePresenter.getByRuolo(((HomeActivity)getActivity()).getUtente().getIdRistorante(), spinnerRuoli.getSelectedItem().toString());
+
+                removeUser.setVisibility(View.VISIBLE);
+                addUser.setVisibility(View.VISIBLE);
+                btnAnnullaRimozione.setVisibility(View.INVISIBLE);
+                btnConfermaRimozione.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -132,8 +142,6 @@ public class PersonaleFragment extends Fragment {
         });
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
-        utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listaUtentiRecyclerView.setLayoutManager(linearLayoutManager);
