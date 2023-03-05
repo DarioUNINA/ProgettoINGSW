@@ -174,7 +174,7 @@ public class ElementiGSFragment extends Fragment {
             }
         });
 
-        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin || ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin && ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
             materialBtnElementiGs.setVisibility(View.INVISIBLE);
 
 

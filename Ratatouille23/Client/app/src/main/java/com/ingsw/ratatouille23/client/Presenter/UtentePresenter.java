@@ -1,11 +1,16 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
 
+import android.widget.ArrayAdapter;
+
+import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.UtenteService;
 import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.PersonaleAdapter;
+import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.Setting.SettingUtenteFragment;
 
@@ -20,10 +25,18 @@ public class UtentePresenter {
     private  SettingUtenteFragment settingUtenteFragment;
     private PersonaleFragment personaleFragment;
 
+    private AddOrderDialog addOrderDialog;
+
     public UtentePresenter(LogInActivity logInActivity){
         this.logInActivity = logInActivity;
         service = new UtenteService();
     }
+
+    public UtentePresenter(AddOrderDialog addOrderDialog){
+        this.addOrderDialog = addOrderDialog;
+        service = new UtenteService();
+    }
+
 
     public UtentePresenter() {
 
@@ -78,6 +91,32 @@ public class UtentePresenter {
 
             }
         }, idRistorante);
+    }
+
+
+    public void getByRistoranteAndRuolo(int idRistorante, String ruolo){
+        service.getByRistoranteAndRuolo(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null){
+                    ArrayList<String> listUtenteString = new ArrayList<String>();
+                    for(Utente ut: (ArrayList<Utente>) o){
+                        listUtenteString.add(ut.getUsername());
+                    }
+                    addOrderDialog.getSpinnerCamerieri().
+                            setAdapter(new ArrayAdapter<String>(addOrderDialog.getContext(),
+                                    R.layout.spinner_item, listUtenteString));
+                }
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println("errore");
+                e.getMessage();
+
+            }
+        }, idRistorante, ruolo);
     }
 
     public void update(Utente utente){

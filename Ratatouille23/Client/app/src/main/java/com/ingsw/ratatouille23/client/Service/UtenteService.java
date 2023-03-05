@@ -112,4 +112,28 @@ public class UtenteService {
                 });
     }
 
+
+    public void getByRistoranteAndRuolo(Callback callback, int idRistorante, String ruolo){
+
+        utenteApi.getByRistoranteAndRuolo(idRistorante, ruolo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Utente>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Utente> utenti) {
+                        callback.returnResult(utenti);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+
+    }
+
 }

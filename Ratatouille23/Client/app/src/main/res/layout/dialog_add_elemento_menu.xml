@@ -37,7 +37,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.250">
+            app:layout_constraintVertical_bias="0.200">
 
             <EditText
                 android:id="@+id/edtTxtNuovaCategoria"
@@ -65,7 +65,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.400"
+            app:layout_constraintVertical_bias="0.350"
             android:backgroundTint="@color/white">
 
             <TextView
@@ -100,12 +100,12 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.700"
+            app:layout_constraintVertical_bias="0.570"
             android:backgroundTint="@color/white">
 
             <EditText
                 android:layout_width="350dp"
-                android:layout_height="140dp"
+                android:layout_height="100dp"
                 android:background="@color/white"
                 android:hint="Descrizione"
                 android:gravity="left"
@@ -130,6 +130,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.94" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="30dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="2dp"
+            app:layout_constraintVertical_bias="0.770">
+
+            <EditText
+                android:id="@+id/edtTxtPrezzo"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:hint="Prezzo"
+                android:inputType="numberDecimal"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#968C8C"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.card.MaterialCardView>
 
 
 

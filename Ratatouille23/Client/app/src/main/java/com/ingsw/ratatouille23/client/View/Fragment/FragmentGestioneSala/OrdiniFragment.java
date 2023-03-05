@@ -161,7 +161,7 @@ public class OrdiniFragment extends Fragment {
         });
 
 
-        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin || ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin && ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
             materialBtnOrdini.setVisibility(View.INVISIBLE);
 
         return rootView;

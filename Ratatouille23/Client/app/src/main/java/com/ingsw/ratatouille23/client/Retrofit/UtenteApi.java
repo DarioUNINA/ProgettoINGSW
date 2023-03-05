@@ -26,4 +26,7 @@ public interface UtenteApi {
     @POST("/utente/add")
     Completable add(@Body Utente utente);
 
+    @GET("/utente/get/ristorante/{id}/ruolo/{ruolo}")
+    Single<List<Utente>> getByRistoranteAndRuolo(@Path("id") Integer id , @Path ("ruolo") String ruolo);
+
 }
