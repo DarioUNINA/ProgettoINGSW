@@ -25,8 +25,9 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     private List<Elemento> elementi;
     private Context context;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
-    private MaterialCardView counter;
-    private CheckBox rimozioneCB;
+
+    private int count = 1;
+
 
     Boolean modRimozione;
     private ElementiGSFragment elementiGSFragment;
@@ -53,6 +54,8 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
     @Override
     public void onBindViewHolder(@NonNull ElementiGSAdapter.ElementiHolder holder, int position) {
+
+
         if(modRimozione){
             holder.rimozioneCB.setVisibility(View.VISIBLE);
             holder.counter.setVisibility(View.INVISIBLE);
@@ -77,6 +80,27 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             }
         });
 
+        holder.txtCounter.setText( String.valueOf(count));
+
+        holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count ++;
+                holder.txtCounter.setText( String.valueOf(count));
+
+            }
+        });
+
+        holder.btnRemoveCounterElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( count > 1){
+                    count--;
+                    holder.txtCounter.setText( String.valueOf(count));
+                }
+            }
+        });
+
 
         int totale = 0;
         for (Elemento e : elementi)
@@ -92,21 +116,23 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     }
 
     class ElementiHolder extends RecyclerView.ViewHolder{
-        TextView txtNomeElementoGS, txtPrezzoElementoGS;
+        TextView txtNomeElementoGS, txtPrezzoElementoGS, txtCounter;
         FloatingActionButton btnAddCounterElement, btnRemoveCounterElement;
-        MaterialCardView counter;
 
          CheckBox rimozioneCB;
+
+         MaterialCardView counter;
 
         public ElementiHolder(@NonNull View itemView) {
             super(itemView);
 
             txtNomeElementoGS = itemView.findViewById(R.id.txtNomeElementoGS);
             txtPrezzoElementoGS = itemView.findViewById(R.id.txtPrezzoElementoGS);
-            counter = itemView.findViewById(R.id.materialCardCounter);
+            txtCounter = itemView.findViewById(R.id.counterElementTxt);
             rimozioneCB = itemView.findViewById(R.id.chechBoxElementiGs);
             btnAddCounterElement = itemView.findViewById(R.id.addCounterElementBtn);
             btnRemoveCounterElement = itemView.findViewById(R.id.removeCounterElementbtn);
+            counter = itemView.findViewById(R.id.materialCardCounter);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -119,21 +145,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         }
     }
 
-    public MaterialCardView getCounter() {
-        return counter;
-    }
 
-    public void setCounter(MaterialCardView counter) {
-        this.counter = counter;
-    }
-
-    public CheckBox getRimozioneCB() {
-        return rimozioneCB;
-    }
-
-    public void setRimozioneCB(CheckBox rimozioneCB) {
-        this.rimozioneCB = rimozioneCB;
-    }
 
     public List<Elemento> getElementi() {
         return elementi;

@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.ingsw.ratatouille23.client.Model.Allergene;
 import com.ingsw.ratatouille23.client.Model.Categoria;
@@ -28,6 +30,8 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
     private Spinner allergeniSpinner;
 
+    private TextView txtAllergene;
+
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
         this.categoria = categoria;
@@ -40,9 +44,22 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         View v = inflater.inflate(R.layout.dialog_add_elemento_menu, null);
 
         allergeniSpinner = v.findViewById(R.id.allergen_spinner);
+        txtAllergene = v.findViewById(R.id.txtNomeAllergene);
 
-//        AllergenePresenter allergenePresenter = new AllergenePresenter(AddElementoMenuDialog.this);
-//        allergenePresenter =
+        AllergenePresenter allergenePresenter = new AllergenePresenter(AddElementoMenuDialog.this);
+        allergenePresenter.getAll();
+
+        allergeniSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtAllergene.setText(allergeniSpinner.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

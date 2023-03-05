@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,17 +44,19 @@ public class PersonaleFragment extends Fragment {
     private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton addUser, removeUser;
 
+    ArrayList<String> possibleValues = new ArrayList<String>();
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
     private RecyclerView listaUtentiRecyclerView;
 
     private MaterialCardView materialPersonale;
 
-    private Spinner spinner;
+    private Spinner spinnerRuoli;
     private PersonaleAdapter personaleAdapter;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
 
     private UtentePresenter utentePresenter;
 
+    private TextView txtRuolo;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -104,7 +109,27 @@ public class PersonaleFragment extends Fragment {
         btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneUser);
         listaUtentiRecyclerView = (RecyclerView) rootView.findViewById(R.id.listaUtentiRecyclerView);
         materialPersonale = rootView.findViewById(R.id.materialPersonale);
-        spinner = rootView.findViewById(R.id.spinnerRuoli);
+        spinnerRuoli = rootView.findViewById(R.id.spinnerRuoli);
+        txtRuolo = rootView.findViewById(R.id.editTxtRuolo);
+
+        possibleValues.add("Tutti");
+        for (Ruolo r: Ruolo.values()) {
+            possibleValues.add(r.toString());
+        }
+
+        spinnerRuoli.setAdapter(new ArrayAdapter<String>(getContext(), R.layout.spinner_item,  possibleValues));
+
+        spinnerRuoli.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                txtRuolo.setText(spinnerRuoli.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         utentePresenter = new UtentePresenter(PersonaleFragment.this);
         utentePresenter.getByRistorante(((HomeActivity)getActivity()).getUtente().getIdRistorante());

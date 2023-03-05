@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -30,6 +31,8 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     private TextView txtCategoria, txtElemento;
 
+    private RecyclerView recyclerViewNuovoOrdine;
+
     private int idTavolo;
 
     public AddOrderDialog(OrdiniFragment ordiniFragment, int idTavolo) {
@@ -47,6 +50,7 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
         txtCategoria = v.findViewById(R.id.edtTxtCategoria);
         txtElemento = v.findViewById(R.id.txtElementoOrdine);
+        recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
 
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddOrderDialog.this);
         categoriaPresenter.getAllSpinnerNuovoOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());

@@ -15,18 +15,14 @@ public class Allergene implements Serializable {
     @SerializedName("nome")
     private String nome;
 
-    //References
-    @Expose
-    @SerializedName("elementi")
-    private List<Elemento> elementi;
+
 
 
     //Constructors
     public Allergene(){}
 
-    public Allergene(String nome, List<Elemento> elementi) {
+    public Allergene(String nome ) {
         this.nome = nome;
-        this.elementi = elementi;
     }
 
     //Getters and Setters
@@ -38,14 +34,5 @@ public class Allergene implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public List<Elemento> getElementi() {
-        return elementi;
-    }
-
-    public void setElementi(List<Elemento> elementi) {
-        this.elementi = elementi;
-    }
-
 
 }
