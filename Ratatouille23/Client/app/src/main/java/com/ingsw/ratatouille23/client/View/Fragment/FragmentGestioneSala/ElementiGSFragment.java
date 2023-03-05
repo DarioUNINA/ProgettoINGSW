@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
@@ -45,6 +46,8 @@ public class ElementiGSFragment extends Fragment {
     private ElementiGSAdapter elementiGSAdapter;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
     private ElementoPresenter elementoPresenter;
+
+    private  MaterialCardView materialBtnElementiGs;
 
     private Ordine ordineSelected;
 
@@ -95,7 +98,7 @@ public class ElementiGSFragment extends Fragment {
         btnConfermaRimozione = rootView.findViewById(R.id.btnConfermaRimozioneElmentiGS);
         txtTotale = rootView.findViewById(R.id.txtTotale);
         txtUnita=rootView.findViewById(R.id.txtUnita);
-
+        materialBtnElementiGs  = rootView.findViewById(R.id.materialBtnElementiGs);
         elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -170,6 +173,10 @@ public class ElementiGSFragment extends Fragment {
                 firebaseAnalytics.setAnalyticsCollectionEnabled(true);
             }
         });
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin || ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
+            materialBtnElementiGs.setVisibility(View.INVISIBLE);
+
 
         return rootView;
     }

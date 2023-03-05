@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Ordine;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
@@ -32,6 +35,8 @@ public class OrdiniFragment extends Fragment {
     private RecyclerView ordiniRecyclerView;
     private OrdineAdapter ordineAdapter;
     private OrdineAdapter.OnOrdineClickListner onOrdineCLickListner;
+
+    private MaterialCardView materialBtnOrdini;
     private OrdinePresenter ordinePresenter;
     private TextView idTavolo, nomeCameriere;
 
@@ -82,6 +87,7 @@ public class OrdiniFragment extends Fragment {
         btnConfermaRimozioneOrdine = rootView.findViewById(R.id.btnConfermaRimozioneOrdine);
         idTavolo = rootView.findViewById(R.id.txtIdTavolo);
         nomeCameriere = rootView.findViewById(R.id.txtNomeCameriere);
+        materialBtnOrdini = rootView.findViewById(R.id.materialBtnOrdini);
 
 
         ordinePresenter = new OrdinePresenter(OrdiniFragment.this);
@@ -153,6 +159,10 @@ public class OrdiniFragment extends Fragment {
                 ordineAdapter.setOrdini(o, false);
             }
         });
+
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin || ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
+            materialBtnOrdini.setVisibility(View.INVISIBLE);
 
         return rootView;
     }
