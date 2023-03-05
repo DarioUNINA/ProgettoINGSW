@@ -17,6 +17,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
@@ -44,6 +45,10 @@ public class ElementiGSFragment extends Fragment {
     private ElementiGSAdapter elementiGSAdapter;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
     private ElementoPresenter elementoPresenter;
+
+    private Ordine ordineSelected;
+
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -105,29 +110,33 @@ public class ElementiGSFragment extends Fragment {
         addElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                if(ordineSelected!=null) {
+                    openDialog();
 
-                Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiGSFragment");
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
-                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiGSFragment");
+                    firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                    firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                }
             }
         });
 
         removeElementoOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removeElementoOrdine.setVisibility(View.INVISIBLE);
-                addElementoOrdine.setVisibility(View.INVISIBLE);
-                btnAnnullaRimozione.setVisibility(View.VISIBLE);
-                btnConfermaRimozione.setVisibility(View.VISIBLE);
+                if(ordineSelected!=null) {
+                    removeElementoOrdine.setVisibility(View.INVISIBLE);
+                    addElementoOrdine.setVisibility(View.INVISIBLE);
+                    btnAnnullaRimozione.setVisibility(View.VISIBLE);
+                    btnConfermaRimozione.setVisibility(View.VISIBLE);
 
-                ArrayList<Elemento> l = new ArrayList<Elemento>();
-                l.addAll(elementiGSAdapter.getElementi());
-                l.add(new Elemento());
-                l.remove(l.size()-1);
-                elementiGSAdapter.setElementi(l, true);
+                    ArrayList<Elemento> l = new ArrayList<Elemento>();
+                    l.addAll(elementiGSAdapter.getElementi());
+                    l.add(new Elemento());
+                    l.remove(l.size() - 1);
+                    elementiGSAdapter.setElementi(l, true);
+                }
 
 
             }
@@ -194,6 +203,14 @@ public class ElementiGSFragment extends Fragment {
 
     public void setElementiGSRecyclerView(RecyclerView elementiGSRecyclerView) {
         this.elementiGSRecyclerView = elementiGSRecyclerView;
+    }
+
+    public Ordine getOrdineSelected() {
+        return ordineSelected;
+    }
+
+    public void setOrdineSelected(Ordine ordineSelected) {
+        this.ordineSelected = ordineSelected;
     }
 
     public ElementiGSAdapter.OnElementiClickListner getOnElementiClickListner() {

@@ -14,7 +14,8 @@ public class Categoria {
     //Primary key
     @Id
     @Column(name = "id_categoria", nullable=false, unique=true)
-    private int idCategoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idCategoria;
 
     //Attributes
     @Column(name = "nome", nullable=false)
@@ -35,16 +36,16 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(int idCategoria) {
+    public Categoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
 
-    public Categoria(int idCategoria, String nome) {
+    public Categoria(Integer idCategoria, String nome) {
         this.idCategoria = idCategoria;
         this.nome = nome;
     }
 
-    public Categoria(int idCategoria, String nome, Menu menu, List<Elemento> elementi) {
+    public Categoria(Integer idCategoria, String nome, Menu menu, List<Elemento> elementi) {
         this.idCategoria = idCategoria;
         this.nome = nome;
         this.menu = menu;
@@ -54,11 +55,11 @@ public class Categoria {
 
     //Getters and Setters
 
-    public int getIdCategoria() {
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
 

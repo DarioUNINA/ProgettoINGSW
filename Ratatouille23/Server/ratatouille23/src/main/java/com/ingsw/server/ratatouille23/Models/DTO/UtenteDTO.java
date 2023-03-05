@@ -2,6 +2,7 @@ package com.ingsw.server.ratatouille23.Models.DTO;
 
 import com.ingsw.server.ratatouille23.Utils.Ruolo;
 
+
 public class UtenteDTO {
 
     //Primary key

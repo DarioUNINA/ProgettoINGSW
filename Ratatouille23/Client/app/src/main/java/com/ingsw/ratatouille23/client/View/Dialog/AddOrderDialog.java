@@ -30,8 +30,11 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     private TextView txtCategoria, txtElemento;
 
-    public AddOrderDialog(OrdiniFragment ordiniFragment) {
+    private int idTavolo;
+
+    public AddOrderDialog(OrdiniFragment ordiniFragment, int idTavolo) {
         this.ordiniFragment = ordiniFragment;
+        this.idTavolo = idTavolo;
     }
     @NonNull
     @Override

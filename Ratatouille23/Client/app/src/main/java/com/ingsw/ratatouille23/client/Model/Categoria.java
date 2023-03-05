@@ -11,7 +11,7 @@ public class Categoria implements Serializable {
     //Primary Key
     @Expose
     @SerializedName("idCategoria")
-    private int idCategoria;
+    private Integer idCategoria;
 
     //References
     @Expose
@@ -23,19 +23,28 @@ public class Categoria implements Serializable {
     @SerializedName("nome")
     private String nome;
 
+    @Expose
+    @SerializedName("idMenu")
+    private Integer idMenu;
+
 
     //Constructors
     public Categoria(){}
 
-    public Categoria(int idCategoria, List<Elemento> elementi, String nome) {
+    public Categoria(Integer idCategoria, List<Elemento> elementi, String nome) {
         this.idCategoria = idCategoria;
         this.elementi = elementi;
         this.nome = nome;
     }
 
+    public Categoria(Integer idMenu, String nome){
+        this.idMenu = idMenu;
+        this.nome = nome;
+    }
+
     //Getters and Setters
 
-    public int getIdCategoria() {
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
@@ -59,5 +68,11 @@ public class Categoria implements Serializable {
         this.nome = nome;
     }
 
+    public Integer getIdMenu() {
+        return idMenu;
+    }
 
+    public void setIdMenu(Integer idMenu) {
+        this.idMenu = idMenu;
+    }
 }

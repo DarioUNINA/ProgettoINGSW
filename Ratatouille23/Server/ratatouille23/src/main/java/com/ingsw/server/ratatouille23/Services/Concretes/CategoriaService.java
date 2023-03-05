@@ -1,19 +1,29 @@
 package com.ingsw.server.ratatouille23.Services.Concretes;
 
 import com.ingsw.server.ratatouille23.Services.Interfaces.ICategoriaService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ingsw.server.ratatouille23.Models.DTO.CategoriaDTO;
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 import com.ingsw.server.ratatouille23.Repositories.CategoriaRepository;
 import java.util.Optional;
 import java.util.List;
+import org.modelmapper.ModelMapper;
 import com.ingsw.server.ratatouille23.Models.Entities.Menu;
 
 @Service("CategoriaService")
+@RequiredArgsConstructor
 public class CategoriaService implements ICategoriaService {
     
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public Optional<Categoria> getById(Integer idCategoria) {
@@ -26,7 +36,9 @@ public class CategoriaService implements ICategoriaService {
     }
 
     @Override
-    public void save(Categoria categoria) {
+    public void save(CategoriaDTO categoriaDTO) {
+        Categoria categoria = modelMapper.map(categoriaDTO, Categoria.class);
+        
         categoriaRepository.save(categoria);
     }
 }

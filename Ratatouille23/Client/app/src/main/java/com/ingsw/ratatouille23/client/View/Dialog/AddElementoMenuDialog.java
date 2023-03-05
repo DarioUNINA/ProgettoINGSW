@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Spinner;
 
 import com.ingsw.ratatouille23.client.Model.Allergene;
+import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Presenter.AllergenePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
@@ -23,11 +24,13 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
 
     private ElementiMenuFragment elementiMenuFragment;
+    Categoria categoria;
 
     private Spinner allergeniSpinner;
 
-    public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment) {
+    public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
+        this.categoria = categoria;
     }
 
     @NonNull

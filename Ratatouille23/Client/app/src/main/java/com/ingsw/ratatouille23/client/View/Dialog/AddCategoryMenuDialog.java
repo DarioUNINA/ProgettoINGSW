@@ -15,17 +15,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.CategorieFragment;
 
 public class AddCategoryMenuDialog extends AppCompatDialogFragment {
 
-    private EditText newCatgeroy;
+    private EditText categoria;
     private AppCompatButton confirmBtn;
     private CategorieFragment categorieFragment;
 
+    private CategoriaPresenter presenter;
+
     public AddCategoryMenuDialog(CategorieFragment categorieFragment){
         this.categorieFragment =  categorieFragment;
+        this.presenter = new CategoriaPresenter();
     }
 
     @NonNull
@@ -34,10 +39,19 @@ public class AddCategoryMenuDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_add_category_menu, null);
 
-        newCatgeroy = (EditText) v.findViewById(R.id.edtTxtNuovaCategoria);
+        categoria = (EditText) v.findViewById(R.id.edtTxtNuovaCategoria);
         confirmBtn = (AppCompatButton) v.findViewById(R.id.confirm_btn_new_category);
 
-
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(categoria.getText().toString()!="") {
+                    int idMenu = ((HomeActivity)getActivity()).getRistorante().getIdMenu();
+                    presenter.create(idMenu,categoria.getText().toString());
+                    presenter.getByMenu(idMenu);
+                }
+            }
+        });
 
 
 

@@ -68,13 +68,7 @@ public class Ristorante{
 
 
     //Getters and Setters
-    public Integer getIdRistorante() {
-        return idRistorante;
-    }
 
-    public void setId_ristorante(Integer idRistorante) {
-        this.idRistorante = idRistorante;
-    }
 
     public List<Utente> getUtenti() {
         return utenti;
@@ -124,4 +118,19 @@ public class Ristorante{
         this.tavoli = tavoli;
     }
 
+    public Integer getIdRistorante() {
+        return idRistorante;
+    }
+
+    public void setIdRistorante(Integer idRistorante) {
+        this.idRistorante = idRistorante;
+    }
+
+    @Override
+    public String toString() {
+        return "Ristorante [idRistorante=" + idRistorante + ", nome=" + nome + ", indirizzo=" + indirizzo
+                + ", telefono=" + telefono + ", utenti=" + utenti + ", tavoli=" + tavoli + ", menu=" + menu + "]";
+    }
+
+    
 }

@@ -50,4 +50,9 @@ public class CategoriaController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessuna categoria trovata");
     }
 
+    @PostMapping("/add")
+    public void save(@RequestBody CategoriaDTO categoriaDTO) {
+        categoriaService.save(categoriaDTO);
+    }
+
 }

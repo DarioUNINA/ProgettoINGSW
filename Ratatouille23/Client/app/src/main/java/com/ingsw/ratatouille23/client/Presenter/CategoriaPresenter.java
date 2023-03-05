@@ -106,4 +106,24 @@ public class CategoriaPresenter {
             }
         }, idMenu);
     }
+
+    public void create(int idMenu, String categoria){
+
+        service.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    System.out.println("creazione effettuata");
+                else
+                    System.out.println("errore");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, idMenu, categoria);
+
+    }
 }

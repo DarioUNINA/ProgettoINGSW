@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
@@ -54,6 +55,8 @@ public class ElementiMenuFragment extends Fragment {
     private ElementoPresenter elementoPresenter;
 
     private MaterialCardView materialElementi;
+
+    private Categoria categoriaSelected;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -184,35 +187,39 @@ public class ElementiMenuFragment extends Fragment {
         btnAddElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialogNuovoElemento();
+                if(categoriaSelected!=null) {
+                    openDialogNuovoElemento(categoriaSelected);
 
-                Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
-                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Elemento");
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
+                    firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                    firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                }
             }
         });
 
         btnRemoveElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnConfermaRimozione.setVisibility(View.VISIBLE);
-                btnAnnullaRimozione.setVisibility(View.VISIBLE);
-                btnRemoveElement.setVisibility(View.INVISIBLE);
-                btnAddElement.setVisibility(View.INVISIBLE);
+                if(categoriaSelected!=null) {
+                    btnConfermaRimozione.setVisibility(View.VISIBLE);
+                    btnAnnullaRimozione.setVisibility(View.VISIBLE);
+                    btnRemoveElement.setVisibility(View.INVISIBLE);
+                    btnAddElement.setVisibility(View.INVISIBLE);
 
-                ArrayList<Elemento> l = new ArrayList<Elemento>();
-                l.addAll(elementiGMAdapter.getElementi());
-                l.add(new Elemento());
-                l.remove(l.size()-1);
-                elementiGMAdapter.setElementi(l, true);
+                    ArrayList<Elemento> l = new ArrayList<Elemento>();
+                    l.addAll(elementiGMAdapter.getElementi());
+                    l.add(new Elemento());
+                    l.remove(l.size() - 1);
+                    elementiGMAdapter.setElementi(l, true);
 
-                Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Elemento");
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
-                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Elemento");
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiMenuFragment");
+                    firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                    firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                }
             }
         });
 
@@ -246,8 +253,8 @@ public class ElementiMenuFragment extends Fragment {
 
     }
 
-    public void openDialogNuovoElemento(){
-        AddElementoMenuDialog addElementoMenuDialog = new AddElementoMenuDialog(this);
+    public void openDialogNuovoElemento(Categoria categoria){
+        AddElementoMenuDialog addElementoMenuDialog = new AddElementoMenuDialog(this, categoria);
         addElementoMenuDialog.show(getParentFragmentManager(), "NewCategory");
     }
 
@@ -370,5 +377,13 @@ public class ElementiMenuFragment extends Fragment {
 
     public void setTxtCategoriaElementi(TextView txtCategoriaElementi) {
         this.txtCategoriaElementi = txtCategoriaElementi;
+    }
+
+    public Categoria getCategoriaSelected() {
+        return categoriaSelected;
+    }
+
+    public void setCategoriaSelected(Categoria categoriaSelected) {
+        this.categoriaSelected = categoriaSelected;
     }
 }

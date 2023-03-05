@@ -64,6 +64,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
                 HomeActivity activity = (HomeActivity)categorieFragment.getActivity();
                 activity.getGestioneMenuFragment().getElementiMenuFragment().getElementiGMAdapter().setElementi((ArrayList<Elemento>)categorie.get(position).getElementi(), false);
                 activity.getGestioneMenuFragment().getElementiMenuFragment().getTxtCategoriaElementi().setText(holder.txtCategoria.getText());
+                activity.getGestioneMenuFragment().getElementiMenuFragment().setCategoriaSelected(categorie.get(position));
             }
         });
 

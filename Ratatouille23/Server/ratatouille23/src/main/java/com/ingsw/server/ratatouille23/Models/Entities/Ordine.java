@@ -14,6 +14,7 @@ public class Ordine {
     //Primary Key
     @Id
     @Column(name = "id_ordine")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrdine;
 
     //References

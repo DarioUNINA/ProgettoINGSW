@@ -2,9 +2,10 @@ package com.ingsw.server.ratatouille23.Services.Interfaces;
 
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import java.util.Optional;
+import com.ingsw.server.ratatouille23.Models.DTO.RistoranteDTO;
 
 public interface IRistoranteService {
     public Optional<Ristorante> getById(Integer id);
 
-    public void update(Ristorante ristorante);
+    public void update(RistoranteDTO ristoranteDTO);
 }

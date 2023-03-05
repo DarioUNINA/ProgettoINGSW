@@ -64,6 +64,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
             public void onClick(View view) {
                 System.out.println(ordini.get(position).getElementi().size());
                 ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(ordini.get(position).getElementi(), false);
+                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
             }
         });
 

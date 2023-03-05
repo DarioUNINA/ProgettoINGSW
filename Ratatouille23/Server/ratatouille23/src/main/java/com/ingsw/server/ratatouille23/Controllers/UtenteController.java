@@ -10,6 +10,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
+
+import lombok.RequiredArgsConstructor;
+
 import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +21,16 @@ import java.util.ArrayList;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/utente")
 public class UtenteController {
     
     @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired
     @Qualifier("UtenteService")
-    private IUtenteService utenteService;
+    private final IUtenteService utenteService;
     
     @GetMapping("/get/{username}/{password}")
     public UtenteDTO getByUsernameAndPassword(@PathVariable String username, @PathVariable String password){
@@ -63,5 +67,10 @@ public class UtenteController {
         utenteService.update(utente);
     }
 
+    @PostMapping("/add")
+    public void add(@RequestBody UtenteDTO utenteDTO) {
+
+        utenteService.add(utenteDTO);
+    }
 
 }

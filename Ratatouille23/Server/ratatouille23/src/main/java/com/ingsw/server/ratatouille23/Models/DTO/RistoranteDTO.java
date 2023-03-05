@@ -4,7 +4,7 @@ package com.ingsw.server.ratatouille23.Models.DTO;
 public class RistoranteDTO {
     
     //Primary Key
-    private Integer idRistorante;
+    private int idRistorante;
     
     //Attributes
     private String nome;
@@ -13,21 +13,21 @@ public class RistoranteDTO {
     
 
     //References
-    private Integer idMenu;
+    private int idMenu;
 
 
     //Constructors
     public RistoranteDTO() {
     }
 
-    public RistoranteDTO(Integer idRistorante, String nome, String indirizzo, Integer idMenu) {
+    public RistoranteDTO(int idRistorante, String nome, String indirizzo, int idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.idMenu = idMenu;
     }
 
-    public RistoranteDTO(Integer idRistorante, String nome, String indirizzo, String telefono, Integer idMenu) {
+    public RistoranteDTO(int idRistorante, String nome, String indirizzo, String telefono, int idMenu) {
         this.idRistorante = idRistorante;
         this.nome = nome;
         this.indirizzo = indirizzo;
@@ -37,11 +37,11 @@ public class RistoranteDTO {
 
 
     //Getters and Setters
-    public Integer getIdRistorante() {
+    public int getIdRistorante() {
         return idRistorante;
     }
 
-    public void setIdRistorante(Integer idRistorante) {
+    public void setIdRistorante(int idRistorante) {
         this.idRistorante = idRistorante;
     }
 
@@ -61,11 +61,11 @@ public class RistoranteDTO {
         this.indirizzo = indirizzo;
     }
 
-    public Integer getidMenu() {
+    public int getIdMenu() {
         return idMenu;
     }
 
-    public void setidMenu(Integer idMenu) {
+    public void setIdMenu(int idMenu) {
         this.idMenu = idMenu;
     }
 
@@ -75,6 +75,12 @@ public class RistoranteDTO {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "RistoranteDTO [idRistorante=" + idRistorante + ", nome=" + nome + ", indirizzo=" + indirizzo
+                + ", telefono=" + telefono + ", idMenu=" + idMenu + "]";
     }
 
     

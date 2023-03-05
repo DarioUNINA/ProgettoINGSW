@@ -7,15 +7,23 @@ import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Repositories.UtenteRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
+import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Optional;
 import java.util.List;
-
+import org.modelmapper.ModelMapper;
 
 @Service("UtenteService")
+@RequiredArgsConstructor
 public class UtenteService implements IUtenteService{
 
     @Autowired
-    private UtenteRepository utenteRepository;
+    private final UtenteRepository utenteRepository;
+
+    @Autowired
+    private final ModelMapper modelMapper;
+    
 
     @Override
     public Optional<Utente> getByUsernameAndPassword(String username, String password){
@@ -29,6 +37,14 @@ public class UtenteService implements IUtenteService{
 
     @Override
     public void update(Utente utente){
+        utenteRepository.save(utente);
+    }
+
+    @Override
+    public void add(UtenteDTO utenteDTO){
+        Utente utente = new Utente();
+        utente = modelMapper.map(utenteDTO, Utente.class);
+        utente.setRistorante(new Ristorante(utenteDTO.getRistorante()));
         utenteRepository.save(utente);
     }
 }

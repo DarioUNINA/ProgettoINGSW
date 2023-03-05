@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IRistoranteService;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
+
 import java.util.Optional;
-import com.ingsw.server.ratatouille23.Models.Entities.Menu;
 import com.ingsw.server.ratatouille23.Models.DTO.RistoranteDTO;
 
 @RestController
@@ -37,10 +37,10 @@ public class RistoranteController {
     
     @PutMapping("/update")
     public void update(@RequestBody RistoranteDTO ristoranteDTO) {
-        System.out.println(ristoranteDTO.getIdRistorante());
-        System.out.println(ristoranteDTO.getidMenu());
-        Ristorante ristorante = modelMapper.map(ristoranteDTO, Ristorante.class);
-        ristorante.setMenu(new Menu(ristoranteDTO.getidMenu()));
-        ristoranteService.update(ristorante);
+
+        this.ristoranteService.update(ristoranteDTO);
+    
     }
+
 }
+

@@ -131,6 +131,7 @@ public class SettingsActivity extends AppCompatActivity {
         ristorante.setTelefono(settingRistoranteFragment.getTxtTelefono().getText().toString());
         ristorante.setIndirizzo(settingRistoranteFragment.getTxtIndirizzo().getText().toString());
         presenter.update(ristorante);
+        //Dialog update riuscito + ritorno al login
     }
 
 

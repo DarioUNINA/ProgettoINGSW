@@ -99,38 +99,41 @@ public class OrdiniFragment extends Fragment {
         btnAddOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(idTavolo.getText()!="") {
+                    openDialog(Integer.parseInt(idTavolo.getText().toString().toString()));
 
-                openDialog();
-
-                Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Ordine");
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
-                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Ordine");
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
+                    firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                    firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                }
             }
         });
 
         btnRemoveOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnRemoveOrder.setVisibility(View.INVISIBLE);
-                btnAddOrder.setVisibility(View.INVISIBLE);
-                btnConfermaRimozioneOrdine.setVisibility(View.VISIBLE);
-                btnAnnullaRimozioneOrdine.setVisibility(View.VISIBLE);
+                if(idTavolo.getText()!="") {
+                    btnRemoveOrder.setVisibility(View.INVISIBLE);
+                    btnAddOrder.setVisibility(View.INVISIBLE);
+                    btnConfermaRimozioneOrdine.setVisibility(View.VISIBLE);
+                    btnAnnullaRimozioneOrdine.setVisibility(View.VISIBLE);
 
-                ArrayList<Ordine> o = new ArrayList<Ordine>();
-                o.addAll(ordineAdapter.getOrdini());
-                o.add(new Ordine());
-                o.remove(o.size()-1);
-                ordineAdapter.setOrdini(o, true);
-                ordineAdapter.notifyDataSetChanged();
+                    ArrayList<Ordine> o = new ArrayList<Ordine>();
+                    o.addAll(ordineAdapter.getOrdini());
+                    o.add(new Ordine());
+                    o.remove(o.size() - 1);
+                    ordineAdapter.setOrdini(o, true);
+                    ordineAdapter.notifyDataSetChanged();
 
 
-                Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Ordine");
-                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
-                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Ordine");
+                    bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "OrdiniFragment");
+                    firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
+                    firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                }
 
             }
         });
@@ -154,8 +157,8 @@ public class OrdiniFragment extends Fragment {
         return rootView;
     }
 
-    public void openDialog(){
-        AddOrderDialog addOrderDialog = new AddOrderDialog(this);
+    public void openDialog(int idTavolo){
+        AddOrderDialog addOrderDialog = new AddOrderDialog(this, idTavolo);
         addOrderDialog.show(getParentFragmentManager(), "newOrdine");
     }
 
