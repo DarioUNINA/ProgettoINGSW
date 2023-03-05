@@ -69,8 +69,12 @@ public class UtenteController {
 
     @PostMapping("/add")
     public void add(@RequestBody UtenteDTO utenteDTO) {
-
         utenteService.add(utenteDTO);
+    }
+
+    @GetMapping("/get/ristorante/{id}/ruolo/{ruolo}")
+    public List<UtenteDTO> getByRistoranteAndRuolo(@PathVariable String ruolo, @PathVariable Integer id){
+        return utenteService.getByRistoranteAndRuolo(id, ruolo);
     }
 
 }

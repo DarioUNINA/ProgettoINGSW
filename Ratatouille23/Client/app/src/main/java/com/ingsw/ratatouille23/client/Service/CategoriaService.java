@@ -49,7 +49,7 @@ public class CategoriaService {
 
     public void create(Callback callback, int idMenu, String nome){
         Categoria categoria = new Categoria(idMenu, nome);
-        categoriaApi.addcategoria(categoria)
+        categoriaApi.add(categoria)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

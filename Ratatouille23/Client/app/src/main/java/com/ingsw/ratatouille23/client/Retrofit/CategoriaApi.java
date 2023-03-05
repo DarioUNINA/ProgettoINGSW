@@ -16,5 +16,5 @@ public interface CategoriaApi {
     Single<List<Categoria>> getByIdMenu(@Path("id")int idMenu);
 
     @POST("/categoria/add")
-    Completable addcategoria(@Body Categoria categoria);
+    Completable add(@Body Categoria categoria);
 }

@@ -95,4 +95,18 @@ public class UtentePresenter {
         }, utente);
     }
 
+    public void create(Utente utente){
+        service.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                getByRistorante(utente.getIdRistorante());
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, utente);
+    }
+
 }

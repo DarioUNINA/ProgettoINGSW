@@ -1,7 +1,5 @@
 package com.ingsw.server.ratatouille23.Models.DTO;
 
-import java.util.List;
-import java.util.ArrayList;
 
 public class AllergeneDTO {
 

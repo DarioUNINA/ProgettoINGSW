@@ -51,7 +51,7 @@ public class CategoriaPresenter {
                 categorieFragment.setCategoriaAdapter(new CategoriaAdapter((ArrayList<Categoria>) o,
                         categorieFragment.getContext(),categorieFragment.getOnCategoriaClickListner(),
                         categorieFragment, false));
-//                categorieFragment.getCategoriaAdapter().notifyDataSetChanged();
+                categorieFragment.getCategoriaAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -114,7 +114,7 @@ public class CategoriaPresenter {
             @Override
             public void returnResult(Object o) {
                 if((boolean) o)
-                    System.out.println("creazione effettuata");
+                    getByMenu(idMenu);
                 else
                     System.out.println("errore");
 

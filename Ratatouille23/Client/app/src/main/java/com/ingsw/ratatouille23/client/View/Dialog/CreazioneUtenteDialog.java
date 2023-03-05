@@ -17,9 +17,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.ingsw.ratatouille23.client.Model.Ruolo;
+import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
@@ -31,6 +35,8 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
 
     private TextView txtNuovoRuolo, txtNuovoNome;
     private Spinner spinnerRuoli;
+
+    private AppCompatButton btnConferma;
 
     ArrayList<String> possibleValues = new ArrayList<String>();
 
@@ -48,8 +54,8 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
         spinnerRuoli = v.findViewById(R.id.ruoli_spinner);
         txtNuovoNome = v.findViewById(R.id.edtTxtNuovoNomeUtente);
         txtNuovoRuolo = v.findViewById(R.id.edtTxtNuovoRuoloUtente);
+        btnConferma = v.findViewById(R.id.btnConferma);
 
-        possibleValues.add("Tutti");
         for (Ruolo r: Ruolo.values()) {
             possibleValues.add(r.toString());
         }
@@ -65,6 +71,20 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnConferma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UtentePresenter presenter = new UtentePresenter(personaleFragment);
+                Utente utente = new Utente();
+                utente.setPassword("123");
+                utente.setRuolo(Ruolo.valueOf(spinnerRuoli.getSelectedItem().toString()));
+                utente.setUsername(txtNuovoNome.getText().toString());
+                utente.setIdRistorante(((HomeActivity)getActivity()).getRistorante().getIdRistorante());
+                presenter.create(utente);
 
             }
         });

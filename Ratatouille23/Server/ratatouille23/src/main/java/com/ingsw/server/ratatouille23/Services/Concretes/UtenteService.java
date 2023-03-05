@@ -7,8 +7,12 @@ import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Repositories.UtenteRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IUtenteService;
+import com.ingsw.server.ratatouille23.Utils.Ruolo;
 import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
 import lombok.RequiredArgsConstructor;
+import java.util.ArrayList;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.Optional;
 import java.util.List;
@@ -46,5 +50,23 @@ public class UtenteService implements IUtenteService{
         utente = modelMapper.map(utenteDTO, Utente.class);
         utente.setRistorante(new Ristorante(utenteDTO.getRistorante()));
         utenteRepository.save(utente);
+    }
+
+    @Override
+    public List<UtenteDTO> getByRistoranteAndRuolo(int idRistorante, String ruolo){
+        Ristorante ristorante = new Ristorante(idRistorante);
+        Optional<List<Utente>> utenti = utenteRepository.findByRistoranteAndRuolo(ristorante, Ruolo.valueOf(ruolo));
+
+        if(utenti.isPresent()){
+            List<UtenteDTO> utentiDTO = new ArrayList<UtenteDTO>();
+
+            for(Utente u : utenti.get())
+                utentiDTO.add(modelMapper.map(u, UtenteDTO.class));
+
+            return utentiDTO;
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessun utente trovato");
+
     }
 }
