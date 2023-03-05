@@ -66,7 +66,7 @@ public class TavoloPresenter {
 
     public void getTavoli(){
 
-        if(((HomeActivity)tavoliFragment.getActivity()).getUtente().getRuolo().equals(Ruolo.admin))
+        if(((HomeActivity)tavoliFragment.getActivity()).getUtente().getRuolo().equals(Ruolo.admin) || ((HomeActivity)tavoliFragment.getActivity()).getUtente().getRuolo().equals(Ruolo.supervisore) )
             getByRistorante(((HomeActivity)tavoliFragment.getActivity()).getRistorante().getIdRistorante());
         else
             getByCameriere(((HomeActivity)tavoliFragment.getActivity()).getUtente().getUsername());
