@@ -16,6 +16,8 @@ public class Tavolo {
     //Primary Key
     @Id
     @Column(name = "id_tavolo")
+    @SequenceGenerator(name = "id_tavolo_seq", sequenceName = "id_tavolo_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_tavolo_seq")
     private Integer idTavolo;
 
     //References

@@ -51,6 +51,7 @@ public class CategoriaPresenter {
                 categorieFragment.setCategoriaAdapter(new CategoriaAdapter((ArrayList<Categoria>) o,
                         categorieFragment.getContext(),categorieFragment.getOnCategoriaClickListner(),
                         categorieFragment, false));
+//                categorieFragment.getCategoriaAdapter().notifyDataSetChanged();
             }
 
             @Override

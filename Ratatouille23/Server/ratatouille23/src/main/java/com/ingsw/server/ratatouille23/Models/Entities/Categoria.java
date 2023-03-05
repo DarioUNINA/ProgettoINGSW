@@ -14,7 +14,8 @@ public class Categoria {
     //Primary key
     @Id
     @Column(name = "id_categoria", nullable=false, unique=true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id_categoria_seq", sequenceName = "id_categoria_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_categoria_seq")
     private Integer idCategoria;
 
     //Attributes

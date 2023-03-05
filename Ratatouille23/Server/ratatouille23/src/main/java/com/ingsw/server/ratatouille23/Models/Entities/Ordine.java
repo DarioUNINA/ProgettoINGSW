@@ -14,7 +14,8 @@ public class Ordine {
     //Primary Key
     @Id
     @Column(name = "id_ordine")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id_ordine_seq", sequenceName = "id_ordine_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_ordine_seq")
     private Integer idOrdine;
 
     //References

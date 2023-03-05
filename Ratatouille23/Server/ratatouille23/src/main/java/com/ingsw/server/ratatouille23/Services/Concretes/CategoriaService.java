@@ -38,7 +38,7 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public void save(CategoriaDTO categoriaDTO) {
         Categoria categoria = modelMapper.map(categoriaDTO, Categoria.class);
-        
+        categoria.setIdCategoria(null);
         categoriaRepository.save(categoria);
     }
 }

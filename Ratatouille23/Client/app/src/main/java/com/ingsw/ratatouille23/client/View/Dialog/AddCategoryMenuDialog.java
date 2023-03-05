@@ -30,7 +30,7 @@ public class AddCategoryMenuDialog extends AppCompatDialogFragment {
 
     public AddCategoryMenuDialog(CategorieFragment categorieFragment){
         this.categorieFragment =  categorieFragment;
-        this.presenter = new CategoriaPresenter();
+        this.presenter = new CategoriaPresenter(categorieFragment);
     }
 
     @NonNull

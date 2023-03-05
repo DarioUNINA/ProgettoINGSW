@@ -13,7 +13,8 @@ public class Menu {
     //Primary key
     @Id
     @Column(name = "id_menu")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id_menu_seq", sequenceName = "id_menu_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_menu_seq")
     private int idMenu;
 
     //References

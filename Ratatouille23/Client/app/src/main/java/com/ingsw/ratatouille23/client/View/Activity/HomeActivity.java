@@ -232,7 +232,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
-        System.out.println("daihsbdahdjahs\n\n\n");
         if(imageViewRistorante !=null)
             storageManager.downloadLogoRistorante(ristorante, imageViewRistorante);
         if(imageViewUtente!=null)

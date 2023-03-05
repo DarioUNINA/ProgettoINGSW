@@ -14,7 +14,8 @@ public class Elemento {
     //Primary key
     @Id
     @Column(name = "id_Elemento")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id_elemento_seq", sequenceName = "id_elemento_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_elemento_seq")
     private int idElemento;
 
     //References

@@ -13,7 +13,8 @@ public class Ristorante{
     //Primary key
     @Id
     @Column(name = "id_ristorante")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "id_ristorante_seq", sequenceName = "id_ristorante_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_ristorante_seq")
     private Integer idRistorante;
 
     //Attributes
