@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
@@ -17,11 +18,19 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
+import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiNuovoOrdineAdapter;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
+
+import java.util.ArrayList;
 
 public class AddOrderDialog extends AppCompatDialogFragment {
 
@@ -32,6 +41,17 @@ public class AddOrderDialog extends AppCompatDialogFragment {
     private TextView txtCategoria, txtElemento;
 
     private RecyclerView recyclerViewNuovoOrdine;
+
+    private MaterialCardView materialCameriere;
+
+    private ElementiNuovoOrdineAdapter elementiNuovoOrdineAdapter;
+
+    private ArrayList<Elemento> elementi = new ArrayList<Elemento>();
+
+    private ArrayList<Elemento> elementiNuovi  = new ArrayList<Elemento>();
+
+    private ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner;
+
 
     private int idTavolo;
 
@@ -47,10 +67,14 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
         spinnerCategoriaOrdine = v.findViewById(R.id.categoria_spinnerOrdine);
         spinnerElementoOrdine = v.findViewById(R.id.elemento_spinnerOrdine);
-
+        materialCameriere = v.findViewById(R.id.materialCameriereOrdine);
         txtCategoria = v.findViewById(R.id.edtTxtCategoria);
         txtElemento = v.findViewById(R.id.txtElementoOrdine);
         recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
 
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddOrderDialog.this);
         categoriaPresenter.getAllSpinnerNuovoOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());
@@ -75,6 +99,17 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 txtElemento.setText(spinnerElementoOrdine.getSelectedItem().toString());
+                for (Elemento elem: elementi) {
+                    if(elem.getNome() == spinnerElementoOrdine.getSelectedItem().toString()){
+                        elementiNuovi.add(elem);
+                    }
+                }
+
+                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this, false);
+                recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
+                recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
+                elementiNuovoOrdineAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -83,6 +118,9 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             }
         });
 
+
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
+            materialCameriere.setVisibility(View.INVISIBLE);
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -141,5 +179,38 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     public void setTxtElemento(TextView txtElemento) {
         this.txtElemento = txtElemento;
+    }
+
+    public RecyclerView getRecyclerViewNuovoOrdine() {
+        return recyclerViewNuovoOrdine;
+    }
+
+    public void setRecyclerViewNuovoOrdine(RecyclerView recyclerViewNuovoOrdine) {
+        this.recyclerViewNuovoOrdine = recyclerViewNuovoOrdine;
+    }
+
+
+    public ElementiNuovoOrdineAdapter.OnElementiClickListner getOnElementiClickListner() {
+        return onElementiClickListner;
+    }
+
+    public void setOnElementiClickListner(ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner) {
+        this.onElementiClickListner = onElementiClickListner;
+    }
+
+    public ArrayList<Elemento> getElementi() {
+        return elementi;
+    }
+
+    public void setElementi(ArrayList<Elemento> elementi) {
+        this.elementi = elementi;
+    }
+
+    public ArrayList<Elemento> getElementiNuovi() {
+        return elementiNuovi;
+    }
+
+    public void setElementiNuovi(ArrayList<Elemento> elementiNuovi) {
+        this.elementiNuovi = elementiNuovi;
     }
 }

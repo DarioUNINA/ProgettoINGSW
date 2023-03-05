@@ -17,7 +17,7 @@ public class AllergeneDTO {
     public AllergeneDTO(String nome) {
         this.nome = nome;
     }
-    
+
 
     //Getters and Setters
     public String getNome() {

@@ -131,8 +131,10 @@ public class ElementoPresenter {
             public void returnResult(Object o) {
                 if (o != null) {
                     ArrayList<String> listElementoString = new ArrayList<String>();
+                    listElementoString.add("");
                     for (Elemento elem : (ArrayList<Elemento>) o) {
                         listElementoString.add(elem.getNome());
+                        addOrderDialog.getElementi().add(elem);
                     }
                     addOrderDialog.getSpinnerElementoOrdine().
                             setAdapter(new ArrayAdapter<String>(addOrderDialog.getContext(),
