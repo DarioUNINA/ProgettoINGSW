@@ -16,5 +16,6 @@ public interface IUtenteService {
     public void add(UtenteDTO utenteDTO);
 
     public List<UtenteDTO> getByRistoranteAndRuolo(int idRistorante, String ruolo);
+
     
 }

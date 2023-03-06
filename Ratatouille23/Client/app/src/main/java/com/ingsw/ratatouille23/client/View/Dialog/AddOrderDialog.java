@@ -76,6 +76,9 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         txtCameriereOrdine = v.findViewById(R.id.txtCameriereOrdine);
         recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
 
+        if(ordiniFragment.getTavoloSelected().isOccupato())
+            materialCameriere.setVisibility(View.INVISIBLE);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

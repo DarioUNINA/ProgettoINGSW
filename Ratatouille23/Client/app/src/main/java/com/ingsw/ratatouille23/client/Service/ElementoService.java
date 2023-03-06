@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.Service;
 
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Retrofit.ElementoApi;
 import com.ingsw.ratatouille23.client.Retrofit.RetrofitService;
@@ -67,6 +68,28 @@ public class ElementoService {
                 });
     }
 
+    public void getQuantita(Callback callback, Elemento elemento, Ordine ordine){
+
+        elementoApi.getQuantita(elemento.getIdElemento(), ordine.getIdOrdine())
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Integer quantita) {
+                        callback.returnResult(quantita);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
     public void getByCategoriaOrderByPrezzoDesc(Callback callback, int idCategoria){
 
         elementoApi.getByCategoriaOrderByPrezzoDesc(idCategoria)
@@ -78,11 +101,13 @@ public class ElementoService {
 
                     @Override
                     public void onSuccess(@NonNull List<Elemento> elementi) {
+                        System.out.println("service on success\n");
                         callback.returnResult(elementi);
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+
                         System.out.println(e);
                         callback.returnResult(null);
                     }

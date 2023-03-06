@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Dialog.InfoElementDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
@@ -22,15 +23,17 @@ import java.util.List;
 
 public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.ElementiHolder> {
 
-    private List<Elemento> elementi;
+    private List<Elemento> elementi = new ArrayList<Elemento>();
+    private List<Integer> quantita = new ArrayList<Integer>();
     private Context context;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
 
-    private int count = 1;
-
-
+    private int counter = 1;
     Boolean modRimozione;
     private ElementiGSFragment elementiGSFragment;
+
+    private ElementoPresenter elementoPresenter = new ElementoPresenter(this);;
+
 
     public ElementiGSAdapter(ArrayList<Elemento> elementi, Context context, ElementiGSAdapter.OnElementiClickListner onElementiClickListner, ElementiGSFragment elementiGSFragment, Boolean modRimozione) {
         this.elementi = elementi;
@@ -48,6 +51,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     @Override
     public ElementiGSAdapter.ElementiHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.fragment_elemento_gs, parent, false);
+
 
         return new ElementiGSAdapter.ElementiHolder(v);
     }
@@ -80,13 +84,15 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             }
         });
 
-        holder.txtCounter.setText( String.valueOf(count));
+        holder.txtCounter.setText(quantita.get(position).toString());
+
+
 
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count ++;
-                holder.txtCounter.setText( String.valueOf(count));
+                counter++;
+                holder.txtCounter.setText( String.valueOf(counter));
 
             }
         });
@@ -94,9 +100,9 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         holder.btnRemoveCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if( count > 1){
-                    count--;
-                    holder.txtCounter.setText( String.valueOf(count));
+                if( counter > 1){
+                    counter--;
+                    holder.txtCounter.setText( String.valueOf(counter));
                 }
             }
         });
@@ -161,6 +167,26 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         this.elementi.clear();
         this.elementi.addAll(elementi);
         notifyDataSetChanged();
+    }
+
+    public List<Integer> getQuantita() {
+        return quantita;
+    }
+
+    public void setQuantita(List<Integer> quantita) {
+        this.quantita.clear();
+        this.quantita.addAll(quantita);
+    }
+
+    public void setElementiAndQuantita(List<Elemento> elementi){
+        quantita.clear();
+        elementoPresenter.getQuantita(elementi, elementiGSFragment.getOrdineSelected());
+    }
+
+    public void addQuantita(Integer i, List<Elemento> elementi){
+        quantita.add(i);
+        if(quantita.size()==elementi.size())
+            setElementi(elementi, false);
     }
 }
 

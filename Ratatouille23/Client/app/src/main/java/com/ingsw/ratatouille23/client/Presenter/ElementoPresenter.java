@@ -1,18 +1,23 @@
 package com.ingsw.ratatouille23.client.Presenter;
 
+import static java.lang.Thread.sleep;
+
 import android.widget.ArrayAdapter;
 
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.ElementoService;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ElementoPresenter {
@@ -20,6 +25,8 @@ public class ElementoPresenter {
     private ElementoService service;
     private ElementiMenuFragment elementiMenuFragment;
     private ElementiGSFragment elementiGSFragment;
+
+    private ElementiGSAdapter elementiGSAdapter;
 
     private AddElementoOrdineDialog addElementoOrdineDialog;
 
@@ -30,6 +37,11 @@ public class ElementoPresenter {
 
     public ElementoPresenter(AddElementoOrdineDialog addElementoOrdineDialog){
         this.addElementoOrdineDialog = addElementoOrdineDialog;
+        service = new ElementoService();
+    }
+
+    public ElementoPresenter(ElementiGSAdapter elementiGSAdapter){
+        this.elementiGSAdapter = elementiGSAdapter;
         service = new ElementoService();
     }
 
@@ -61,6 +73,27 @@ public class ElementoPresenter {
             }
         }, idCategoria);
     }
+
+    public void getQuantita(List<Elemento> elementi, Ordine ordine){
+        List<Integer> quantita = new ArrayList<Integer>();
+
+        for(Elemento elemento: elementi) {
+            service.getQuantita(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                    quantita.add((Integer)o);
+                    elementiGSAdapter.addQuantita((Integer) o, elementi);
+
+                }
+
+                @Override
+                public void returnError(Throwable e) {
+                        System.out.println(e.getMessage());
+                }
+            }, elemento, ordine);
+        }
+    }
+
 
     public void getElementiByPrezzoDesc(int idCategoria){
         service.getByCategoriaOrderByPrezzoDesc(new Callback() {

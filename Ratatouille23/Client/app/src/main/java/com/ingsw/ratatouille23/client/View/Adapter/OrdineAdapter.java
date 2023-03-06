@@ -28,6 +28,7 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     private OnOrdineClickListner onOrdineClickListner;
     private OrdiniFragment ordiniFragment;
 
+
     Boolean modRimozione;
 
     public OrdineAdapter(ArrayList<Ordine> ordini, Context context, OnOrdineClickListner onOrdineClickListner, OrdiniFragment  ordiniFragment, Boolean modRimozione) {
@@ -63,8 +64,9 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
             @Override
             public void onClick(View view) {
                 System.out.println(ordini.get(position).getElementi().size());
-                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(ordini.get(position).getElementi(), false);
                 ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
+                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementiAndQuantita(ordini.get(position).getElementi());
+
             }
         });
 

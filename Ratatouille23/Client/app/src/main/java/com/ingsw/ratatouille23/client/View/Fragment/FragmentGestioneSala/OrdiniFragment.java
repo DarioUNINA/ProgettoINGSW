@@ -195,6 +195,14 @@ public class OrdiniFragment extends Fragment {
         return ordineAdapter;
     }
 
+    public Tavolo getTavoloSelected() {
+        return tavoloSelected;
+    }
+
+    public void setTavoloSelected(Tavolo tavoloSelected) {
+        this.tavoloSelected = tavoloSelected;
+    }
+
     public void setOrdineAdapter(OrdineAdapter ordineAdapter) {
         ordiniRecyclerView.setAdapter(ordineAdapter);
         this.ordineAdapter = ordineAdapter;
