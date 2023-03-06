@@ -5,6 +5,8 @@
 -Aggiungere controlli su tutti i nomi vuoti in creazione
 -Rimouvere Text "Serve"  in creazione ordine dialog
 -Fixare matrice quantita' in ElementiGSAdapter (di conseguenza fixare N unita e Totale nel fragment)
+-Disabilitare spinner ruoli editabile
+-Fixare creazione elemento (non fa nulla)
 
 -Implementare rimozione elementi
 -Implementare statistiche

@@ -10,6 +10,7 @@ import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 public interface ElementoApi {
 
@@ -37,5 +38,8 @@ public interface ElementoApi {
 
     @HTTP(method = "DELETE", path = "/elemento/delete", hasBody = true)
     Completable delete(@Body Elemento elemento);
+
+    @POST("/elemento/add")
+    Completable add(@Body Elemento elemento);
 
 }

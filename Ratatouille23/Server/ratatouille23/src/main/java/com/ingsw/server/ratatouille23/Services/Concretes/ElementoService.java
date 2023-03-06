@@ -76,4 +76,6 @@ public class ElementoService implements IElementoService {
         e.setCategoria(cat);
         elementoRepository.delete(e);
     }
+
+
 }

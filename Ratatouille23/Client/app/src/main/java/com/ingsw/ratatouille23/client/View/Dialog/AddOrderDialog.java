@@ -81,9 +81,10 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         btnNewCategory = v.findViewById(R.id.btnNewCategory);
         recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
 
-        if(ordiniFragment.getTavoloSelected().isOccupato())
+        if(ordiniFragment.getTavoloSelected().isOccupato()) {
             materialCameriere.setVisibility(View.INVISIBLE);
-
+            txtServe.setVisibility(View.INVISIBLE);
+        }
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

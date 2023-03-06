@@ -12,6 +12,7 @@ import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.ElementoService;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
@@ -211,7 +212,29 @@ public class ElementoPresenter {
             elementiMenuFragment.getElementiGMAdapter().getElementi().remove(e);
             elementiMenuFragment.getElementiGMAdapter().notifyDataSetChanged();
         }
+        CategoriaPresenter categoriaPresenter = new CategoriaPresenter(((HomeActivity)elementiMenuFragment.getActivity()).getGestioneMenuFragment().getCategorieFragment());
+        categoriaPresenter.getByMenu(((HomeActivity)elementiMenuFragment.getActivity()).getRistorante().getIdMenu());
         elementiMenuFragment.getBtnAnnullaRimozione().callOnClick();
         elementiMenuFragment.getElementiGMAdapter().getCancellaElementi().clear();
+    }
+
+    public void create(Elemento elemento){
+        service.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    getElementiByNomeDesc(elemento.getIdCategoria());
+                else
+                    System.out.println("errore");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, elemento);
+
+        getElementiByNomeDesc(elemento.getIdCategoria());
     }
 }

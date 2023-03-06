@@ -40,6 +40,8 @@ public class OrdineService implements IOrdineService{
     @Override
     public void delete(OrdineDTO ordineDTO) {
         Ordine o = modelMapper.map(ordineDTO, Ordine.class);
+        Tavolo tav = new Tavolo(ordineDTO.getIdTavolo());
+        o.setTavolo(tav);
         OrdineRepository.delete(o);
     }
 

@@ -6,6 +6,7 @@ import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.OrdineService;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
@@ -77,7 +78,8 @@ public class OrdinePresenter {
             ordiniFragment.getOrdineAdapter().getOrdini().remove(o);
             ordiniFragment.getOrdineAdapter().notifyDataSetChanged();
         }
-
+        TavoloPresenter tavoloPresenter = new TavoloPresenter(((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getTavoliFragment());
+        tavoloPresenter.getTavoli();
         ordiniFragment.getBtnAnnullaRimozioneOrdine().callOnClick();
         ordiniFragment.getOrdineAdapter().getCancellaOrdini().clear();
     }
