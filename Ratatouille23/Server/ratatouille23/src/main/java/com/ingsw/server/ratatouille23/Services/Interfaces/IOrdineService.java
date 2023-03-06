@@ -9,4 +9,6 @@ public interface IOrdineService {
     public Optional<List<Ordine>> getByTavolo(Integer idTavolo);
 
     public void save(Ordine ordine);
+
+    
 }

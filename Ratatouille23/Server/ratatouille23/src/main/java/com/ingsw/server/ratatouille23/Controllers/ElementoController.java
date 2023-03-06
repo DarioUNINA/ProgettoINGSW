@@ -131,6 +131,7 @@ public class ElementoController {
 
     @GetMapping("/get/quantita/{id}/ordine/{idOrdine}")
     public int getQuantita(@PathVariable("id") Integer id, @PathVariable("idOrdine") Integer idOrdine) {
+            
             return elementoService.getQuantita(id, idOrdine);
     }
 }

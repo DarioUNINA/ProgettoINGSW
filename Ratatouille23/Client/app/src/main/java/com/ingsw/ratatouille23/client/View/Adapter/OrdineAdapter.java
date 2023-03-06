@@ -111,7 +111,6 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         this.ordini.clear();
         this.ordini.addAll(ordini);
         notifyDataSetChanged();
-        System.out.println("setOrdini\n");
     }
 
 
