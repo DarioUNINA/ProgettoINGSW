@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.Service;
 
+import com.ingsw.ratatouille23.client.Model.Allergene;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Utente;
@@ -7,6 +8,7 @@ import com.ingsw.ratatouille23.client.Retrofit.ElementoApi;
 import com.ingsw.ratatouille23.client.Retrofit.RetrofitService;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -205,5 +207,27 @@ public class ElementoService {
                     }
                 });
     }
+
+    public void create(Callback callback, Elemento elemento){
+        elementoApi.add(elemento)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
 
 }

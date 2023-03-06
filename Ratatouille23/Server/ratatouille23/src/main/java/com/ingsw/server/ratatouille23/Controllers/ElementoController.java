@@ -36,6 +36,11 @@ public class ElementoController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "elemento non trovata");
     }
 
+    @PostMapping("/add")
+    public void save(@RequestBody Elemento elemento) {
+        elementoService.save(elemento);
+    }
+
 
     @GetMapping("/get/categoria/{idCategoria}")
     public List<ElementoDTO> getByCategoria(@PathVariable("idCategoria") Integer idCategoria) {

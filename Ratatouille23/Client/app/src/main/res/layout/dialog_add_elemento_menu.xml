@@ -40,7 +40,7 @@
             app:layout_constraintVertical_bias="0.150">
 
             <EditText
-                android:id="@+id/edtTxtNuovaCategoria"
+                android:id="@+id/edtTxtNuovaElemento"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:background="@color/white"
@@ -102,6 +102,7 @@
             android:backgroundTint="@color/white">
 
             <EditText
+                android:id="@+id/txtDescrizioneElemento"
                 android:layout_width="350dp"
                 android:layout_height="100dp"
                 android:background="@color/white"

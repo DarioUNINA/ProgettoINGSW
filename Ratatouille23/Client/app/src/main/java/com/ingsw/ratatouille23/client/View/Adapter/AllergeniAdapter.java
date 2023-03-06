@@ -25,7 +25,12 @@ import java.util.ArrayList;
 public class AllergeniAdapter extends RecyclerView.Adapter<AllergeniAdapter.ElementiHolder> {
 
     private ArrayList<Allergene> allergeneList = new ArrayList<Allergene>();
+
+    private ArrayList<Allergene> addAllergeni = new ArrayList<Allergene>();
+
     private Context context;
+
+
 
     private AllergeniAdapter.OnElementiClickListner onElementiClickListner;
 
@@ -56,6 +61,17 @@ public class AllergeniAdapter extends RecyclerView.Adapter<AllergeniAdapter.Elem
 
         holder.txtNomeAllergene.setText(allergeneList.get(position).getNome());
 
+
+        holder.allergeneCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked()) {
+                    addAllergeni.add(allergeneList.get(position));
+                }else {
+                    addAllergeni.remove(allergeneList.get(position));
+                }
+            }
+        });
     }
 
     @Override
@@ -105,6 +121,14 @@ public class AllergeniAdapter extends RecyclerView.Adapter<AllergeniAdapter.Elem
 
     public void setAddElementoMenuDialog(AddElementoMenuDialog addElementoMenuDialog) {
         this.addElementoMenuDialog = addElementoMenuDialog;
+    }
+
+    public ArrayList<Allergene> getAddAllergeni() {
+        return addAllergeni;
+    }
+
+    public void setAddAllergeni(ArrayList<Allergene> addAllergeni) {
+        this.addAllergeni = addAllergeni;
     }
 
     public void setAllergeneList(ArrayList<Allergene> allergene) {

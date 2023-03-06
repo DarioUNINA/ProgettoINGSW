@@ -78,6 +78,7 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
         btnConferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!txtNuovoNome.getText().toString().isEmpty()){
                 UtentePresenter presenter = new UtentePresenter(personaleFragment);
                 Utente utente = new Utente();
                 utente.setPassword("123");
@@ -86,6 +87,7 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
                 utente.setIdRistorante(((HomeActivity)getActivity()).getRistorante().getIdRistorante());
                 presenter.create(utente);
                 getDialog().dismiss();
+                }
             }
         });
 

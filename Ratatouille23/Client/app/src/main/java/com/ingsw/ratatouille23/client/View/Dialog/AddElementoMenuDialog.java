@@ -46,7 +46,7 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
     private AllergeniAdapter allergeniAdapter;
 
-    private TextView  txtPrezzo;
+    private TextView  txtPrezzo, txtNomeElemento, txtDescrizioneElemento;
 
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
@@ -61,6 +61,8 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
         recyclerAllergeni = v.findViewById(R.id.recyclerAllergeni);
         txtPrezzo = v.findViewById(R.id.edtTxtPrezzo);
+        txtNomeElemento = v.findViewById(R.id.edtTxtNuovaElemento);
+        txtDescrizioneElemento = v.findViewById(R.id.txtDescrizioneElemento);
         btnNewElementMenu = v.findViewById(R.id.btnNewElementMenu);
 
 
@@ -79,7 +81,30 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         btnNewElementMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getDialog().dismiss();
+                if(!txtNomeElemento.getText().toString().isEmpty())
+                    if(!txtPrezzo.getText().toString().isEmpty()){
+
+                        ArrayList<String> allergeni = new ArrayList<String>();
+                        for (Allergene a: allergeniAdapter.getAddAllergeni()) {
+                            allergeni.add(a.getNome());
+                        }
+
+                        ElementoPresenter newElementPresenter = new ElementoPresenter(elementiMenuFragment);
+                        Elemento newElement = new Elemento();
+                        newElement.setNome(txtNomeElemento.getText().toString());
+                        newElement.setDescrizione(txtDescrizioneElemento.getText().toString());
+                        newElement.setPrezzo(Float.parseFloat(txtPrezzo.getText().toString()));
+                        newElement.setIdCategoria(elementiMenuFragment.getCategoriaSelected().getIdCategoria());
+
+                        newElement.setAllergeni(allergeni);
+                        newElementPresenter.create(newElement);
+
+                        getDialog().dismiss();
+
+                    }
+
+
+
             }
         });
 
@@ -94,7 +119,7 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
     public void onStart() {
         super.onStart();
         getDialog().getWindow().getAttributes().width=850;
-        getDialog().getWindow().getAttributes().height=1250;
+        getDialog().getWindow().getAttributes().height=1350;
         getDialog().getWindow().setGravity(Gravity.CENTER);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
