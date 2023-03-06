@@ -181,4 +181,23 @@ public class ElementoPresenter {
             }
         }, id_ristorante, nome);
     }
+
+    public void delete(List<Elemento> elemento){
+        for(Elemento e: elemento){
+            service.delete(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                }
+
+                @Override
+                public void returnError(Throwable e) {
+
+                }
+            }, e);
+            elementiMenuFragment.getElementiGMAdapter().getElementi().remove(e);
+            elementiMenuFragment.getElementiGMAdapter().notifyDataSetChanged();
+        }
+        elementiMenuFragment.getBtnAnnullaRimozione().callOnClick();
+        elementiMenuFragment.getElementiGMAdapter().getCancellaElementi().clear();
+    }
 }

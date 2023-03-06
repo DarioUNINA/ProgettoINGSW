@@ -1,5 +1,6 @@
 package com.ingsw.server.ratatouille23.Services.Interfaces;
 
+import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
 import java.util.Optional;
@@ -16,6 +17,8 @@ public interface IUtenteService {
     public void add(UtenteDTO utenteDTO);
 
     public List<UtenteDTO> getByRistoranteAndRuolo(int idRistorante, String ruolo);
+
+    public void delete(UtenteDTO utenteDTO);
 
     
 }

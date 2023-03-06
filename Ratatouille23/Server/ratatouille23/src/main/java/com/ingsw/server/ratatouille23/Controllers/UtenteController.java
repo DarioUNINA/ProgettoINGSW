@@ -1,5 +1,6 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
+import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -77,6 +78,10 @@ public class UtenteController {
         return utenteService.getByRistoranteAndRuolo(id, ruolo);
     }
 
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody UtenteDTO utenteDTO) {
+        utenteService.delete(utenteDTO);
+    }
     
 
 }

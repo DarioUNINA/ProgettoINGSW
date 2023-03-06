@@ -1,5 +1,6 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
+import com.ingsw.server.ratatouille23.Models.DTO.CategoriaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -133,4 +134,10 @@ public class ElementoController {
     public int getQuantita(@PathVariable("id") Integer id, @PathVariable("idOrdine") Integer idOrdine) {
             return elementoService.getQuantita(id, idOrdine);
     }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody ElementoDTO elementoDTO) {
+        elementoService.delete(elementoDTO);
+    }
+
 }

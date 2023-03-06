@@ -19,6 +19,8 @@ import java.util.ArrayList;
 public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.PersonaleHolder> {
 
     private ArrayList<Utente> utenti;
+
+    private ArrayList<Utente> cancellaUtenti = new ArrayList<Utente>();
     private Context context;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
     private PersonaleFragment personaleFragment;
@@ -54,6 +56,18 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
         holder.txtNomeUtente.setText(utenti.get(position).getUsername());
         holder.txtRuolo.setText(utenti.get(position).getRuolo().toString());
+
+
+        holder.personaleCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked())
+                    cancellaUtenti.add(utenti.get(position));
+                else
+                    cancellaUtenti.remove(utenti.get(position));
+            }
+        });
+
     }
 
     @Override
@@ -82,6 +96,18 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
     public ArrayList<Utente> getUtenti() {
         return utenti;
+    }
+
+    public void setUtenti(ArrayList<Utente> utenti) {
+        this.utenti = utenti;
+    }
+
+    public ArrayList<Utente> getCancellaUtenti() {
+        return cancellaUtenti;
+    }
+
+    public void setCancellaUtenti(ArrayList<Utente> cancellaUtenti) {
+        this.cancellaUtenti = cancellaUtenti;
     }
 
     public void setUtenti(ArrayList<Utente> utenti, boolean modRimozione) {

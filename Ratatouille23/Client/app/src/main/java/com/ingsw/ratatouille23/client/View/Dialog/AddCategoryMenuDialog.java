@@ -45,7 +45,7 @@ public class AddCategoryMenuDialog extends AppCompatDialogFragment {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(categoria.getText().toString()!="") {
+                if(!categoria.getText().toString().isEmpty()) {
                     int idMenu = ((HomeActivity)getActivity()).getRistorante().getIdMenu();
                     presenter.create(idMenu,categoria.getText().toString());
                     getDialog().dismiss();

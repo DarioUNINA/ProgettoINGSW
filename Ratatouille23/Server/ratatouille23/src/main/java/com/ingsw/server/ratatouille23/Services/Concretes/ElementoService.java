@@ -1,5 +1,8 @@
 package com.ingsw.server.ratatouille23.Services.Concretes;
 
+import com.ingsw.server.ratatouille23.Models.DTO.CategoriaDTO;
+import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
+import com.ingsw.server.ratatouille23.Models.Entities.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -66,5 +69,13 @@ public class ElementoService implements IElementoService {
     @Override
     public Integer getQuantita(int idElemento, int idOrdine){
         return elementoRepository.getQuantita(idElemento, idOrdine);
+    }
+
+    @Override
+    public void delete(ElementoDTO elementoDTO) {
+        Elemento e = modelMapper.map(elementoDTO, Elemento.class);
+        Categoria cat = new Categoria(elementoDTO.getIdCategoria());
+        e.setCategoria(cat);
+        elementoRepository.delete(e);
     }
 }

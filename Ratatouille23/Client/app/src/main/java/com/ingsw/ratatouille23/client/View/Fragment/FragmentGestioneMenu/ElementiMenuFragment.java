@@ -241,6 +241,7 @@ public class ElementiMenuFragment extends Fragment {
         btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                elementoPresenter.delete(elementiGMAdapter.getCancellaElementi());
                 }
         });
 

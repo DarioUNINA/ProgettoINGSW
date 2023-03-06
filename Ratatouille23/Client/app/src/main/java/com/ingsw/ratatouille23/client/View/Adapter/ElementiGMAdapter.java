@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.ElementiHolder> {
 
     private ArrayList<Elemento> elementi;
+
+    private ArrayList<Elemento> cancellaElementi = new ArrayList<Elemento>();
     private Context context;
     private OnElementiClickListner onElementiClickListner;
 
@@ -73,6 +75,18 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
         holder.txtNomeElemento.setText(elementi.get(position).getNome());
         holder.txtPrezzoElemento.setText(Float.toString(elementi.get(position).getPrezzo()));
+
+
+        holder.elementiCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked())
+                    cancellaElementi.add(elementi.get(position));
+                else
+                    cancellaElementi.remove(elementi.get(position));
+            }
+        });
+
     }
 
     @Override
@@ -138,6 +152,18 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
     public ArrayList<Elemento> getElementi() {
         return elementi;
+    }
+
+    public void setElementi(ArrayList<Elemento> elementi) {
+        this.elementi = elementi;
+    }
+
+    public ArrayList<Elemento> getCancellaElementi() {
+        return cancellaElementi;
+    }
+
+    public void setCancellaElementi(ArrayList<Elemento> cancellaElementi) {
+        this.cancellaElementi = cancellaElementi;
     }
 
     public void setElementi(ArrayList<Elemento> elementi, boolean modRimozione) {
