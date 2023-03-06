@@ -2,18 +2,26 @@ package com.ingsw.server.ratatouille23.Services.Concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.modelmapper.ModelMapper;
 import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import com.ingsw.server.ratatouille23.Repositories.ElementoRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IElementoService;
+
+import lombok.RequiredArgsConstructor;
+
 import java.util.Optional;
 import java.util.List;
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 
 @Service("ElementoService")
+@RequiredArgsConstructor
 public class ElementoService implements IElementoService {
     
     @Autowired
     private ElementoRepository elementoRepository;
+
+    @Autowired
+    private final ModelMapper modelMapper;
 
     @Override
     public Optional<Elemento> getById(Integer id){
@@ -50,7 +58,13 @@ public class ElementoService implements IElementoService {
         return elementoRepository.findByCategoriaOrderByNomeDesc(idCategoria);
     }
 
+    @Override
     public Optional<List<Elemento>> getByNome(Integer id_ristorante, String nome){
         return elementoRepository.findByNome(id_ristorante, nome);
+    }
+
+    @Override
+    public Integer getQuantita(int idElemento, int idOrdine){
+        return elementoRepository.getQuantita(idElemento, idOrdine);
     }
 }

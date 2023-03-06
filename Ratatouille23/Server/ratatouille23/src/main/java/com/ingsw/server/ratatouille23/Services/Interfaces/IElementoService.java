@@ -20,4 +20,7 @@ public interface IElementoService {
     public Optional<List<Elemento>> getByCategoriaOrderByNomeDesc(Integer idCategoria);
 
     public Optional<List<Elemento>> getByNome(Integer id_ristorante, String nome);
+
+    public Integer getQuantita(int idElemento, int idOrdine);
+    
 }

@@ -33,4 +33,7 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
             "and nome = :nome)", nativeQuery = true)
     public Optional<List<Elemento>> findByNome(@Param(value = "id_ristorante")int id_ristorante, @Param(value = "nome")String nome);
 
+    @Query(value="select count (*) from ordinazione where (id_ordine = :idOrdine and id_elemento=:idElemento) ", nativeQuery = true)
+    public Integer getQuantita(@Param(value="idElemento")int idElemento, @Param(value="idOrdine")int idOrdine);
+
 }
