@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.Service;
 
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Retrofit.OrdineApi;
@@ -48,6 +49,27 @@ public class OrdineService {
 
     public void create(Callback callback, Ordine ordine){
         ordineApi.create(ordine)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
+    public void delete(Callback callback, Ordine ordine){
+        ordineApi.delete(ordine)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

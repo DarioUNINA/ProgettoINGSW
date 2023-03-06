@@ -23,11 +23,11 @@ public class OrdineController {
 
     @Autowired
     @Qualifier("OrdineService")
-    private IOrdineService OrdineService;
+    private IOrdineService ordineService;
 
     @GetMapping("/get/{id}")
     public List<OrdineDTO> getById(@PathVariable("id") Integer id) {
-        Optional<List<Ordine>> ordini = OrdineService.getByTavolo(id);
+        Optional<List<Ordine>> ordini = ordineService.getByTavolo(id);
 
         if (ordini.isPresent()){
             List<Ordine> ordiniList = ordini.get();
@@ -46,8 +46,13 @@ public class OrdineController {
     @PostMapping("/save")
     public void save(@RequestBody OrdineDTO ordineDTO) {
         Ordine ordine = modelMapper.map(ordineDTO, Ordine.class);
-        OrdineService.save(ordine);
+        ordineService.save(ordine);
     }
 
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody OrdineDTO ordineDTO) {
+        ordineService.delete(ordineDTO);
+    }
     
 }

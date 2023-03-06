@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 
 import android.view.View;
 
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.OrdineService;
@@ -59,5 +60,27 @@ public class OrdinePresenter {
             }
         }, ordine);
     }
+
+
+    public void delete(List<Ordine> ordine){
+        for(Ordine o: ordine){
+            service.delete(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                }
+
+                @Override
+                public void returnError(Throwable e) {
+
+                }
+            }, o);
+            ordiniFragment.getOrdineAdapter().getOrdini().remove(o);
+            ordiniFragment.getOrdineAdapter().notifyDataSetChanged();
+        }
+
+        ordiniFragment.getBtnAnnullaRimozioneOrdine().callOnClick();
+        ordiniFragment.getOrdineAdapter().getCancellaOrdini().clear();
+    }
+
 
 }
