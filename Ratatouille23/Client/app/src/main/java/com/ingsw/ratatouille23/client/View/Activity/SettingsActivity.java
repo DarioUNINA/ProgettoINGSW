@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Ristorante;
@@ -66,11 +67,12 @@ public class SettingsActivity extends AppCompatActivity {
         btnConferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(utente!=null){
+                if(utente!=null)
                     updatePassword();
-                }else
+                else
                     updateInfoRistorante();
             }
+
         });
     }
 
@@ -116,12 +118,16 @@ public class SettingsActivity extends AppCompatActivity {
                 presenter.update(utente);
                 //Dialog update effettuato + logOut
                 startActivity(new Intent(SettingsActivity.this, LogInActivity.class));
+                Toast.makeText(SettingsActivity.this, "Modifiche effettuate, LogOut necessario", Toast.LENGTH_SHORT).show();
+
             }else
                 //Dialog password non coincidono
                 System.out.println("password non coincidono");
+            Toast.makeText(SettingsActivity.this, "Password non coincidono", Toast.LENGTH_SHORT).show();
         }else
             //Password Errata inserita
             System.out.println("password attuale errata " +settingUtenteFragment.getPwdAttuale().getText() +" " +utente.getPassword());
+        Toast.makeText(SettingsActivity.this, "Password errata", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -131,6 +137,9 @@ public class SettingsActivity extends AppCompatActivity {
         ristorante.setTelefono(settingRistoranteFragment.getTxtTelefono().getText().toString());
         ristorante.setIndirizzo(settingRistoranteFragment.getTxtIndirizzo().getText().toString());
         presenter.update(ristorante);
+        startActivity(new Intent(SettingsActivity.this, LogInActivity.class));
+        Toast.makeText(SettingsActivity.this, "Modifiche effettuate, LogOut necessario", Toast.LENGTH_SHORT).show();
+
         //Dialog update riuscito + ritorno al login
     }
 

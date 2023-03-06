@@ -3,6 +3,8 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -31,8 +33,7 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
 
     ArrayList<Categoria> list;
 
-    int id;
-
+    private AppCompatButton btnNewElementOrder;
     private Spinner spinnerElementoNewOrdine;
     private Spinner spinnerCategoriaNewOrdine;
 
@@ -50,6 +51,7 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
         spinnerCategoriaNewOrdine = v.findViewById(R.id.categoria_spinnerNewOrdine);
         txtNuovaCategoria = v.findViewById(R.id.edtTxtNuovaCategoria);
         txtNuovoElementoOrdine = v.findViewById(R.id.txtNuovoElementoOrdine);
+        btnNewElementOrder = v.findViewById(R.id.btnNewElementOrder);
 
 
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddElementoOrdineDialog.this);
@@ -83,6 +85,12 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
             }
         });
 
+        btnNewElementOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
+            }
+        });
 
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())

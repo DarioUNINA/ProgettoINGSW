@@ -42,7 +42,7 @@ public class SettingUtenteDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View v = inflater.inflate(R.layout.layout_alert_dialog_settings, null);
+        View v = inflater.inflate(R.layout.dialog_settings_utente, null);
 
         utente = ((HomeActivity)getActivity()).getUtente();
 

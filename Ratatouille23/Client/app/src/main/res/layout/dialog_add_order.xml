@@ -107,6 +107,21 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <TextView
+            android:id="@+id/txtServe"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:text="Serve:"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.52"/>
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCameriereOrdine"
             android:layout_width="270dp"
@@ -146,7 +161,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirm_btn_new_category"
+            android:id="@+id/btnNewCategory"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/confirmvector"

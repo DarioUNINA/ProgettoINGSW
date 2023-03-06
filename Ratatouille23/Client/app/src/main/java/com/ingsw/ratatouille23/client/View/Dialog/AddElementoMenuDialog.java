@@ -3,6 +3,9 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,9 +21,15 @@ import android.widget.TextView;
 
 import com.ingsw.ratatouille23.client.Model.Allergene;
 import com.ingsw.ratatouille23.client.Model.Categoria;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.AllergenePresenter;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Adapter.AllergeniAdapter;
+import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
+
+import java.util.ArrayList;
 
 public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
@@ -28,9 +37,16 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
     private ElementiMenuFragment elementiMenuFragment;
     Categoria categoria;
 
-    private Spinner allergeniSpinner;
+    private RecyclerView recyclerAllergeni;
+    private AppCompatButton btnNewElementMenu;
 
-    private TextView txtAllergene, txtPrezzo;
+    private AllergenePresenter allergenePresenter;
+
+    private AllergeniAdapter.OnElementiClickListner onElementiClickListner;
+
+    private AllergeniAdapter allergeniAdapter;
+
+    private TextView  txtPrezzo;
 
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
@@ -43,25 +59,29 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_add_elemento_menu, null);
 
-        allergeniSpinner = v.findViewById(R.id.allergen_spinner);
-        txtAllergene = v.findViewById(R.id.txtNomeAllergene);
+        recyclerAllergeni = v.findViewById(R.id.recyclerAllergeni);
         txtPrezzo = v.findViewById(R.id.edtTxtPrezzo);
+        btnNewElementMenu = v.findViewById(R.id.btnNewElementMenu);
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerAllergeni.setLayoutManager(linearLayoutManager);
+
+        allergeniAdapter = new AllergeniAdapter(new ArrayList<Allergene>(), getContext(), onElementiClickListner, this);
 
         AllergenePresenter allergenePresenter = new AllergenePresenter(AddElementoMenuDialog.this);
         allergenePresenter.getAll();
 
-        allergeniSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                txtAllergene.setText(allergeniSpinner.getSelectedItem().toString());
-            }
+        recyclerAllergeni.setAdapter(allergeniAdapter);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
+        btnNewElementMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
             }
         });
-
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(v)
@@ -74,7 +94,7 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
     public void onStart() {
         super.onStart();
         getDialog().getWindow().getAttributes().width=850;
-        getDialog().getWindow().getAttributes().height=1050;
+        getDialog().getWindow().getAttributes().height=1250;
         getDialog().getWindow().setGravity(Gravity.CENTER);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
@@ -89,11 +109,61 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         this.elementiMenuFragment = elementiMenuFragment;
     }
 
-    public Spinner getAllergeniSpinner() {
-        return allergeniSpinner;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setAllergeniSpinner(Spinner allergeniSpinner) {
-        this.allergeniSpinner = allergeniSpinner;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public RecyclerView getRecyclerAllergeni() {
+        return recyclerAllergeni;
+    }
+
+    public void setRecyclerAllergeni(RecyclerView recyclerAllergeni) {
+        this.recyclerAllergeni = recyclerAllergeni;
+    }
+
+    public AppCompatButton getBtnNewElementMenu() {
+        return btnNewElementMenu;
+    }
+
+    public void setBtnNewElementMenu(AppCompatButton btnNewElementMenu) {
+        this.btnNewElementMenu = btnNewElementMenu;
+    }
+
+    public AllergenePresenter getAllergenePresenter() {
+        return allergenePresenter;
+    }
+
+    public void setAllergenePresenter(AllergenePresenter allergenePresenter) {
+        this.allergenePresenter = allergenePresenter;
+    }
+
+    public AllergeniAdapter.OnElementiClickListner getOnElementiClickListner() {
+        return onElementiClickListner;
+    }
+
+    public void setOnElementiClickListner(AllergeniAdapter.OnElementiClickListner onElementiClickListner) {
+        this.onElementiClickListner = onElementiClickListner;
+    }
+
+    public TextView getTxtPrezzo() {
+        return txtPrezzo;
+    }
+
+    public void setTxtPrezzo(TextView txtPrezzo) {
+        this.txtPrezzo = txtPrezzo;
+    }
+
+    public AllergeniAdapter getAllergeniAdapter() {
+        return allergeniAdapter;
+    }
+
+    public void setAllergeniAdapter(AllergeniAdapter allergeniAdapter) {
+
+        this.allergeniAdapter = allergeniAdapter;
+        getRecyclerAllergeni().setAdapter(allergeniAdapter);
     }
 }

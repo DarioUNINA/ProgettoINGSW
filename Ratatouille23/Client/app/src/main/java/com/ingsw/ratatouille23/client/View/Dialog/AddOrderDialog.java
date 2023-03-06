@@ -3,6 +3,7 @@ package com.ingsw.ratatouille23.client.View.Dialog;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,9 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     private Spinner spinnerElementoOrdine, spinnerCategoriaOrdine, spinnerCamerieri;
 
-    private TextView txtCategoria, txtElemento, txtCameriereOrdine;
+    private TextView txtCategoria, txtElemento, txtCameriereOrdine, txtServe;
+
+    private AppCompatButton btnNewCategory;
 
     private RecyclerView recyclerViewNuovoOrdine;
 
@@ -74,6 +77,8 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         txtCategoria = v.findViewById(R.id.edtTxtCategoria);
         txtElemento = v.findViewById(R.id.txtElementoOrdine);
         txtCameriereOrdine = v.findViewById(R.id.txtCameriereOrdine);
+        txtServe = v.findViewById(R.id.txtServe);
+        btnNewCategory = v.findViewById(R.id.btnNewCategory);
         recyclerViewNuovoOrdine = v.findViewById(R.id.recyclerViewNuovoOrdine);
 
         if(ordiniFragment.getTavoloSelected().isOccupato())
@@ -139,10 +144,18 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             }
         });
 
-        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
+        if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin) {
             materialCameriere.setVisibility(View.INVISIBLE);
+            txtServe.setVisibility(View.INVISIBLE);
+        }
 
 
+        btnNewCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
+            }
+        });
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .show();

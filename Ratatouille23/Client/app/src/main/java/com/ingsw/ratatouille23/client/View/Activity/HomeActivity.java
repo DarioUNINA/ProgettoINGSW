@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.View.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -230,6 +231,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
         if(imageViewRistorante !=null)
@@ -322,7 +324,15 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        //dialog conferma logout volendo
-    }
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("EXIT")
+                .setMessage("Sei sicuro di voler uscire?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(HomeActivity.this, LogInActivity.class));
+                    }
+                }).create().show();
+            }
 }

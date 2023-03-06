@@ -48,7 +48,7 @@ public class AddCategoryMenuDialog extends AppCompatDialogFragment {
                 if(categoria.getText().toString()!="") {
                     int idMenu = ((HomeActivity)getActivity()).getRistorante().getIdMenu();
                     presenter.create(idMenu,categoria.getText().toString());
-
+                    getDialog().dismiss();
                 }
             }
         });
