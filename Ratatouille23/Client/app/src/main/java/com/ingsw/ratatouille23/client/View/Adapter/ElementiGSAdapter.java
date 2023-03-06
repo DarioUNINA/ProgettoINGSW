@@ -86,8 +86,6 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
         holder.txtCounter.setText(quantita.get(position).toString());
 
-
-
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,12 +106,6 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         });
 
 
-        int totale = 0;
-        for (Elemento e : elementi)
-            totale += e.getPrezzo();
-
-        elementiGSFragment.getTxtUnita().setText(String.valueOf(elementi.size()));
-        elementiGSFragment.getTxtTotale().setText(String.valueOf(totale)+"$");
     }
 
     @Override
@@ -180,6 +172,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
     public void setElementiAndQuantita(List<Elemento> elementi){
         quantita.clear();
+        this.elementi.clear();
         elementoPresenter.getQuantita(elementi, elementiGSFragment.getOrdineSelected());
     }
 
@@ -187,6 +180,15 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         quantita.add(i);
         if(quantita.size()==elementi.size())
             setElementi(elementi, false);
+
+        float totale = Float.parseFloat(elementiGSFragment.getTxtTotale().getText().toString()) + elementi.get(quantita.size()-1).getPrezzo()*i;
+        int unita =  Integer.parseInt(elementiGSFragment.getTxtUnita().getText().toString()) + i;
+
+        System.out.println("totale e unita valgono " + totale + " " + unita + " \n");
+
+        elementiGSFragment.getTxtTotale().setText(Float.toString(totale));
+        elementiGSFragment.getTxtUnita().setText(Integer.toString(unita));
+
     }
 }
 

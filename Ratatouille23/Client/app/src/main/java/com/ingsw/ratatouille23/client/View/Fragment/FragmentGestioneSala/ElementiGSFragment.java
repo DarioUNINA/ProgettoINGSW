@@ -101,6 +101,9 @@ public class ElementiGSFragment extends Fragment {
         materialBtnElementiGs  = rootView.findViewById(R.id.materialBtnElementiGs);
         elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
 
+        txtUnita.setText("0");
+        txtTotale.setText("0");
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         elementiGSAdapter =  new ElementiGSAdapter(new ArrayList<Elemento>(), getContext(), getOnElementiClickListner(), ElementiGSFragment.this, false);
@@ -259,4 +262,5 @@ public class ElementiGSFragment extends Fragment {
     public void setTxtTotale(TextView txtTotale) {
         this.txtTotale = txtTotale;
     }
+
 }

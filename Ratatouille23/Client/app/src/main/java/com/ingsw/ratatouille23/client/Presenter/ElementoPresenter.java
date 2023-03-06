@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 
 import static java.lang.Thread.sleep;
 
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 import com.ingsw.ratatouille23.client.Model.Categoria;

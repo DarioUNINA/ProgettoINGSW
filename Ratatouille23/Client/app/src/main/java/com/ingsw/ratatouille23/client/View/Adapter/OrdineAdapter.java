@@ -16,6 +16,7 @@ import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 import java.util.ArrayList;
@@ -63,11 +64,16 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         holder.cardViewOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("0");
+                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("0");
+
                 System.out.println(ordini.get(position).getElementi().size());
                 ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
                 ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementiAndQuantita(ordini.get(position).getElementi());
 
             }
+
+
         });
 
     }
