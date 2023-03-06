@@ -163,6 +163,12 @@ public class OrdiniFragment extends Fragment {
             }
         });
 
+        btnConfermaRimozioneOrdine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ordinePresenter.delete(ordineAdapter.getCancellaOrdini());
+            }
+        });
 
         if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin && ((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.cameriere)
             materialBtnOrdini.setVisibility(View.INVISIBLE);
@@ -224,5 +230,53 @@ public class OrdiniFragment extends Fragment {
 
     public void setNomeCameriere(TextView nomeCameriere) {
         this.nomeCameriere = nomeCameriere;
+    }
+
+    public FloatingActionButton getBtnAddOrder() {
+        return btnAddOrder;
+    }
+
+    public void setBtnAddOrder(FloatingActionButton btnAddOrder) {
+        this.btnAddOrder = btnAddOrder;
+    }
+
+    public FloatingActionButton getBtnRemoveOrder() {
+        return btnRemoveOrder;
+    }
+
+    public void setBtnRemoveOrder(FloatingActionButton btnRemoveOrder) {
+        this.btnRemoveOrder = btnRemoveOrder;
+    }
+
+    public AppCompatButton getBtnAnnullaRimozioneOrdine() {
+        return btnAnnullaRimozioneOrdine;
+    }
+
+    public void setBtnAnnullaRimozioneOrdine(AppCompatButton btnAnnullaRimozioneOrdine) {
+        this.btnAnnullaRimozioneOrdine = btnAnnullaRimozioneOrdine;
+    }
+
+    public AppCompatButton getBtnConfermaRimozioneOrdine() {
+        return btnConfermaRimozioneOrdine;
+    }
+
+    public void setBtnConfermaRimozioneOrdine(AppCompatButton btnConfermaRimozioneOrdine) {
+        this.btnConfermaRimozioneOrdine = btnConfermaRimozioneOrdine;
+    }
+
+    public MaterialCardView getMaterialBtnOrdini() {
+        return materialBtnOrdini;
+    }
+
+    public void setMaterialBtnOrdini(MaterialCardView materialBtnOrdini) {
+        this.materialBtnOrdini = materialBtnOrdini;
+    }
+
+    public List<Ordine> getOrdini() {
+        return ordini;
+    }
+
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
     }
 }

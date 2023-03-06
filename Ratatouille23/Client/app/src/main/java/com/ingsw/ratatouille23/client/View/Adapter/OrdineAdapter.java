@@ -25,6 +25,7 @@ import java.util.List;
 public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolder> {
 
     private ArrayList<Ordine> ordini;
+    private ArrayList<Ordine> cancellaOrdini = new ArrayList<Ordine>();
     private Context context;
     private OnOrdineClickListner onOrdineClickListner;
     private OrdiniFragment ordiniFragment;
@@ -76,6 +77,16 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
         });
 
+        holder.rimozioneCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked())
+                    cancellaOrdini.add(ordini.get(position));
+                else
+                    cancellaOrdini.remove(ordini.get(position));
+            }
+        });
+
     }
 
     @Override
@@ -104,6 +115,18 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
 
     public ArrayList<Ordine> getOrdini() {
         return ordini;
+    }
+
+    public void setOrdini(ArrayList<Ordine> ordini) {
+        this.ordini = ordini;
+    }
+
+    public ArrayList<Ordine> getCancellaOrdini() {
+        return cancellaOrdini;
+    }
+
+    public void setCancellaOrdini(ArrayList<Ordine> cancellaOrdini) {
+        this.cancellaOrdini = cancellaOrdini;
     }
 
     public void setOrdini(ArrayList<Ordine> ordini, boolean modRimozione) {
