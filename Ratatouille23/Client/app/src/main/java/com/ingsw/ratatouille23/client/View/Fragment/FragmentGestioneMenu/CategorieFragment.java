@@ -168,11 +168,7 @@ public class CategorieFragment extends Fragment {
         btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Categoria> list = new ArrayList<Categoria>();
-                for(Categoria c: categoriaAdapter.getCategorieDelete())
-                    list.add(c);
-
-                categoriaPresenter.delete(list);
+                categoriaPresenter.delete(categoriaAdapter.getCategorieDelete());
             }
         });
 

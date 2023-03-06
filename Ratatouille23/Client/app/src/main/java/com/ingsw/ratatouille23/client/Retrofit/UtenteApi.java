@@ -1,5 +1,6 @@
 package com.ingsw.ratatouille23.client.Retrofit;
 
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Utente;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -28,5 +30,8 @@ public interface UtenteApi {
 
     @GET("/utente/get/ristorante/{id}/ruolo/{ruolo}")
     Single<List<Utente>> getByRuolo(@Path("id")int idRistorante, @Path("ruolo")String ruolo);
+
+    @HTTP(method = "DELETE", path = "/utente/delete", hasBody = true)
+    Completable delete(@Body Utente utente);
 
 }

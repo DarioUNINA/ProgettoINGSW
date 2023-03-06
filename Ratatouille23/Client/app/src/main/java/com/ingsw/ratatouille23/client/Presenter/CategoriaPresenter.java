@@ -136,8 +136,6 @@ public class CategoriaPresenter {
             service.delete(new Callback() {
                 @Override
                 public void returnResult(Object o) {
-                    if((boolean)o)
-                        System.out.println("eliminato "+c.getNome());
                 }
 
                 @Override

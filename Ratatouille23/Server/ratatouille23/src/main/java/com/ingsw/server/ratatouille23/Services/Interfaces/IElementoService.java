@@ -1,5 +1,7 @@
 package com.ingsw.server.ratatouille23.Services.Interfaces;
 
+import com.ingsw.server.ratatouille23.Models.DTO.CategoriaDTO;
+import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
 import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import java.util.Optional;
 import java.util.List;
@@ -22,5 +24,7 @@ public interface IElementoService {
     public Optional<List<Elemento>> getByNome(Integer id_ristorante, String nome);
 
     public Integer getQuantita(int idElemento, int idOrdine);
+
+    public void delete(ElementoDTO elementoDTO);
     
 }

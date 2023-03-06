@@ -1,5 +1,8 @@
 package com.ingsw.server.ratatouille23.Services.Concretes;
 
+import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
+import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
+import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,4 +72,12 @@ public class UtenteService implements IUtenteService{
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nessun utente trovato");
 
     }
+
+    public void delete(UtenteDTO utenteDTO) {
+        Utente u = modelMapper.map(utenteDTO, Utente.class);
+        Ristorante ris = new Ristorante(utenteDTO.getRistorante());
+        u.setRistorante(ris);
+        utenteRepository.delete(u);
+    }
+
 }

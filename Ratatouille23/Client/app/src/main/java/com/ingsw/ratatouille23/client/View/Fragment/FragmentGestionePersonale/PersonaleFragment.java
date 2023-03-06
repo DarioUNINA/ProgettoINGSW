@@ -203,6 +203,13 @@ public class PersonaleFragment extends Fragment {
             }
         });
 
+        btnConfermaRimozione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                utentePresenter.delete(personaleAdapter.getCancellaUtenti());
+            }
+        });
+
         if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin)
             materialPersonale.setVisibility(View.INVISIBLE);
 

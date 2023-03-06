@@ -2,3 +2,5 @@
 
 
 Quando sei cameriere e clicchi sui tavoli esplode
+
+controllo nome add vuoto

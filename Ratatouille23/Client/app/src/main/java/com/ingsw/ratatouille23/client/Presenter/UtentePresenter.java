@@ -4,6 +4,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 import android.widget.ArrayAdapter;
 
 import com.ingsw.ratatouille23.client.Model.Categoria;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.Service.Callback;
@@ -160,6 +161,23 @@ public class UtentePresenter {
         }, utente);
     }
 
+    public void delete(List<Utente> utente){
+        for(Utente u: utente){
+            service.delete(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                }
 
+                @Override
+                public void returnError(Throwable e) {
+
+                }
+            }, u);
+            personaleFragment.getPersonaleAdapter().getUtenti().remove(u);
+            personaleFragment.getPersonaleAdapter().notifyDataSetChanged();
+        }
+        personaleFragment.getBtnAnnullaRimozione().callOnClick();
+        personaleFragment.getPersonaleAdapter().getCancellaUtenti().clear();
+    }
 
 }
