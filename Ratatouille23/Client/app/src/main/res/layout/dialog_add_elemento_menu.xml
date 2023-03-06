@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="400dp"
-        android:layout_height="500dp"
+        android:layout_height="650dp"
         android:background="#79C4FF">
 
         <TextView
@@ -37,7 +37,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.200">
+            app:layout_constraintVertical_bias="0.150">
 
             <EditText
                 android:id="@+id/edtTxtNuovaCategoria"
@@ -57,7 +57,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="350dp"
-            android:layout_height="50dp"
+            android:layout_height="210dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,27 +65,25 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.350"
+            app:layout_constraintVertical_bias="0.365"
             android:backgroundTint="@color/white">
 
             <TextView
-                android:id="@+id/txtNomeAllergene"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Allergeni:"
                 android:textColor="@color/black"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"/>
 
-            <Spinner
-                android:id="@+id/allergen_spinner"
-                android:layout_width="36dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="@color/black"
-                android:layout_gravity="end"
-                android:popupBackground="#79C4FF"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAllergeni"
+                android:layout_width="310dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="40dp" />
 
 
         </com.google.android.material.card.MaterialCardView>
@@ -100,7 +98,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.570"
+            app:layout_constraintVertical_bias="0.710"
             android:backgroundTint="@color/white">
 
             <EditText
@@ -120,7 +118,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirm_btn_new_category"
+            android:id="@+id/btnNewElementMenu"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/confirmvector"
@@ -141,7 +139,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.770">
+            app:layout_constraintVertical_bias="0.85">
 
             <EditText
                 android:id="@+id/edtTxtPrezzo"

@@ -227,17 +227,31 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.15" />
 
-        <ImageView
-            android:id="@+id/imageViewUtente"
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewUtente"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/ic_baseline_person"
+            app:cardCornerRadius="90dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.460"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.372" />
+            app:layout_constraintVertical_bias="0.372"
+            app:layout_constraintHorizontal_bias="0.460">
+
+
+        <ImageView
+            android:id="@+id/imageViewUtente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_person" />
+
+        </androidx.cardview.widget.CardView>
+
+
 
         <TextView
             android:id="@+id/txtUtente"

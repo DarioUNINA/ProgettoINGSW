@@ -93,7 +93,13 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
                     holder.txtCounter.setText( String.valueOf(count));
                 }
                 if(count == 0){
-//                    addOrderDialog.getElementiNuovi().remove(holder)
+                    for (Elemento elem: elementi) {
+                    if(elem.getNome() == addOrderDialog.getSpinnerElementoOrdine().getSelectedItem().toString()){
+                        elementi.remove(elem);
+                        ElementiNuovoOrdineAdapter elemNuovo = new ElementiNuovoOrdineAdapter(elementi, addOrderDialog.getContext(), addOrderDialog.getOnElementiClickListner(), addOrderDialog , false);
+                        addOrderDialog.getRecyclerViewNuovoOrdine().setAdapter(elemNuovo);
+                    }
+                }
                 }
             }
         });

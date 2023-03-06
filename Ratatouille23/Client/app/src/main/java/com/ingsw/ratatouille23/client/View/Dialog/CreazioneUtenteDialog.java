@@ -85,7 +85,7 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
                 utente.setUsername(txtNuovoNome.getText().toString());
                 utente.setIdRistorante(((HomeActivity)getActivity()).getRistorante().getIdRistorante());
                 presenter.create(utente);
-
+                getDialog().dismiss();
             }
         });
 

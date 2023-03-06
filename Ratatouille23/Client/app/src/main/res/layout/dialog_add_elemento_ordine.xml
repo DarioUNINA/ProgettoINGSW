@@ -106,7 +106,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirm_btn_new_category"
+            android:id="@+id/btnNewElementOrder"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/confirmvector"
