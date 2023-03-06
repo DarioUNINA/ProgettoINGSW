@@ -71,9 +71,6 @@ public class ElementoService {
     }
 
     public void getQuantita(Callback callback, Elemento elemento, Ordine ordine){
-
-        System.out.println("Elemento ha id "+elemento.getIdElemento()+ " ordine ha id " + ordine.getIdOrdine() + " \n");
-
         elementoApi.getQuantita(elemento.getIdElemento(), ordine.getIdOrdine())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -84,7 +81,6 @@ public class ElementoService {
                     @Override
                     public void onSuccess(@NonNull Integer quantita) {
                         callback.returnResult(quantita);
-                        System.out.println("e andato con output " + quantita + " \n");
                     }
 
                     @Override

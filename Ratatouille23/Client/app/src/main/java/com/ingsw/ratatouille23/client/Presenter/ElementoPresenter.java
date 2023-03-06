@@ -2,6 +2,7 @@ package com.ingsw.ratatouille23.client.Presenter;
 
 import static java.lang.Thread.sleep;
 
+import android.opengl.Matrix;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -76,15 +77,24 @@ public class ElementoPresenter {
     }
 
     public void getQuantita(List<Elemento> elementi, Ordine ordine){
-        List<Integer> quantita = new ArrayList<Integer>();
+        Integer [][] matrix = new Integer[elementi.size()][2];
+
+        for(int i =0; i<elementi.size(); i++)
+            matrix[i][0] = elementi.get(i).getIdElemento();
+
+        elementiGSAdapter.setMatrix(matrix);
 
         for(Elemento elemento: elementi) {
+
             service.getQuantita(new Callback() {
                 @Override
                 public void returnResult(Object o) {
-                    quantita.add((Integer)o);
-                    elementiGSAdapter.addQuantita((Integer) o, elementi);
+                    for(int i =0; i<elementi.size(); i++) {
+                        if (matrix[i][0] == elemento.getIdElemento()) {
+                            elementiGSAdapter.fillMatrix(i, (Integer)o, elementi);
+                        }
 
+                    }
                 }
 
                 @Override
@@ -93,8 +103,12 @@ public class ElementoPresenter {
                 }
             }, elemento, ordine);
         }
-    }
 
+
+
+
+
+    }
 
     public void getElementiByPrezzoDesc(int idCategoria){
         service.getByCategoriaOrderByPrezzoDesc(new Callback() {

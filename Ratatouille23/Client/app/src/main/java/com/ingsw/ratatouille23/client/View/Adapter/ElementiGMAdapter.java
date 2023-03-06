@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.ElementiHolder> {
 
     private ArrayList<Elemento> elementi;
-
     private ArrayList<Elemento> cancellaElementi = new ArrayList<Elemento>();
     private Context context;
     private OnElementiClickListner onElementiClickListner;
@@ -75,7 +74,6 @@ public class ElementiGMAdapter extends RecyclerView.Adapter<ElementiGMAdapter.El
 
         holder.txtNomeElemento.setText(elementi.get(position).getNome());
         holder.txtPrezzoElemento.setText(Float.toString(elementi.get(position).getPrezzo()));
-
 
         holder.elementiCB.setOnClickListener(new View.OnClickListener() {
             @Override
