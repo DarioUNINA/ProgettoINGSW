@@ -3,9 +3,15 @@ package com.ingsw.server.ratatouille23.Repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.ingsw.server.ratatouille23.Models.Entities.Elemento;   
+import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
+
+import jakarta.transaction.Transactional;
+
 import java.util.Optional;
+
 import java.util.List;
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 
@@ -35,5 +41,10 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
 
     @Query(value="select quantita from ordinazione where ( id_ordine = :idOrdine and id_elemento = :idElemento )", nativeQuery = true)
     public Integer getQuantita(@Param(value="idElemento")int idElemento, @Param(value="idOrdine")int idOrdine);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "update ordinazione set quantita= :quantita where (id_ordine =:idOrdine and id_elemento = :idElemento)", nativeQuery = true)
+    public void updateQuantita(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento")int idElemento, @Param(value="quantita")int quantita);
 
 }

@@ -1,5 +1,7 @@
 package com.ingsw.ratatouille23.client.Service;
 
+import android.telecom.Call;
+
 import com.ingsw.ratatouille23.client.Model.Allergene;
 import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Ordine;
@@ -90,6 +92,27 @@ public class ElementoService {
                         System.out.println("ERRORE: "+ e);
 
                         callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void updateQuantita(Callback callback, int idOrdine, int idElemento, int quantita){
+        elementoApi.updateQuantita(idOrdine, idElemento, quantita)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
                     }
                 });
     }

@@ -4,7 +4,6 @@
 -Fixare crash quando cameriere seleziona tavolo
 -Aggiungere controlli su tutti i nomi vuoti in creazione
 -Rimouvere Text "Serve"  in creazione ordine dialog
--Fixare matrice quantita' in ElementiGSAdapter (di conseguenza fixare N unita e Totale nel fragment)
 -Disabilitare spinner ruoli editabile
 -Fixare creazione elemento (non fa nulla)
 
@@ -14,4 +13,3 @@
 -Implementare aggiunta elemento a ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
--Implementare modifica quantita' di elementi in ordine (dopo aver fixato la matrice)

@@ -2,11 +2,8 @@ package com.ingsw.ratatouille23.client.Presenter;
 
 import static java.lang.Thread.sleep;
 
-import android.opengl.Matrix;
-import android.view.View;
 import android.widget.ArrayAdapter;
 
-import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.R;
@@ -80,22 +77,28 @@ public class ElementoPresenter {
     public void getQuantita(List<Elemento> elementi, Ordine ordine){
         Integer [][] matrix = new Integer[elementi.size()][2];
 
-        for(int i =0; i<elementi.size(); i++)
+        for(int i =0; i<elementi.size(); i++) {
             matrix[i][0] = elementi.get(i).getIdElemento();
+            matrix[i][1] = 0;
+        }
 
-        elementiGSAdapter.setMatrix(matrix);
+        elementiGSAdapter.setQuantita(matrix);
+        elementiGSAdapter.setElementi(elementi, false);
 
-        for(Elemento elemento: elementi) {
+         for(Elemento elemento: elementi){
 
             service.getQuantita(new Callback() {
                 @Override
                 public void returnResult(Object o) {
-                    for(int i =0; i<elementi.size(); i++) {
-                        if (matrix[i][0] == elemento.getIdElemento()) {
-                            elementiGSAdapter.fillMatrix(i, (Integer)o, elementi);
-                        }
+                    for(int i =0; i<elementi.size(); i++)
+                        if(matrix[i][0] == elemento.getIdElemento())
+                            matrix[i][1] = (Integer)o;
 
-                    }
+                    elementi.add(new Elemento());
+                    elementi.remove(elementi.size()-1);
+                    elementiGSAdapter.setQuantita(matrix);
+                    elementiGSAdapter.setElementi(elementi, false);
+
                 }
 
                 @Override
@@ -103,12 +106,24 @@ public class ElementoPresenter {
                         System.out.println(e.getMessage());
                 }
             }, elemento, ordine);
+
         }
+    }
 
+    public void updateQuantita(int idOrdine, int idElemento, int quantita){
+        service.updateQuantita(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o){
+                    System.out.println("update effettuato");
+                }
+            }
 
+            @Override
+            public void returnError(Throwable e) {
 
-
-
+            }
+        }, idOrdine, idElemento, quantita);
     }
 
     public void getElementiByPrezzoDesc(int idCategoria){

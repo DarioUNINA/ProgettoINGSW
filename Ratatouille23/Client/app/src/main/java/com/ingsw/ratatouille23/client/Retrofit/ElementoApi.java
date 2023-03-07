@@ -11,6 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 public interface ElementoApi {
 
@@ -35,11 +36,13 @@ public interface ElementoApi {
     @GET("elemento/get/quantita/{idElemento}/ordine/{idOrdine}")
     Single<Integer> getQuantita(@Path("idElemento") int idElemento, @Path("idOrdine")int idOrdine);
 
-
     @HTTP(method = "DELETE", path = "/elemento/delete", hasBody = true)
     Completable delete(@Body Elemento elemento);
 
     @POST("/elemento/add")
     Completable add(@Body Elemento elemento);
+
+    @PUT("/elemento/update/ordine/{idOrdine}/elemento/{idElemento}/quantita/{quantita}")
+    Completable updateQuantita(@Path("idOrdine")int idOrdine, @Path("idElemento") int idElemento, @Path("quantita")int quantita);
 
 }

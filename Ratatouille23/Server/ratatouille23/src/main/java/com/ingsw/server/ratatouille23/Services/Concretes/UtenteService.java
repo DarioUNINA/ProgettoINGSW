@@ -1,8 +1,5 @@
 package com.ingsw.server.ratatouille23.Services.Concretes;
 
-import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
-import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
-import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
-import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

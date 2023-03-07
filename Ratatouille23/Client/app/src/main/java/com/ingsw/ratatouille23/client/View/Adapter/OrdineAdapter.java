@@ -65,11 +65,10 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
         holder.cardViewOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("0");
-                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("0");
-
-                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
-                ((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementiAndQuantita(ordini.get(position).getElementi());
+                if(((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected()!=ordini.get(position)) {
+                    ((HomeActivity) ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
+                    ((HomeActivity) ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementiAndQuantita(ordini.get(position).getElementi());
+                }
             }
 
 

@@ -1,6 +1,5 @@
 package com.ingsw.server.ratatouille23.Services.Interfaces;
 
-import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
 import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 import com.ingsw.server.ratatouille23.Models.DTO.UtenteDTO;
 import java.util.Optional;

@@ -1,7 +1,6 @@
 package com.ingsw.ratatouille23.client.View.Adapter;
 
 import android.content.Context;
-import android.opengl.Matrix;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     private List<Elemento> elementi = new ArrayList<Elemento>();
     private Context context;
 
-    private Integer[][] matrix;
+    private Integer[][] quantita;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
     private Boolean modRimozione;
     private ElementiGSFragment elementiGSFragment;
@@ -75,8 +74,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
 
         holder.txtNomeElementoGS.setText(elementi.get(position).getNome());
         holder.txtPrezzoElementoGS.setText(Float.toString(elementi.get(position).getPrezzo()));
-
-
+        holder.txtCounter.setText(String.valueOf(quantita[position][1]));
 
         holder.txtNomeElementoGS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,22 +83,27 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             }
         });
 
-            holder.txtCounter.setText(String.valueOf(matrix[position][1]));
 
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                holder.txtCounter.setText( String.valueOf(0));
-
+                quantita[position][1] ++;
+                holder.txtCounter.setText( String.valueOf(quantita[position][1]));
+                elementiGSFragment.getTxtUnita().setText(String.valueOf(Integer.parseInt(elementiGSFragment.getTxtUnita().getText().toString())+1));
+                elementiGSFragment.getTxtTotale().setText(String.valueOf(Float.parseFloat(elementiGSFragment.getTxtTotale().getText().toString())+elementi.get(position).getPrezzo()));
+                elementoPresenter.updateQuantita(elementiGSFragment.getOrdineSelected().getIdOrdine(), quantita[position][0], quantita[position][1]);
             }
         });
 
         holder.btnRemoveCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if( 2 > 1){
-                    holder.txtCounter.setText( String.valueOf(0));
+                if( Integer.parseInt(holder.txtCounter.getText().toString()) > 1){
+                    quantita[position][1] --;
+                    holder.txtCounter.setText( String.valueOf(quantita[position][1]));
+                    elementiGSFragment.getTxtUnita().setText(String.valueOf(Integer.parseInt(elementiGSFragment.getTxtUnita().getText().toString())-1));
+                    elementiGSFragment.getTxtTotale().setText(String.valueOf(Float.parseFloat(elementiGSFragment.getTxtTotale().getText().toString())-elementi.get(position).getPrezzo()));
+                    elementoPresenter.updateQuantita(elementiGSFragment.getOrdineSelected().getIdOrdine(), quantita[position][0], quantita[position][1]);
                 }
             }
         });
@@ -160,17 +163,16 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         this.elementi.addAll(elementi);
 
 
-//        float totale = 0;
-//        float unita = 0;
-//
-//        for (int j = 0; j < this.elementi.size(); j++) {
-//            unita = unita + this.matrix[j][1];
-//            totale = totale + this.elementi.get(j).getPrezzo() * this.matrix[j][1];
-//            System.out.println("unita vale " + unita + " totale vale " + totale);
-//        }
+        float totale = 0;
+        int unita = 0;
 
-//        getElementiGSFragment().getTxtUnita().setText(String.valueOf(unita));
-//        getElementiGSFragment().getTxtTotale().setText(String.valueOf(totale));
+        for (int j = 0; j < this.elementi.size(); j++) {
+            unita = unita + this.quantita[j][1];
+            totale = totale + this.elementi.get(j).getPrezzo() * this.quantita[j][1];
+        }
+
+        getElementiGSFragment().getTxtUnita().setText(String.valueOf(unita));
+        getElementiGSFragment().getTxtTotale().setText(String.valueOf(totale));
 
         notifyDataSetChanged();
     }
@@ -182,12 +184,12 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     }
 
 
-    public Integer[][] getMatrix() {
-        return matrix;
+    public Integer[][] getQuantita() {
+        return quantita;
     }
 
-    public void setMatrix(Integer[][] matrix) {
-        this.matrix = matrix;
+    public void setQuantita(Integer[][] quantita) {
+        this.quantita = quantita;
     }
 
     public ElementiGSFragment getElementiGSFragment() {
@@ -198,17 +200,6 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         this.elementiGSFragment = elementiGSFragment;
     }
 
-    public void fillMatrix(int posizione, int quantita, List<Elemento> elementi){
-        matrix[posizione][1] = quantita;
-
-        if(posizione == elementi.size()-1) {
-            for(int i=0; i<elementi.size();i++)
-                System.out.println("Matrix " + matrix[i][0] + " " + matrix[i][1]);
-
-            setElementi(elementi, false);
-        }
-
-    }
 }
 
 

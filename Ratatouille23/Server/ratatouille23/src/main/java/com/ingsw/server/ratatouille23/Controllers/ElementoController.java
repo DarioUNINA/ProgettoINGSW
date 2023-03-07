@@ -145,4 +145,10 @@ public class ElementoController {
         elementoService.delete(elementoDTO);
     }
 
+    @PutMapping("/update/ordine/{idOrdine}/elemento/{idElemento}/quantita/{quantita}")
+    public void updateQuantita(@PathVariable("idOrdine") Integer idOrdine, @PathVariable("idElemento") Integer idElemento, @PathVariable("quantita") Integer quantita){
+        elementoService.updateQuantita(idOrdine, idElemento, quantita);
+    }
+    
+
 }
