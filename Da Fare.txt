@@ -1,7 +1,6 @@
 -Modificare la tabella Ordinazione nel DB aggiungengo la colonna "quantita' (e modificare il popolamento di conseguenza, magari aggiungendo anche qualche quantiata')
 
 -Creazione Elmento in gestione menu (non so se e' implementato non mi esce il button per testare)
--Fixare crash quando cameriere seleziona tavolo
 -Aggiungere controlli su tutti i nomi vuoti in creazione
 -Rimouvere Text "Serve"  in creazione ordine dialog
 -Disabilitare spinner ruoli editabile
@@ -10,6 +9,5 @@
 -Implementare rimozione elementi
 -Implementare statistiche
 -Implementare Creazione ordine
--Implementare aggiunta elemento a ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)

@@ -47,4 +47,9 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
     @Query(value = "update ordinazione set quantita= :quantita where (id_ordine =:idOrdine and id_elemento = :idElemento)", nativeQuery = true)
     public void updateQuantita(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento")int idElemento, @Param(value="quantita")int quantita);
 
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "delete from ordinazione where id_ordine =:idOrdine and id_elemento = :idElemento", nativeQuery = true)
+    public void deleteFromOrdinazione(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento")int idElemento);
+
 }

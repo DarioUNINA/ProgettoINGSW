@@ -156,6 +156,8 @@ public class ElementiGSFragment extends Fragment {
                 btnAnnullaRimozione.setVisibility(View.INVISIBLE);
                 btnConfermaRimozione.setVisibility(View.INVISIBLE);
 
+
+                elementiGSAdapter.getElementiDelete().clear();
                 ArrayList<Elemento> l = new ArrayList<Elemento>();
                 l.addAll(elementiGSAdapter.getElementi());
                 l.add(new Elemento());
@@ -169,11 +171,41 @@ public class ElementiGSFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
                 Bundle bundle = new Bundle();
                 bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Rimozione Elemento");
                 bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "ElementiGSFragment");
                 firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle);
                 firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
+                List<Elemento> newElementi = new ArrayList<Elemento>();
+                newElementi.addAll(elementiGSAdapter.getElementi());
+
+                for(Elemento e: elementiGSAdapter.getElementiDelete())
+                    newElementi.remove(e);
+
+                Integer[][] matrix = new Integer[newElementi.size()][2];
+                Integer[][] quantita = elementiGSAdapter.getQuantita();
+
+                for(int i =0; i<newElementi.size(); i++){
+                    matrix[i][0] = newElementi.get(i).getIdElemento();
+
+                    for(int j=0; j<elementiGSAdapter.getElementi().size(); j++)
+                        if(quantita[j][0] == newElementi.get(i).getIdElemento()) {
+                            matrix[i][1] = quantita[j][1];
+                            break;
+                        }
+                }
+
+                elementiGSAdapter.setQuantita(matrix);
+                elementiGSAdapter.setElementi(newElementi, false);
+
+                elementoPresenter = new ElementoPresenter();
+
+                elementoPresenter.deleteFromOrdine(ordineSelected.getIdOrdine(), elementiGSAdapter.getElementiDelete());
+
+                btnAnnullaRimozione.callOnClick();
+
             }
         });
 

@@ -51,6 +51,8 @@ public class GestioneSalaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        ordiniFragment = new OrdiniFragment();
+
 
         firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
@@ -59,7 +61,6 @@ public class GestioneSalaFragment extends Fragment {
         bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "GestioneSalaFragment");
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
         firebaseAnalytics.setAnalyticsCollectionEnabled(true);
-
 
     }
 

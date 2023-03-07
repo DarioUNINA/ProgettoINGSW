@@ -83,10 +83,8 @@ public class ElementoPresenter {
         }
 
         elementiGSAdapter.setQuantita(matrix);
-        elementiGSAdapter.setElementi(elementi, false);
 
          for(Elemento elemento: elementi){
-
             service.getQuantita(new Callback() {
                 @Override
                 public void returnResult(Object o) {
@@ -124,6 +122,24 @@ public class ElementoPresenter {
 
             }
         }, idOrdine, idElemento, quantita);
+    }
+
+    public void deleteFromOrdine(int idOrdine, List<Elemento> elementi){
+        for(Elemento e: elementi) {
+            service.removeFromOrdinazione(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                    if ((boolean) o) {
+                        System.out.println("Rimozione effettuata");
+                    }
+                }
+
+                @Override
+                public void returnError(Throwable e) {
+
+                }
+            }, idOrdine, e.getIdElemento());
+        }
     }
 
     public void getElementiByPrezzoDesc(int idCategoria){

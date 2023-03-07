@@ -150,5 +150,9 @@ public class ElementoController {
         elementoService.updateQuantita(idOrdine, idElemento, quantita);
     }
     
+    @PutMapping("/remove/ordine/{idOrdine}/elemento/{idElemento}")
+    public void deleteFromOrdine(@PathVariable(value="idOrdine")int idOrdine, @PathVariable(value="idElemento")int idElemento){
+        elementoService.deleteFromOrdinazione(idOrdine, idElemento);
+    }
 
 }

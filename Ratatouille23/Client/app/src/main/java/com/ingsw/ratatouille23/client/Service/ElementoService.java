@@ -117,6 +117,27 @@ public class ElementoService {
                 });
     }
 
+    public void removeFromOrdinazione(Callback callback, int idOrdine, int idElemento){
+        elementoApi.removeFromOrdinazione(idOrdine, idElemento)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
     public void getByCategoriaOrderByPrezzoDesc(Callback callback, int idCategoria){
 
         elementoApi.getByCategoriaOrderByPrezzoDesc(idCategoria)

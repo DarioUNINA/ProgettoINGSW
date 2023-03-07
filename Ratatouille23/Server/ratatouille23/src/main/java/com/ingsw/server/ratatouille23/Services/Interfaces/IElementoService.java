@@ -27,5 +27,7 @@ public interface IElementoService {
     public void delete(ElementoDTO elementoDTO);
 
     public void updateQuantita(int idOrdine, int idElemento, int quantita);
+
+    public void deleteFromOrdinazione(int idOrdine, int idElemento);
     
 }

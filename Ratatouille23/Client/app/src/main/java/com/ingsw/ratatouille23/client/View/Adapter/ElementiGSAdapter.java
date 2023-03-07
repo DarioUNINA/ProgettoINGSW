@@ -24,6 +24,7 @@ import java.util.List;
 public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.ElementiHolder> {
 
     private List<Elemento> elementi = new ArrayList<Elemento>();
+    private List<Elemento> elementiDelete = new ArrayList<Elemento>();
     private Context context;
 
     private Integer[][] quantita;
@@ -83,6 +84,15 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             }
         });
 
+        holder.rimozioneCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CheckBox)view).isChecked())
+                    elementiDelete.add(elementi.get(position));
+                else
+                    elementiDelete.remove(elementi.get(position));
+            }
+        });
 
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +185,7 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         getElementiGSFragment().getTxtTotale().setText(String.valueOf(totale));
 
         notifyDataSetChanged();
+
     }
 
 
@@ -200,6 +211,14 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
         this.elementiGSFragment = elementiGSFragment;
     }
 
+
+    public List<Elemento> getElementiDelete() {
+        return elementiDelete;
+    }
+
+    public void setElementiDelete(List<Elemento> elementiDelete) {
+        this.elementiDelete = elementiDelete;
+    }
 }
 
 

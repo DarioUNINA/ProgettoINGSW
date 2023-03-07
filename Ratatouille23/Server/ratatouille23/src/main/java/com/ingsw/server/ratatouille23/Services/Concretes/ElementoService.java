@@ -82,5 +82,9 @@ public class ElementoService implements IElementoService {
         elementoRepository.updateQuantita(idOrdine, idElemento, quantita);
     }
 
+    @Override
+    public void deleteFromOrdinazione(int idOrdine, int idElemento){
+        elementoRepository.deleteFromOrdinazione(idOrdine, idElemento);
+    }
 
 }

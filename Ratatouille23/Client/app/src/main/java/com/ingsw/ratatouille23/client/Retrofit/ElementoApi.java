@@ -45,4 +45,7 @@ public interface ElementoApi {
     @PUT("/elemento/update/ordine/{idOrdine}/elemento/{idElemento}/quantita/{quantita}")
     Completable updateQuantita(@Path("idOrdine")int idOrdine, @Path("idElemento") int idElemento, @Path("quantita")int quantita);
 
+    @PUT("/elemento/remove/ordine/{idOrdine}/elemento/{idElemento}")
+    Completable removeFromOrdinazione(@Path("idOrdine")int idOrdine, @Path("idElemento") int idElemento);
+
 }

@@ -98,7 +98,7 @@ public class OrdiniFragment extends Fragment {
 
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        ordineAdapter = new OrdineAdapter(new ArrayList<Ordine>(), getContext(), onOrdineCLickListner, OrdiniFragment.this, false);
+        ordineAdapter = new OrdineAdapter(new ArrayList<Ordine>(), getContext(), onOrdineCLickListner, this, false);
         ordiniRecyclerView.setAdapter(ordineAdapter);
         ordiniRecyclerView.setLayoutManager(linearLayoutManager);
 
