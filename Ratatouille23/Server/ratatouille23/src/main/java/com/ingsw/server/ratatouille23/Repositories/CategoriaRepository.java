@@ -11,5 +11,7 @@ public interface CategoriaRepository extends CrudRepository<Categoria, Integer> 
 
     public Optional<List<Categoria>> findByMenu(Menu menu);
 
+    public Optional<Categoria> findByMenuAndNome(Menu menu, String nome);
+
     
 }

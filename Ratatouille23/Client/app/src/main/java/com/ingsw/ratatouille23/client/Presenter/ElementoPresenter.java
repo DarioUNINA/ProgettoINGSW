@@ -129,9 +129,8 @@ public class ElementoPresenter {
             service.removeFromOrdinazione(new Callback() {
                 @Override
                 public void returnResult(Object o) {
-                    if ((boolean) o) {
+                    if ((boolean) o)
                         System.out.println("Rimozione effettuata");
-                    }
                 }
 
                 @Override
@@ -184,15 +183,15 @@ public class ElementoPresenter {
         }, idCategoria);
     }
 
-    public void getAllChangeOrdine(int id_ristorante, String nome){
+    public void getAllChangeOrdine(int id_ristorante, String nome, List<Elemento> elementi){
         service.getByNome(new Callback() {
             @Override
             public void returnResult(Object o) {
                 if (o != null) {
                     ArrayList<String> listElementoString = new ArrayList<String>();
-                    for (Elemento elem : (ArrayList<Elemento>) o) {
+                    for (Elemento elem : (ArrayList<Elemento>) o)
                         listElementoString.add(elem.getNome());
-                    }
+
                     addElementoOrdineDialog.getSpinnerElementoNewOrdine().
                             setAdapter(new ArrayAdapter<String>(addElementoOrdineDialog.getContext(),
                                     R.layout.spinner_item, listElementoString));
@@ -268,4 +267,23 @@ public class ElementoPresenter {
 
         getElementiByNomeDesc(elemento.getIdCategoria());
     }
+
+    public void addToOrdinazione(int idMenu, String nomeCategoria, String nomeElemento, int idOrdine){
+
+        service.addToOrdinazione(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, idMenu, nomeCategoria, nomeElemento, idOrdine);
+
+
+
+    }
+
 }

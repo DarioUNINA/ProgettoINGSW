@@ -21,6 +21,7 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
 
     public Optional<List<Elemento>> findByCategoria(Categoria categoria);
 
+
     @Query(value="SELECT * from elemento where id_categoria = :idCategoria ORDER BY prezzo ASC", nativeQuery = true)
     public Optional<List<Elemento>> findByCategoriaOrderByPrezzoAsc(@Param(value="idCategoria")int idCategoria);
 
@@ -51,5 +52,12 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
     @Transactional
     @Query(value = "delete from ordinazione where id_ordine =:idOrdine and id_elemento = :idElemento", nativeQuery = true)
     public void deleteFromOrdinazione(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento")int idElemento);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query(value = "insert into ordinazione(id_ordine, id_elemento, quantita) values (:idOrdine, :idElemento, 1); ", nativeQuery = true)
+    public void addToOrdinazione(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento") int idElemento);
+
+    public Optional<Elemento> findByCategoriaAndNome(Categoria categoria, String nome);
 
 }

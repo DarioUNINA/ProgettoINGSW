@@ -53,10 +53,8 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
         txtNuovoElementoOrdine = v.findViewById(R.id.txtNuovoElementoOrdine);
         btnNewElementOrder = v.findViewById(R.id.btnNewElementOrder);
 
-
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddElementoOrdineDialog.this);
         categoriaPresenter.getAllSpinnerChangeOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());
-
 
         spinnerCategoriaNewOrdine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -64,7 +62,7 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
                 txtNuovaCategoria.setText(spinnerCategoriaNewOrdine.getSelectedItem().toString());
 
                 ElementoPresenter elementoPresenter = new ElementoPresenter(AddElementoOrdineDialog.this);
-                elementoPresenter.getAllChangeOrdine(((HomeActivity)getActivity()).getRistorante().getIdRistorante(),spinnerCategoriaNewOrdine.getSelectedItem().toString());
+                elementoPresenter.getAllChangeOrdine(((HomeActivity)getActivity()).getRistorante().getIdRistorante(),spinnerCategoriaNewOrdine.getSelectedItem().toString(), elementiGSFragment.getElementiGSAdapter().getElementi());
             }
 
             @Override
@@ -88,7 +86,14 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
         btnNewElementOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ElementoPresenter presenter = new ElementoPresenter();
+                presenter.addToOrdinazione(((HomeActivity)getActivity()).getRistorante().getIdMenu(),
+                        txtNuovaCategoria.getText().toString(),
+                        txtNuovoElementoOrdine.getText().toString(),
+                        elementiGSFragment.getOrdineSelected().getIdOrdine());
                 getDialog().dismiss();
+
             }
         });
 

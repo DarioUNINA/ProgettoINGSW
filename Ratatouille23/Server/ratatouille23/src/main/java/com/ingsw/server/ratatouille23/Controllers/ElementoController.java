@@ -8,22 +8,32 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IElementoService;
+
+import lombok.RequiredArgsConstructor;
+
+import com.ingsw.server.ratatouille23.Services.Interfaces.ICategoriaService;
 import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
+import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 import java.util.Optional;
 import java.util.List;
 import java.util.ArrayList;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/elemento")
 public class ElementoController {
 
     @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired
     @Qualifier("ElementoService")
-    private IElementoService elementoService;
+    private final IElementoService elementoService;
+
+    @Autowired
+    @Qualifier("CategoriaService")
+    private final ICategoriaService categoriaService;
 
     @GetMapping("/get/{id}")
     public ElementoDTO getById(@PathVariable("id") Integer id) {
@@ -153,6 +163,14 @@ public class ElementoController {
     @PutMapping("/remove/ordine/{idOrdine}/elemento/{idElemento}")
     public void deleteFromOrdine(@PathVariable(value="idOrdine")int idOrdine, @PathVariable(value="idElemento")int idElemento){
         elementoService.deleteFromOrdinazione(idOrdine, idElemento);
+    }
+
+    @PutMapping("/addElementoToOrdinazione/menu/{idMenu}/nomeCategoria/{nomeCategoria}/nomeElemento/{nomeElemento}/idOrdine/{idOrdine}")
+    public void addElementoToOrdinazione(@PathVariable(value="idMenu")int idMenu, @PathVariable(value="nomeCategoria")String nomeCategoria, @PathVariable(value="nomeElemento")String nomeElemento, @PathVariable(value="idOrdine")int idOrdine){
+        Categoria categoria = categoriaService.getByMenuAndNome(idMenu, nomeCategoria).get();
+        Elemento elemento = elementoService.getByCategoriaAndNome(categoria, nomeElemento).get();
+
+        elementoService.addToOrdinazione(idOrdine, elemento.getIdElemento());
     }
 
 }

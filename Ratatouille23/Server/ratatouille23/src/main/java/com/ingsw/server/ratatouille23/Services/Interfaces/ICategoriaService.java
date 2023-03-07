@@ -13,5 +13,7 @@ public interface ICategoriaService {
     public void save(CategoriaDTO categoriaDTO);
 
     public void delete(CategoriaDTO categoriaDTO);
+
+    public Optional<Categoria> getByMenuAndNome(Integer idMenu, String nome);
     
 }

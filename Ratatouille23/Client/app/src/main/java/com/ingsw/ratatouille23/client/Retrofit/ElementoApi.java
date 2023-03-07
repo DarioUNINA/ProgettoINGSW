@@ -48,4 +48,7 @@ public interface ElementoApi {
     @PUT("/elemento/remove/ordine/{idOrdine}/elemento/{idElemento}")
     Completable removeFromOrdinazione(@Path("idOrdine")int idOrdine, @Path("idElemento") int idElemento);
 
+    @PUT("/elemento/addElementoToOrdinazione/menu/{idMenu}/nomeCategoria/{nomeCategoria}/nomeElemento/{nomeElemento}/idOrdine/{idOrdine}")
+    Completable addToOrdinazione(@Path(value="idMenu")int idMenu, @Path(value="nomeCategoria")String nomeCategoria, @Path(value="nomeElemento")String nomeElemento, @Path(value="idOrdine")int idOrdine);
+
 }

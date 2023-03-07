@@ -50,4 +50,9 @@ public class CategoriaService implements ICategoriaService {
         categoriaRepository.delete(c);
     }
 
+    @Override
+    public Optional<Categoria> getByMenuAndNome(Integer idMenu, String nome){
+        return categoriaRepository.findByMenuAndNome(new Menu(idMenu), nome);
+    }
+
 }

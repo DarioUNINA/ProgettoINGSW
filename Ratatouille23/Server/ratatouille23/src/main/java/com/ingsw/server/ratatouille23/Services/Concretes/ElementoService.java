@@ -87,4 +87,14 @@ public class ElementoService implements IElementoService {
         elementoRepository.deleteFromOrdinazione(idOrdine, idElemento);
     }
 
+    @Override
+    public Optional<Elemento> getByCategoriaAndNome(Categoria categoria, String nome){
+        return elementoRepository.findByCategoriaAndNome(categoria, nome);
+    }
+
+    @Override
+    public void addToOrdinazione(int idOrdine, int idElemento){
+        elementoRepository.addToOrdinazione(idOrdine, idElemento);
+    }
+
 }
