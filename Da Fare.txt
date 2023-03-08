@@ -1,3 +1,5 @@
+-Fixare crash tavoli
+
 -Implementare Creazione ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
