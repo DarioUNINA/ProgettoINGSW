@@ -21,10 +21,12 @@ import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
@@ -38,31 +40,27 @@ import java.util.ArrayList;
 public class AddOrderDialog extends AppCompatDialogFragment {
 
     private OrdiniFragment ordiniFragment;
-
     private Spinner spinnerElementoOrdine, spinnerCategoriaOrdine, spinnerCamerieri;
 
     private TextView txtCategoria, txtElemento, txtCameriereOrdine, txtServe;
-
     private AppCompatButton btnNewCategory;
-
     private RecyclerView recyclerViewNuovoOrdine;
 
     private MaterialCardView materialCameriere;
-
     private ElementiNuovoOrdineAdapter elementiNuovoOrdineAdapter;
-
     private ArrayList<Elemento> elementi = new ArrayList<Elemento>();
-
     private ArrayList<Elemento> elementiNuovi  = new ArrayList<Elemento>();
-
     private ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner;
 
+    private OrdinePresenter ordinePresenter;
 
     private int idTavolo;
+    private String cameriere = new String();
 
-    public AddOrderDialog(OrdiniFragment ordiniFragment, int idTavolo) {
+    public AddOrderDialog(OrdiniFragment ordiniFragment, int idTavolo, String cameriere) {
         this.ordiniFragment = ordiniFragment;
         this.idTavolo = idTavolo;
+        this.cameriere = cameriere;
     }
     @NonNull
     @Override
@@ -85,6 +83,13 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             materialCameriere.setVisibility(View.INVISIBLE);
             txtServe.setVisibility(View.INVISIBLE);
         }
+
+        ordinePresenter = new OrdinePresenter(ordiniFragment);
+        Ordine newOrdine = new Ordine();
+        newOrdine.setIdTavolo(idTavolo);
+        ordinePresenter.create(newOrdine);
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -114,9 +119,10 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 txtElemento.setText(spinnerElementoOrdine.getSelectedItem().toString());
-                for (Elemento elem: elementi) {
-                    if(elem.getNome() == spinnerElementoOrdine.getSelectedItem().toString()){
-                        elementiNuovi.add(elem);
+                for (Elemento elemento: elementi) {
+                    if(elemento.getNome() == spinnerElementoOrdine.getSelectedItem().toString()){
+                        elementiNuovi.add(elemento);
+
                     }
                 }
 
@@ -124,6 +130,7 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                 recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
                 recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
                 elementiNuovoOrdineAdapter.notifyDataSetChanged();
+
 
             }
 

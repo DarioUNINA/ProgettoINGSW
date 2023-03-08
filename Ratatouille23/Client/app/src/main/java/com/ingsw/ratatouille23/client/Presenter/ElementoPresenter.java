@@ -276,6 +276,17 @@ public class ElementoPresenter {
             public void returnResult(Object o) {
                 TavoloPresenter tavoloPresenter = new TavoloPresenter(((HomeActivity)fragment.getActivity()).getGestioneSala().getTavoliFragment());
                 tavoloPresenter.getTavoli();
+
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini(new ArrayList<Ordine>());
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().setTavoloSelected(null);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getIdTavolo().setText("");
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getNomeCameriere().setText("");
+
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(null);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("");
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("");
+
             }
 
             @Override

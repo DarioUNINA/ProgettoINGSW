@@ -109,7 +109,10 @@ public class OrdiniFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(idTavolo.getText()!="") {
-                    openDialog(Integer.parseInt(idTavolo.getText().toString().toString()));
+                    String cameriere = new String();
+                    if(((HomeActivity)getActivity()).getUtente().getRuolo().toString().equals("cameriere"))
+                        cameriere = ((HomeActivity)getActivity()).getUtente().getUsername();
+                    openDialog(Integer.parseInt(idTavolo.getText().toString().toString()), cameriere);
 
                     Bundle bundle = new Bundle();
                     bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Aggiunta Ordine");
@@ -176,8 +179,8 @@ public class OrdiniFragment extends Fragment {
         return rootView;
     }
 
-    public void openDialog(int idTavolo){
-        AddOrderDialog addOrderDialog = new AddOrderDialog(this, idTavolo);
+    public void openDialog(int idTavolo, String cameriere){
+        AddOrderDialog addOrderDialog = new AddOrderDialog(this, idTavolo, cameriere);
         addOrderDialog.show(getParentFragmentManager(), "newOrdine");
     }
 
@@ -279,4 +282,6 @@ public class OrdiniFragment extends Fragment {
     public void setOrdini(List<Ordine> ordini) {
         this.ordini = ordini;
     }
+
+
 }

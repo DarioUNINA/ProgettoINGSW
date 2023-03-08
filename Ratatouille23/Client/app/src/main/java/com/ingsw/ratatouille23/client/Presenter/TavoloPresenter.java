@@ -6,6 +6,7 @@ import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.TavoloService;
 import com.ingsw.ratatouille23.client.View.Adapter.TavoliAdapter;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;

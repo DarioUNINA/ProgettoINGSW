@@ -45,8 +45,7 @@ public class OrdineController {
 
     @PostMapping("/save")
     public void save(@RequestBody OrdineDTO ordineDTO) {
-        Ordine ordine = modelMapper.map(ordineDTO, Ordine.class);
-        ordineService.save(ordine);
+        ordineService.save(ordineDTO);
     }
 
 

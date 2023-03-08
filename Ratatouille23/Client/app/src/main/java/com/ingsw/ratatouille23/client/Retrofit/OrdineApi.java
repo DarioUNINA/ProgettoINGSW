@@ -18,11 +18,8 @@ public interface OrdineApi {
 
     @GET("/ordine/get/{idTavolo}")
     Single<List<Ordine>> getbyIdTavolo(@Path("idTavolo") int idTavolo);
-
     @PUT("/ordine/save")
     Completable create(@Body Ordine ordine);
-
-
     @HTTP(method = "DELETE", path = "/ordine/delete", hasBody = true)
     Completable delete(@Body Ordine ordine);
 

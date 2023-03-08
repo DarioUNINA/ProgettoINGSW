@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
 import com.ingsw.ratatouille23.client.R;
@@ -115,7 +116,9 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
     }
 
     public void setOrdini(ArrayList<Ordine> ordini) {
-        this.ordini = ordini;
+        this.ordini.clear();
+        this.ordini.addAll(ordini);
+        notifyDataSetChanged();
     }
 
     public ArrayList<Ordine> getCancellaOrdini() {
