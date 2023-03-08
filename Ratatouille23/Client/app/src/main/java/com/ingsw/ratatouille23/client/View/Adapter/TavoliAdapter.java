@@ -68,9 +68,11 @@ public class TavoliAdapter extends RecyclerView.Adapter<TavoliAdapter.TavoliHold
                 activity.getGestioneSala().getOrdiniFragment().setTavoloSelected(tavoli.get(position));
                 if(tavoli.get(position).isOccupato())
                     activity.getGestioneSala().getOrdiniFragment().getNomeCameriere().setText(tavoli.get(position).getCameriere());
-                else
+                else {
                     activity.getGestioneSala().getOrdiniFragment().getNomeCameriere().setText("");
-            }
+                    activity.getGestioneSala().getElementiGSFragment().getTxtIdOrdine().setText("");
+                }
+                }
         });
 
 

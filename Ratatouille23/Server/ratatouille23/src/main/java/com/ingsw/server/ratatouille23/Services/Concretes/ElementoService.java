@@ -1,6 +1,7 @@
 package com.ingsw.server.ratatouille23.Services.Concretes;
 
 import com.ingsw.server.ratatouille23.Models.DTO.ElementoDTO;
+import com.ingsw.server.ratatouille23.Models.Entities.Allergene;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,7 @@ import com.ingsw.server.ratatouille23.Services.Interfaces.IElementoService;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.List;
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
@@ -35,7 +37,15 @@ public class ElementoService implements IElementoService {
     }
 
     @Override
-    public void save(Elemento elemento){
+    public void save(ElementoDTO elementoDTO){
+        Elemento elemento = modelMapper.map(elementoDTO, Elemento.class);
+        Categoria cat = new Categoria(elementoDTO.getIdCategoria());
+        elemento.setCategoria(cat);
+        ArrayList<Allergene> all = new ArrayList<Allergene>();
+        for (String a: elementoDTO.getallergeni()) {
+            all.add(new Allergene(a));
+        }
+        elemento.setAllergeni(all);
         elementoRepository.save(elemento);
     }
 

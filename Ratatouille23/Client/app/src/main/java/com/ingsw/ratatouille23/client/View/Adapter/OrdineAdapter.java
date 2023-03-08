@@ -68,6 +68,8 @@ public class OrdineAdapter extends RecyclerView.Adapter<OrdineAdapter.OrderHolde
                 if(((HomeActivity)ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected()!=ordini.get(position)) {
                     ((HomeActivity) ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(ordini.get(position));
                     ((HomeActivity) ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementiAndQuantita(ordini.get(position).getElementi());
+                    ((HomeActivity) ordiniFragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtIdOrdine().setText((String.valueOf(ordini.get(position).getIdOrdine())));
+
                 }
             }
 

@@ -1,9 +1,7 @@
--Decidere come gestire le creazioni per gli update delle liste
-
--Fixare creazione elemento (non fa nulla) ( VERIFICARE ID CATEGORIA)
-
--Implementare rimozione elementi
--Implementare statistiche
 -Implementare Creazione ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
+
+
+
+-Implementare statistiche

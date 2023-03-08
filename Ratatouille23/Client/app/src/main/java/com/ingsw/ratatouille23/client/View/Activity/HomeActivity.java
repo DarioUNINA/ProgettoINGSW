@@ -21,6 +21,7 @@ import com.ingsw.ratatouille23.client.Model.Ristorante;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Utility.StorageManager;
+import com.ingsw.ratatouille23.client.View.Dialog.QRCODE_Dialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneCucina.CucinaFragment;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.GestioneMenuFragment;
@@ -33,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private StorageManager storageManager;
     private FirebaseAnalytics firebaseAnalytics;
 
-    private AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnChangePass, btnLogOut;
+    private AppCompatButton btnPersonale, btnSala, btnMenu, btnCucina, btnQrCode;
     private FloatingActionButton btnSettings;
 
     private ImageView imageViewUtente, imageViewRistorante;
@@ -68,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnPersonale = findViewById(R.id.btnPersonale);
         btnSala = findViewById(R.id.btnSala);
+        btnQrCode = findViewById(R.id.btnQrCode);
         btnSettings = findViewById(R.id.btnSettingsRestaurant);
         btnSettings.setVisibility(View.INVISIBLE);
 
@@ -168,6 +170,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        btnQrCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialogQrCode();
+            }
+        });
+
 
         if(utente.getRuolo()==Ruolo.admin) {
             btnSettings.setVisibility(View.VISIBLE);
@@ -258,6 +267,10 @@ public class HomeActivity extends AppCompatActivity {
         settingUtenteDialog.show(getSupportFragmentManager(), "setting");
     }
 
+    public void openDialogQrCode(){
+        QRCODE_Dialog qrcode_dialog = new QRCODE_Dialog(HomeActivity.this);
+        qrcode_dialog.show(getSupportFragmentManager(),"QrCode");
+    }
     public Utente getUtente() {
         return utente;
     }

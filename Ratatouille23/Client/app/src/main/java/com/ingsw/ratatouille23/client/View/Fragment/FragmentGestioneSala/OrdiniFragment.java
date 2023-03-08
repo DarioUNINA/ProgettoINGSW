@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Model.Ordine;
 import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Model.Tavolo;
@@ -166,7 +167,17 @@ public class OrdiniFragment extends Fragment {
         btnConfermaRimozioneOrdine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for (Ordine e: ordineAdapter.getCancellaOrdini()) {
+                    if(((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected().getIdOrdine() == e.getIdOrdine()){
+                        ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
+                        ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("0");
+                        ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("0");
+                        ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getTxtIdOrdine().setText("");
+
+                    }
+                }
                 ordinePresenter.delete(ordineAdapter.getCancellaOrdini());
+
             }
         });
 
