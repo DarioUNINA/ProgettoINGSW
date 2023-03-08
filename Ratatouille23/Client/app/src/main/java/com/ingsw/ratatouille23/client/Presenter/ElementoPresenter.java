@@ -32,6 +32,7 @@ public class ElementoPresenter {
     private AddElementoOrdineDialog addElementoOrdineDialog;
 
     private AddOrderDialog addOrderDialog;
+
     public ElementoPresenter(){
         service = new ElementoService();
     }
@@ -301,7 +302,29 @@ public class ElementoPresenter {
             }
         }, idMenu, nomeCategoria, nomeElemento, idOrdine);
 
+    }
 
+    public void addToOrdinazione(int idMenu, String nomeCategoria, String nomeElemento, int idOrdine){
+
+        service.addToOrdinazione(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    System.out.println("elemento aggiunto");
+                else
+                    System.out.println("elemento non aggiunto");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, idMenu, nomeCategoria, nomeElemento, idOrdine);
+
+    }
+
+    public void addToNewOrdinazione(){
 
     }
 

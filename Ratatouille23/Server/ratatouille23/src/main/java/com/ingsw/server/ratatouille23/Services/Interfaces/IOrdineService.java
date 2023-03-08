@@ -11,6 +11,7 @@ public interface IOrdineService {
 
     public void save(OrdineDTO ordineDTO);
 
+    public Optional<Integer> getNewestByTavolo(Integer idTavolo);
 
     public void delete(OrdineDTO ordineDTO);
     

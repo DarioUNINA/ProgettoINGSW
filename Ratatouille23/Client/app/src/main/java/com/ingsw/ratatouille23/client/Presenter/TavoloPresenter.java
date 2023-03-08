@@ -74,6 +74,24 @@ public class TavoloPresenter {
 
     }
 
+    public void updateTavolo(Tavolo tavolo){
+        service.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    System.out.println("tavolo aggiornato");
+                else
+                    System.out.println("tavolo non aggiornato");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, tavolo);
+    }
+
 
 
 }

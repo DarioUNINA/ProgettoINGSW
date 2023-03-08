@@ -116,7 +116,6 @@ insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 4, 2);
 insert into ordinazione(id_ordine, id_elemento, quantita) values (3, 5, 2);
 insert into ordinazione(id_ordine, id_elemento, quantita) values (2, 2, 3);
 insert into ordinazione(id_ordine, id_elemento, quantita) values (4, 22, 1);
-insert into ordinazione(id_ordine, id_elemento, quantita) values (5, 1, 1);
 insert into ordinazione(id_ordine, id_elemento, quantita) values (6, 3, 4);
 
 insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 11, 1);

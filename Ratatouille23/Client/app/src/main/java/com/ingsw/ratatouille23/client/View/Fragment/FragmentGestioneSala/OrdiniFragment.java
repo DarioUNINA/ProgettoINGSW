@@ -171,7 +171,7 @@ public class OrdiniFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 for (Ordine e: ordineAdapter.getCancellaOrdini()) {
-                    if(((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected().getIdOrdine() == e.getIdOrdine()){
+                    if(((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected()!= null && ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getOrdineSelected().getIdOrdine() == e.getIdOrdine()){
                         ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
                         ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("0");
                         ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("0");

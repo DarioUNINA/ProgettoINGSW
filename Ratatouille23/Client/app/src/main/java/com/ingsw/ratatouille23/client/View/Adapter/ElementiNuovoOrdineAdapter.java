@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 
@@ -26,17 +27,13 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
     private Context context;
     private ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner;
 
-    private int count = 1;
-
-
-    Boolean modRimozione;
+    private ElementoPresenter  elementoPresenter = new ElementoPresenter();
     private AddOrderDialog addOrderDialog;
 
-    public ElementiNuovoOrdineAdapter(ArrayList<Elemento> elementi, Context context, ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner, AddOrderDialog addOrderDialog, Boolean modRimozione) {
+    public ElementiNuovoOrdineAdapter(ArrayList<Elemento> elementi, Context context, ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner, AddOrderDialog addOrderDialog) {
         this.elementi = elementi;
         this.context = context;
         this.onElementiClickListner = onElementiClickListner;
-        this.modRimozione = modRimozione;
         this.addOrderDialog = addOrderDialog;
     }
 
@@ -56,31 +53,16 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
     public void onBindViewHolder(@NonNull ElementiNuovoOrdineAdapter.ElementiHolder holder, int position) {
 
 
-        if(modRimozione){
-            holder.rimozioneCB.setVisibility(View.VISIBLE);
-            holder.counter.setVisibility(View.INVISIBLE);
-            holder.btnAddCounterElement.setVisibility(View.INVISIBLE);
-            holder.btnRemoveCounterElement.setVisibility(View.INVISIBLE);
-        }
-        else{
-            holder.rimozioneCB.setVisibility(View.INVISIBLE);
-            holder.counter.setVisibility(View.VISIBLE);
-            holder.btnAddCounterElement.setVisibility(View.VISIBLE);
-            holder.btnRemoveCounterElement.setVisibility(View.VISIBLE);
-        }
-
-
         holder.txtNomeElementoGS.setText(elementi.get(position).getNome());
         holder.txtPrezzoElementoGS.setText(Float.toString(elementi.get(position).getPrezzo()));
-
-
-        holder.txtCounter.setText( String.valueOf(count));
+        holder.txtCounter.setText("1");
 
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count ++;
-                holder.txtCounter.setText( String.valueOf(count));
+
+                holder.txtCounter.setText( String.valueOf(Integer.valueOf(holder.txtCounter.getText().toString())+1));
+                //update quantita db
 
             }
         });
@@ -88,19 +70,19 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
         holder.btnRemoveCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if( count > 0){
-                    count--;
-                    holder.txtCounter.setText( String.valueOf(count));
-                }
-                if(count == 0){
-                    for (Elemento elem: elementi) {
-                    if(elem.getNome() == addOrderDialog.getSpinnerElementoOrdine().getSelectedItem().toString()){
-                        elementi.remove(elem);
-                        ElementiNuovoOrdineAdapter elemNuovo = new ElementiNuovoOrdineAdapter(elementi, addOrderDialog.getContext(), addOrderDialog.getOnElementiClickListner(), addOrderDialog , false);
+                if( Integer.valueOf(holder.txtCounter.getText().toString()) > 1) {
+                    holder.txtCounter.setText(String.valueOf(Integer.valueOf(holder.txtCounter.getText().toString()) - 1));
+                    //Update quantita db
+                }else
+                    if(Integer.valueOf(holder.txtCounter.getText().toString()) == 1){
+                        elementi.remove(elementi.get(position));
+                        ElementiNuovoOrdineAdapter elemNuovo = new ElementiNuovoOrdineAdapter(elementi, addOrderDialog.getContext(), addOrderDialog.getOnElementiClickListner(), addOrderDialog);
                         addOrderDialog.getRecyclerViewNuovoOrdine().setAdapter(elemNuovo);
+                        List<Elemento> daEliminare = new ArrayList<Elemento>();
+                        daEliminare.add(elementi.get(position));
+                        elementoPresenter.deleteFromOrdine(addOrderDialog.getNewOrdine().getIdOrdine(), daEliminare);
+
                     }
-                }
-                }
             }
         });
 
@@ -138,8 +120,7 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
 
 
 
-    public void setElementi(List<Elemento> elementi, boolean modRimozione) {
-        this.modRimozione = modRimozione;
+    public void setElementi(List<Elemento> elementi) {
         this.elementi.clear();
         this.elementi.addAll(elementi);
         notifyDataSetChanged();

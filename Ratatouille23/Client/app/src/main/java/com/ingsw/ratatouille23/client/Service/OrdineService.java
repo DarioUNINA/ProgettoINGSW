@@ -68,6 +68,27 @@ public class OrdineService {
                 });
     }
 
+    public void getIdNewestbyTavolo(Callback callback, int idTavolo){
+        ordineApi.getIdNewestByTavolo(idTavolo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Integer idOrdine) {
+                        callback.returnResult(idOrdine);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+
+    }
     public void delete(Callback callback, Ordine ordine){
         ordineApi.delete(ordine)
                 .subscribeOn(Schedulers.newThread())

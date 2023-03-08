@@ -20,7 +20,7 @@ public interface TavoloRepository extends CrudRepository<Tavolo,Integer>{
 
     public Optional<List<Tavolo>> findByCameriere(Utente cameriere);
 
-    @Query(value="SELECT * FROM tavolo t WHERE (t.username_cameriere = :cameriere OR t.occupato = false)", nativeQuery = true)
+    @Query(value="SELECT * FROM tavolo t WHERE (t.username_cameriere = :cameriere OR t.occupato = false) order by id_tavolo", nativeQuery = true)
     public Optional<List<Tavolo>> findByCameriereOrLibero(@Param(value="cameriere")String cameriere);
 
 

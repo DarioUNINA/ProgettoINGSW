@@ -49,4 +49,9 @@ public class OrdineService implements IOrdineService{
         OrdineRepository.delete(o);
     }
 
+    @Override
+    public Optional<Integer> getNewestByTavolo(Integer idTavolo) {
+        return OrdineRepository.findNewestByTavolo(idTavolo);
+    }
+
 }

@@ -27,6 +27,7 @@ import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
+import com.ingsw.ratatouille23.client.Presenter.TavoloPresenter;
 import com.ingsw.ratatouille23.client.Presenter.UtentePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
@@ -53,9 +54,11 @@ public class AddOrderDialog extends AppCompatDialogFragment {
     private ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner;
 
     private OrdinePresenter ordinePresenter;
+    private ElementoPresenter elementoPresenter;
 
     private int idTavolo;
     private String cameriere = new String();
+    private Ordine newOrdine = new Ordine();
 
     public AddOrderDialog(OrdiniFragment ordiniFragment, int idTavolo, String cameriere) {
         this.ordiniFragment = ordiniFragment;
@@ -84,10 +87,12 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             txtServe.setVisibility(View.INVISIBLE);
         }
 
-        ordinePresenter = new OrdinePresenter(ordiniFragment);
-        Ordine newOrdine = new Ordine();
+        ordinePresenter = new OrdinePresenter(this);
+        elementoPresenter = new ElementoPresenter();
+
+
         newOrdine.setIdTavolo(idTavolo);
-        ordinePresenter.create(newOrdine);
+        ordinePresenter.create();
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -121,12 +126,22 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                 txtElemento.setText(spinnerElementoOrdine.getSelectedItem().toString());
                 for (Elemento elemento: elementi) {
                     if(elemento.getNome() == spinnerElementoOrdine.getSelectedItem().toString()){
-                        elementiNuovi.add(elemento);
+                        boolean flag = true;
+                        for(Elemento e: elementiNuovi)
+                            if(elemento.getIdElemento() == e.getIdElemento()) {
+                                flag = false;
+                                break;
+                            }
+                        if(flag) {
+                            elementiNuovi.add(elemento);
+                            elementoPresenter.addToOrdinazione(((HomeActivity) getActivity()).getRistorante().getIdMenu(), spinnerCategoriaOrdine.getSelectedItem().toString(), spinnerElementoOrdine.getSelectedItem().toString(), newOrdine.getIdOrdine());
+                        }
+
 
                     }
                 }
 
-                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this, false);
+                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this);
                 recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
                 recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
                 elementiNuovoOrdineAdapter.notifyDataSetChanged();
@@ -144,6 +159,12 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 txtCameriereOrdine.setText(spinnerCamerieri.getSelectedItem().toString());
+                setCameriere(spinnerCamerieri.getSelectedItem().toString());
+                TavoloPresenter tavoloPresenter = new TavoloPresenter();
+                ordiniFragment.getTavoloSelected().setCameriere(cameriere);
+                ordiniFragment.getTavoloSelected().setOccupato(true);
+                tavoloPresenter.updateTavolo(ordiniFragment.getTavoloSelected());
+
             }
 
             @Override
@@ -151,6 +172,7 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
             }
         });
+
 
         if(((HomeActivity) getActivity()).getUtente().getRuolo() != Ruolo.admin) {
             materialCameriere.setVisibility(View.INVISIBLE);
@@ -161,6 +183,8 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         btnNewCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //aggiorna la gui, riprendi i tavoli
                 getDialog().dismiss();
             }
         });
@@ -204,6 +228,14 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
     public void setSpinnerCategoriaOrdine(Spinner spinnerCategoriaOrdine) {
         this.spinnerCategoriaOrdine = spinnerCategoriaOrdine;
+    }
+
+    public Ordine getNewOrdine() {
+        return newOrdine;
+    }
+
+    public void setNewOrdine(Ordine newOrdine) {
+        this.newOrdine = newOrdine;
     }
 
     public TextView getTxtCategoria() {
@@ -278,4 +310,24 @@ public class AddOrderDialog extends AppCompatDialogFragment {
     public void setMaterialCameriere(MaterialCardView materialCameriere) {
         this.materialCameriere = materialCameriere;
     }
+
+    public int getIdTavolo() {
+        return idTavolo;
+    }
+
+    public void setIdTavolo(int idTavolo) {
+        this.idTavolo = idTavolo;
+    }
+
+    public String getCameriere() {
+        return cameriere;
+    }
+
+    public void setCameriere(String cameriere) {
+        this.cameriere = cameriere;
+    }
+
+
+
+
 }

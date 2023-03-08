@@ -53,5 +53,15 @@ public class OrdineController {
     public void delete(@RequestBody OrdineDTO ordineDTO) {
         ordineService.delete(ordineDTO);
     }
+
+    @GetMapping("/get-newest/tavolo/{id}")
+    public Integer getIdNewestByTavolo(@PathVariable("id") Integer id) {
+        Optional<Integer> ordine = ordineService.getNewestByTavolo(id);
+
+        if (ordine.isPresent())
+            return ordine.get();
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
+    }
     
 }

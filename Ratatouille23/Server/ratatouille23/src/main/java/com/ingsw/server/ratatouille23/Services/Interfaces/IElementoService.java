@@ -34,5 +34,6 @@ public interface IElementoService {
     public Optional<Elemento> getByCategoriaAndNome(Categoria categoria, String nome);
 
     public void addToOrdinazione(int idOrdine, int idElemento);
+
     
 }
