@@ -15,5 +15,7 @@ public interface ICategoriaService {
     public void delete(CategoriaDTO categoriaDTO);
 
     public Optional<Categoria> getByMenuAndNome(Integer idMenu, String nome);
+
+    List<Categoria> getCategoryByMenuIdOrderByAlimentAndPosition(Integer id);
     
 }

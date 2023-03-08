@@ -60,4 +60,6 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
 
     public Optional<Elemento> findByCategoriaAndNome(Categoria categoria, String nome);
 
+    List<Elemento> findByCategoryIdOrderByPrice(Integer id);
+
 }

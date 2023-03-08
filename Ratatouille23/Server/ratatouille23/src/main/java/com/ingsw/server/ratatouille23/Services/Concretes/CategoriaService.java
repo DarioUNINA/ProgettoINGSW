@@ -55,4 +55,8 @@ public class CategoriaService implements ICategoriaService {
         return categoriaRepository.findByMenuAndNome(new Menu(idMenu), nome);
     }
 
+    public List<Categoria> getCategoryByMenuIdOrderByAlimentAndPosition(Integer id) {
+        return categoriaRepository.findCategoryByMenuIdOrderByAlimentAndPosition(id);
+    }
+
 }

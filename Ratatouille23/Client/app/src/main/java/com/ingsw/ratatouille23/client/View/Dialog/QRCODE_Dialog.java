@@ -54,7 +54,6 @@ public class QRCODE_Dialog extends AppCompatDialogFragment {
         super.onStart();
         getDialog().getWindow().getAttributes().width=1270;
         getDialog().getWindow().getAttributes().height=1270;
-
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
