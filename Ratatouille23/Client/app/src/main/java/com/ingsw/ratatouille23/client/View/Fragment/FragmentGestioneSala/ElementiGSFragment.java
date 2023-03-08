@@ -41,7 +41,7 @@ public class ElementiGSFragment extends Fragment {
     private FirebaseAnalytics firebaseAnalytics;
     private FloatingActionButton addElementoOrdine, removeElementoOrdine;
     private AppCompatButton btnAnnullaRimozione, btnConfermaRimozione;
-    private TextView txtUnita, txtTotale;
+    private TextView txtUnita, txtTotale, txtIdOrdine;
     private RecyclerView elementiGSRecyclerView;
     private ElementiGSAdapter elementiGSAdapter;
     private ElementiGSAdapter.OnElementiClickListner onElementiClickListner;
@@ -100,6 +100,7 @@ public class ElementiGSFragment extends Fragment {
         txtUnita=rootView.findViewById(R.id.txtUnita);
         materialBtnElementiGs  = rootView.findViewById(R.id.materialBtnElementiGs);
         elementiGSRecyclerView = rootView.findViewById(R.id.recyclerViewElementiGS);
+        txtIdOrdine = rootView.findViewById(R.id.txtIdOrdineElementi);
 
         txtUnita.setText("0");
         txtTotale.setText("0");
@@ -295,4 +296,11 @@ public class ElementiGSFragment extends Fragment {
         this.txtTotale = txtTotale;
     }
 
+    public TextView getTxtIdOrdine() {
+        return txtIdOrdine;
+    }
+
+    public void setTxtIdOrdine(TextView txtIdOrdine) {
+        this.txtIdOrdine = txtIdOrdine;
+    }
 }

@@ -253,8 +253,14 @@ public class ElementoPresenter {
         service.create(new Callback() {
             @Override
             public void returnResult(Object o) {
-                if((boolean) o)
+                if ((boolean) o){
                     getElementiByNomeDesc(elemento.getIdCategoria());
+
+                    CategoriaPresenter categoriaPresenter = new CategoriaPresenter(((HomeActivity)elementiMenuFragment.getActivity()).getGestioneMenuFragment().getCategorieFragment());
+                    categoriaPresenter.getByMenu(((HomeActivity)elementiMenuFragment.getActivity()).getRistorante().getIdMenu());
+
+
+                }
                 else
                     System.out.println("errore");
 

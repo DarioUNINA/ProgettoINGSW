@@ -46,8 +46,8 @@ public class ElementoController {
     }
 
     @PostMapping("/add")
-    public void save(@RequestBody Elemento elemento) {
-        elementoService.save(elemento);
+    public void save(@RequestBody ElementoDTO elementoDTO) {
+        elementoService.save(elementoDTO);
     }
 
 

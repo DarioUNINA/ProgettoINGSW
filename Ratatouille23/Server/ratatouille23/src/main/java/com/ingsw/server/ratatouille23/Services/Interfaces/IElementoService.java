@@ -11,7 +11,7 @@ public interface IElementoService {
 
     public Optional <List<Elemento>> getByCategoria(Integer idCategoria);
 
-    public void save(Elemento elemento);
+    public void save(ElementoDTO elementoDTO);
 
     public Optional<List<Elemento>> getByCategoriaOrderByPrezzoAsc(Integer idCategoria);
 
