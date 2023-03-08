@@ -70,6 +70,7 @@ public class UtenteService implements IUtenteService{
 
     }
 
+    @Override
     public void delete(UtenteDTO utenteDTO) {
         Utente u = modelMapper.map(utenteDTO, Utente.class);
         Ristorante ris = new Ristorante(utenteDTO.getRistorante());

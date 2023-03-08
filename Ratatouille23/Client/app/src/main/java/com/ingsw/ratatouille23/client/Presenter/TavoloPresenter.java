@@ -6,6 +6,7 @@ import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.TavoloService;
 import com.ingsw.ratatouille23.client.View.Adapter.TavoliAdapter;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;
@@ -71,6 +72,24 @@ public class TavoloPresenter {
         else
             getByCameriere(((HomeActivity)tavoliFragment.getActivity()).getUtente().getUsername());
 
+    }
+
+    public void updateTavolo(Tavolo tavolo){
+        service.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    System.out.println("tavolo aggiornato");
+                else
+                    System.out.println("tavolo non aggiornato");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, tavolo);
     }
 
 

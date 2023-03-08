@@ -107,9 +107,11 @@ public class ElementoService implements IElementoService {
         elementoRepository.addToOrdinazione(idOrdine, idElemento);
     }
 
+
     @Override
     public List<Elemento> getByCategoryIdOrderByPrice(Integer id){
         return elementoRepository.findByCategoryIdOrderByPrice(id);
     }
+
 
 }

@@ -8,6 +8,7 @@ import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.OrdineService;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
+import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class OrdinePresenter {
     private OrdineService service;
     private OrdiniFragment ordiniFragment;
 
+    private AddOrderDialog addOrderDialog;
+
     public OrdinePresenter(){
         service = new OrdineService();
     }
@@ -24,6 +27,11 @@ public class OrdinePresenter {
     public OrdinePresenter(OrdiniFragment ordiniFragment){
         this.ordiniFragment = ordiniFragment;
         service = new OrdineService();
+    }
+
+    public OrdinePresenter(AddOrderDialog addOrderDialog){
+        this.addOrderDialog = addOrderDialog;
+        this.service = new OrdineService();
     }
 
     public void getByTavolo(int idTavolo){
@@ -44,25 +52,43 @@ public class OrdinePresenter {
         }, idTavolo);
     }
 
-    public void create(Ordine ordine){
+
+
+    public void create(){
 
         service.create(new Callback() {
             @Override
             public void returnResult(Object o) {
                 if((boolean)o)
-                    System.out.println("creato");
+                    setNewest();
                 else
-                    System.out.println("non creato");
+                    System.out.println("ordine non creato");
             }
 
             @Override
             public void returnError(Throwable e) {
 
             }
-        }, ordine);
+        }, addOrderDialog.getNewOrdine());
     }
 
+    public void setNewest(){
+        service.getIdNewestbyTavolo(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null)
+                    addOrderDialog.getNewOrdine().setIdOrdine((Integer)o);
+                else
+                    System.out.println("errore durante il retrieve dell' ordine");
 
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, addOrderDialog.getIdTavolo());
+    }
     public void delete(List<Ordine> ordine){
         for(Ordine o: ordine){
             service.delete(new Callback() {
@@ -83,6 +109,7 @@ public class OrdinePresenter {
         ordiniFragment.getBtnAnnullaRimozioneOrdine().callOnClick();
         ordiniFragment.getOrdineAdapter().getCancellaOrdini().clear();
     }
+
 
 
 }

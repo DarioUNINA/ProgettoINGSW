@@ -32,7 +32,11 @@ public class OrdineService implements IOrdineService{
     } 
 
     @Override
-    public void save(Ordine ordine){
+    public void save(OrdineDTO ordineDTO){
+        Ordine ordine = modelMapper.map(ordineDTO, Ordine.class);
+        Tavolo tavolo = new Tavolo(ordineDTO.getIdTavolo());
+        ordine.setTavolo(tavolo);
+        
         OrdineRepository.save(ordine);
     }
 
@@ -43,6 +47,11 @@ public class OrdineService implements IOrdineService{
         Tavolo tav = new Tavolo(ordineDTO.getIdTavolo());
         o.setTavolo(tav);
         OrdineRepository.delete(o);
+    }
+
+    @Override
+    public Optional<Integer> getNewestByTavolo(Integer idTavolo) {
+        return OrdineRepository.findNewestByTavolo(idTavolo);
     }
 
 }

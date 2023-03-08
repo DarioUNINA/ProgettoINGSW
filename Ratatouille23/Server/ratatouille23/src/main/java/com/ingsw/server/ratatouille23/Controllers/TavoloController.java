@@ -13,6 +13,7 @@ import com.ingsw.server.ratatouille23.Models.DTO.TavoloDTO;
 import java.util.ArrayList;
 import com.ingsw.server.ratatouille23.Models.Entities.Ristorante;
 import java.util.List;
+import com.ingsw.server.ratatouille23.Models.Entities.Utente;
 
 
 
@@ -73,7 +74,10 @@ public class TavoloController {
 
     @PutMapping("/update")
     public void update(@RequestBody TavoloDTO tavoloDTO) {
-        TavoloService.update(modelMapper.map(tavoloDTO, Tavolo.class));
+        Tavolo tavolo = modelMapper.map(tavoloDTO, Tavolo.class);
+        Utente utente = new Utente(tavoloDTO.getCameriere());
+        tavolo.setCameriere(utente);
+        TavoloService.update(tavolo);
     }
 
 

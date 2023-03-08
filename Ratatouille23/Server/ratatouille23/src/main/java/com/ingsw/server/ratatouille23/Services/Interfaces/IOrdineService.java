@@ -9,8 +9,9 @@ import java.util.List;
 public interface IOrdineService {
     public Optional<List<Ordine>> getByTavolo(Integer idTavolo);
 
-    public void save(Ordine ordine);
+    public void save(OrdineDTO ordineDTO);
 
+    public Optional<Integer> getNewestByTavolo(Integer idTavolo);
 
     public void delete(OrdineDTO ordineDTO);
     

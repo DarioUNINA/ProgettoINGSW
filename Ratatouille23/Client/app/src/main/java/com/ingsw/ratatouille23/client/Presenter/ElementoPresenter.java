@@ -32,6 +32,7 @@ public class ElementoPresenter {
     private AddElementoOrdineDialog addElementoOrdineDialog;
 
     private AddOrderDialog addOrderDialog;
+
     public ElementoPresenter(){
         service = new ElementoService();
     }
@@ -282,6 +283,17 @@ public class ElementoPresenter {
             public void returnResult(Object o) {
                 TavoloPresenter tavoloPresenter = new TavoloPresenter(((HomeActivity)fragment.getActivity()).getGestioneSala().getTavoliFragment());
                 tavoloPresenter.getTavoli();
+
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getOrdineAdapter().setOrdini(new ArrayList<Ordine>());
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().setTavoloSelected(null);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getIdTavolo().setText("");
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getOrdiniFragment().getNomeCameriere().setText("");
+
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().setOrdineSelected(null);
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtUnita().setText("");
+                ((HomeActivity)fragment.getActivity()).getGestioneSala().getElementiGSFragment().getTxtTotale().setText("");
+
             }
 
             @Override
@@ -290,7 +302,29 @@ public class ElementoPresenter {
             }
         }, idMenu, nomeCategoria, nomeElemento, idOrdine);
 
+    }
 
+    public void addToOrdinazione(int idMenu, String nomeCategoria, String nomeElemento, int idOrdine){
+
+        service.addToOrdinazione(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if((boolean) o)
+                    System.out.println("elemento aggiunto");
+                else
+                    System.out.println("elemento non aggiunto");
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, idMenu, nomeCategoria, nomeElemento, idOrdine);
+
+    }
+
+    public void addToNewOrdinazione(){
 
     }
 

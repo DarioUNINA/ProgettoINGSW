@@ -1,7 +1,6 @@
+-Rimuovere o modificare ordini vuoti
+
 -Implementare Creazione ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
-
-
-
 -Implementare statistiche

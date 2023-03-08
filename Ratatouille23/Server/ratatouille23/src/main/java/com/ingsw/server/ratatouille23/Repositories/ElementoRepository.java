@@ -50,7 +50,7 @@ public interface ElementoRepository extends CrudRepository<Elemento, Integer> {
 
     @Modifying(clearAutomatically = true)
     @Transactional
-    @Query(value = "delete from ordinazione where id_ordine =:idOrdine and id_elemento = :idElemento", nativeQuery = true)
+    @Query(value = "delete from ordinazione where (id_ordine =:idOrdine and id_elemento = :idElemento)", nativeQuery = true)
     public void deleteFromOrdinazione(@Param(value="idOrdine")int idOrdine, @Param(value="idElemento")int idElemento);
 
     @Modifying(clearAutomatically = true)

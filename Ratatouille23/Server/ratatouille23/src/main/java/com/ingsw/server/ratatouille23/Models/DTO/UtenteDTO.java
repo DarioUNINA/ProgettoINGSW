@@ -27,6 +27,10 @@ public class UtenteDTO {
         this.ristorante = ristorante;
     }
 
+    public UtenteDTO(String username){
+        this.username = username;
+    }
+
     
     //Getters and Setters
     public String getUsername() {

@@ -91,14 +91,8 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
-                ArrayList<Elemento> verificaElementoGiaPresente = new ArrayList<Elemento>();
-                for (Elemento e: elementiGSFragment.getElementiGSAdapter().getElementi()) {
-                    verificaElementoGiaPresente.add(e);
-
-                }
-
-                for(int i = 0; i< verificaElementoGiaPresente.size(); i++){
-                    if(verificaElementoGiaPresente.get(i).getNome().compareTo(txtNuovoElementoOrdine.getText().toString()) == 0){
+                for (Elemento e: elementiGSFragment.getElementiGSAdapter().getElementi()){
+                    if(e.getNome().compareTo(txtNuovoElementoOrdine.getText().toString()) == 0){
                         new androidx.appcompat.app.AlertDialog.Builder(getActivity())
                                 .setTitle("Aggiunta elemento errata")
                                 .setMessage("E' stato inserito un elemento gia presente all'ordine, modificare la quantità!")
