@@ -7,6 +7,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,10 +19,12 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.ingsw.ratatouille23.client.Model.Categoria;
+import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.CategoriaPresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
+import com.ingsw.ratatouille23.client.View.Activity.LogInActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import java.util.ArrayList;
 
@@ -86,6 +90,26 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
         btnNewElementOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ArrayList<Elemento> prova = new ArrayList<Elemento>();
+                prova = ((HomeActivity)getActivity()).getGestioneMenuFragment().getElementiMenuFragment().getElementiGMAdapter().getElementi();
+
+                for(int i = 0; i< prova.size(); i++){
+                    if(prova.get(i).getNome().equals(txtNuovoElementoOrdine)){
+                        new androidx.appcompat.app.AlertDialog.Builder(getActivity())
+                                .setTitle("Aggiunta elemento errata")
+                                .setMessage("E' stato inserito un elemento gia presente all'ordine, modificare la quantità!")
+                                .setNegativeButton(android.R.string.no, null)
+                                .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                        getDialog().dismiss();
+                                    }
+                                }).create().show();
+                    }
+                }
+
 
                 ElementoPresenter presenter = new ElementoPresenter();
                 presenter.addToOrdinazione(((HomeActivity)getActivity()).getRistorante().getIdMenu(),
