@@ -110,71 +110,67 @@ insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
 
 
 --Ordinazione
-insert into ordinazione(id_ordine, id_elemento) values (1, 8);
-insert into ordinazione(id_ordine, id_elemento) values (1, 7);
-insert into ordinazione(id_ordine, id_elemento) values (1, 4);
-insert into ordinazione(id_ordine, id_elemento) values (3, 5);
-insert into ordinazione(id_ordine, id_elemento) values (2, 2);
-insert into ordinazione(id_ordine, id_elemento) values (4, 22);
-insert into ordinazione(id_ordine, id_elemento) values (5, 1);
-insert into ordinazione(id_ordine, id_elemento) values (6, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 8, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 7, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 4, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (3, 5, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (2, 2, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (4, 22, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (5, 1, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (6, 3, 4);
 
-insert into ordinazione(id_ordine, id_elemento) values (1, 11);
-insert into ordinazione(id_ordine, id_elemento) values (1, 19);
-insert into ordinazione(id_ordine, id_elemento) values (1, 24);
-insert into ordinazione(id_ordine, id_elemento) values (3, 7);
-insert into ordinazione(id_ordine, id_elemento) values (2, 17);
-insert into ordinazione(id_ordine, id_elemento) values (4, 15);
-insert into ordinazione(id_ordine, id_elemento) values (5, 1);
-insert into ordinazione(id_ordine, id_elemento) values (6, 9);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 11, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 19, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 24, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (3, 7, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (2, 17, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (4, 15, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (5, 1, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (6, 9, 1);
 
-insert into ordinazione(id_ordine, id_elemento) values (1, 17);
-insert into ordinazione(id_ordine, id_elemento) values (6, 29);
-insert into ordinazione(id_ordine, id_elemento) values (17, 1);
-insert into ordinazione(id_ordine, id_elemento) values (17, 26);
-insert into ordinazione(id_ordine, id_elemento) values (2, 18);
-insert into ordinazione(id_ordine, id_elemento) values (17, 28);
-insert into ordinazione(id_ordine, id_elemento) values (5, 6);
-insert into ordinazione(id_ordine, id_elemento) values (17, 11);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 17, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (6, 29, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (17, 1, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (17, 26, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (2, 18, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (17, 28, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (5, 6, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (17, 11, 1);
 
-insert into ordinazione(id_ordine, id_elemento) values (1, 2);
-insert into ordinazione(id_ordine, id_elemento) values (1, 15);
-insert into ordinazione(id_ordine, id_elemento) values (1, 3);
-insert into ordinazione(id_ordine, id_elemento) values (3, 16);
-insert into ordinazione(id_ordine, id_elemento) values (7, 2);
-insert into ordinazione(id_ordine, id_elemento) values (4, 6);
-insert into ordinazione(id_ordine, id_elemento) values (18, 1);
-insert into ordinazione(id_ordine, id_elemento) values (6, 10);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 2, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 15, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (1, 3, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (3, 16, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (7, 2, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (4, 6, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (18, 1, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (6, 10, 1);
 
+insert into ordinazione(id_ordine, id_elemento, quantita) values (8, 5, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (8, 2, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (9, 22, 4);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (9, 1, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (9, 3, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (16, 11, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (10, 19, 1);
 
-insert into ordinazione(id_ordine, id_elemento) values (1, 8);
-insert into ordinazione(id_ordine, id_elemento) values (1, 7);
-insert into ordinazione(id_ordine, id_elemento) values (1, 4);
-insert into ordinazione(id_ordine, id_elemento) values (8, 5);
-insert into ordinazione(id_ordine, id_elemento) values (8, 2);
-insert into ordinazione(id_ordine, id_elemento) values (9, 22);
-insert into ordinazione(id_ordine, id_elemento) values (9, 1);
-insert into ordinazione(id_ordine, id_elemento) values (9, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (20, 24, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (11, 7, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (11, 17, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (11, 15, 3);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (13, 1, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (13, 9, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (14, 17, 1);
 
-insert into ordinazione(id_ordine, id_elemento) values (16, 11);
-insert into ordinazione(id_ordine, id_elemento) values (10, 19);
-insert into ordinazione(id_ordine, id_elemento) values (20, 24);
-insert into ordinazione(id_ordine, id_elemento) values (11, 7);
-insert into ordinazione(id_ordine, id_elemento) values (11, 17);
-insert into ordinazione(id_ordine, id_elemento) values (11, 15);
-insert into ordinazione(id_ordine, id_elemento) values (13, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (19, 29, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (21, 1, 1);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (21, 26, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (12, 18, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (15, 28, 5);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (12, 6, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (15, 11, 1);
 
-insert into ordinazione(id_ordine, id_elemento) values (13, 9);
-insert into ordinazione(id_ordine, id_elemento) values (14, 17);
-insert into ordinazione(id_ordine, id_elemento) values (19, 29);
-insert into ordinazione(id_ordine, id_elemento) values (21, 1);
-insert into ordinazione(id_ordine, id_elemento) values (21, 26);
-insert into ordinazione(id_ordine, id_elemento) values (12, 18);
-insert into ordinazione(id_ordine, id_elemento) values (15, 28);
-insert into ordinazione(id_ordine, id_elemento) values (12, 6);
-insert into ordinazione(id_ordine, id_elemento) values (15, 11);
-
-insert into ordinazione(id_ordine, id_elemento) values (12, 2);
+insert into ordinazione(id_ordine, id_elemento, quantita) values (12, 2, 1);
 
 
 

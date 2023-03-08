@@ -160,7 +160,8 @@ DROP TABLE IF EXISTS ordinazione;
 CREATE TABLE IF NOT EXISTS public.ordinazione
 (
     id_ordine integer NOT NULL,
-    id_elemento integer NOT NULL
+    id_elemento integer NOT NULL,
+    quantita integer not null,
 )
 
 TABLESPACE pg_default;
