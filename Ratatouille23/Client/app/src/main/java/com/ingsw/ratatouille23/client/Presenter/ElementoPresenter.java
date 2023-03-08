@@ -15,6 +15,7 @@ import com.ingsw.ratatouille23.client.View.Dialog.AddElementoOrdineDialog;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneMenu.ElementiMenuFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -268,12 +269,13 @@ public class ElementoPresenter {
         getElementiByNomeDesc(elemento.getIdCategoria());
     }
 
-    public void addToOrdinazione(int idMenu, String nomeCategoria, String nomeElemento, int idOrdine){
+    public void addToOrdinazione(int idMenu, String nomeCategoria, String nomeElemento, int idOrdine, ElementiGSFragment fragment){
 
         service.addToOrdinazione(new Callback() {
             @Override
             public void returnResult(Object o) {
-
+                TavoloPresenter tavoloPresenter = new TavoloPresenter(((HomeActivity)fragment.getActivity()).getGestioneSala().getTavoliFragment());
+                tavoloPresenter.getTavoli();
             }
 
             @Override

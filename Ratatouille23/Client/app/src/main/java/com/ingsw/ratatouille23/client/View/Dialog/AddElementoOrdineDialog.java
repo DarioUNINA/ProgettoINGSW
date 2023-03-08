@@ -115,7 +115,8 @@ public class AddElementoOrdineDialog extends AppCompatDialogFragment {
                 presenter.addToOrdinazione(((HomeActivity)getActivity()).getRistorante().getIdMenu(),
                         txtNuovaCategoria.getText().toString(),
                         txtNuovoElementoOrdine.getText().toString(),
-                        elementiGSFragment.getOrdineSelected().getIdOrdine());
+                        elementiGSFragment.getOrdineSelected().getIdOrdine(),
+                        elementiGSFragment);
                 getDialog().dismiss();
 
             }
