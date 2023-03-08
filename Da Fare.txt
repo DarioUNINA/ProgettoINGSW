@@ -1,7 +1,6 @@
 -Decidere come gestire le creazioni per gli update delle liste
 
 -Fixare creazione elemento (non fa nulla) ( VERIFICARE ID CATEGORIA)
--Quando viene aggiunto un elemento a un ordine dove gia' c' e', dialog di errore (bisogna passare il dialog al presenter e gestirlo quando viene returnato false) ADDELEMENTO MENU DIALOG DA FINIRE
 
 -Implementare rimozione elementi
 -Implementare statistiche

@@ -91,14 +91,15 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
                         ElementoPresenter newElementPresenter = new ElementoPresenter(elementiMenuFragment);
                         Elemento newElement = new Elemento();
+
                         newElement.setNome(txtNomeElemento.getText().toString());
                         newElement.setDescrizione(txtDescrizioneElemento.getText().toString());
                         newElement.setPrezzo(Float.parseFloat(txtPrezzo.getText().toString()));
-                        newElement.setIdCategoria(elementiMenuFragment.getCategoriaSelected().getIdCategoria());
-                        System.out.println(newElement.getIdCategoria() + ", " +newElement.getNome() + ", " + newElement.getDescrizione() + ", " + newElement.getPrezzo());
-
-                        newElement.setAllergeni(allergeni);
-                        newElementPresenter.create(newElement);
+//                        newElement.setIdCategoria(elementiMenuFragment.getCategoriaSelected().getIdCategoria());
+                        System.out.println( newElement.getNome() + ", " + newElement.getDescrizione() + ", " + newElement.getPrezzo());
+//
+//                        newElement.setAllergeni(allergeni);
+//                        newElementPresenter.create(newElement);
 
                         getDialog().dismiss();
 
