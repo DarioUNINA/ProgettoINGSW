@@ -99,6 +99,9 @@ public class AddOrderDialog extends AppCompatDialogFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(new ArrayList<Elemento>(), getContext(), getOnElementiClickListner(), AddOrderDialog.this);
+        recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
+        recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
 
         CategoriaPresenter categoriaPresenter = new CategoriaPresenter(AddOrderDialog.this);
         categoriaPresenter.getAllSpinnerNuovoOrdine(((HomeActivity)getActivity()).getRistorante().getIdMenu());
@@ -136,16 +139,19 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                         if(flag) {
                             elementiNuovi.add(elemento);
                             elementoPresenter.addToOrdinazione(((HomeActivity) getActivity()).getRistorante().getIdMenu(), spinnerCategoriaOrdine.getSelectedItem().toString(), spinnerElementoOrdine.getSelectedItem().toString(), newOrdine.getIdOrdine());
+                            elementiNuovoOrdineAdapter.getElementi().add(elemento);
+                            elementiNuovoOrdineAdapter.notifyDataSetChanged();
                         }
 
 
                     }
                 }
 
-                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this);
-                recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
-                recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
-                elementiNuovoOrdineAdapter.notifyDataSetChanged();
+//                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this);
+//                recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
+//                recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
+//                elementiNuovoOrdineAdapter.getElementi().add(elementiNuovi.get(elementiNuovi.size()-1));
+//                elementiNuovoOrdineAdapter.notifyDataSetChanged();
 
 
             }
@@ -194,8 +200,6 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                 ordiniFragment.getOrdineAdapter().setOrdini(new ArrayList<>(), false);
 
                 ElementiGSFragment elementiGSFragment = ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment();
-//                elementiGSFragment.getTxtTotale().setText("0");
-//                elementiGSFragment.getTxtUnita().setText("0");
                 elementiGSFragment.getTxtIdOrdine().setText("");
                 elementiGSFragment.getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
 

@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuovoOrdineAdapter.ElementiHolder> {
 
-    private ArrayList<Elemento> elementi;
+    private ArrayList<Elemento> elementi = new ArrayList<Elemento>();
     private Context context;
     private ElementiNuovoOrdineAdapter.OnElementiClickListner onElementiClickListner;
 
@@ -114,5 +114,9 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
         this.elementi.clear();
         this.elementi.addAll(elementi);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<Elemento> getElementi(){
+        return this.elementi;
     }
 }
