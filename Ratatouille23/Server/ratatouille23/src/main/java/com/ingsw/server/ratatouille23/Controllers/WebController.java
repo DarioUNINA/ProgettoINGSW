@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +39,19 @@ public class WebController {
     public String getById(@RequestParam(name = "id") Integer id, Model model){
         List<Categoria> categoryList = categoriaService.getCategoryByMenuIdOrderByAlimentAndPosition(id);
         List<Elemento> elementListTotal = new ArrayList<>();
-
         model.addAttribute("categories",categoryList);
 
-//        for (Categoria categoria: categoryList) {
-//            List<Elemento> elementList = elementoService.getByCategoria(categoria.getIdCategoria());
-//            elementListTotal.addAll(elementList);
-//        }
+        for (Categoria categoria: categoryList) {
+            List<Elemento> elementList = elementoService.getByCategoria(categoria.getIdCategoria()).get();
+            elementListTotal.addAll(elementList);
+        }
+
+        for (Elemento e: elementListTotal) {
+            System.out.println(e.getNome());
+        }
+        for (Categoria c: categoryList) {
+            System.out.println(c.getNome());
+        }
 
         model.addAttribute("elements",elementListTotal);
 

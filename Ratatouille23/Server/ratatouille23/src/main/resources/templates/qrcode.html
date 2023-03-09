@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
-  <title>QrCode</title>
+  <title>qrcode</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,36 +110,39 @@
 
 <table>
   <tbody>
-  <div class="w3-container" th:each="categoria: ${categoria}">
+  <div class="w3-container" th:each="categoria: ${categories}">
     <h2 style="text-align: center">
       <div class="category_tag" th:text="${categoria.nome}"></div>
     </h2>
     <ul>
-      <div th:each="elemento : ${elemento}">
+      <div th:each="element: ${elements}">
         <h3>
-          <p th:if="${categoria.id_categoria} == ${elemento.categoria.id_categoria}" style="text-align: center">
-            <span class="element_tag" th:text="${elemento.nome}"/>
+          <p th:if="${categoria.idCategoria} == ${element.categoria.idCategoria}" style="text-align: center">
+            <span class="element_tag" th:text="${element.nome}"/>
             <span class="euro_symbol" th:text="&#8364"/>
-            <span class="price_tag" th:text="${elemento.prezzo}" />
-            <span class="element_translate_tag" th:text="${elemento.translateName}"/>
+            <span class="price_tag" th:text="${element.prezzo}" />
+<!--            <span class="element_translate_tag" th:text="${element.translateName}"/>-->
+
           </p>
         </h3>
-        <h4 if="${categoria.id_categoria} == ${elemento.categoria.id_categoria}">
-          <span class="description_tag" th:text="${elemento.descrizione}"/>
-          <span class="description_translate_tag" th:text="${elemento.translateDescription}" />
+        <h4 th:if="${categoria.idCategoria} == ${element.categoria.idCategoria}">
 
-          <div th:if="${elemento.allergenList.size() > 0}">
+          <span class="description_tag" th:text="${element.descrizione}"/>
+<!--          <span class="description_translate_tag" th:text="${element.translateDescription}" />-->
+
+          <div th:if="${element.allergeni.size() > 0}">
             <p style="margin-bottom: 0; font-family: 'Antonio', sans-serif; font-size: 25px" > Allergeni
-            <div th:each="allergen: ${elemento.getAllergenList()}">
-              <span class="allergen_tag" th:text="${elemento.getNome()}"/>
+            <div th:each="allergen: ${element.allergeni}">
+              <span class="allergen_tag" th:text="${allergen.nome}"/>
             </div>
             </p>
           </div>
         </h4>
-        <th />
 
       </div>
-    </ul>
+
+    </div>
+  </ul>
   </div>
   </tbody>
 </table>
