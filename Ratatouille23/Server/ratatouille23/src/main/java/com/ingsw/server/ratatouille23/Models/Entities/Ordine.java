@@ -2,6 +2,8 @@ package com.ingsw.server.ratatouille23.Models.Entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+
+import java.sql.Date;
 import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -28,6 +30,10 @@ public class Ordine {
     @JoinColumn(name="id_tavolo", referencedColumnName = "id_tavolo")
     @JsonManagedReference
     private Tavolo tavolo;
+
+    //Attributes
+    @Column(name="data")
+    private Date data;
 
 
     //Constructors

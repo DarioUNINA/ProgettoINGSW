@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS public.ordine
 (
     id_ordine integer NOT NULL,
     id_tavolo integer NOT NULL,
+    data date NOT NULL,
     CONSTRAINT ordine_pkey PRIMARY KEY (id_ordine)
 )
 
