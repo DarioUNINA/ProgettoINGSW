@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.util.List;
+
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -33,6 +35,7 @@ public class Ordine {
 
     //Attributes
     @Column(name="data")
+    @ColumnDefault("CURRENT_DATE")
     private Date data;
 
 
@@ -79,6 +82,14 @@ public class Ordine {
 
     public void setTavolo(Tavolo tavolo) {
         this.tavolo = tavolo;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
 

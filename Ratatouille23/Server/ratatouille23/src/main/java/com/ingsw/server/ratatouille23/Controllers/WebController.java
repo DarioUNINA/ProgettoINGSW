@@ -2,7 +2,6 @@ package com.ingsw.server.ratatouille23.Controllers;
 
 import com.ingsw.server.ratatouille23.Models.Entities.Categoria;
 import com.ingsw.server.ratatouille23.Models.Entities.Elemento;
-import com.ingsw.server.ratatouille23.Models.Entities.Allergene;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IAllergeneService;
 import com.ingsw.server.ratatouille23.Services.Interfaces.ICategoriaService;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IElementoService;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;

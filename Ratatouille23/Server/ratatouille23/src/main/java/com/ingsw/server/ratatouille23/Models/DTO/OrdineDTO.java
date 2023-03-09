@@ -11,6 +11,9 @@ public class OrdineDTO {
     private Integer idTavolo;
     private List<ElementoDTO> elementi;
 
+    //Attributes
+    private String data;
+
 
     //Constructors
     public OrdineDTO() {
@@ -54,6 +57,14 @@ public class OrdineDTO {
 
     public void setElementi(List<ElementoDTO> elementi) {
         this.elementi = elementi;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
 }

@@ -22,15 +22,20 @@ public class Ordine implements Serializable {
     @SerializedName("elementi")
     private List<Elemento> elementi;
 
+    @Expose
+    @SerializedName("data")
+    private String data;
+
 
 
     //Constructors
     public Ordine(){}
 
-    public Ordine(int idOrdine, int idTavolo, List<Elemento> elementi) {
+    public Ordine(int idOrdine, int idTavolo, List<Elemento> elementi, String data) {
         this.idOrdine = idOrdine;
         this.idTavolo = idTavolo;
         this.elementi = elementi;
+        this.data = data;
     }
 
 
@@ -59,5 +64,13 @@ public class Ordine implements Serializable {
 
     public void setElementi(List<Elemento> elementi) {
         this.elementi = elementi;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

@@ -38,6 +38,8 @@ import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniF
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class AddOrderDialog extends AppCompatDialogFragment {
 
@@ -93,6 +95,10 @@ public class AddOrderDialog extends AppCompatDialogFragment {
 
 
         newOrdine.setIdTavolo(idTavolo);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+        newOrdine.setData(dtf.format(now));
         ordinePresenter.create();
 
 
@@ -147,12 +153,6 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                     }
                 }
 
-//                elementiNuovoOrdineAdapter =  new ElementiNuovoOrdineAdapter(elementiNuovi, getContext(), getOnElementiClickListner(), AddOrderDialog.this);
-//                recyclerViewNuovoOrdine.setLayoutManager(linearLayoutManager);
-//                recyclerViewNuovoOrdine.setAdapter(elementiNuovoOrdineAdapter);
-//                elementiNuovoOrdineAdapter.getElementi().add(elementiNuovi.get(elementiNuovi.size()-1));
-//                elementiNuovoOrdineAdapter.notifyDataSetChanged();
-
 
             }
 
@@ -206,6 +206,8 @@ public class AddOrderDialog extends AppCompatDialogFragment {
                 getDialog().dismiss();
             }
         });
+
+
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .show();

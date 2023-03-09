@@ -1,9 +1,6 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
-import com.ingsw.server.ratatouille23.Models.DTO.AllergeneDTO;
-import com.ingsw.server.ratatouille23.Models.Entities.Allergene;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
