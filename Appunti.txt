@@ -1,31 +1,9 @@
---Funzionalita' da implementare--
+Query asse y: 
+select count(*) from (ordine o join ordinazione ord on o.id_ordine = ord.id_ordine) join tavolo t on t.id_tavolo = o.id_tavolo 
+where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)
+group by data
 
-1)Crea Utenti
-2)Elimina Utenti
-3)Visualizza Statistiche Camerieri
-4)Visualizza Ordini
-5)Visualizza tavoli
-6)Crea Ordine
-7)Cambio Pwd al primo accesso (no admin)
-8)Opzioni utente
-9)Modificare dettagli ristorante
-10)Modificare menu (ordine, elementi, categorie)
-11)Autocompletamento dei prodotti (?)
-12)Stampare QR menu
-
-
--Admin: 1,2,3,4,5,8,9,10,11,12
--Supervisor: 3,4,5,7,8
--Cameriere: 3,4,5,6,7,8
--Cuoco: 7,8
-
-
---Schermate da implementare--
-1)Opzioni Utente: tutti
-2)Opzioni Ristorante: Admin
-3)Gesitione Personale: Supervisore, Admin
-4)Cucina: cuoco
-5)Gestione Tavoli (+ Ordini): cameriere, supervisore, admin
-6)Menu: supervisore, admin
-
-Colore Secondario: 79C4FF
+Query asse x:
+select data
+from ordine o join tavolo t on t.id_tavolo = o.id_tavolo
+where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)

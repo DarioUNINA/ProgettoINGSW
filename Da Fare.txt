@@ -1,7 +1,6 @@
 -Rimuovere o modificare ordini vuoti
--Fixare quantita in creazione ordine
--Aggiornare riferimento agli ordini nel  tavolo quando si eliminano uno o piu' ordini
+-Fixare date nel popolamento
+-Aggiungere logica a gestionePersonaleFragment (i fragment non sono attaccati al fragment generale)
 
--Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
 -Implementare statistiche
