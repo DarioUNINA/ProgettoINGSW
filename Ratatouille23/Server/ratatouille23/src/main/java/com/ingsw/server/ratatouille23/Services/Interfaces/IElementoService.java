@@ -35,5 +35,7 @@ public interface IElementoService {
 
     public void addToOrdinazione(int idOrdine, int idElemento);
 
-    
+
+    List<Elemento> getByCategoryIdOrderByPrice(Integer id);
+
 }

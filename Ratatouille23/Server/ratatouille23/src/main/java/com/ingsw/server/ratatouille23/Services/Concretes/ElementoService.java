@@ -108,4 +108,10 @@ public class ElementoService implements IElementoService {
     }
 
 
+    @Override
+    public List<Elemento> getByCategoryIdOrderByPrice(Integer id){
+        return elementoRepository.findByCategoryIdOrderByPrice(id);
+    }
+
+
 }

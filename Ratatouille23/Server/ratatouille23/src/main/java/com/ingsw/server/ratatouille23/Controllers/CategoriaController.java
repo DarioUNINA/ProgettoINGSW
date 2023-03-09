@@ -1,6 +1,7 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -59,4 +60,30 @@ public class CategoriaController {
     public void delete(@RequestBody CategoriaDTO categoriaDTO) {
         categoriaService.delete(categoriaDTO);
     }
+
+
+    @GetMapping("get/{id}/order")
+    public List<CategoriaDTO> getCategoryByMenuIdOrderByAlimentAndPosition(@PathVariable Integer id){
+        List<Categoria> categoryList = categoriaService.getCategoryByMenuIdOrderByAlimentAndPosition(id);
+
+        List<CategoriaDTO> categoryDTO = new ArrayList<>();
+        for (Categoria category: categoryList) {
+            categoryDTO.add(convertDTO(category));
+        }
+
+        return  categoryDTO;
+    }
+
+    private CategoriaDTO convertDTO(Categoria category) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        CategoriaDTO categoryDTO = new CategoriaDTO();
+        categoryDTO = modelMapper.map(category, CategoriaDTO.class);
+
+        Integer menu_id = category.getMenu().getIdMenu();
+        categoryDTO.setIdMenu(menu_id);
+
+        return categoryDTO;
+    }
+
 }

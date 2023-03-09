@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>QrCode</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+
+  <style>
+
+    h1{
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: 96px;
+      font-family: 'Bebas Neue', cursive;
+    }
+
+    h2{
+      font-size: xx-large;
+      text-transform: uppercase;
+      padding-top: 25px;
+      font-size: 50px;
+      color: red;
+      font-family: 'Bebas Neue', cursive;
+      text-align: center;
+    }
+
+    h4{
+      padding-bottom: 40px;
+      text-align: center;
+    }
+
+    .element_tag{
+      text-transform: capitalize;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .element_translate_tag{
+      text-transform: capitalize;
+      font-family: 'Bebas Neue', cursive;
+      font-weight: lighter;
+      font-style: italic;
+      font-size: 30px;
+      display: block;
+      text-align: center;
+    }
+
+    .price_tag{
+      font-weight: lighter;
+      align-content: end;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .euro_symbol{
+      padding-left: 15px;
+      font-weight: lighter;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .description_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-family: 'Antonio', sans-serif;
+      display: block;
+      font-size: 25px;
+      padding-bottom: 5px;
+      text-align: center;
+    }
+
+    .description_translate_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+      font-family: 'Antonio', sans-serif;
+      display: block;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .allergen_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+      display: block;
+      font-family: 'Antonio', sans-serif;
+      font-size: 20px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<h1> Menu </h1>
+
+<table>
+  <tbody>
+  <div class="w3-container" th:each="categoria: ${categoria}">
+    <h2 style="text-align: center">
+      <div class="category_tag" th:text="${categoria.nome}"></div>
+    </h2>
+    <ul>
+      <div th:each="elemento : ${elemento}">
+        <h3>
+          <p th:if="${categoria.id_categoria} == ${elemento.categoria.id_categoria}" style="text-align: center">
+            <span class="element_tag" th:text="${elemento.nome}"/>
+            <span class="euro_symbol" th:text="&#8364"/>
+            <span class="price_tag" th:text="${elemento.prezzo}" />
+            <span class="element_translate_tag" th:text="${elemento.translateName}"/>
+          </p>
+        </h3>
+        <h4 if="${categoria.id_categoria} == ${elemento.categoria.id_categoria}">
+          <span class="description_tag" th:text="${elemento.descrizione}"/>
+          <span class="description_translate_tag" th:text="${elemento.translateDescription}" />
+
+          <div th:if="${elemento.allergenList.size() > 0}">
+            <p style="margin-bottom: 0; font-family: 'Antonio', sans-serif; font-size: 25px" > Allergeni
+            <div th:each="allergen: ${elemento.getAllergenList()}">
+              <span class="allergen_tag" th:text="${elemento.getNome()}"/>
+            </div>
+            </p>
+          </div>
+        </h4>
+        <th />
+
+      </div>
+    </ul>
+  </div>
+  </tbody>
+</table>
+
+</body>
+
+</html>

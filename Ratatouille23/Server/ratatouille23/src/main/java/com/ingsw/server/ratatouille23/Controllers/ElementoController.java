@@ -1,6 +1,9 @@
 package com.ingsw.server.ratatouille23.Controllers;
 
+import com.ingsw.server.ratatouille23.Models.DTO.AllergeneDTO;
+import com.ingsw.server.ratatouille23.Models.Entities.Allergene;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -173,5 +176,85 @@ public class ElementoController {
         elementoService.addToOrdinazione(idOrdine, elemento.getIdElemento());
     }
 
+
+
+    //COPIATA
+//    @GetMapping("/get/{id}/order")
+//    public List<ElementoDTO> getElementByMenuId(@PathVariable Integer id){
+//        List<Elemento> elementList = elementoService.getByCategoryIdOrderByPrice(id);
+//
+//        List<Elemento> elementDTOS = new ArrayList<>();
+//        for (Elemento element: elementList) {
+//            elementDTOS.add(convertDTO(element));
+//        }
+//
+//        return elementDTOS;
+//    }
+//
+//    private ElementoDTO convertDTO(Elemento element) {
+//        modelMapper.getConfiguration()
+//                .setMatchingStrategy(MatchingStrategies.LOOSE);
+//        ElementoDTO elementDTO = new ElementoDTO();
+//        elementDTO = modelMapper.map(element, ElementoDTO.class);
+//
+//        Integer category_id = element.getCategoria().getIdCategoria();
+//        elementDTO.setIdCategoria(category_id);
+//
+//        List<AllergeneDTO> allergenDTOS = new ArrayList<>();
+//
+////        if(element.get() != null){
+////            for (Allergen allergen:element.getAllergenList()) {
+////                allergenDTOS.add(convertAllergenDTO(allergen));
+////            }
+////        }
+////
+////        elementDTO.setAllergens(allergenDTOS);
+//
+//        return elementDTO;
+//    }
+//
+//    private Elemento convertEntity(ElementoDTO elementDTO) {
+//        modelMapper.getConfiguration()
+//                .setMatchingStrategy(MatchingStrategies.LOOSE);
+//        Elemento element = new Elemento();
+//        element = modelMapper.map(elementDTO, Elemento.class);
+//
+//        //Mapping
+//        Integer id = elementDTO.getIdCategoria();
+//        Optional<Categoria> categoryOptional = this.categoriaService.getById(id);
+//
+//        List<Allergene> allergenList = new ArrayList<>();
+//
+////        if(elementDTO.getallergeni() != null){
+////            for (AllergeneDTO allergenDTO : elementDTO.getallergeni()) {
+////                allergenList.add(convertAllergenEntity(allergenDTO));
+////            }
+////        }
+//
+//        if(!categoryOptional.isEmpty()){
+//            element.setCategoria(categoryOptional.get());
+//        }
+//        element.setAllergeni(allergenList);
+//
+//        return element;
+//    }
+//
+//    private Allergene convertAllergenEntity(AllergeneDTO allergenDTO) {
+//        modelMapper.getConfiguration()
+//                .setMatchingStrategy(MatchingStrategies.LOOSE);
+//        Allergene allergen = new Allergene();
+//        allergen = modelMapper.map(allergenDTO, Allergene.class);
+//
+//        return allergen;
+//    }
+//
+//    private AllergeneDTO convertAllergenDTO(Allergene allergen) {
+//        modelMapper.getConfiguration()
+//                .setMatchingStrategy(MatchingStrategies.LOOSE);
+//        AllergeneDTO allergenDTO = new AllergeneDTO();
+//        allergenDTO = modelMapper.map(allergen, AllergeneDTO.class);
+//
+//        return allergenDTO;
+//    }
 
 }
