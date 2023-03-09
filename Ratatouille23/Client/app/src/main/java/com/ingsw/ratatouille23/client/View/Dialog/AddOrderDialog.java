@@ -35,6 +35,7 @@ import com.ingsw.ratatouille23.client.View.Adapter.ElementiGSAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiNuovoOrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.TavoliFragment;
 
 import java.util.ArrayList;
 
@@ -184,7 +185,20 @@ public class AddOrderDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
-                //aggiorna la gui, riprendi i tavoli
+                TavoloPresenter tavoloPresenter = new TavoloPresenter(((HomeActivity)getActivity()).getGestioneSala().getTavoliFragment());
+                tavoloPresenter.getTavoli();
+
+                ordiniFragment.setTavoloSelected(null);
+                ordiniFragment.getNomeCameriere().setText("");
+                ordiniFragment.getIdTavolo().setText("");
+                ordiniFragment.getOrdineAdapter().setOrdini(new ArrayList<>(), false);
+
+                ElementiGSFragment elementiGSFragment = ((HomeActivity)getActivity()).getGestioneSala().getElementiGSFragment();
+//                elementiGSFragment.getTxtTotale().setText("0");
+//                elementiGSFragment.getTxtUnita().setText("0");
+                elementiGSFragment.getTxtIdOrdine().setText("");
+                elementiGSFragment.getElementiGSAdapter().setElementi(new ArrayList<Elemento>(), false);
+
                 getDialog().dismiss();
             }
         });

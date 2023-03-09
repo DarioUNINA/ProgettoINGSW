@@ -55,14 +55,13 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
 
         holder.txtNomeElementoGS.setText(elementi.get(position).getNome());
         holder.txtPrezzoElementoGS.setText(Float.toString(elementi.get(position).getPrezzo()));
-        holder.txtCounter.setText("1");
 
         holder.btnAddCounterElement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 holder.txtCounter.setText( String.valueOf(Integer.valueOf(holder.txtCounter.getText().toString())+1));
-                //update quantita db
+                elementoPresenter.updateQuantita(addOrderDialog.getNewOrdine().getIdOrdine(), elementi.get(position).getIdElemento(), Integer.valueOf(holder.txtCounter.getText().toString()));
 
             }
         });
@@ -72,7 +71,7 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
             public void onClick(View view) {
                 if( Integer.valueOf(holder.txtCounter.getText().toString()) > 1) {
                     holder.txtCounter.setText(String.valueOf(Integer.valueOf(holder.txtCounter.getText().toString()) - 1));
-                    //Update quantita db
+                    elementoPresenter.updateQuantita(addOrderDialog.getNewOrdine().getIdOrdine(), elementi.get(position).getIdElemento(), Integer.valueOf(holder.txtCounter.getText().toString()));
                 }else
                     if(Integer.valueOf(holder.txtCounter.getText().toString()) == 1){
                         elementi.remove(elementi.get(position));
@@ -97,23 +96,14 @@ public class ElementiNuovoOrdineAdapter extends RecyclerView.Adapter<ElementiNuo
         TextView txtNomeElementoGS, txtPrezzoElementoGS, txtCounter;
         FloatingActionButton btnAddCounterElement, btnRemoveCounterElement;
 
-        CheckBox rimozioneCB;
-
-        MaterialCardView counter;
-
         public ElementiHolder(@NonNull View itemView) {
             super(itemView);
 
             txtNomeElementoGS = itemView.findViewById(R.id.txtNomeElementoGS);
             txtPrezzoElementoGS = itemView.findViewById(R.id.txtPrezzoElementoGS);
             txtCounter = itemView.findViewById(R.id.counterElementTxt);
-            rimozioneCB = itemView.findViewById(R.id.chechBoxElementiGs);
             btnAddCounterElement = itemView.findViewById(R.id.addCounterElementBtn);
             btnRemoveCounterElement = itemView.findViewById(R.id.removeCounterElementbtn);
-            counter = itemView.findViewById(R.id.materialCardCounter);
-
-            rimozioneCB.setVisibility(View.INVISIBLE);
-
         }
     }
 

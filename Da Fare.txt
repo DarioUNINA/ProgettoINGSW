@@ -1,6 +1,7 @@
 -Rimuovere o modificare ordini vuoti
+-Fixare quantita in creazione ordine
+-Aggiornare riferimento agli ordini nel  tavolo quando si eliminano uno o piu' ordini
 
--Implementare Creazione ordine
 -Implementare Qr Code
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)
 -Implementare statistiche

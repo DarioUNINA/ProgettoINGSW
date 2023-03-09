@@ -119,6 +119,7 @@
 
             <TextView
                 android:id="@+id/counterElementTxt"
+                android:text="1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:textColor="@color/black"
