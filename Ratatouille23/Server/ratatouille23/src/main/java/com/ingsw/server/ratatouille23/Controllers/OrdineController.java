@@ -64,4 +64,13 @@ public class OrdineController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
     }
     
+    @GetMapping("/get-ordini-totali/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    public Integer getOrdiniTotali(@PathVariable("cameriere") String cameriere, @PathVariable("dataFrom") String dataFrom, @PathVariable("dataTo") String dataTo) {
+        Optional<Integer> ordiniTotali = ordineService.getOrdiniTotali(cameriere, dataFrom, dataTo);
+
+        if (ordiniTotali.isPresent())
+            return ordiniTotali.get();
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
+    }
 }

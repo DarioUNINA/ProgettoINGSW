@@ -14,4 +14,9 @@ public interface OrdineRepository extends CrudRepository<Ordine, Integer> {
 
     @Query(value = "select max(id_ordine) from ordine where id_tavolo = :idTavolo", nativeQuery = true)
     Optional<Integer> findNewestByTavolo(@Param(value="idTavolo")Integer idTavolo);
+
+    @Query(value = "select count(id_ordine) from ordine o join tavolo t on t.id_tavolo = o.id_tavolo where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)", nativeQuery = true)
+    Optional<Integer> findOrdiniTotali(@Param(value="cameriere")String cameriere, @Param(value="dataFrom")String dataFrom, @Param(value="dataTo")String dataTo);
+
+
 }

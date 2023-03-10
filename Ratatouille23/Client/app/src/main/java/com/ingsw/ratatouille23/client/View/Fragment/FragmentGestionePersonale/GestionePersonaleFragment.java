@@ -31,6 +31,10 @@ public class GestionePersonaleFragment extends Fragment {
 
     private FirebaseAnalytics firebaseAnalytics;
 
+    private PersonaleFragment personaleFragment;
+    private StatisticheFragment statisticheFragment;
+    private FiltroDataFragment filtroDataFragment;
+
     public GestionePersonaleFragment() {
         // Required empty public constructor
     }
@@ -73,9 +77,12 @@ public class GestionePersonaleFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.personaleLayout, new PersonaleFragment());
-        fragmentTransaction.add(R.id.filtroDataLayout, new FiltroDataFragment());
-        fragmentTransaction.add(R.id.statischeLayout, new StatisticheFragment());
+        personaleFragment = new PersonaleFragment();
+        filtroDataFragment = new FiltroDataFragment();
+        statisticheFragment = new StatisticheFragment();
+        fragmentTransaction.replace(R.id.personaleLayout, personaleFragment);
+        fragmentTransaction.add(R.id.filtroDataLayout, filtroDataFragment);
+        fragmentTransaction.add(R.id.statischeLayout, statisticheFragment);
         fragmentTransaction.commit();
     }
 
@@ -88,5 +95,29 @@ public class GestionePersonaleFragment extends Fragment {
         //inserisci cose
 
         return rootView;
+    }
+
+    public PersonaleFragment getPersonaleFragment() {
+        return personaleFragment;
+    }
+
+    public void setPersonaleFragment(PersonaleFragment personaleFragment) {
+        this.personaleFragment = personaleFragment;
+    }
+
+    public StatisticheFragment getStatisticheFragment() {
+        return statisticheFragment;
+    }
+
+    public void setStatisticheFragment(StatisticheFragment statisticheFragment) {
+        this.statisticheFragment = statisticheFragment;
+    }
+
+    public FiltroDataFragment getFiltroDataFragment() {
+        return filtroDataFragment;
+    }
+
+    public void setFiltroDataFragment(FiltroDataFragment filtroDataFragment) {
+        this.filtroDataFragment = filtroDataFragment;
     }
 }

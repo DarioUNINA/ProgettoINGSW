@@ -14,5 +14,7 @@ public interface IOrdineService {
     public Optional<Integer> getNewestByTavolo(Integer idTavolo);
 
     public void delete(OrdineDTO ordineDTO);
+
+    public Optional<Integer> getOrdiniTotali(String cameriere, String dataFrom, String dataTo);
     
 }

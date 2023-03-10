@@ -54,4 +54,9 @@ public class OrdineService implements IOrdineService{
         return OrdineRepository.findNewestByTavolo(idTavolo);
     }
 
+    @Override
+    public Optional<Integer> getOrdiniTotali(String cameriere, String dataFrom, String dataTo) {
+        return OrdineRepository.findOrdiniTotali(cameriere, dataFrom, dataTo);
+    }
+
 }

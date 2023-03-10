@@ -21,4 +21,12 @@ public class StatistichePresenter {
     public void setY(){
 
     }
+
+    public void setGuadagnoTotale(){
+
+    }
+
+    public void setTotaleUnita(){
+
+    }
 }
