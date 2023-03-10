@@ -5,6 +5,7 @@ import com.ingsw.ratatouille23.client.Service.OpenFoodService;
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Service.Callback;
 import com.ingsw.ratatouille23.client.Service.OpenFoodService;
+import com.ingsw.ratatouille23.client.View.Dialog.AddElementoMenuDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,10 @@ public class OpenFoodPresenter {
 
     private OpenFoodService openFoodService;
 
-    public OpenFoodPresenter() {
+    private AddElementoMenuDialog addElementoMenuDialog;
+
+    public OpenFoodPresenter(AddElementoMenuDialog addElementoMenuDialog) {
+        this.addElementoMenuDialog = addElementoMenuDialog;
         this.openFoodService = new OpenFoodService();
     }
 
@@ -56,8 +60,7 @@ public class OpenFoodPresenter {
                     i++;
 
                 }
-
-                //CARICA ROBA NELLA GUI ATTRAVERSO productNameList (vedi classe ElementCreateDialog di Gianmarco)
+                addElementoMenuDialog.setProductNameList(productNameList);
             }
 
             @Override
@@ -117,8 +120,7 @@ public class OpenFoodPresenter {
 
                     i++;
                 }
-
-               //FAI ROBA NELL INTERFACCIA GRAFICA CON SUBSTR (vedi classe ElementCreateDialog di Gianmarco)
+                addElementoMenuDialog.loadDescription(subStr);
             }
 
             @Override

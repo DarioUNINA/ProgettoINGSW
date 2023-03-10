@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,10 +13,15 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,6 +30,7 @@ import com.ingsw.ratatouille23.client.Model.Categoria;
 import com.ingsw.ratatouille23.client.Model.Elemento;
 import com.ingsw.ratatouille23.client.Presenter.AllergenePresenter;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
+import com.ingsw.ratatouille23.client.Presenter.OpenFoodPresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Adapter.AllergeniAdapter;
 import com.ingsw.ratatouille23.client.View.Adapter.ElementiGMAdapter;
@@ -46,7 +53,12 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
     private AllergeniAdapter allergeniAdapter;
 
-    private TextView  txtPrezzo, txtNomeElemento, txtDescrizioneElemento;
+    private EditText txtPrezzo, txtDescrizioneElemento;
+
+    private AutoCompleteTextView txtNomeElemento;
+    private ArrayList<String> productNameList;
+
+    private OpenFoodPresenter openFoodPresenter = new OpenFoodPresenter(this);
 
     public AddElementoMenuDialog(ElementiMenuFragment elementiMenuFragment, Categoria categoria) {
         this.elementiMenuFragment = elementiMenuFragment;
@@ -65,6 +77,8 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         txtDescrizioneElemento = v.findViewById(R.id.txtDescrizioneElemento);
         btnNewElementMenu = v.findViewById(R.id.btnNewElementMenu);
 
+        productNameList = new ArrayList<>();
+
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -76,6 +90,32 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         allergenePresenter.getAll();
 
         recyclerAllergeni.setAdapter(allergeniAdapter);
+
+        txtNomeElemento.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                openFoodPresenter.getProductList(txtNomeElemento.getText().toString());
+
+                ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,productNameList);
+                nameAdapter.getFilter().filter(txtNomeElemento.getText(), txtNomeElemento);
+                txtNomeElemento.setAdapter(nameAdapter);
+
+                nameAdapter.notifyDataSetChanged();
+
+                txtNomeElemento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        openFoodPresenter.getDescription(txtNomeElemento.getText().toString());
+                    }
+                });
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
 
 
         btnNewElementMenu.setOnClickListener(new View.OnClickListener() {
@@ -176,13 +216,6 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
         this.onElementiClickListner = onElementiClickListner;
     }
 
-    public TextView getTxtPrezzo() {
-        return txtPrezzo;
-    }
-
-    public void setTxtPrezzo(TextView txtPrezzo) {
-        this.txtPrezzo = txtPrezzo;
-    }
 
     public AllergeniAdapter getAllergeniAdapter() {
         return allergeniAdapter;
@@ -192,5 +225,30 @@ public class AddElementoMenuDialog extends AppCompatDialogFragment {
 
         this.allergeniAdapter = allergeniAdapter;
         getRecyclerAllergeni().setAdapter(allergeniAdapter);
+    }
+
+
+    public ArrayList<String> getProductNameList() {
+        return productNameList;
+    }
+
+    public void setProductNameList(ArrayList<String> productNameList) {
+        this.productNameList.addAll(productNameList);
+    }
+
+    public void setTxtPrezzo(EditText txtPrezzo) {
+        this.txtPrezzo = txtPrezzo;
+    }
+
+    public EditText getTxtNomeElemento() {
+        return txtNomeElemento;
+    }
+
+    public void setTxtNomeElemento(AutoCompleteTextView txtNomeElemento) {
+        this.txtNomeElemento = txtNomeElemento;
+    }
+
+    public void loadDescription(String txtDescrizione) {
+       this.txtDescrizioneElemento.setText(txtDescrizione);
     }
 }
