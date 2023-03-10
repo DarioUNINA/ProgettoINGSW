@@ -9,6 +9,8 @@ import com.ingsw.ratatouille23.client.Service.OrdineService;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Adapter.OrdineAdapter;
 import com.ingsw.ratatouille23.client.View.Dialog.AddOrderDialog;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.GestionePersonaleFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.OrdiniFragment;
 
 import java.util.ArrayList;
@@ -20,12 +22,19 @@ public class OrdinePresenter {
 
     private AddOrderDialog addOrderDialog;
 
+    private PersonaleFragment personaleFragment;
+
     public OrdinePresenter(){
         service = new OrdineService();
     }
 
     public OrdinePresenter(OrdiniFragment ordiniFragment){
         this.ordiniFragment = ordiniFragment;
+        service = new OrdineService();
+    }
+
+    public OrdinePresenter(PersonaleFragment personaleFragment){
+        this.personaleFragment = personaleFragment;
         service = new OrdineService();
     }
 
@@ -111,5 +120,21 @@ public class OrdinePresenter {
     }
 
 
+    public void getOrdiniTotali(String cameriere, String dataFrom, String dataTo ){
+        service.getOrdiniTotali(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null)
+                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotOrdini().setText(String.valueOf((Integer) o));
+            }
 
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, cameriere, dataFrom, dataTo);
+    }
+
+
+    
 }

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
@@ -99,6 +100,11 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
                                 getGestionePersonaleFragment().getStatisticheFragment().
                                 getTxtNomeCameriere().setText(txtNomeUtente.getText().toString());
 
+                        String dataFrom = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtFrom().getText().toString();
+                        String dataTo = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtTo().getText().toString();
+                        System.out.println(dataFrom + dataTo + "PROVAAAAAAAAAAAAAAAAA");
+                        OrdinePresenter ordinePresenter = new OrdinePresenter(personaleFragment);
+                        ordinePresenter.getOrdiniTotali(txtNomeUtente.getText().toString(), dataFrom, dataTo );
 
                     }else{
                         Toast.makeText(personaleFragment.getActivity(), "Statistiche non disponibili", Toast.LENGTH_SHORT).show();

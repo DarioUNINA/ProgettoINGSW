@@ -75,7 +75,7 @@ public class FiltroDataFragment extends Fragment {
         txtFrom = rootView.findViewById(R.id.txtFrom);
         txtTo = rootView.findViewById(R.id.txtTo);
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         txtFrom.setText(dtf.format(now));
         txtTo.setText(dtf.format(now));

@@ -27,16 +27,16 @@ public interface OrdineApi {
     @HTTP(method = "DELETE", path = "/ordine/delete", hasBody = true)
     Completable delete(@Body Ordine ordine);
 
-    @GET("/get-ordini-totali/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    @GET("/ordine/get-ordini-totali/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
     Single <Integer> getOrdiniTotali(@Path("cameriere") String cameriere, @Path("dataFrom") String dataFrom, @Path("dataTo") String dataTo);
 
-    @GET("/get-ordini-totali-per-giorno/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    @GET("/ordine/get-ordini-totali-per-giorno/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
     Single <List<Integer>> getOrdiniTotaliPerGiorno(@Path("cameriere") String cameriere, @Path("dataFrom") String dataFrom, @Path("dataTo") String dataTo);
 
-    @GET("/get-date/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    @GET("/ordine/get-date/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
     Single <List<String>> getDate(@Path("cameriere") String cameriere, @Path("dataFrom") String dataFrom, @Path("dataTo") String dataTo);
 
-    @GET("/get-incasso/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    @GET("/ordine/get-incasso/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
     Single <Double> getIncasso(@Path("cameriere") String cameriere, @Path("dataFrom") String dataFrom, @Path("dataTo") String dataTo);
 
 
