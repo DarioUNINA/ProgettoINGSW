@@ -109,4 +109,48 @@ public class OrdineService {
                     }
                 });
     }
+
+    public void getOrdiniTotali(Callback callback, String cameriere, String dataFrom, String dataTo){
+
+        ordineApi.getOrdiniTotali(cameriere, dataFrom, dataTo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Integer totale) {
+                        callback.returnResult(totale);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void getIncasso(Callback callback, String cameriere, String dataFrom, String dataTo){
+
+        ordineApi.getIncasso(cameriere, dataFrom, dataTo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Double>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Double totale) {
+                        callback.returnResult(totale);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
 }
