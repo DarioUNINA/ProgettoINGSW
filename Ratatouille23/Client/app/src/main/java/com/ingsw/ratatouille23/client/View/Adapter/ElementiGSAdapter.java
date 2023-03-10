@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.ratatouille23.client.Model.Elemento;
+import com.ingsw.ratatouille23.client.Model.Ruolo;
 import com.ingsw.ratatouille23.client.Presenter.ElementoPresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Dialog.InfoElementDialog;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestioneSala.ElementiGSFragment;
 
@@ -118,7 +120,10 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             }
         });
 
-
+        if(((HomeActivity) elementiGSFragment.getActivity()).getUtente().getRuolo() != Ruolo.admin && ((HomeActivity)  elementiGSFragment.getActivity()).getUtente().getRuolo() != Ruolo.cameriere) {
+            holder.btnAddCounterElement.setVisibility(View.INVISIBLE);
+            holder.btnRemoveCounterElement.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -154,6 +159,8 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
             rimozioneCB.setVisibility(View.INVISIBLE);
 
         }
+
+
     }
 
 
@@ -219,6 +226,8 @@ public class ElementiGSAdapter extends RecyclerView.Adapter<ElementiGSAdapter.El
     public void setElementiDelete(List<Elemento> elementiDelete) {
         this.elementiDelete = elementiDelete;
     }
+
+
 }
 
 

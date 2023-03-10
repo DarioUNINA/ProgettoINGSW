@@ -39,7 +39,7 @@
             app:strokeWidth="2dp"
             app:layout_constraintVertical_bias="0.150">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/edtTxtNuovaElemento"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
@@ -50,10 +50,39 @@
                 android:textColor="@color/black"
                 android:textColorHint="#968C8C"
                 android:textSize="22dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="30dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="2dp"
+            app:layout_constraintVertical_bias="0.290"
+            android:backgroundTint="@color/white">
+
+            <EditText
+                android:id="@+id/txtDescrizioneElemento"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:hint="Descrizione"
+                android:gravity="left"
+                android:paddingTop="10dp"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#968C8C"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="350dp"
@@ -65,7 +94,7 @@
             app:cardCornerRadius="30dp"
             app:strokeColor="#000000"
             app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.365"
+            app:layout_constraintVertical_bias="0.640"
             android:backgroundTint="@color/white">
 
             <TextView
@@ -88,35 +117,9 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardCornerRadius="30dp"
-            app:strokeColor="#000000"
-            app:strokeWidth="2dp"
-            app:layout_constraintVertical_bias="0.710"
-            android:backgroundTint="@color/white">
 
-            <EditText
-                android:id="@+id/txtDescrizioneElemento"
-                android:layout_width="350dp"
-                android:layout_height="100dp"
-                android:background="@color/white"
-                android:hint="Descrizione"
-                android:gravity="left"
-                android:paddingTop="10dp"
-                android:inputType="textMultiLine"
-                android:paddingLeft="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#968C8C"
-                android:textSize="22dp"
-                android:textStyle="bold" />
 
-        </com.google.android.material.card.MaterialCardView>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnNewElementMenu"
