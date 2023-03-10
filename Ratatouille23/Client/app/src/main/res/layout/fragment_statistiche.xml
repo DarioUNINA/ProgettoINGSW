@@ -63,11 +63,105 @@
             android:layout_height="match_parent"
             android:layout_marginTop="50dp">
 
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="Cameriere:"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-460dp"
+                app:layout_constraintHorizontal_bias="0.04"
+                />
+
+            <TextView
+                android:id="@+id/txtCameriereStats"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-460dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="Totale Ordini:"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-390dp"
+                app:layout_constraintHorizontal_bias="0.04"
+                />
+
+            <TextView
+                android:id="@+id/txtTotaleOrdini"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-390dp"
+                app:layout_constraintHorizontal_bias="0.58"
+                />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="Totale Guadagni:"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-320dp"
+                app:layout_constraintHorizontal_bias="0.04"
+                />
+
+            <TextView
+                android:id="@+id/txtTotaleGuadagni"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-320dp"
+                app:layout_constraintHorizontal_bias="0.70"
+                />
+
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bar_chart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="100dp"/>
+                android:layout_width="500dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="95dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             
         </androidx.constraintlayout.widget.ConstraintLayout>

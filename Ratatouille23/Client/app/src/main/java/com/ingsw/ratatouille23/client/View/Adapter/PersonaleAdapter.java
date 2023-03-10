@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
 
 import java.util.ArrayList;
@@ -89,8 +91,20 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
             txtNomeUtente = itemView.findViewById(R.id.txtNomeUtente);
             txtRuolo = itemView.findViewById(R.id.txtRuolo);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(txtRuolo.getText().toString() == "cameriere"){
+                        ((HomeActivity)personaleFragment.getActivity()).
+                                getGestionePersonaleFragment().getStatisticheFragment().
+                                getTxtNomeCameriere().setText(txtNomeUtente.getText().toString());
 
-            //personaleCheckBox.setVisibility(View.INVISIBLE);
+
+                    }else{
+                        Toast.makeText(personaleFragment.getActivity(), "Statistiche non disponibili", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -30,8 +31,6 @@ import java.util.Collections;
  * create an instance of this fragment.
  */
 public class StatisticheFragment extends Fragment {
-
-    private TabLayout tabLayout;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
@@ -43,6 +42,8 @@ public class StatisticheFragment extends Fragment {
     private StatistichePresenter statistichePresenter;
 
     private ArrayList<BarEntry> barArraylist;
+
+    private TextView txtNomeCameriere, txtTotOrdini, txtTotGuadagni;
     private BarDataSet barDataSet;
     private BarData barData;
     private BarChart barChart;
@@ -80,6 +81,12 @@ public class StatisticheFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_statistiche, container, false);
+
+        txtNomeCameriere = rootView.findViewById(R.id.txtCameriereStats);
+        txtTotGuadagni = rootView.findViewById(R.id.txtTotaleGuadagni);
+        txtTotOrdini = rootView.findViewById(R.id.txtTotaleOrdini);
+
+
 
         this.statistichePresenter = new StatistichePresenter(this);
         this.barArraylist = new ArrayList<BarEntry>();
@@ -143,4 +150,27 @@ public class StatisticheFragment extends Fragment {
 
     }
 
+    public TextView getTxtNomeCameriere() {
+        return txtNomeCameriere;
+    }
+
+    public void setTxtNomeCameriere(TextView txtNomeCameriere) {
+        this.txtNomeCameriere = txtNomeCameriere;
+    }
+
+    public TextView getTxtTotOrdini() {
+        return txtTotOrdini;
+    }
+
+    public void setTxtTotOrdini(TextView txtTotOrdini) {
+        this.txtTotOrdini = txtTotOrdini;
+    }
+
+    public TextView getTxtTotGuadagni() {
+        return txtTotGuadagni;
+    }
+
+    public void setTxtTotGuadagni(TextView txtTotGuadagni) {
+        this.txtTotGuadagni = txtTotGuadagni;
+    }
 }
