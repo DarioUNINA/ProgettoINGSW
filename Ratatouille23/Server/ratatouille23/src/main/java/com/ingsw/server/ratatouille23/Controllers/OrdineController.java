@@ -67,9 +67,28 @@ public class OrdineController {
     @GetMapping("/get-ordini-totali/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
     public Integer getOrdiniTotali(@PathVariable("cameriere") String cameriere, @PathVariable("dataFrom") String dataFrom, @PathVariable("dataTo") String dataTo) {
         Optional<Integer> ordiniTotali = ordineService.getOrdiniTotali(cameriere, dataFrom, dataTo);
-
         if (ordiniTotali.isPresent())
             return ordiniTotali.get();
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
+    }
+
+    @GetMapping("/get-ordini-totali-per-giorno/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    public List<Integer> getOrdiniTotaliPerGiorno(@PathVariable("cameriere") String cameriere, @PathVariable("dataFrom") String dataFrom, @PathVariable("dataTo") String dataTo) {
+        Optional<List<Integer>> ordiniTotaliPerGiorno = ordineService.getOrdiniTotaliPerGiorno(cameriere, dataFrom, dataTo);
+
+        if (ordiniTotaliPerGiorno.isPresent())
+            return ordiniTotaliPerGiorno.get();
+        else
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
+    }
+
+    @GetMapping("/get-date/cameriere/{cameriere}/data-from/{dataFrom}/data-to/{dataTo}")
+    public List<String> getDate(@PathVariable("cameriere") String cameriere, @PathVariable("dataFrom") String dataFrom, @PathVariable("dataTo") String dataTo) {
+        Optional<List<String>> date = ordineService.getDate(cameriere, dataFrom, dataTo);
+
+        if (date.isPresent())
+            return date.get();
         else
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Ordine non trovato");
     }
