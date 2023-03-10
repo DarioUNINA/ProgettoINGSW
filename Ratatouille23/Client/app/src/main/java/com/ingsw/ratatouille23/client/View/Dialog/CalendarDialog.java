@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
 import com.ingsw.ratatouille23.client.R;
+import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.FiltroDataFragment;
 
 import java.time.LocalDateTime;
@@ -26,6 +28,7 @@ public class CalendarDialog extends AppCompatDialogFragment  {
     CalendarView calendarView;
 
     private FiltroDataFragment filtroDataFragment;
+
     private boolean from;
     public CalendarDialog(FiltroDataFragment filtroDataFragment, boolean from) {
         this.filtroDataFragment = filtroDataFragment;
@@ -46,12 +49,42 @@ public class CalendarDialog extends AppCompatDialogFragment  {
                 calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int anno, int mese, int giorno) {
+                        mese ++;
                         String date = anno + "-" + mese + "-" + giorno;
-                        if(from)
+                        if(from) {
                             getFiltroDataFragment().getTxtFrom().setText(date);
-                        else
-                            getFiltroDataFragment().getTxtTo().setText(date);
+                            OrdinePresenter ordinePresenter = new OrdinePresenter(((HomeActivity)filtroDataFragment.getActivity()).getGestionePersonaleFragment().getPersonaleFragment());
 
+                            ordinePresenter.getOrdiniTotali(((HomeActivity)filtroDataFragment.getActivity()).
+                                    getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername().toString(),
+                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
+                                    getFiltroDataFragment().getTxtTo().getText().toString());
+
+                            ordinePresenter.getIncasso(((HomeActivity)filtroDataFragment.getActivity()).
+                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
+                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
+                                    getFiltroDataFragment().getTxtTo().getText().toString());
+                            System.out.println(((HomeActivity)filtroDataFragment.getActivity()).
+                                    getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername());
+                            ((HomeActivity)filtroDataFragment.getActivity()).
+                                    getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
+
+                        }else{
+                                getFiltroDataFragment().getTxtTo().setText(date);
+                            OrdinePresenter ordinePresenter = new OrdinePresenter(((HomeActivity)filtroDataFragment.getActivity()).getGestionePersonaleFragment().getPersonaleFragment());
+
+                            ordinePresenter.getOrdiniTotali(((HomeActivity)filtroDataFragment.getActivity()).
+                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
+                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
+                                    getFiltroDataFragment().getTxtTo().getText().toString());
+
+                            ordinePresenter.getIncasso(((HomeActivity)filtroDataFragment.getActivity()).
+                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
+                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
+                                    getFiltroDataFragment().getTxtTo().getText().toString());
+                            }
+                        ((HomeActivity)filtroDataFragment.getActivity()).
+                                getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
                     }
                 });
 
@@ -68,7 +101,7 @@ public class CalendarDialog extends AppCompatDialogFragment  {
     public void onStart() {
         super.onStart();
         getDialog().getWindow().getAttributes().width=850;
-        getDialog().getWindow().getAttributes().height=600;
+        getDialog().getWindow().getAttributes().height=650;
         getDialog().getWindow().setGravity(Gravity.CENTER_VERTICAL);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setAttributes(

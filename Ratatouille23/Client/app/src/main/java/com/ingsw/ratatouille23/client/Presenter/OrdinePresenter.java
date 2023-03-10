@@ -135,6 +135,22 @@ public class OrdinePresenter {
         }, cameriere, dataFrom, dataTo);
     }
 
+    public void getIncasso(String cameriere, String dataFrom, String dataTo ){
+        service.getIncasso(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                if(o!=null)
+                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotGuadagni().setText(String.valueOf((Double) o));
+                else
+                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotGuadagni().setText("0");
+            }
 
-    
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, cameriere, dataFrom, dataTo);
+    }
+
+
 }

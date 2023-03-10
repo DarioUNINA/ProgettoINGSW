@@ -23,6 +23,7 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
     private ArrayList<Utente> utenti;
 
+
     private ArrayList<Utente> cancellaUtenti = new ArrayList<Utente>();
     private Context context;
     private PersonaleAdapter.OnPersonaleClickListner onPersonaleClickListner;
@@ -59,6 +60,8 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
 
         holder.txtNomeUtente.setText(utenti.get(position).getUsername());
         holder.txtRuolo.setText(utenti.get(position).getRuolo().toString());
+
+
 
 
         holder.personaleCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -100,11 +103,16 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
                                 getGestionePersonaleFragment().getStatisticheFragment().
                                 getTxtNomeCameriere().setText(txtNomeUtente.getText().toString());
 
+                        ((HomeActivity)personaleFragment.getActivity()).
+                                getGestionePersonaleFragment().getStatisticheFragment().setUtenteSelected(utenti.get(getAdapterPosition()));
+
+
                         String dataFrom = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtFrom().getText().toString();
                         String dataTo = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtTo().getText().toString();
-                        System.out.println(dataFrom + dataTo + "PROVAAAAAAAAAAAAAAAAA");
                         OrdinePresenter ordinePresenter = new OrdinePresenter(personaleFragment);
                         ordinePresenter.getOrdiniTotali(txtNomeUtente.getText().toString(), dataFrom, dataTo );
+                        ordinePresenter.getIncasso(txtNomeUtente.getText().toString(), dataFrom, dataTo);
+                        ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
 
                     }else{
                         Toast.makeText(personaleFragment.getActivity(), "Statistiche non disponibili", Toast.LENGTH_SHORT).show();
