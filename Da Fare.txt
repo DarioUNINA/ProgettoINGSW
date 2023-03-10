@@ -1,5 +1,4 @@
 -Rimuovere o modificare ordini vuoti
--Fixare date nel popolamento
 -Aggiungere logica a gestionePersonaleFragment (i fragment non sono attaccati al fragment generale)
 
 -Implementare autocompletamento (del nome dell' elemento in creazione elemento)

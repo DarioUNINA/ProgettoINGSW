@@ -46,7 +46,7 @@ public class CalendarDialog extends AppCompatDialogFragment  {
                 calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int anno, int mese, int giorno) {
-                        String date = giorno + "/" + mese + "/" + anno;
+                        String date = anno + "/" + mese + "/" + giorno;
                         if(from)
                             getFiltroDataFragment().getTxtFrom().setText(date);
                         else

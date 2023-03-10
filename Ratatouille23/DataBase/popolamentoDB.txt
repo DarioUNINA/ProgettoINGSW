@@ -84,29 +84,29 @@ insert into tavolo(id_tavolo, posti, occupato, id_ristorante, username_cameriere
 
 
 --Ordine
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5); 
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 3, '2023-03-4');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 5, '2023-03-7');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 3, '2023-03-4');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 3, '2023-03-4');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 5, '2023-03-7');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 3, '2023-03-4');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 5, '2023-03-7'); 
 
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 8);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 13);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 7, '2023-03-10');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 7, '2023-03-10');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 8, '2023-03-5');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 10, '2023-03-2');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 13, '2023-03-3');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 10, '2023-03-2');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 10, '2023-03-2');
 
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 13);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 7);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 3);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 5);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 8);
-insert into ordine(id_ordine, id_tavolo) values (nextval('id_ordine_seq'), 10);
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 13, '2023-03-3');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 7, '2023-03-10');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 3, '2023-03-4');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 5, '2023-03-7');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 10, '2023-03-2');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 8, '2023-03-5');
+insert into ordine(id_ordine, id_tavolo, data) values (nextval('id_ordine_seq'), 10, '2023-03-2');
 
 
 --Ordinazione
