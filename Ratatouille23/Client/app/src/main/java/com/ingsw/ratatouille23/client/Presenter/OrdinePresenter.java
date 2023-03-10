@@ -120,37 +120,7 @@ public class OrdinePresenter {
     }
 
 
-    public void getOrdiniTotali(String cameriere, String dataFrom, String dataTo ){
-        service.getOrdiniTotali(new Callback() {
-            @Override
-            public void returnResult(Object o) {
-                if(o!=null)
-                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotOrdini().setText(String.valueOf((Integer) o));
-            }
 
-            @Override
-            public void returnError(Throwable e) {
-
-            }
-        }, cameriere, dataFrom, dataTo);
-    }
-
-    public void getIncasso(String cameriere, String dataFrom, String dataTo ){
-        service.getIncasso(new Callback() {
-            @Override
-            public void returnResult(Object o) {
-                if(o!=null)
-                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotGuadagni().setText(String.valueOf((Double) o));
-                else
-                    ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtTotGuadagni().setText("0");
-            }
-
-            @Override
-            public void returnError(Throwable e) {
-
-            }
-        }, cameriere, dataFrom, dataTo);
-    }
 
 
 }

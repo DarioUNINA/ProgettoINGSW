@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
+import com.ingsw.ratatouille23.client.Presenter.StatistichePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.FiltroDataFragment;
@@ -49,42 +50,23 @@ public class CalendarDialog extends AppCompatDialogFragment  {
                 calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                     @Override
                     public void onSelectedDayChange(@NonNull CalendarView calendarView, int anno, int mese, int giorno) {
-                        mese ++;
+                        mese++;
                         String date = anno + "-" + mese + "-" + giorno;
-                        if(from) {
+                        if (from) {
                             getFiltroDataFragment().getTxtFrom().setText(date);
-                            OrdinePresenter ordinePresenter = new OrdinePresenter(((HomeActivity)filtroDataFragment.getActivity()).getGestionePersonaleFragment().getPersonaleFragment());
-
-                            ordinePresenter.getOrdiniTotali(((HomeActivity)filtroDataFragment.getActivity()).
-                                    getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername().toString(),
-                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
-                                    getFiltroDataFragment().getTxtTo().getText().toString());
-
-                            ordinePresenter.getIncasso(((HomeActivity)filtroDataFragment.getActivity()).
-                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
-                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
-                                    getFiltroDataFragment().getTxtTo().getText().toString());
-                            System.out.println(((HomeActivity)filtroDataFragment.getActivity()).
-                                    getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername());
-                            ((HomeActivity)filtroDataFragment.getActivity()).
-                                    getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
-
-                        }else{
-                                getFiltroDataFragment().getTxtTo().setText(date);
-                            OrdinePresenter ordinePresenter = new OrdinePresenter(((HomeActivity)filtroDataFragment.getActivity()).getGestionePersonaleFragment().getPersonaleFragment());
-
-                            ordinePresenter.getOrdiniTotali(((HomeActivity)filtroDataFragment.getActivity()).
-                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
-                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
-                                    getFiltroDataFragment().getTxtTo().getText().toString());
-
-                            ordinePresenter.getIncasso(((HomeActivity)filtroDataFragment.getActivity()).
-                                            getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected().getUsername(),
-                                    getFiltroDataFragment().getTxtFrom().getText().toString(),
-                                    getFiltroDataFragment().getTxtTo().getText().toString());
+                            if (((HomeActivity) filtroDataFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected() != null) {
+                                StatistichePresenter statistichePresenter = new StatistichePresenter(((HomeActivity) filtroDataFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment());
+                                statistichePresenter.getStatistiche();
                             }
-                        ((HomeActivity)filtroDataFragment.getActivity()).
-                                getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
+
+                        } else {
+                            getFiltroDataFragment().getTxtTo().setText(date);
+                            if (((HomeActivity) filtroDataFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getUtenteSelected() != null) {
+                                StatistichePresenter statistichePresenter = new StatistichePresenter(((HomeActivity) filtroDataFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment());
+                                statistichePresenter.getStatistiche();
+                            }
+
+                        }
                     }
                 });
 

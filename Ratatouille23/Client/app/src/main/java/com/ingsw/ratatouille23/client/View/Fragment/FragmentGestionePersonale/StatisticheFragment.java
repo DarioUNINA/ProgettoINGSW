@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.tabs.TabLayout;
 import com.ingsw.ratatouille23.client.Model.Utente;
@@ -105,7 +106,7 @@ public class StatisticheFragment extends Fragment {
 
 
 
-    public void createChart() {
+    public void makeChart() {
 
         barArraylist.clear();
 
@@ -137,7 +138,6 @@ public class StatisticheFragment extends Fragment {
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
-
 
     }
 

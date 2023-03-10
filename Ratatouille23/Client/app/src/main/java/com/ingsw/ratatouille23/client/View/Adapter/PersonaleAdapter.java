@@ -13,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.OrdinePresenter;
+import com.ingsw.ratatouille23.client.Presenter.StatistichePresenter;
 import com.ingsw.ratatouille23.client.R;
 import com.ingsw.ratatouille23.client.View.Activity.HomeActivity;
 import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.PersonaleFragment;
+import com.ingsw.ratatouille23.client.View.Fragment.FragmentGestionePersonale.StatisticheFragment;
 
 import java.util.ArrayList;
 
@@ -106,13 +108,8 @@ public class PersonaleAdapter extends RecyclerView.Adapter<PersonaleAdapter.Pers
                         ((HomeActivity)personaleFragment.getActivity()).
                                 getGestionePersonaleFragment().getStatisticheFragment().setUtenteSelected(utenti.get(getAdapterPosition()));
 
-
-                        String dataFrom = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtFrom().getText().toString();
-                        String dataTo = ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getFiltroDataFragment().getTxtTo().getText().toString();
-                        OrdinePresenter ordinePresenter = new OrdinePresenter(personaleFragment);
-                        ordinePresenter.getOrdiniTotali(txtNomeUtente.getText().toString(), dataFrom, dataTo );
-                        ordinePresenter.getIncasso(txtNomeUtente.getText().toString(), dataFrom, dataTo);
-                        ((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment().getTxtGuadagniSimbolo().setVisibility(View.VISIBLE);
+                        StatistichePresenter statistichePresenter = new StatistichePresenter(((HomeActivity)personaleFragment.getActivity()).getGestionePersonaleFragment().getStatisticheFragment());
+                        statistichePresenter.getStatistiche();
 
                     }else{
                         Toast.makeText(personaleFragment.getActivity(), "Statistiche non disponibili", Toast.LENGTH_SHORT).show();
