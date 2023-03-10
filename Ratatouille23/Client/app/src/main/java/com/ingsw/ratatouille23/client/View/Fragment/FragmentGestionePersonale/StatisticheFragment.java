@@ -40,6 +40,8 @@ public class StatisticheFragment extends Fragment {
     private FiltroDataFragment filtroDataFragment;
 
     private StatistichePresenter statistichePresenter;
+    private ArrayList<String> giorni;
+    private ArrayList<Integer> numeroOrdini;
 
     private ArrayList<BarEntry> barArraylist;
 
@@ -86,13 +88,11 @@ public class StatisticheFragment extends Fragment {
         txtTotGuadagni = rootView.findViewById(R.id.txtTotaleGuadagni);
         txtTotOrdini = rootView.findViewById(R.id.txtTotaleOrdini);
 
-
-
         this.statistichePresenter = new StatistichePresenter(this);
         this.barArraylist = new ArrayList<BarEntry>();
         barChart = rootView.findViewById(R.id.bar_chart);
 
-        createChart();
+
 
         return rootView;
     }
@@ -103,17 +103,8 @@ public class StatisticheFragment extends Fragment {
 
         barArraylist.clear();
 
-
-//        int i = 0;
-
-//        for(Element element : elementArrayList){
-//            barEntryArrayList.add(new BarEntry(i, element.getQuantityStats(), element));
-//            i += 1;
-//        }
-
-        barArraylist.add(new BarEntry(0, 10, new Object()));
-        barArraylist.add(new BarEntry(1, 20, new Object()));
-
+        for(int i=0; i<numeroOrdini.size(); i++)
+            barArraylist.add(new BarEntry(i, numeroOrdini.get(i)));
 
 
         barDataSet = new BarDataSet(barArraylist, "");
@@ -133,14 +124,8 @@ public class StatisticheFragment extends Fragment {
         barChart.setVisibleXRangeMaximum(2);
 
 
-        ArrayList<String> elementNames = new ArrayList<>();
-
-        elementNames.add("nome1");
-        elementNames.add("nome2");
-        elementNames.add("nome3");
-
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(elementNames));
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(giorni));
         xAxis.setCenterAxisLabels(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
@@ -172,5 +157,21 @@ public class StatisticheFragment extends Fragment {
 
     public void setTxtTotGuadagni(TextView txtTotGuadagni) {
         this.txtTotGuadagni = txtTotGuadagni;
+    }
+
+    public ArrayList<String> getGiorni() {
+        return giorni;
+    }
+
+    public void setGiorni(ArrayList<String> giorni) {
+        this.giorni = giorni;
+    }
+
+    public ArrayList<Integer> getNumeroOrdini() {
+        return numeroOrdini;
+    }
+
+    public void setNumeroOrdini(ArrayList<Integer> numeroOrdini) {
+        this.numeroOrdini = numeroOrdini;
     }
 }

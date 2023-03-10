@@ -15,6 +15,7 @@ import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Call;
 
 public class OrdineService {
 
@@ -153,4 +154,50 @@ public class OrdineService {
                     }
                 });
     }
+
+    public void getDate(Callback callback, String cameriere, String dataFrom, String dataTo){
+        ordineApi.getDate(cameriere, dataFrom, dataTo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<String>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<String> date) {
+                        callback.returnResult(date);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+    public void getOrdiniTotaliPerGiorno(Callback callback, String cameriere, String dataFrom, String dataTo){
+        ordineApi.getOrdiniTotaliPerGiorno(cameriere, dataFrom, dataTo)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Integer>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Integer> date) {
+                        callback.returnResult(date);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(null);
+                    }
+                });
+    }
+
+
+
+
 }

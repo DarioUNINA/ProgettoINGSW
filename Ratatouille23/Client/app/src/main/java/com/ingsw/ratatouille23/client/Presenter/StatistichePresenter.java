@@ -13,6 +13,10 @@ public class StatistichePresenter {
     }
 
 
+    public void getStatistiche(){
+        
+    }
+
 
     public void setX(){
 
@@ -22,11 +26,5 @@ public class StatistichePresenter {
 
     }
 
-    public void setGuadagnoTotale(){
 
-    }
-
-    public void setTotaleUnita(){
-
-    }
 }
