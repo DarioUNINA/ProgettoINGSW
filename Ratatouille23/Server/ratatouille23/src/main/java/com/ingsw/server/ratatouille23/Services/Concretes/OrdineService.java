@@ -9,6 +9,8 @@ import com.ingsw.server.ratatouille23.Models.Entities.Ordine;
 import com.ingsw.server.ratatouille23.Repositories.OrdineRepository;
 import com.ingsw.server.ratatouille23.Services.Interfaces.IOrdineService;
 import java.util.Optional;
+import java.sql.Date;
+
 import com.ingsw.server.ratatouille23.Models.Entities.Tavolo;
 import lombok.RequiredArgsConstructor;
 
@@ -56,7 +58,24 @@ public class OrdineService implements IOrdineService{
 
     @Override
     public Optional<Integer> getOrdiniTotali(String cameriere, String dataFrom, String dataTo) {
-        return OrdineRepository.findOrdiniTotali(cameriere, dataFrom, dataTo);
+        return OrdineRepository.findOrdiniTotali(cameriere, Date.valueOf(dataFrom), Date.valueOf(dataTo));
     }
+
+    @Override
+    public Optional<List<Integer>> getOrdiniTotaliPerGiorno(String cameriere, String dataFrom, String dataTo) {
+        return OrdineRepository.findOrdiniTotaliPerGiorno(cameriere, Date.valueOf(dataFrom), Date.valueOf(dataTo));
+    }
+
+    @Override
+    public Optional<List<String>> getDate(String cameriere, String dataFrom, String dataTo) {
+        return OrdineRepository.findDate(cameriere, Date.valueOf(dataFrom), Date.valueOf(dataTo));
+    }
+
+    @Override
+    public Optional<Double> getIncasso(String cameriere, String dataFrom, String dataTo) {
+        return OrdineRepository.findIncasso(cameriere, Date.valueOf(dataFrom), Date.valueOf(dataTo));
+    }
+
+    
 
 }

@@ -16,5 +16,13 @@ public interface IOrdineService {
     public void delete(OrdineDTO ordineDTO);
 
     public Optional<Integer> getOrdiniTotali(String cameriere, String dataFrom, String dataTo);
+
+    public Optional<List<Integer>> getOrdiniTotaliPerGiorno(String cameriere, String dataFrom, String dataTo);
+
+    public Optional<List<String>> getDate(String cameriere, String dataFrom, String dataTo);
+
+    public Optional<Double> getIncasso(String cameriere, String dataFrom, String dataTo);
+
+
     
 }
