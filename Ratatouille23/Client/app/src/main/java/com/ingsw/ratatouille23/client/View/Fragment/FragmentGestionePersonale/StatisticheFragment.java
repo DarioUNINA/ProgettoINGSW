@@ -71,7 +71,7 @@ public class StatisticheFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_statistiche, container, false);
 
         this.statistichePresenter = new StatistichePresenter(this);
-        barChart = getView().findViewById(R.id.bar_chart);
+        barChart = rootView.findViewById(R.id.bar_chart);
 
 
         //inserisci cose
