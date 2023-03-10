@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.tabs.TabLayout;
+import com.ingsw.ratatouille23.client.Model.Utente;
 import com.ingsw.ratatouille23.client.Presenter.StatistichePresenter;
 import com.ingsw.ratatouille23.client.R;
 
@@ -43,7 +45,8 @@ public class StatisticheFragment extends Fragment {
 
     private ArrayList<BarEntry> barArraylist;
 
-    private TextView txtNomeCameriere, txtTotOrdini, txtTotGuadagni;
+    private Utente utenteSelected;
+    private TextView txtNomeCameriere, txtTotOrdini, txtTotGuadagni, txtGuadagniSimbolo;
     private BarDataSet barDataSet;
     private BarData barData;
     private BarChart barChart;
@@ -85,6 +88,9 @@ public class StatisticheFragment extends Fragment {
         txtNomeCameriere = rootView.findViewById(R.id.txtCameriereStats);
         txtTotGuadagni = rootView.findViewById(R.id.txtTotaleGuadagni);
         txtTotOrdini = rootView.findViewById(R.id.txtTotaleOrdini);
+        txtGuadagniSimbolo = rootView.findViewById(R.id.txtGuadagniSimbolo);
+
+        txtGuadagniSimbolo.setVisibility(View.INVISIBLE);
 
 
 
@@ -172,5 +178,21 @@ public class StatisticheFragment extends Fragment {
 
     public void setTxtTotGuadagni(TextView txtTotGuadagni) {
         this.txtTotGuadagni = txtTotGuadagni;
+    }
+
+    public Utente getUtenteSelected() {
+        return utenteSelected;
+    }
+
+    public void setUtenteSelected(Utente utenteSelected) {
+        this.utenteSelected = utenteSelected;
+    }
+
+    public TextView getTxtGuadagniSimbolo() {
+        return txtGuadagniSimbolo;
+    }
+
+    public void setTxtGuadagniSimbolo(TextView txtGuadagniSimbolo) {
+        this.txtGuadagniSimbolo = txtGuadagniSimbolo;
     }
 }

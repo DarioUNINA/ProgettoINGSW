@@ -25,6 +25,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class FiltroDataFragment extends Fragment {
 
+    private StatisticheFragment statisticheFragment;
 
     private TextView txtFrom, txtTo;
 
@@ -94,6 +95,7 @@ public class FiltroDataFragment extends Fragment {
             }
         });
 
+        statisticheFragment = new StatisticheFragment();
 
 
         return rootView;

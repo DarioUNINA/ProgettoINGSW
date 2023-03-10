@@ -64,7 +64,8 @@
             android:layout_marginTop="50dp">
 
             <TextView
-                android:layout_width="150dp"
+                android:id="@+id/txt0"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Cameriere:"
                 android:textSize="25dp"
@@ -80,21 +81,22 @@
 
             <TextView
                 android:id="@+id/txtCameriereStats"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt0"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="-460dp"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.05"
                 />
 
             <TextView
-                android:layout_width="200dp"
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Totale Ordini:"
                 android:textSize="25dp"
@@ -110,21 +112,22 @@
 
             <TextView
                 android:id="@+id/txtTotaleOrdini"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt2"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="-390dp"
-                app:layout_constraintHorizontal_bias="0.58"
+                app:layout_constraintHorizontal_bias="0.05"
                 />
 
             <TextView
-                android:layout_width="200dp"
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Totale Guadagni:"
                 android:textSize="25dp"
@@ -140,18 +143,33 @@
 
             <TextView
                 android:id="@+id/txtTotaleGuadagni"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt1"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="-320dp"
-                app:layout_constraintHorizontal_bias="0.70"
+                app:layout_constraintHorizontal_bias="0.05"
                 />
+
+            <TextView
+                android:id="@+id/txtGuadagniSimbolo"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:text="$"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtTotaleGuadagni"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="-315dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/bar_chart"
