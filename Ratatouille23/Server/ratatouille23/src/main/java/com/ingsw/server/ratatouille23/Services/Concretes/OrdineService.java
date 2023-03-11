@@ -58,7 +58,6 @@ public class OrdineService implements IOrdineService{
 
     @Override
     public Optional<Integer> getOrdiniTotali(String cameriere, String dataFrom, String dataTo) {
-        System.out.println(dataFrom);
         return OrdineRepository.findOrdiniTotali(cameriere, Date.valueOf(dataFrom), Date.valueOf(dataTo));
     }
 

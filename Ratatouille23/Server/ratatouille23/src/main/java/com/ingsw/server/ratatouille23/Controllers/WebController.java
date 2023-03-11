@@ -44,13 +44,6 @@ public class WebController {
             elementListTotal.addAll(elementList);
         }
 
-        for (Elemento e: elementListTotal) {
-            System.out.println(e.getNome());
-        }
-        for (Categoria c: categoryList) {
-            System.out.println(c.getNome());
-        }
-
         model.addAttribute("elements",elementListTotal);
 
         return "qrcode";
