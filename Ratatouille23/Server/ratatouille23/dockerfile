@@ -1,0 +1,4 @@
+FROM openjdk:17
+ADD target/ratatouille23.jar ratatouille23.jar
+ENTRYPOINT ["java", "-jar","ratatouille23.jar"]
+EXPOSE 8080

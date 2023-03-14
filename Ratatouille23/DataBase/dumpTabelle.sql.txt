@@ -1,0 +1,187 @@
+
+
+--Creazione Tabelle
+
+DROP TABLE IF EXISTS public.allergene;
+
+CREATE TABLE IF NOT EXISTS public.allergene
+(
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Allergeni_pkey" PRIMARY KEY (nome)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.allergene
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.categoria;
+
+CREATE TABLE IF NOT EXISTS public.categoria
+(
+    id_categoria integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    id_menu integer NOT NULL,
+    CONSTRAINT "Categoria_pkey" PRIMARY KEY (id_categoria)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.categoria
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+CREATE TABLE IF NOT EXISTS public.allergia
+(
+    allergene character varying COLLATE pg_catalog."default" NOT NULL,
+    id_elemento integer NOT NULL
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.allergia
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+
+DROP TABLE IF EXISTS public.utente;
+
+CREATE TABLE IF NOT EXISTS public.utente
+(
+    username character varying COLLATE pg_catalog."default" NOT NULL,
+    password character varying COLLATE pg_catalog."default" NOT NULL,
+    ruolo character varying COLLATE pg_catalog."default" NOT NULL,
+    id_ristorante integer NOT NULL,
+    CONSTRAINT utente_pkey PRIMARY KEY (username)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.utente
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.elemento;
+
+CREATE TABLE IF NOT EXISTS public.elemento
+(
+    id_elemento integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    prezzo double precision NOT NULL,
+    descrizione character varying COLLATE pg_catalog."default" NOT NULL,
+    id_categoria integer,
+    CONSTRAINT "Elemento_pkey" PRIMARY KEY (id_elemento)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.elemento
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.menu;
+
+CREATE TABLE IF NOT EXISTS public.menu
+(
+    id_menu integer NOT NULL,
+    id_ristorante integer NOT NULL,
+    CONSTRAINT menu_pkey PRIMARY KEY (id_menu)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.menu
+    OWNER to postgres;
+
+
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.ordine;
+
+CREATE TABLE IF NOT EXISTS public.ordine
+(
+    id_ordine integer NOT NULL,
+    id_tavolo integer NOT NULL,
+    data date NOT NULL DEFAULT CURRENT_DATE,
+    CONSTRAINT ordine_pkey PRIMARY KEY (id_ordine)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ordine
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+DROP TABLE IF EXISTS public.ristorante;
+
+CREATE TABLE IF NOT EXISTS public.ristorante
+(
+    id_ristorante integer NOT NULL,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    telefono character varying COLLATE pg_catalog."default" NOT NULL,
+    indirizzo character varying COLLATE pg_catalog."default" NOT NULL,
+    id_menu integer,
+    CONSTRAINT "Ristorante_pkey" PRIMARY KEY (id_ristorante)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ristorante
+    OWNER to postgres;
+
+
+--------------------------------
+
+
+
+DROP TABLE IF EXISTS ordinazione;
+
+CREATE TABLE IF NOT EXISTS public.ordinazione
+(
+    id_ordine integer NOT NULL,
+    id_elemento integer NOT NULL,
+    quantita integer not null
+)
+
+TABLESPACE pg_default;
+
+--------------------------------
+
+DROP TABLE IF EXISTS public.tavolo;
+
+CREATE TABLE IF NOT EXISTS public.tavolo
+(
+    id_tavolo integer NOT NULL,
+    posti integer NOT NULL,
+    occupato boolean NOT NULL DEFAULT 'false',
+    id_ristorante integer NOT NULL,
+    username_cameriere character varying COLLATE pg_catalog."default",
+    CONSTRAINT "Tavolo_pkey" PRIMARY KEY (id_tavolo)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tavolo
+    OWNER to postgres;

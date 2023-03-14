@@ -1,0 +1,32 @@
+version: '3'
+services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgreSQL:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgreSQL:5432/INGSW
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  postgreSQL:
+    image: postgres
+    container_name: postgreSQL
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=INGSW
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
