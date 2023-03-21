@@ -81,7 +81,7 @@ public class CreazioneUtenteDialog extends AppCompatDialogFragment {
                 if(!txtNuovoNome.getText().toString().isEmpty()){
                 UtentePresenter presenter = new UtentePresenter(personaleFragment);
                 Utente utente = new Utente();
-                utente.setPassword("123");
+                utente.setPassword("pwd");
                 utente.setRuolo(Ruolo.valueOf(spinnerRuoli.getSelectedItem().toString()));
                 utente.setUsername(txtNuovoNome.getText().toString());
                 utente.setIdRistorante(((HomeActivity)getActivity()).getRistorante().getIdRistorante());

@@ -202,6 +202,9 @@ public class HomeActivity extends AppCompatActivity {
             btnSala.setEnabled(false);
             btnSala.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
 
+            btnQrCode.setEnabled(false);
+            btnQrCode.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
         }
         if(utente.getRuolo()==Ruolo.cameriere) {
             fragmentTransaction.replace(R.id.homelayoutForFragment, GestioneSalaFragment.class, null);
@@ -215,6 +218,9 @@ public class HomeActivity extends AppCompatActivity {
 
             btnCucina.setEnabled(false);
             btnCucina.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
+
+            btnQrCode.setEnabled(false);
+            btnQrCode.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("grey")));
         }
 
         fragmentTransaction.commitNow();

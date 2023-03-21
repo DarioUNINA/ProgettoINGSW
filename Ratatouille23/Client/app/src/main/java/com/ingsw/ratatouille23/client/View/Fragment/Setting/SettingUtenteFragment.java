@@ -143,4 +143,6 @@ public class SettingUtenteFragment extends Fragment {
     public void setConfermaPassword(EditText confermaPassword) {
         this.confermaPassword = confermaPassword;
     }
+
+
 }

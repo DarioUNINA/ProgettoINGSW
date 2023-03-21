@@ -22,7 +22,7 @@ public interface OrdineRepository extends CrudRepository<Ordine, Integer> {
     @Query(value= "select count (*) from ordine o join tavolo t on t.id_tavolo = o.id_tavolo where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo) group by data", nativeQuery = true)
     Optional<List<Integer>> findOrdiniTotaliPerGiorno(@Param(value="cameriere")String cameriere, @Param(value="dataFrom")Date dataFrom, @Param(value="dataTo")Date dataTo);
 
-    @Query(value="select data from ordine o join tavolo t on t.id_tavolo = o.id_tavolo where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)", nativeQuery = true)
+    @Query(value="select distinct data from ordine o join tavolo t on t.id_tavolo = o.id_tavolo where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)", nativeQuery = true)
     Optional<List<String>> findDate(@Param(value="cameriere")String cameriere, @Param(value="dataFrom")Date dataFrom, @Param(value="dataTo")Date dataTo);
 
     @Query(value="select sum(quantita*prezzo) from ((ordine o join tavolo t on t.id_tavolo = o.id_tavolo) join ordinazione ord on ord.id_ordine = o.id_ordine) join elemento e on e.id_elemento = ord.id_elemento where (username_cameriere = :cameriere and data > :dataFrom and data < :dataTo)", nativeQuery = true)

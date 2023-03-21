@@ -43,8 +43,8 @@ public class StatisticheFragment extends Fragment {
     private FiltroDataFragment filtroDataFragment;
 
     private StatistichePresenter statistichePresenter;
-    private ArrayList<String> giorni;
-    private ArrayList<Integer> numeroOrdini;
+    private ArrayList<String> giorni = new ArrayList<>();
+    private ArrayList<Integer> numeroOrdini = new ArrayList<>();
 
     private ArrayList<BarEntry> barArraylist;
 
@@ -110,8 +110,14 @@ public class StatisticheFragment extends Fragment {
 
         barArraylist.clear();
 
+        for(Integer i: numeroOrdini)
+            System.out.println(i+"\n");
+
+        for(String s: giorni)
+            System.out.println(s+"\n");
+
         for(int i=0; i<numeroOrdini.size(); i++)
-            barArraylist.add(new BarEntry(i, numeroOrdini.get(i)));
+            barArraylist.add(new BarEntry(i, numeroOrdini.get(i), numeroOrdini.get(i)));
 
 
         barDataSet = new BarDataSet(barArraylist, "");
@@ -138,6 +144,11 @@ public class StatisticheFragment extends Fragment {
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
+
+        barDataSet.notifyDataSetChanged();
+        barData.notifyDataChanged();
+        barChart.notifyDataSetChanged();
+        barChart.invalidate();
 
     }
 
@@ -170,7 +181,8 @@ public class StatisticheFragment extends Fragment {
     }
 
     public void setGiorni(ArrayList<String> giorni) {
-        this.giorni = giorni;
+        this.giorni.clear();
+        this.giorni.addAll(giorni);
     }
 
     public ArrayList<Integer> getNumeroOrdini() {
@@ -178,7 +190,8 @@ public class StatisticheFragment extends Fragment {
     }
 
     public void setNumeroOrdini(ArrayList<Integer> numeroOrdini) {
-        this.numeroOrdini = numeroOrdini;
+        this.numeroOrdini.clear();
+        this.numeroOrdini.addAll(numeroOrdini);
     }
 
     public Utente getUtenteSelected() {

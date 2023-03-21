@@ -124,13 +124,9 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(SettingsActivity.this, "Modifiche effettuate, LogOut necessario", Toast.LENGTH_SHORT).show();
 
             }else
-                //Dialog password non coincidono
-                System.out.println("password non coincidono");
-            Toast.makeText(SettingsActivity.this, "Password non coincidono", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "Password non coincidono", Toast.LENGTH_SHORT).show();
         }else
-            //Password Errata inserita
-            System.out.println("password attuale errata " +settingUtenteFragment.getPwdAttuale().getText() +" " +utente.getPassword());
-        Toast.makeText(SettingsActivity.this, "Password errata", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SettingsActivity.this, "Password errata", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -144,6 +140,12 @@ public class SettingsActivity extends AppCompatActivity {
         Toast.makeText(SettingsActivity.this, "Modifiche effettuate, LogOut necessario", Toast.LENGTH_SHORT).show();
 
         //Dialog update riuscito + ritorno al login
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(utente==null || !settingUtenteFragment.getPwdAttuale().getText().toString().equals("pwd"))
+            startActivity(new Intent(SettingsActivity.this, LogInActivity.class));
     }
 
 
