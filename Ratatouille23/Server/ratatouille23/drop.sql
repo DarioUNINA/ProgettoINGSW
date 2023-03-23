@@ -27539,3 +27539,68 @@
     drop sequence if exists id_ristorante_seq;
 
     drop sequence if exists id_tavolo_seq;
+
+    alter table allergia 
+       drop constraint FKenetpo854cyk13m0lr2cx20pi;
+
+    alter table allergia 
+       drop constraint FKr3j1jcqupwur10tm2hmxc3vrd;
+
+    alter table categoria 
+       drop constraint FK7sl2hag5q6tjjgajdbqlq5blp;
+
+    alter table elemento 
+       drop constraint FK7c98cnfsldokgorotjgy5dk9w;
+
+    alter table menu 
+       drop constraint FKcn7cg1eeunjsl6bqan7d4svyc;
+
+    alter table ordinazione 
+       drop constraint FKa1r5uatnvcl0829vidygetrxs;
+
+    alter table ordinazione 
+       drop constraint FKqewrash8k8swjyiyld70i297v;
+
+    alter table ordine 
+       drop constraint FKeqk4wbgp4bm8pwdcqy32w5xxr;
+
+    alter table tavolo 
+       drop constraint FKauvtvp4ls2ijk7efgw5ytsbtw;
+
+    alter table tavolo 
+       drop constraint FKi070cwdmd6tj2sywp96itncns;
+
+    alter table utente 
+       drop constraint FKkq3kqqcspxtvi490xjqx62ipu;
+
+    drop table allergene cascade;
+
+    drop table allergia cascade;
+
+    drop table categoria cascade;
+
+    drop table elemento cascade;
+
+    drop table menu cascade;
+
+    drop table ordinazione cascade;
+
+    drop table ordine cascade;
+
+    drop table ristorante cascade;
+
+    drop table tavolo cascade;
+
+    drop table utente cascade;
+
+    drop sequence id_categoria_seq;
+
+    drop sequence id_elemento_seq;
+
+    drop sequence id_menu_seq;
+
+    drop sequence id_ordine_seq;
+
+    drop sequence id_ristorante_seq;
+
+    drop sequence id_tavolo_seq;

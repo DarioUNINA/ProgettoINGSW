@@ -110,11 +110,21 @@ public class StatisticheFragment extends Fragment {
 
         barArraylist.clear();
 
-        for(Integer i: numeroOrdini)
-            System.out.println(i+"\n");
+        numeroOrdini.clear();
+        giorni.clear();
+        
+        numeroOrdini.add(5);
+        numeroOrdini.add(4);
 
-        for(String s: giorni)
-            System.out.println(s+"\n");
+        giorni.add("prova1");
+        giorni.add("prova2");
+
+
+//        for(Integer i: numeroOrdini)
+//            System.out.println(i+"\n");
+//
+//        for(String s: giorni)
+//            System.out.println(s+"\n");
 
         for(int i=0; i<numeroOrdini.size(); i++)
             barArraylist.add(new BarEntry(i, numeroOrdini.get(i), numeroOrdini.get(i)));
